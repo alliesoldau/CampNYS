@@ -1,17 +1,24 @@
-import { useState, useEffect } from "react";
+import React from 'react';
+import { Route, Switch } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import LandingPage from './components/Shared/LandingPage'
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    fetch("/hello")
-      .then((r) => r.json())
-      .then((data) => setCount(data.count));
-  }, []);
 
   return (
-    <div className="App">
-      <h1>Page Count: {count}</h1>
+    <div className="app-container">
+      <h1>CampNYS</h1>
+      <NavBar />
+        <div className="body-container">
+          <Switch>
+
+            <Route exact path='/'>
+              <LandingPage />
+            </Route>
+
+
+          </Switch>
+        </div>
     </div>
   );
 }
