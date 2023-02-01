@@ -2,15 +2,17 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import LandingPage from './components/Shared/LandingPage'
+import HomePage from './components/Shared/HomePage'
+import UserProfile from './components/Shared/UserProfile'
+import SearchPage from './components/CamperComponents/Search/SearchPage'
+import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import { UserProvider } from './components/Context/UserContext'
 
 function App() {
 
-
   return (
     <UserProvider>
       <div className="app-container">
-        <h1>CampNYS</h1>
         <NavBar />
           <div className="body-container">
             <Switch>
@@ -19,6 +21,21 @@ function App() {
                 <LandingPage />
               </Route>
 
+              <Route path='/search_campgrounds'>
+                <SearchPage />
+              </Route>
+
+              <Route path='/campers/:id/reservations'>
+                <CamperReservations />
+              </Route>
+
+              <Route path='/users/:id/profile'>
+                <UserProfile />
+              </Route>
+
+              <Route path='/users/:id'>
+                <HomePage />
+              </Route>
 
             </Switch>
           </div>

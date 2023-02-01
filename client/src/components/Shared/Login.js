@@ -9,10 +9,8 @@ function Login() {
         email:'',
         password:''
     })
-
     const { user, setUser } = useContext(UserContext);
     const history = useHistory()
-
     const {email, password} = formData
 
     function handleSubmit(e) {

@@ -6,12 +6,12 @@ accessibility = ['Hike in', 'Road', 'Boat']
 category = ['Tent', 'Lean-to', 'Cabin', 'Elevated surface']
 
 puts "😁 Seeding user data..."
-User.create(email: "allie@example.com", host?: false, password: "1234", first_name: "Allie", last_name: "Soldau", image_url: Faker::Avatar.image)
+User.create(email: "allie@example.com", host: false, password: "1234", first_name: "Allie", last_name: "Soldau", image_url: Faker::Avatar.image)
 
 9.times do
     User.create(
         email: Faker::Internet.email,
-        host?: false,
+        host: false,
         password: '1234',
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -23,7 +23,7 @@ end
 5.times do
     User.create(
         email: Faker::Internet.email,
-        host?: true,
+        host: true,
         password: '1234',
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
@@ -47,7 +47,7 @@ puts "🏕️ Seeding campground data..."
         closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
         accessibility: accessibility.sample,
         region_id: Region.all.sample.id,
-        host_id: User.where(host?: true).sample.id,
+        host_id: User.where(host: true).sample.id,
         image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
     )
 end
@@ -74,7 +74,7 @@ puts "📌 Seeding reservation data..."
         end_date: Faker::Date.between(from: startDate, to: '2023-10-31'),
         site_id: site,
         cars: rand(0..Site.find(site).car_capacity),
-        camper_id: User.where(host?: false).sample.id,
-        host_id: User.where(host?: true).sample.id,
+        camper_id: User.where(host: false).sample.id,
+        host_id: User.where(host: true).sample.id,
     )
 end

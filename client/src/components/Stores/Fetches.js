@@ -1,6 +1,5 @@
 
 export function LoginUser(user) {
-
     return fetch('http://localhost:3000/login',{
             method:'POST',
             headers:{'Content-Type': 'application/json'},
@@ -9,5 +8,12 @@ export function LoginUser(user) {
         .then(res => res.json())
         // TO DO: look into .catch for fetches for error handling 
 } 
+
+export function LogoutUser(user) {
+    return fetch("http://localhost:3000/logout",{ 
+            method: "DELETE" 
+        })
+        .then(res => res.json())
+}
 
 
