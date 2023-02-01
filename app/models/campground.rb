@@ -8,12 +8,12 @@ class Campground < ApplicationRecord
     # validates :region_id, presence: true
     # validates :host_id, presence: true
 
-    belongs_to :host, class_name: "User"
+    belongs_to :host, class_name: "User", foreign_key: :host_id
     belongs_to :region
     has_many :sites
     # TO DO: CAN I DO THIS OR DO I NEED TO USE THE FOREIGN KEY??
     # OPTION 1 
-    has_many :reservations, through: :sites
+    # has_many :reservations, through: :sites
     # OPTION 2
     # has_many :host_reservations, class_name: "Reservation", foreign_key: "host_id", dependent: :destroy
     # has_many :camper_reservations, through: :host_reservations
