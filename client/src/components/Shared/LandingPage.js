@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from './Login';
 
 function LandingPage() {
     return (
@@ -14,6 +15,7 @@ function LandingPage() {
         {/* return ( */}
             <div>
                 <h1>Please Login or Sign Up</h1>
+                <Login />
             </div>
         {/* )
       }
