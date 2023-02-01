@@ -8,4 +8,7 @@ class Reservation < ApplicationRecord
     # validates :camper_id, presence: true
     # validates :host_id, presence: true
 
+    belongs_to :camper, class_name: "User"
+    belongs_to :host, class_name: "User"
+
 end
