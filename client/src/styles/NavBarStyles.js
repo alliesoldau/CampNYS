@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { GLOBALVAR } from './GlobalVar';
 
+
 // CSS help from source: https://www.youtube.com/watch?v=IF6k0uZuypA&ab_channel=Fireship
 
 const NavBarStyles = styled.div`
