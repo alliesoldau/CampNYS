@@ -3,6 +3,7 @@ import { UserContext } from './Context/UserContext'
 import { LogoutUser } from './Stores/Fetches'
 import { Link, NavLink } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
+import logo from '../images/logo.png'
 
 function NavBar() {
 
@@ -22,7 +23,7 @@ function NavBar() {
     // conditionally render NavBar for if a user is logged in, a camper, or a host  
         <>
             <Link exact to="/">
-                <h1> CampNYS </h1>
+                <img className="logo" src={logo}></img>
             </Link>
             <div>
                 {user ? (
