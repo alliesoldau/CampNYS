@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from './Context/UserContext'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { LogoutUser } from './Stores/Fetches'
 import { useHistory } from 'react-router-dom'
+
+// TO DO: set global state for closing the drop down so itll close when you click buttons after leaving it open
 
 function NavBarDD() {
     const [open, setOpen] = useState(false)
@@ -18,9 +20,10 @@ function NavBarDD() {
     return (
     <a>
         <img className="proPic" 
-        src={user.image_url} 
-        alt="Profile picture of the user" 
-        onClick={()=>setOpen(!open)}></img>
+            src={user.image_url} 
+            alt="Profile picture of the user" 
+            onClick={()=>setOpen(!open)}>
+        </img>
         { open ? (
             <div className="dropdown">
                 <div className="menu-item">
@@ -28,6 +31,26 @@ function NavBarDD() {
                         Profile
                     </Link>
                 </div>
+                { user.host ? ( 
+                        <div className="menu-item">
+                            <li className="nav-item">
+                                <NavLink to={`/hosts/${user.id}/reservations`}>
+                                    My Campgrounds
+                                </NavLink>
+                            </li>
+                        </div>
+                        ) : ( 
+                            <div className="links">
+                                <li className="nav-link">
+                                    <div className="menu-item">
+                                        <NavLink to={`/campers/${user.id}/reservations`}>
+                                            My Reservations
+                                        </NavLink>
+                                    </div>
+                                </li>
+                            </div>
+                         )
+                        }
                 <div className="menu-item">
                     <button onClick={handleLogoutClick}>Logout</button>
                 </div>

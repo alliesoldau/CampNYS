@@ -4,5 +4,8 @@ export const GLOBALVAR = {
     'cream': '#ffffc7',
     'teal': '#548687',
     'purple': '#473335',
-    'navsize': '60px'
+    'lightgrey': '#E6EEF7',
+    'mediumgrey': '#ABB0B8',
+    'darkgrey': '#6F7378',
+    'navsize': '70px'
 }

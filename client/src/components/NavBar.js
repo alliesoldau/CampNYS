@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from './Context/UserContext'
 import { Link, NavLink } from 'react-router-dom'
-import { LogoutUser } from './Stores/Fetches'
 import NavBarStyles from '../styles/NavBarStyles'
 import logo from '../images/logo.png'
 import NavBarDD from './NavBarDD'
@@ -12,40 +11,30 @@ function NavBarTest() {
 
     return (
         <NavBarStyles>
-            <ul className="navbar">
-                <li className="nav-item">
+            <div className="navbarLeft">
                     <Link exact to="/">
-                        <img className="logo" src={logo} 
-                        alt="CampNYS Logo of a tree and mountain that look like a tent"
-                        ></img>
+                        <div className="logo-full">
+                            <img className="logo" src={logo} 
+                            alt="CampNYS Logo of a tree and mountain that look like a tent"></img>
+                            <h1>CampNYS</h1>
+                        </div>
                     </Link>
-                </li>
-            </ul>
+            </div>
                 {user ? (
-                    <ul className="navbar">
-                        <li className="nav-item">
-                            <NavBarDD />
-                        </li>
+                    <ul className="navbarRight">
                         { user.host ? ( 
-                            <li className="nav-item">                                <NavLink to={`/hosts/${user.id}/reservations`}>
-                                    My Campgrounds
-                                </NavLink>
-                            </li>
+                            null
                         ) : ( 
                             <div className="links">
-                                <li className="nav-link">
-                                    <NavLink to={`/campers/${user.id}/reservations`}>
-                                        My Reservations
-                                    </NavLink>
-                                </li>
-                                <li className="nav-link">
-                                    <NavLink to={`/search_campgrounds`}>
-                                        Search Campgrounds
-                                    </NavLink>
-                                </li>
+                                <NavLink to={`/search_campgrounds`}>
+                                    Search Campgrounds
+                                </NavLink>
                             </div>
                          )
                         }
+                        <li>
+                            <NavBarDD />
+                        </li>
                     </ul>
                 ) : ( null
              )}
