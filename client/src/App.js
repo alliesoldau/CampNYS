@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
-import NavBar from './components/NavBar'
+import NavBarTest from './components/NavBar'
 import LandingPage from './components/Shared/LandingPage'
 import HomePage from './components/Shared/HomePage'
 import UserProfile from './components/Shared/UserProfile'
@@ -14,7 +14,7 @@ function App() {
   return (
     <UserProvider>
       <div className="app-container">
-        <NavBar />
+        <NavBarTest />
           <div className="body-container">
             <Switch>
 
