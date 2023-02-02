@@ -4,10 +4,6 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   # TO DO: make sure users cant delete/update things that arent theirs
-  # def hello_world
-  #   session[:count] = (session[:count] || 0) + 1
-  #   render json: { count: session[:count] }
-  # end
   
   # before_action 
   before_action :authorized_user

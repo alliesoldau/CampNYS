@@ -11,6 +11,16 @@ export function LoginUser(user) {
         // TO DO: look into .catch for fetches for error handling 
 } 
 
+export function SignUpUser(user) {
+    return fetch(baseURL+"/signup",{
+            method:'POST',
+            headers:{'Content-Type': 'application/json'},
+            body:JSON.stringify(user)
+        })
+        .then(res => res.json())
+        // TO DO: look into .catch for fetches for error handling 
+} 
+
 export function LogoutUser(user) {
     return fetch(baseURL+"/logout",{ 
             method: "DELETE" 

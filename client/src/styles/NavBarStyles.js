@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import { GLOBALVAR } from './GlobalVar';
-
+import { GLOBAL } from './GlobalVar';
 
 // CSS help from source: https://www.youtube.com/watch?v=IF6k0uZuypA&ab_channel=Fireship
 
 const NavBarStyles = styled.div`
     display: flex;
     background-color: white;
-    border-bottom: 1px solid ${GLOBALVAR.lightgrey};
+    border-bottom: 1px solid ${GLOBAL.lightgrey};
     justify-content: space-between;
     padding: 5px;
+    width: 100%;
 }
 .navbarLeft {
-    height: ${GLOBALVAR.navsize};
+    height: ${GLOBAL.navsize};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -22,34 +22,37 @@ const NavBarStyles = styled.div`
 }
 h1 {
     margin: 0;
+    font-family: "Eczar";
 }
 .logo-full {
     display: flex;
     flex-direction: row;
 }
 .navbarRight {
-    height: ${GLOBALVAR.navsize};
+    height: calc(${GLOBAL.navsize}*0.9);
     display: flex;
     justify-content: space-between;
     list-style: none;
-    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
     align-items: center;
 }
 .links {
     margin: auto;
     margin-right: 30px;
-    font-size: 2rem;
+    font-size: 1.2rem;
 }
 img.proPic {
     background-color: white;
-    border: 2px solid ${GLOBALVAR.orange};
+    border: 2px solid ${GLOBAL.orange};
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 2px 2px ${GLOBALVAR.cream};
-    height: calc(${GLOBALVAR.navsize}*0.9);
+    box-shadow: 0 0 2px 2px ${GLOBAL.cream};
+    height: calc(${GLOBAL.navsize}*1);
 }
 img.logo {
-    height: calc(${GLOBALVAR.navsize}*0.9);
+    height: calc(${GLOBAL.navsize}*1);
 }
 .logo-full {
     display: flex;
@@ -66,10 +69,10 @@ img.logo {
 .dropdown {
     position: absolute;
     top: 68px;
-    width: 300px;
-    transform: translateX(-45%);
+    width: 200px;
+    transform: translateX(-70%);
     background-color: white;
-    border: 2px solid ${GLOBALVAR.teal};
+    border: 2px solid ${GLOBAL.teal};
     border-radius: 5px;
     overflow: hidden;
     padding: 1rem;
@@ -82,22 +85,25 @@ img.logo {
     padding: 0.5rem;
 }
 .menu-item:hover {
-
-    background-color: ${GLOBALVAR.cream};
+    background-color: ${GLOBAL.cream};
     border-radius: 5px;
     filter: brightness(1)
 }
 a {
-    color: ${GLOBALVAR.purple};
+    color: ${GLOBAL.darkgrey};
     text-decoration: none;
     font-weight: bold;
 }
 a:hover {
-    color: black;
+    color: ${GLOBAL.teal};
 }
-
-
-
+a.logout {
+    background-color: white;
+    border: none;
+    color: ${GLOBAL.darkgrey};
+    text-decoration: none;
+    font-weight: bold;
+}
 `
 
 export default NavBarStyles;

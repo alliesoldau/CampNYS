@@ -12,17 +12,17 @@ function NavBarDD() {
     const history = useHistory()
 
     function handleLogoutClick() {
-        LogoutUser(user).then(user => {
+        LogoutUser(user).then(userData => {
             history.push("/")
             setUser(null)
             localStorage.removeItem("userID")
         })
       }
     return (
-    <a>
+    <>
         <img className="proPic" 
             src={user.image_url} 
-            alt="Profile picture of the user" 
+            alt="Profile of the user" 
             onClick={()=>setOpen(!open)}>
         </img>
         { open ? (
@@ -51,11 +51,11 @@ function NavBarDD() {
                          )
                         }
                 <div className="menu-item">
-                    <button onClick={handleLogoutClick}>Logout</button>
+                    <button className="logout" onClick={handleLogoutClick}>Logout</button>
                 </div>
             </div>
         ) : null}
-    </a>
+    </>
     )
 }
 

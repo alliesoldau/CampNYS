@@ -9,7 +9,7 @@ function Login() {
         email:'',
         password:''
     })
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const history = useHistory()
     const {email, password} = formData
 
@@ -31,8 +31,6 @@ function Login() {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
       }
-
-    console.log(user)
 
     return(
         <>
