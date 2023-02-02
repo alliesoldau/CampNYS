@@ -7,8 +7,9 @@ function HomePage() {
 
     return (
         <>
+        { user ?
             <p>Welcome {user.first_name} {user.last_name}</p>
-            <p>HomePage</p>
+            : null }
         </>
     )
 }

@@ -15,6 +15,7 @@ function NavBarDD() {
         LogoutUser(user).then(user => {
             history.push("/")
             setUser(null)
+            localStorage.removeItem("userID")
         })
       }
     return (

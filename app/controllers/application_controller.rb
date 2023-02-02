@@ -4,7 +4,11 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
   # TO DO: make sure users cant delete/update things that arent theirs
-
+  # def hello_world
+  #   session[:count] = (session[:count] || 0) + 1
+  #   render json: { count: session[:count] }
+  # end
+  
   # before_action 
   before_action :authorized_user
 
@@ -12,8 +16,6 @@ class ApplicationController < ActionController::API
   def current_user
     user = User.find_by(id:session[:user_id])
   end 
-
-  # debugger
 
   def authorized_user
       render json:{error:"Not Authorized"}, status: :unauthorized unless current_user

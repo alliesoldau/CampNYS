@@ -5,7 +5,7 @@ import NavBarStyles from '../styles/NavBarStyles'
 import logo from '../images/logo.png'
 import NavBarDD from './NavBarDD'
 
-function NavBarTest() {
+function NavBar() {
 
     const { user } = useContext(UserContext);
 
@@ -44,4 +44,4 @@ function NavBarTest() {
     )
 }
 
-export default NavBarTest;
+export default NavBar;

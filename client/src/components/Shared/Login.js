@@ -21,6 +21,7 @@ function Login() {
         }
         LoginUser(userData).then(user => {
             setUser(user)
+            localStorage.userID=user.id
             history.push(`/users/${user.id}`)
         })
 
