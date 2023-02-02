@@ -46,10 +46,12 @@ function NavBar() {
                             </div>
                          )
                         }
-                        <NavLink to={`/users/${user.id}/profile`}>
-                            Profile
-                        </NavLink>
-                        <button onClick={handleLogoutClick}>Logout</button>
+                        <div className="links">
+                            <NavLink to={`/users/${user.id}/profile`}>
+                                <img className="proPic" src={user.image_url} alt="Profile picture of the user"></img>
+                            </NavLink>
+                            <button onClick={handleLogoutClick}>Logout</button>
+                        </div>
                     </div>                    
                     ) : ( null )
                 }
