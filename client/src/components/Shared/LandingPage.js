@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Login from './Login';
 import SignUp from './SignUp';
+import Landing from '../../styles/Landing';
 import { UserContext } from '../Context/UserContext'
 
 function LandingPage() {
@@ -22,23 +23,27 @@ function LandingPage() {
 
     if (user) {
         return (
-          <div className="Home-Page">
-            <h1><i>Welcome, {user.first_name} {user.last_name}!</i></h1>
-          </div>
+          <Landing>
+            <div className="Home-Page">
+              <h1><i>Welcome, {user.first_name} {user.last_name}!</i></h1>
+            </div>
+          </Landing>
         )
       } else {
         return (
-            <div>
+            <Landing>
                 <h1>Please Login or Sign Up</h1>
-                <button onClick={handleRevealLogin}>Login</button>
-                <button onClick={handleRevealSignUp}>Signup</button>
-                { showLogin===true ? 
-                <Login />
-                : null }
-                { showSignUp===true ?
-                <SignUp />
-                : null}
-            </div>
+                <div>
+                  <button className="login" onClick={handleRevealLogin}>Login</button>
+                  <button className="signup" onClick={handleRevealSignUp}>Signup</button>
+                  { showLogin===true ? 
+                  <Login />
+                  : null }
+                  { showSignUp===true ?
+                  <SignUp />
+                  : null}
+                </div>
+            </Landing>
         )
       }
 }

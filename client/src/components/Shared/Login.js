@@ -40,7 +40,7 @@ function Login() {
                 <input type='text' name='email' value={email} onChange={handleChange} />
                 <label>Password</label>
                 <input type='password' name='password' value={password} onChange={handleChange} />
-                <button type='submit'>Login</button>
+                <button className="submit" type='submit'>Login</button>
             </form>
         </>
     )

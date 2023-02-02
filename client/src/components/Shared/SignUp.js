@@ -79,7 +79,7 @@ function SignUp() {
                 : null }
                 <label>Password</label>
                 <input type='password' name='password' value={password} onChange={handleChange} />
-                <button type='submit'>SignUp</button>
+                <button className="submit" type='submit'>SignUp</button>
 
             </form>
         </>
