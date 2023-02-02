@@ -1,13 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from './Context/UserContext'
 import { Link, NavLink } from 'react-router-dom'
 import { LogoutUser } from './Stores/Fetches'
+import propic from '../images/propic.jpg'
 import { useHistory } from 'react-router-dom'
 
 // TO DO: set global state for closing the drop down so itll close when you click buttons after leaving it open
 
 function NavBarDD() {
     const [open, setOpen] = useState(false)
+    const [imageURL, setImageURL] = useState('')
     const { user, setUser } = useContext(UserContext);
     const history = useHistory()
 
@@ -18,10 +20,21 @@ function NavBarDD() {
             localStorage.removeItem("userID")
         })
       }
+
+    useEffect(() => {  
+        if (user.image_url !== null) {
+            setImageURL(user.image_url)
+        } else {
+            setImageURL(propic)
+        }
+      console.log(user.image_url)
+
+    },[])
+
     return (
     <>
         <img className="proPic" 
-            src={user.image_url} 
+            src={imageURL} 
             alt="Profile of the user" 
             onClick={()=>setOpen(!open)}>
         </img>
