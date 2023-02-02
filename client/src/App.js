@@ -6,6 +6,7 @@ import HomePage from './components/Shared/HomePage'
 import UserProfile from './components/Shared/UserProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
+import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import { UserProvider } from './components/Context/UserContext'
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
 
               <Route path='/campers/:id/reservations'>
                 <CamperReservations />
+              </Route>
+
+              <Route path='/hosts/:id/reservations'>
+                <HostCampgrounds />
               </Route>
 
               <Route path='/users/:id/profile'>
