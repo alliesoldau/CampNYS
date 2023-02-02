@@ -4,6 +4,7 @@ import { GLOBAL } from './GlobalVar';
 const Landing = styled.div`
     display: flex;
     flex-direction: column;
+    margin: 20px;
     
     button {
         background-color: ${GLOBAL.teal};
@@ -22,6 +23,11 @@ const Landing = styled.div`
     }
     button.submit {
         background-color: ${GLOBAL.orange};
+    }
+    h2 {
+        color: ${GLOBAL.red};
+        font-weight: bold;
+        border-bottom: 2px solid;
     }
 
 `

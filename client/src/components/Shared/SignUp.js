@@ -68,19 +68,18 @@ function SignUp() {
                     <div>
                         <label>Affiliation</label>
                         <select
-                                onChange={handleChange}
-                                name='affiliation' 
-                                value={affiliation} >
-                                    <option>NYS Parks & Rec</option>
-                                    <option>ADK Mountain Club</option>
-                                    <option>Independent</option>
+                            onChange={handleChange}
+                            name='affiliation' 
+                            value={affiliation} >
+                                <option>NYS Parks & Rec</option>
+                                <option>ADK Mountain Club</option>
+                                <option>Independent</option>
                         </select>
                     </div> 
                 : null }
                 <label>Password</label>
                 <input type='password' name='password' value={password} onChange={handleChange} />
                 <button className="submit" type='submit'>SignUp</button>
-
             </form>
         </>
     )

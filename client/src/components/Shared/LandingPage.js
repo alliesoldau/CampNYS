@@ -34,8 +34,10 @@ function LandingPage() {
             <Landing>
                 <h1>Please Login or Sign Up</h1>
                 <div>
-                  <button className="login" onClick={handleRevealLogin}>Login</button>
-                  <button className="signup" onClick={handleRevealSignUp}>Signup</button>
+                  <>
+                    <button className="login" onClick={handleRevealLogin}>Login</button>
+                    <button className="signup" onClick={handleRevealSignUp}>Signup</button>
+                  </>
                   { showLogin===true ? 
                   <Login />
                   : null }
