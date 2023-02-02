@@ -40,15 +40,13 @@ function NavBarDD() {
                             </li>
                         </div>
                         ) : ( 
-                            <div className="links">
-                                <li className="nav-link">
-                                    <div className="menu-item">
-                                        <NavLink to={`/campers/${user.id}/reservations`}>
-                                            My Reservations
-                                        </NavLink>
-                                    </div>
-                                </li>
+                        <li className="nav-link">
+                            <div className="menu-item">
+                                <NavLink to={`/campers/${user.id}/reservations`}>
+                                    My Reservations
+                                </NavLink>
                             </div>
+                        </li>
                          )
                         }
                 <div className="menu-item">

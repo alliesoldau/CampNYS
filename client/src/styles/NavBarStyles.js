@@ -38,6 +38,7 @@ h1 {
 .links {
     margin: auto;
     margin-right: 30px;
+    font-size: 2rem;
 }
 img.proPic {
     background-color: white;
@@ -81,8 +82,8 @@ img.logo {
     padding: 0.5rem;
 }
 .menu-item:hover {
-    border: 2px solid ${GLOBALVAR.teal};
-    background-color: ${GLOBALVAR.orange};
+
+    background-color: ${GLOBALVAR.cream};
     border-radius: 5px;
     filter: brightness(1)
 }
