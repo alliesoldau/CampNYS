@@ -21,6 +21,7 @@ function NavBarDD() {
         })
       }
 
+    // set profile picture to a default image if none is available in user data 
     useEffect(() => {  
         if (user.image_url !== null) {
             setImageURL(user.image_url)

@@ -1,5 +1,6 @@
 export const GLOBAL = {
     'orange': '#fcaa67',
+    'lightorange': '#FCBD89',
     'red': '#b0413e',
     'cream': '#ffffc7',
     'teal': '#548687',

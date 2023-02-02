@@ -45,7 +45,7 @@ h1 {
 }
 img.proPic {
     background-color: white;
-    border: 2px solid ${GLOBAL.orange};
+    border: 3px solid ${GLOBAL.teal};
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 0 2px 2px ${GLOBAL.cream};
@@ -85,24 +85,28 @@ img.logo {
     padding: 0.5rem;
 }
 .menu-item:hover {
-    background-color: ${GLOBAL.cream};
-    border-radius: 5px;
-    filter: brightness(1)
+    font-weight: bold;
 }
 a {
-    color: ${GLOBAL.darkgrey};
+    color: ${GLOBAL.teal};
     text-decoration: none;
     font-weight: bold;
 }
 a:hover {
-    color: ${GLOBAL.teal};
+    color: ${GLOBAL.orange};
 }
-a.logout {
-    background-color: white;
+button {
+    background-color: ${GLOBAL.teal};
+    height: 35px;
+    width: 100px;
     border: none;
-    color: ${GLOBAL.darkgrey};
+    border-radius: 20px;
+    color: ${GLOBAL.cream};
     text-decoration: none;
     font-weight: bold;
+}
+button:hover {
+    background-color: ${GLOBAL.orange};
 }
 `
 

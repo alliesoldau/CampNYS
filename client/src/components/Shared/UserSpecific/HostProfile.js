@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../Context/UserContext'
 
 function HostProfile() {
+
+    const { user } = useContext(UserContext);
+
     return (
         <>
-            <p>Host Profile</p>
+            <h4>Affiliation</h4>
+            <p>{user.affiliation}</p>
         </>
     )
 }

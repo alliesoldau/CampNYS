@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../Context/UserContext'
 
 function CamperProfile() {
+
+    const { user } = useContext(UserContext);
+
     return (
         <>
-            <p>Camper Profile</p>
+            <p>Camper Profile</p>>
         </>
     )
 }
