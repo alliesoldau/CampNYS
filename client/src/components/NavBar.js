@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { UserContext } from './Context/UserContext'
 import { LogoutUser } from './Stores/Fetches'
-import {Link, NavLink} from 'react-router-dom'
-import {useHistory} from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function NavBar() {
 

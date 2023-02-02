@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { LoginUser } from '../Stores/Fetches'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 function Login() {
     
