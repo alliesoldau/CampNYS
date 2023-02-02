@@ -1,6 +1,8 @@
 
+const baseURL = 'http://localhost:3000'
+
 export function LoginUser(user) {
-    return fetch('http://localhost:3000/login',{
+    return fetch(baseURL+"/login",{
             method:'POST',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify(user)
@@ -10,10 +12,16 @@ export function LoginUser(user) {
 } 
 
 export function LogoutUser(user) {
-    return fetch("http://localhost:3000/logout",{ 
+    return fetch(baseURL+"/logout",{ 
             method: "DELETE" 
         })
         .then(res => res.json())
 }
+
+export function AutoLogin() {
+    return fetch(baseURL+`/authorized/${localStorage.userID}`)
+    .then(res => res.json())
+    }
+
 
 

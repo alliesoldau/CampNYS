@@ -7,7 +7,7 @@ import UserProfile from './components/Shared/UserProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
-// import { UserProvider } from './components/Context/UserContext'
+import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 
 function App() {
@@ -17,18 +17,12 @@ function App() {
   useEffect(() => {
     // auto-login
     if (localStorage.userID) {
-      fetch(`http://localhost:3000/authorized/${localStorage.userID}`).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUser(user));
-        } else {
-          console.log("rip")
-        }
-      });
+      AutoLogin().then(setUser)
+    // TO DO: add a catch 
     }
   }, []);
 
   return (
-    // <UserProvider>
       <div className="app-container">
         <NavBarTest />
           <div className="body-container">
@@ -61,7 +55,6 @@ function App() {
             </Switch>
           </div>
       </div>
-    // </UserProvider>
   );
 }
 
