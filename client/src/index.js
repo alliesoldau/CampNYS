@@ -6,11 +6,12 @@ import { UserProvider } from './components/Context/UserContext'
 
 import './index.css';
 
+// QUESTION: why can't i put my campground provider here also?? 
 
 ReactDOM.render(  
     <Router>
         <UserProvider>
-          <App />
+            <App />
         </UserProvider>
     </Router>,
   document.getElementById('root')

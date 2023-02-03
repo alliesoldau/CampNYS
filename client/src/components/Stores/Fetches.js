@@ -33,5 +33,10 @@ export function AutoLogin() {
     .then(res => res.json())
     }
 
+export function GrabAllCampgrounds() {
+    return fetch(baseURL+'/all_campgrounds')
+    .then(res => res.json())
+    }
+
 
 

@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
+import { CampgroundContext } from '../../Context/CampgroundContext'
+import { GrabAllCampgrounds } from '../../Stores/Fetches'
 import {
     useJsApiLoader,
     GoogleMap,
@@ -11,6 +13,8 @@ import {
 
 function Map() {
 
+    const {campgrounds, setCampgrounds} = useContext(CampgroundContext);
+
     const apiKey = 'AIzaSyALnloTM5D_TfTDPGUd3DbvhyPEN_IsCbA'
     const {isLoaded } = useJsApiLoader({
         googleMapsApiKey: apiKey,
@@ -20,6 +24,15 @@ function Map() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    
+    useEffect(() => {
+        // TO DO: switch back to the onliner once i'm done playing with the console.log 
+        // GrabAllCampgrounds().then(setCampgrounds) 
+        GrabAllCampgrounds().then(camps => {
+            setCampgrounds(camps)
+            console.log(camps)
+        })
+    },[])
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
