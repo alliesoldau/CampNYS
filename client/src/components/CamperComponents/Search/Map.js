@@ -96,7 +96,8 @@ function Map() {
                         // supported color codes source: https://groups.google.com/g/kml-support-getting-started/c/j6CHf7UmXQY
                             // ylw blue red grn pink wht purple ltblu
                         scaledSize: new google.maps.Size(37, 37),
-                        // anchor: new google.maps.Point(17, 46),
+                        anchor: new google.maps.Point(14, 28), 
+                        // figured out pushpin anchor thru trial and error 
                     }}
                 />
                 {directionsResponse && (
