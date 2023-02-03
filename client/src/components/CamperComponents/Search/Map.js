@@ -34,20 +34,6 @@ function Map() {
         })
     },[])
 
-    const positions = campgrounds.map((campground) => {
-        return (
-            `{lat:${campground.lat}, lng:${campground.lng}`
-        )
-    })
-
-    console.log(positions)
-    // const markers = positions.map((position) => {
-    //     return (
-    //         <Marker position={position} />
-    //     )
-    // })
-
-    // console.log(markers)
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
@@ -120,11 +106,11 @@ function Map() {
                 // pushpin icon source: http://kml4earth.appspot.com/icons.html#pushpin  
                 // i should be able to change the color of the pushpin programatically by region :D 
                     icon={{ 
-                        url: 'http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png',
+                        url: 'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png',
                         // supported color codes source: https://groups.google.com/g/kml-support-getting-started/c/j6CHf7UmXQY
                             // ylw blue red grn pink wht purple ltblu
-                        // scaledSize: new google.maps.Size(37, 37),
-                        // anchor: new google.maps.Point(14, 28), 
+                        scaledSize: new window.google.maps.Size(37, 37),
+                        anchor: new window.google.maps.Point(14, 28), 
                         // figured out pushpin anchor thru trial and error 
                     }}
                 />
