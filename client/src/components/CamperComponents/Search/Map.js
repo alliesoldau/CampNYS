@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     useJsApiLoader,
     GoogleMap,
@@ -13,9 +13,18 @@ function Map() {
 
     const apiKey = 'AIzaSyALnloTM5D_TfTDPGUd3DbvhyPEN_IsCbA'
     const {isLoaded } = useJsApiLoader({
-        googleMapsApiKey: apiKey
+        googleMapsApiKey: apiKey,
+        libraries: ['places'],
     })
     const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+    const [directionsResponse, setDirectionsResponse] = useState(null)
+    const [distance, setDistance] = useState('')
+    const [duration, setDuration] = useState('')
+
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const originRef = useRef()
+    /** @type React.MutableRefObject<HTMLInputElement> */
+    const destiantionRef = useRef()
 
     if (!isLoaded) { 
         return <p>loading...</p> 
@@ -23,12 +32,48 @@ function Map() {
     
     const center = { lat: 44.18286103187915, lng: -73.96613001563273 }
 
+    async function calculateRoute() {
+        if (originRef.current.value === '' || destiantionRef.current.value === '') {
+          return
+        }
+        // eslint-disable-next-line no-undef
+        const directionsService = new google.maps.DirectionsService()
+        const results = await directionsService.route({
+          origin: originRef.current.value,
+          destination: destiantionRef.current.value,
+          // eslint-disable-next-line no-undef
+          travelMode: google.maps.TravelMode.DRIVING,
+        })
+        setDirectionsResponse(results)
+        setDistance(results.routes[0].legs[0].distance.text)
+        setDuration(results.routes[0].legs[0].duration.text)
+    }
+
+    function clearRoute() {
+    setDirectionsResponse(null)
+    setDistance('')
+    setDuration('')
+    originRef.current.value = ''
+    destiantionRef.current.value = ''
+    }
 
     return (
         <>
             <button onClick={() => {
                 map.panTo(center)
-                map.setZoom(15)}}>Center Map</button>
+                map.setZoom(15)}}>
+                    Center Map
+            </button>
+            <button onClick={calculateRoute}>Calculate Route</button>
+            <button onClick={clearRoute}>Clear Route</button>
+            <p>Duration: {duration}</p>
+            <p>Distance: {distance}</p>
+            <Autocomplete>
+              <input type='text' placeholder='Campgrounds' ref={originRef}/>
+            </Autocomplete>
+            <Autocomplete>
+              <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+            </Autocomplete>
             <GoogleMap 
                 center={center} 
                 zoom={15}
