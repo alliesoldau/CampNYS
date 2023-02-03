@@ -87,7 +87,18 @@ function Map() {
                 >
                 {/* TO DO: loop through campgrounds to add marker comps  */}
                 {/* TO DO: change long column to lng column in campgrounds table  */}
-                <Marker position={center} />
+                <Marker position={center} 
+                // custom icons source: https://www.mindbowser.com/react-google-map-with-a-custom-pin-marker/
+                // pushpin icon source: http://kml4earth.appspot.com/icons.html#pushpin  
+                // i should be able to change the color of the pushpin programatically by region :D 
+                    icon={{ 
+                        url: 'http://maps.google.com/mapfiles/kml/pushpin/ltblu-pushpin.png',
+                        // supported color codes source: https://groups.google.com/g/kml-support-getting-started/c/j6CHf7UmXQY
+                            // ylw blue red grn pink wht purple ltblu
+                        scaledSize: new google.maps.Size(37, 37),
+                        // anchor: new google.maps.Point(17, 46),
+                    }}
+                />
                 {directionsResponse && (
                     <DirectionsRenderer directions={directionsResponse} />
                 )}
