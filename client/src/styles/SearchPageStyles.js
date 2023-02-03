@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GLOBAL } from './GlobalVar';
+// import { GLOBAL } from './GlobalVar';
 
 const SearchPageStyles = styled.div`
  height: 75vh;

@@ -7,6 +7,7 @@ import {
     Marker,
     Autocomplete,
     DirectionsRenderer,
+    InfoWindow
   } from '@react-google-maps/api'
 
 // google maps tutorial source: https://www.youtube.com/watch?v=iP3DnhCUIsE&ab_channel=MafiaCodes 
@@ -92,33 +93,51 @@ function Map() {
             <Autocomplete>
               <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
             </Autocomplete>
-            <GoogleMap 
-                center={center} 
-                zoom={15}
-                mapContainerStyle={{ width: '100%', height: '100%' }}
-                options={{fullscreenControl: false}}
-                onLoad={map => setMap(map)}
-                >
-                {/* TO DO: loop through campgrounds to add marker comps  */}
-                {/* TO DO: change long column to lng column in campgrounds table  */}
-                <Marker position={center} 
-                // custom icons source: https://www.mindbowser.com/react-google-map-with-a-custom-pin-marker/
-                // pushpin icon source: http://kml4earth.appspot.com/icons.html#pushpin  
-                // i should be able to change the color of the pushpin programatically by region :D 
-                    icon={{ 
-                        url: 'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png',
-                        // supported color codes source: https://groups.google.com/g/kml-support-getting-started/c/j6CHf7UmXQY
-                            // ylw blue red grn pink wht purple ltblu
-                        scaledSize: new window.google.maps.Size(37, 37),
-                        anchor: new window.google.maps.Point(14, 28), 
-                        // figured out pushpin anchor thru trial and error 
-                    }}
-                />
-                {/* {markers} */}
-                {directionsResponse && (
-                    <DirectionsRenderer directions={directionsResponse} />
-                )}
-            </GoogleMap>
+            { campgrounds.length > 0 ? 
+                <GoogleMap 
+                    center={center} 
+                    zoom={15}
+                    mapContainerStyle={{ width: '100%', height: '100%' }}
+                    options={{fullscreenControl: false}}
+                    onLoad={map => setMap(map)}
+                    >
+                    <Marker position={center} 
+                        icon={{ 
+                            url: 'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png',
+                                // ylw blue red grn pink wht purple ltblu
+                            scaledSize: new window.google.maps.Size(37, 37),
+                            anchor: new window.google.maps.Point(14, 28), 
+                        }}
+                    />
+                    {campgrounds.map(loc => {
+                        let color = 'wht'
+                        if (loc.region_id === 1) {
+                            color = 'ylw'
+                        } else if (loc.region_id === 2) {
+                            color = 'blue'
+                        } else if (loc.region_id === 3) {
+                            color='purple'
+                        } else if (loc.region_id === 4) {
+                            color='ltblu'
+                        }
+                        return (
+                            <Marker 
+                                position={{ lat: loc.lat, lng: loc.lng }}
+                                icon={{ 
+                                    url: `http://maps.google.com/mapfiles/kml/pushpin/${color}-pushpin.png`,
+                                        // ylw blue red grn pink wht purple ltblu
+                                    scaledSize: new window.google.maps.Size(37, 37),
+                                    anchor: new window.google.maps.Point(14, 28), 
+                                }}
+                            />
+                        )
+
+                    })}
+                    {directionsResponse && (
+                        <DirectionsRenderer directions={directionsResponse} />
+                    )}
+                </GoogleMap>
+            : null }
         </>
     )
 }
