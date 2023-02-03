@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_01_220001) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_165643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "campgrounds", force: :cascade do |t|
     t.string "name"
     t.float "lat"
-    t.float "long"
+    t.float "lng"
     t.date "openning_date"
     t.date "closing_date"
     t.string "accessibility"

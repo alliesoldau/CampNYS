@@ -1,7 +1,7 @@
 require 'faker'
 
 affiliation = ['NYS Parks & Rec', 'ADK Mountain Club', 'Independent']
-region = ['High Peaks Region', 'Lake George', 'North Daks']
+region = ['High Peaks Region', 'Lake George', 'North Daks', 'Catskills']
 accessibility = ['Hike in', 'Road', 'Boat']
 category = ['Tent', 'Lean-to', 'Cabin', 'Elevated surface']
 
@@ -38,20 +38,64 @@ region.length.times do |count|
 end
 
 puts "🏕️ Seeding campground data..."
-5.times do
-    Campground.create(
-        name: Faker::Fantasy::Tolkien.location,
-        lat: rand(1..100),
-        long: rand(1..100),
-        openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
-        closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
-        accessibility: accessibility.sample,
-        region_id: Region.all.sample.id,
-        host_id: User.where(host: true).sample.id,
-        image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
-    )
-end
+# 5.times do
+#     Campground.create(
+#         name: Faker::Fantasy::Tolkien.location,
+#         lat: rand(1..100),
+#         lng: rand(1..100),
+#         openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+#         closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+#         accessibility: accessibility.sample,
+#         region_id: Region.all.sample.id,
+#         host_id: User.where(host: true).sample.id,
+#         image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+#     )
+# end
 
+Campground.create(
+    name: "Sleepy Hallow",
+    lat: 42.06918811359417,
+    lng: -74.3048490846581,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 4,
+    host_id: User.where(host: true).sample.id,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
+Campground.create(
+    name: "Fish Creek",
+    lat: 44.30353436049772,
+    lng: -74.35904341534187,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 3,
+    host_id: User.where(host: true).sample.id,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
+Campground.create(
+    name: "Lake George Schroon Valley",
+    lat: 43.59325998513567,
+    lng: -73.73204293807699,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 2,
+    host_id: User.where(host: true).sample.id,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
+Campground.create(
+    name: "Meadowbrook",
+    lat: 44.29879710291092,
+    lng: -74.07497108465812,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 1,
+    host_id: User.where(host: true).sample.id,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
 
 puts "⛺ Seeding site data..."
 10.times do |count|
