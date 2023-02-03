@@ -45,16 +45,20 @@ function Map() {
           travelMode: google.maps.TravelMode.DRIVING,
         })
         setDirectionsResponse(results)
+        // the [0] gives you the first route option available 
+        // need to do distance.text to return in the correct measurement unit 
+        // distance.value will only return distance in meterse 
+        // duration.value returns seconds, and duration.text returns usable time measurements for travel 
         setDistance(results.routes[0].legs[0].distance.text)
         setDuration(results.routes[0].legs[0].duration.text)
     }
 
     function clearRoute() {
-    setDirectionsResponse(null)
-    setDistance('')
-    setDuration('')
-    originRef.current.value = ''
-    destiantionRef.current.value = ''
+        setDirectionsResponse(null)
+        setDistance('')
+        setDuration('')
+        originRef.current.value = ''
+        destiantionRef.current.value = ''
     }
 
     return (
@@ -84,7 +88,9 @@ function Map() {
                 {/* TO DO: loop through campgrounds to add marker comps  */}
                 {/* TO DO: change long column to lng column in campgrounds table  */}
                 <Marker position={center} />
-                
+                {directionsResponse && (
+                    <DirectionsRenderer directions={directionsResponse} />
+                )}
             </GoogleMap>
         </>
     )
