@@ -5,8 +5,8 @@ import LandingPage from './components/Shared/LandingPage'
 import HomePage from './components/Shared/HomePage'
 import UserProfile from './components/Shared/UserProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
-import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
-import HostCampgrounds from './components/HostComponents/HostCampgrounds'
+// import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
+// import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 
@@ -36,13 +36,13 @@ function App() {
                 <SearchPage />
               </Route>
 
-              <Route path='/campers/:id/reservations'>
+              {/* <Route path='/campers/:id/reservations'>
                 <CamperReservations />
               </Route>
 
               <Route path='/hosts/:id/reservations'>
                 <HostCampgrounds />
-              </Route>
+              </Route> */}
 
               <Route path='/users/:id/profile'>
                 <UserProfile />

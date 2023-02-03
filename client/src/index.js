@@ -7,7 +7,6 @@ import { UserProvider } from './components/Context/UserContext'
 import './index.css';
 
 
-
 ReactDOM.render(  
     <Router>
         <UserProvider>
