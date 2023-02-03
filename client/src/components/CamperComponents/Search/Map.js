@@ -34,6 +34,21 @@ function Map() {
         })
     },[])
 
+    const positions = campgrounds.map((campground) => {
+        return (
+            `{lat:${campground.lat}, lng:${campground.lng}`
+        )
+    })
+
+    console.log(positions)
+    // const markers = positions.map((position) => {
+    //     return (
+    //         <Marker position={position} />
+    //     )
+    // })
+
+    // console.log(markers)
+
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
     /** @type React.MutableRefObject<HTMLInputElement> */
@@ -43,7 +58,7 @@ function Map() {
         return <p>loading...</p> 
     }
     
-    const center = { lat: 44.18286103187915, lng: -73.96613001563273 }
+    const center = {lat: 44.18286103187915, lng: -73.96613001563273}
 
     async function calculateRoute() {
         if (originRef.current.value === '' || destiantionRef.current.value === '') {
@@ -113,6 +128,7 @@ function Map() {
                         // figured out pushpin anchor thru trial and error 
                     }}
                 />
+                {/* {markers} */}
                 {directionsResponse && (
                     <DirectionsRenderer directions={directionsResponse} />
                 )}

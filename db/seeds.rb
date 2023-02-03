@@ -96,6 +96,17 @@ Campground.create(
     host_id: User.where(host: true).sample.id,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
+Campground.create(
+    name: "ADK Loj",
+    lat: 44.18286103187915,
+    lng: -73.96613001563273,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 1,
+    host_id: User.where(host: true).sample.id,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
 
 puts "⛺ Seeding site data..."
 10.times do |count|
