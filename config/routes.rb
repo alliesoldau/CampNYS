@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/host/:id/campgrounds', to: 'campgrounds#show'
     post '/signup', to: 'users#create'
     post '/login', to: 'sessions#create'
+    patch '/users/:id/profile/edit', to: 'users#update'
     delete '/logout', to: 'sessions#destroy'
     delete  '/camper/reservation/:id', to: 'reservations#destroy'
     delete '/campgrounds/:id', to: 'campgrounds#destroy'

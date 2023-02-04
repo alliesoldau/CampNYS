@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
+import { Link } from "react-router-dom"
 import { UserContext } from '../Context/UserContext'
 import Profile from '../../styles/Profile'
-
-// TO DO: delete CamperProfile and UserProfile files if you dont end up using them 
 
 function UserProfile() {
 
@@ -39,8 +38,11 @@ function UserProfile() {
                             <h4>Affiliation</h4>
                             <p>{user.affiliation}</p> 
                         </>
-                    : null }
+                        : null }
                     </div>
+                    <Link to={`/users/${user.id}/profile/edit`}>
+                        <button>Edit Profile</button>
+                    </Link>
                 </div>
             </div>
         </Profile>

@@ -4,6 +4,7 @@ import NavBar from './components/NavBar'
 import LandingPage from './components/Shared/LandingPage'
 import HomePage from './components/Shared/HomePage'
 import UserProfile from './components/Shared/UserProfile'
+import EditProfile from './components/Shared/EditProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
@@ -44,6 +45,10 @@ function App() {
 
               <Route path='/search_campgrounds'>
                 <SearchPage />
+              </Route>
+
+              <Route path='/users/:id/profile/edit'>
+                <EditProfile />
               </Route>
 
               <Route path='/users/:id/profile'>

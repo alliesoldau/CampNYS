@@ -17,9 +17,8 @@ function CamperResDetails({ res }) {
         setCampRes(resSansDeleted)
         history.push(`/hosts/${campRes.host_id}/campgrounds`)
         DeleteReservation(res.id)
-
-        // TO DO: figure out why deleting a res blows everything up 
     }
+    
     return (
         <>
             <p>campground name: {myCampground.name}</p>

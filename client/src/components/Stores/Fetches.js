@@ -33,6 +33,14 @@ export function AutoLogin() {
     .then(res => res.json())
     }
 
+export function EditProfileInfo(user) {
+    fetch(baseURL+`/users/${user.id}/profile/edit`,{
+            method:'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify(user)
+          })
+    }
+
 export function GrabAllCampgrounds() {
     return fetch(baseURL+'/all_campgrounds')
     .then(res => res.json())
