@@ -7,11 +7,14 @@ import UserProfile from './components/Shared/UserProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
+import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
 import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
 import { HostCampgroundsProvider } from './components/Context/HostCampgroundsContext'
+import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
+
 
 function App() {
 
@@ -57,11 +60,18 @@ function App() {
                 </CamperReservationsProvider>
               </Route>
 
-              <Route path='/hosts/:id/campgrounds'>
-                <HostCampgroundsProvider>
-                  <HostCampgrounds/>
-                </HostCampgroundsProvider>
-              </Route>
+              <HostCampgroundsProvider>
+                <CampgroundDetailsProvider>
+                    <Route path='/hosts/:id/campgrounds'>
+                        <HostCampgrounds/>
+                    </Route>
+    
+                    <Route path='/host/campground/:id'>
+                      <CampgroundDetails />
+                    </Route>
+                  </CampgroundDetailsProvider>
+              </HostCampgroundsProvider>
+
 
             </Switch>
           </div>

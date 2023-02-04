@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
+// import { CampgroundDetailsProvider } from '../Context/CampgroundDetailsContext'
 import { GrabHostCampgrounds } from '../Stores/Fetches'
 import Campgrounds from './Campgrounds'
 
@@ -25,10 +26,12 @@ function HostCampgrounds() {
 
 
     return (
+        // <CampgroundDetailsProvider>
         <>
             <p>Host Campgrounds</p>
             { campgrounds }
-        </>
+            </>
+        // </CampgroundDetailsProvider>
     )
 }
 
