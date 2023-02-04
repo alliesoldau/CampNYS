@@ -10,8 +10,9 @@ function CamperResDetails({ res }) {
         <>
             <p>CamperResDetails</p>
             {/* TO DO: add in all of the information for the reservations!  */}
-            <p>{res.id}</p>
-            {/* <p>{res.site.campground_id}</p> */}
+            <p>res id: {res.id}</p>
+            <p>res site id: {res.site_id}</p>
+            <p>campground id: {res.site.campground_id}</p>
         </>
     )
 }

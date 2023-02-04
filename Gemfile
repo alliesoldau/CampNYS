@@ -46,7 +46,8 @@ group :development do
   # gem "spring"
 end
 
-gem "active_model_serializers", "~> 0.10.13"
+# gem "active_model_serializers", "~> 0.10.13"
+gem 'active_model_serializers'
 
 # https://github.com/faker-ruby/faker
 gem "faker", "~> 2.18"

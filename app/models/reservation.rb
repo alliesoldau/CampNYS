@@ -10,6 +10,6 @@ class Reservation < ApplicationRecord
 
     belongs_to :camper, class_name: "User", foreign_key: "camper_id"
     belongs_to :host, class_name: "User", foreign_key: "host_id"
-    # belongs_to :site
+    belongs_to :site
 
 end

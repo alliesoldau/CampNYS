@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
 
     def show
         reservations = Reservation.where(camper_id: params[:id])
-        render json: reservations, status: :ok
+        render json: reservations, status: :ok, each_serializer: ReservationsSerializer
     end
 
 end
