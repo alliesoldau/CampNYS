@@ -13,6 +13,7 @@ function CamperResDetails({ res }) {
         DeleteReservation(res.id)
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
         setCampRes(resSansDeleted)
+        // TO DO: figure out why deleting a res blows everything up 
     }
     return (
         <>
