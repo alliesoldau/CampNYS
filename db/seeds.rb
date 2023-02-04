@@ -9,29 +9,29 @@ puts "😁 Seeding user data..."
 User.create(email: "user", host: false, password: "1234", first_name: "User", last_name: "Soldau", image_url: Faker::Avatar.image)
 User.create(email: "host", host: true, password: "1234", first_name: "Host", last_name: "Soldau", affiliation: affiliation.sample, image_url: Faker::Avatar.image)
 
-8.times do
-    User.create(
-        email: Faker::Internet.email,
-        host: false,
-        password: '1234',
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        affiliation: nil,
-        image_url: Faker::Avatar.image
-    )
-end
+# 8.times do
+#     User.create(
+#         email: Faker::Internet.email,
+#         host: false,
+#         password: '1234',
+#         first_name: Faker::Name.first_name,
+#         last_name: Faker::Name.last_name,
+#         affiliation: nil,
+#         image_url: Faker::Avatar.image
+#     )
+# end
 
-5.times do
-    User.create(
-        email: Faker::Internet.email,
-        host: true,
-        password: '1234',
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        affiliation: affiliation.sample,
-        image_url: Faker::Avatar.image
-    )
-end
+# 5.times do
+#     User.create(
+#         email: Faker::Internet.email,
+#         host: true,
+#         password: '1234',
+#         first_name: Faker::Name.first_name,
+#         last_name: Faker::Name.last_name,
+#         affiliation: affiliation.sample,
+#         image_url: Faker::Avatar.image
+#     )
+# end
 
 puts "🗺️ Seeding region data..."
 region.length.times do |count|

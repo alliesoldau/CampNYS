@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
 import { DeleteReservation } from '../../Stores/Fetches'
@@ -9,10 +10,14 @@ function CamperResDetails({ res }) {
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
     const myCampground = campgrounds.find((campground) => campground.id === res.site.campground_id)
 
+    const history = useHistory()
+
     function handleDeleteReservation() {
-        DeleteReservation(res.id)
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
         setCampRes(resSansDeleted)
+        history.push(`/hosts/${campRes.host_id}/campgrounds`)
+        DeleteReservation(res.id)
+
         // TO DO: figure out why deleting a res blows everything up 
     }
     return (
