@@ -1,6 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import { CampgroundContext } from '../../Context/CampgroundContext'
-import { GrabAllCampgrounds } from '../../Stores/Fetches'
 import MapStyles from '../../../styles/MapStyles'
 import {
     useJsApiLoader,
@@ -16,7 +15,7 @@ import {
 
 function Map() {
 
-    const {campgrounds, setCampgrounds} = useContext(CampgroundContext);
+    const { campgrounds } = useContext(CampgroundContext);
 
     const apiKey = 'AIzaSyALnloTM5D_TfTDPGUd3DbvhyPEN_IsCbA'
     const {isLoaded } = useJsApiLoader({
@@ -36,13 +35,6 @@ function Map() {
         }
         setActiveMarker(marker);
     };
-
-    
-    useEffect(() => {
-        GrabAllCampgrounds().then(camps => {
-            setCampgrounds(camps)
-        })
-    },[])
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()

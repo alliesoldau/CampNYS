@@ -11,8 +11,6 @@ import { UserContext } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
 import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
 
-
-
 function App() {
 
   const { setUser } = useContext(UserContext);
@@ -21,6 +19,9 @@ function App() {
     // auto-login
     if (localStorage.userID) {
       AutoLogin().then(setUser)
+      // TO DO: figure out how to put the campground provider in index.js so that i can 
+      // setCampgrounds on autologin as well so that you can refresh and still have that data 
+      // GrabAllCampgrounds().then(setCampgrounds)
     // TO DO: add a catch 
     }
   }, []);

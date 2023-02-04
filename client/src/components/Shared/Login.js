@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
-import { LoginUser } from '../Stores/Fetches'
+import { CampgroundContext } from '../Context/CampgroundContext'
+import { LoginUser, GrabAllCampgrounds } from '../Stores/Fetches'
 import { useHistory } from 'react-router-dom'
 
 function Login() {
@@ -9,7 +10,8 @@ function Login() {
         email:'',
         password:''
     })
-    const { setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext)
+    const { campgrounds, setCampgrounds } = useContext(CampgroundContext)
     const history = useHistory()
     const {email, password} = formData
 
@@ -24,7 +26,7 @@ function Login() {
             localStorage.userID=user.id
             history.push(`/users/${user.id}`)
         })
-
+        GrabAllCampgrounds().then(setCampgrounds)
     }
 
     const handleChange = (e) => {
