@@ -9,4 +9,5 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     delete '/logout', to: 'sessions#destroy'
     delete  '/camper/reservation/:id', to: 'reservations#destroy'
+    delete '/campgrounds/:id', to: 'campgrounds#destroy'
 end

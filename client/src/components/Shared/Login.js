@@ -11,7 +11,7 @@ function Login() {
         password:''
     })
     const { setUser } = useContext(UserContext)
-    const { campgrounds, setCampgrounds } = useContext(CampgroundContext)
+    const { setCampgrounds } = useContext(CampgroundContext)
     const history = useHistory()
     const {email, password} = formData
 

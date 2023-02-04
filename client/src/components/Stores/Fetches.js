@@ -55,6 +55,13 @@ export function GrabHostCampgrounds(id) {
     .then(res => res.json())
     }
 
+export function DeleteCampground(id) {
+    return fetch(baseURL+`/campgrounds/${id}`,{ 
+            method: "DELETE" 
+        })
+        .then(res => res.json())
+    }
+    
 
 
 
