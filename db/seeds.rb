@@ -61,7 +61,8 @@ Campground.create(
     closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
     accessibility: accessibility.sample,
     region_id: 4,
-    host_id: User.where(host: true).sample.id,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
 Campground.create(
@@ -72,7 +73,8 @@ Campground.create(
     closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
     accessibility: accessibility.sample,
     region_id: 3,
-    host_id: User.where(host: true).sample.id,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
 Campground.create(
@@ -83,7 +85,8 @@ Campground.create(
     closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
     accessibility: accessibility.sample,
     region_id: 2,
-    host_id: User.where(host: true).sample.id,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
 Campground.create(
@@ -94,7 +97,8 @@ Campground.create(
     closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
     accessibility: accessibility.sample,
     region_id: 1,
-    host_id: User.where(host: true).sample.id,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
 Campground.create(
@@ -105,7 +109,8 @@ Campground.create(
     closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
     accessibility: accessibility.sample,
     region_id: 1,
-    host_id: User.where(host: true).sample.id,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
 
@@ -130,7 +135,9 @@ puts "📌 Seeding reservation data..."
         end_date: Faker::Date.between(from: startDate, to: '2023-10-31'),
         site_id: site,
         cars: rand(0..Site.find(site).car_capacity),
-        camper_id: User.where(host: false).sample.id,
-        host_id: User.where(host: true).sample.id,
+        camper_id: 1,
+        # camper_id: User.where(host: false).sample.id,
+        # host_id: User.where(host: true).sample.id,
+        host_id: 2
     )
 end
