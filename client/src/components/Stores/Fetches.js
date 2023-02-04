@@ -38,5 +38,12 @@ export function GrabAllCampgrounds() {
     .then(res => res.json())
     }
 
+export function GrabCamperReservations(id) {
+    return fetch(baseURL+`/camper/${id}/reservations`)
+    .then(res => res.json())
+    }
+
+
+
 
 

@@ -5,9 +5,12 @@ import LandingPage from './components/Shared/LandingPage'
 import HomePage from './components/Shared/HomePage'
 import UserProfile from './components/Shared/UserProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
+import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
+import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
+
 
 
 function App() {
@@ -43,6 +46,12 @@ function App() {
 
               <Route path='/users/:id'>
                 <HomePage />
+              </Route>
+
+              <Route path='/campers/:id/reservations'>
+                <CamperReservationsProvider>
+                  <CamperReservations />
+                </CamperReservationsProvider>
               </Route>
 
             </Switch>
