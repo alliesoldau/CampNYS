@@ -26,7 +26,7 @@ function CamperReservations() {
     return (
         <>
             <p>Camper Reservations</p>
-            { campRes ? <p>{campRes.length}</p> : <p>no res</p> }
+            { campRes ? <p>You have {campRes.length} reservations</p> : <p>You don't have any reservations</p> }
             { reservations }
         </>
     )
