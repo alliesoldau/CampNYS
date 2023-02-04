@@ -28,8 +28,6 @@ function NavBarDD() {
         } else {
             setImageURL(propic)
         }
-      console.log(user.image_url)
-
     },[])
 
     return (
