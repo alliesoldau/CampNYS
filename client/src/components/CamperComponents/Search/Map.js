@@ -25,6 +25,16 @@ function Map() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+
+    const [activeMarker, setActiveMarker] = useState(null);
+
+    const handleActiveMarker = (marker) => {
+        if (marker === activeMarker) {
+        return;
+        }
+        setActiveMarker(marker);
+    };
+
     
     useEffect(() => {
         // TO DO: switch back to the onliner once i'm done playing with the console.log 
@@ -45,7 +55,7 @@ function Map() {
         return <p>loading...</p> 
     }
     
-    const center = {lat: 44.18286103187915, lng: -73.96613001563273}
+    const center = {lat: 42.6343187299392, lng: -73.85424802328473}
 
     async function calculateRoute() {
         if (originRef.current.value === '' || destiantionRef.current.value === '') {
@@ -80,7 +90,7 @@ function Map() {
         <>
             <button onClick={() => {
                 map.panTo(center)
-                map.setZoom(15)}}>
+                map.setZoom(6.5)}}>
                     Center Map
             </button>
             <button onClick={calculateRoute}>Calculate Route</button>
@@ -96,19 +106,22 @@ function Map() {
             { campgrounds.length > 0 ? 
                 <GoogleMap 
                     center={center} 
-                    zoom={15}
+                    zoom={6.5}
                     mapContainerStyle={{ width: '100%', height: '100%' }}
                     options={{fullscreenControl: false}}
                     onLoad={map => setMap(map)}
+                    onClick={() => setActiveMarker(null)}
                     >
-                    <Marker position={center} 
+                    {/* comment this back in if you want a pin at the center location  */}
+                    {/* <Marker position={center} 
                         icon={{ 
                             url: 'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png',
                                 // ylw blue red grn pink wht purple ltblu
                             scaledSize: new window.google.maps.Size(37, 37),
                             anchor: new window.google.maps.Point(14, 28), 
                         }}
-                    />
+                    /> */}
+                    {/* TO DO: add info windows and click events  */}
                     {campgrounds.map(loc => {
                         let color = 'wht'
                         if (loc.region_id === 1) {
@@ -129,8 +142,16 @@ function Map() {
                                     scaledSize: new window.google.maps.Size(37, 37),
                                     anchor: new window.google.maps.Point(14, 28), 
                                 }}
-                            />
+                                onClick={() => handleActiveMarker(loc.id)}
+                            >
+                            {activeMarker === loc.id ? (
+                                <InfoWindow onCloseClick={() => setActiveMarker(null)}>
+                                  <div>{loc.name}</div>
+                                </InfoWindow>
+                              ) : null}
+                              </Marker>
                         )
+
 
                     })}
                     {directionsResponse && (

@@ -10,3 +10,5 @@ export const GLOBAL = {
     'darkgrey': '#6F7378',
     'navsize': '70px'
 }
+
+// TO DO: update heights of items to vh if needed 
