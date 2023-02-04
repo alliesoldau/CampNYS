@@ -1,9 +1,12 @@
 import React from 'react';
 
-function Campgrounds() {
+function Campgrounds({ cg }) {
     return (
         <>
-            <p>Campgrounds</p>
+            <p>campground name: {cg.name} </p>
+            <p>openning date: {cg.openning_date}</p>
+            <p>closing date: {cg.closing_date}</p>
+            <p>accessibility: {cg.accessibility}</p>
         </>
     )
 }

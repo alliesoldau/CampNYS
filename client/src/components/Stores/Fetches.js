@@ -50,6 +50,12 @@ export function DeleteReservation(id) {
     .then(res => res.json())
     }
 
+export function GrabHostCampgrounds(id) {
+    return fetch(baseURL+`/host/${id}/campgrounds`)
+    .then(res => res.json())
+    }
+
+
 
 
 

@@ -6,9 +6,10 @@ accessibility = ['Hike in', 'Road', 'Boat']
 category = ['Tent', 'Lean-to', 'Cabin', 'Elevated surface']
 
 puts "😁 Seeding user data..."
-User.create(email: "allie@example.com", host: false, password: "1234", first_name: "Allie", last_name: "Soldau", image_url: Faker::Avatar.image)
+User.create(email: "user", host: false, password: "1234", first_name: "User", last_name: "Soldau", image_url: Faker::Avatar.image)
+User.create(email: "host", host: true, password: "1234", first_name: "Host", last_name: "Soldau", affiliation: affiliation.sample, image_url: Faker::Avatar.image)
 
-9.times do
+8.times do
     User.create(
         email: Faker::Internet.email,
         host: false,
