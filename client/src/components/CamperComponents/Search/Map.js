@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from 'react';
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { GrabAllCampgrounds } from '../../Stores/Fetches'
+import MapStyles from '../../../styles/MapStyles'
 import {
     useJsApiLoader,
     GoogleMap,
@@ -34,7 +35,6 @@ function Map() {
         return;
         }
         setActiveMarker(marker);
-        console.log(marker)
     };
 
     
@@ -83,7 +83,7 @@ function Map() {
     }
 
     return (
-        <>
+        <MapStyles>
             <button onClick={() => {
                 map.panTo(center)
                 map.setZoom(6.5)}}>
@@ -139,10 +139,16 @@ function Map() {
                                     anchor: new window.google.maps.Point(14, 28), 
                                 }}
                                 onClick={() => handleActiveMarker(loc.id)}
+                                key={loc}
                             >
                             {activeMarker === loc.id ? (
                                 <InfoWindow onCloseClick={() => setActiveMarker(null)}>
-                                  <div>{loc.name}</div>
+                                  <>
+                                    <h4>{loc.name}</h4>
+                                    <div>Accessible by {loc.accessibility}</div>
+                                    <div>Seasonal Opening: {loc.openning_date}</div>
+                                    <div>Seasonal Closing: {loc.closing_date}</div>
+                                  </>
                                 </InfoWindow>
                               ) : null}
                               </Marker>
@@ -155,7 +161,7 @@ function Map() {
                     )}
                 </GoogleMap>
             : null }
-        </>
+        </MapStyles>
     )
 }
 
