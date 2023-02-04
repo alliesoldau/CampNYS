@@ -67,7 +67,7 @@ function App() {
                     </Route>
     
                     <Route path='/host/campground/:id'>
-                      <CampgroundDetails />
+                        <CampgroundDetails />
                     </Route>
                   </CampgroundDetailsProvider>
               </HostCampgroundsProvider>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
-// import { CampgroundDetailsProvider } from '../Context/CampgroundDetailsContext'
+import { CampgroundDetailsProvider } from '../Context/CampgroundDetailsContext'
 import { GrabHostCampgrounds } from '../Stores/Fetches'
 import Campgrounds from './Campgrounds'
 
@@ -11,7 +11,9 @@ function HostCampgrounds() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        GrabHostCampgrounds(user.id).then(setHostCampgrounds)
+        GrabHostCampgrounds(user.id).then((d)=> {
+            setHostCampgrounds(d)
+        })
     },[])
 
     const campgrounds = hostCampgrounds.map((cg) => {
@@ -23,13 +25,11 @@ function HostCampgrounds() {
         )
     })
 
-
-
     return (
         // <CampgroundDetailsProvider>
-        <>
-            <p>Host Campgrounds</p>
-            { campgrounds }
+            <>
+                <p>Host Campgrounds</p>
+                { campgrounds }
             </>
         // </CampgroundDetailsProvider>
     )

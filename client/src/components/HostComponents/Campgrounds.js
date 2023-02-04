@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 function Campgrounds({ cg }) {
 
-    const { setCampgroundDetails } = useContext(CampgroundDetailsContext)
+    const { campgroundDetails, setCampgroundDetails } = useContext(CampgroundDetailsContext)
     const history = useHistory()
 
     function handleClick() {
@@ -14,6 +14,7 @@ function Campgrounds({ cg }) {
             // unsure how to get the component to 
             // push to the details page for this cg
     }
+
     return (
         <>
             <p>campground name: {cg.name} </p>
