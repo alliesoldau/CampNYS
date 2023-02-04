@@ -11,6 +11,7 @@ import {
   } from '@react-google-maps/api'
 
 // google maps tutorial source: https://www.youtube.com/watch?v=iP3DnhCUIsE&ab_channel=MafiaCodes 
+// InfoWinow tutorial source: https://codesandbox.io/s/react-google-mapsapi-multiple-markers-infowindow-h6vlq?file=/src/Map.js:991-1035 
 
 function Map() {
 
@@ -33,18 +34,15 @@ function Map() {
         return;
         }
         setActiveMarker(marker);
+        console.log(marker)
     };
 
     
     useEffect(() => {
-        // TO DO: switch back to the onliner once i'm done playing with the console.log 
-        // GrabAllCampgrounds().then(setCampgrounds) 
         GrabAllCampgrounds().then(camps => {
             setCampgrounds(camps)
-            console.log(camps)
         })
     },[])
-
 
     /** @type React.MutableRefObject<HTMLInputElement> */
     const originRef = useRef()
@@ -61,13 +59,11 @@ function Map() {
         if (originRef.current.value === '' || destiantionRef.current.value === '') {
           return
         }
-        // eslint-disable-next-line no-undef
-        const directionsService = new google.maps.DirectionsService()
+        const directionsService = new window.google.maps.DirectionsService()
         const results = await directionsService.route({
           origin: originRef.current.value,
           destination: destiantionRef.current.value,
-          // eslint-disable-next-line no-undef
-          travelMode: google.maps.TravelMode.DRIVING,
+          travelMode: window.google.maps.TravelMode.DRIVING,
         })
         setDirectionsResponse(results)
         // the [0] gives you the first route option available 
