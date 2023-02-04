@@ -33,9 +33,8 @@ function CamperReservations() {
 
     return (
         <>
-            <p>Camper Reservations</p>
-            { reservations }
             { reservationMessage }
+            { reservations }
         </>
     )
 }

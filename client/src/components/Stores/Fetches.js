@@ -43,6 +43,13 @@ export function GrabCamperReservations(id) {
     .then(res => res.json())
     }
 
+export function DeleteReservation(id) {
+    return fetch(baseURL+`/camper/reservation/${id}`,{ 
+        method: "DELETE" 
+    })
+    .then(res => res.json())
+    }
+
 
 
 
