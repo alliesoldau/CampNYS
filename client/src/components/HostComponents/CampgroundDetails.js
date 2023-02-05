@@ -28,6 +28,11 @@ function CampgroundDetails() {
             </Link>
             <p>campground details</p>
             <p>name: {campgroundDetails.name}</p>
+            <p>openning date: {campgroundDetails.openning_date}</p>
+            <p>closing date: {campgroundDetails.closing_date}</p>
+            <p>accessibility: {campgroundDetails.accessibility}</p>
+            <p>reservations: {campgroundDetails.reservations.length}</p>
+            <img src={campgroundDetails.image_url} style={{height: "100px"}}></img>
             <button onClick={handleDelete}>Delete Campground</button>
         </>
     )
