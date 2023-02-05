@@ -4,12 +4,8 @@ const CampgroundDetailsContext = React.createContext();
 
 function CampgroundDetailsProvider({ children }) {
     const [campgroundDetails, setCampgroundDetails] = useState([]);
-    function test(arg) {
-      console.log('test', arg)
-      setCampgroundDetails(arg)
-    }
     return (
-        <CampgroundDetailsContext.Provider value={{ campgroundDetails, setCampgroundDetails: test }}>
+        <CampgroundDetailsContext.Provider value={{ campgroundDetails, setCampgroundDetails }}>
           {children}
         </CampgroundDetailsContext.Provider>
       );

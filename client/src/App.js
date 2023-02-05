@@ -70,6 +70,7 @@ function App() {
                     <Route path='/hosts/:id/campgrounds'>
                         <HostCampgrounds/>
                     </Route>
+
     
                     <Route path='/host/campground/:id'>
                         <CampgroundDetails />

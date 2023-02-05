@@ -11,6 +11,8 @@ function EditProfile() {
 
     const [formData, setFormData] = useState({
         id: user.id,
+        email: user.email,
+        host: user.host,
         first_name: user.first_name,
         last_name: user.last_name,
         image_url: user.image_url,
