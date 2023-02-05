@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
 import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
 import { DeleteCampground } from '../Stores/Fetches'
@@ -23,6 +23,9 @@ function CampgroundDetails() {
 
     return (
         <>
+            <Link to={`/hosts/${campgroundDetails.host_id}/campgrounds`}>
+                <button>Back to My Campgrounds</button>
+            </Link>
             <p>campground details</p>
             <p>name: {campgroundDetails.name}</p>
             <button onClick={handleDelete}>Delete Campground</button>
