@@ -34,12 +34,22 @@ export function AutoLogin() {
     }
 
 export function EditProfileInfo(user) {
-    fetch(baseURL+`/users/${user.id}/profile/edit`,{
+    return fetch(baseURL+`/users/${user.id}/profile/edit`,{
             method:'PATCH',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(user)
           })
+          .then(res => res.json())
     }
+
+export function EditCampgroundInfo(campground) {
+    return fetch(baseURL+`/campgrounds/${campground.id}/edit`,{
+        method:'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(campground)
+      })
+      .then(res => res.json())
+}
 
 export function GrabAllCampgrounds() {
     return fetch(baseURL+'/all_campgrounds')

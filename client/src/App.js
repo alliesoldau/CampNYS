@@ -77,7 +77,7 @@ function App() {
                     </Route>
 
                     <Route path='/campground/:id/edit'>
-                      <EditCampground />
+                        <EditCampground />
                     </Route>
                   </CampgroundDetailsProvider>
               </HostCampgroundsProvider>

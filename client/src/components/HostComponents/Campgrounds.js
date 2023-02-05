@@ -9,7 +9,6 @@ function Campgrounds({ cg }) {
 
     function handleClick() {
         setCampgroundDetails(cg)
-        console.log(cg)
         history.push(`/host/campground/${cg.id}`)
     }
 
