@@ -33,6 +33,9 @@ function CampgroundDetails() {
             <p>accessibility: {campgroundDetails.accessibility}</p>
             <p>reservations: {campgroundDetails.reservations.length}</p>
             <img src={campgroundDetails.image_url} style={{height: "100px"}}></img>
+            <Link to={`/campground/${campgroundDetails.id}/edit`}>
+                <button>Edit Campground</button>
+            </Link>
             <button onClick={handleDelete}>Delete Campground</button>
         </>
     )

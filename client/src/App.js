@@ -9,6 +9,7 @@ import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import CampgroundDetails from './components/HostComponents/CampgroundDetails'
+import EditCampground from './components/HostComponents/EditCampground'
 import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
@@ -71,9 +72,12 @@ function App() {
                         <HostCampgrounds/>
                     </Route>
 
-    
                     <Route path='/host/campground/:id'>
                         <CampgroundDetails />
+                    </Route>
+
+                    <Route path='/campground/:id/edit'>
+                      <EditCampground />
                     </Route>
                   </CampgroundDetailsProvider>
               </HostCampgroundsProvider>
