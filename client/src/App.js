@@ -10,6 +10,8 @@ import CamperReservations from './components/CamperComponents/CamperReservations
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
+import SitesSummary from './components/HostComponents/SitesSummary'
+import SiteDetails from './components/HostComponents/SiteDetails'
 import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
@@ -79,9 +81,17 @@ function App() {
                     <Route path='/campground/:id/edit'>
                         <EditCampground />
                     </Route>
+
+                    <Route path='/campground/:id/sites'>
+                      <SitesSummary />
+                    </Route>
+
+                    <Route path='/site/:id'>
+                      <SiteDetails />
+                    </Route>
+
                   </CampgroundDetailsProvider>
               </HostCampgroundsProvider>
-
 
             </Switch>
           </div>

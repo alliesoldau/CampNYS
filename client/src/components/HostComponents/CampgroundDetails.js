@@ -32,9 +32,13 @@ function CampgroundDetails() {
             <p>closing date: {campgroundDetails.closing_date}</p>
             <p>accessibility: {campgroundDetails.accessibility}</p>
             <p>reservations: {campgroundDetails.reservations.length}</p>
+            <p>sites: {campgroundDetails.sites.length}</p>
             <img src={campgroundDetails.image_url} style={{height: "100px"}}></img>
             <Link to={`/campground/${campgroundDetails.id}/edit`}>
-                <button>Edit Campground</button>
+                <button>Edit Campground Details</button>
+            </Link>
+            <Link to={`/campground/${campgroundDetails.id}/sites`}>
+                <button>View All Sites</button>
             </Link>
             <button onClick={handleDelete}>Delete Campground</button>
         </>
