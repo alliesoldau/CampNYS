@@ -12,11 +12,8 @@ function CampgroundDetails() {
     const history = useHistory()
 
     function handleDelete() {
-        console.log(campgroundDetails)
         const campgroundsSansDelete = hostCampgrounds.filter((cg) => cg.id !== campgroundDetails.id)
-        console.log(campgroundsSansDelete)
         setHostCampgrounds(campgroundsSansDelete)
-        console.log(campgroundDetails.id)
         DeleteCampground(campgroundDetails.id)
         history.push(`/hosts/${campgroundDetails.host_id}/campgrounds`)
     }
