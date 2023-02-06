@@ -21,6 +21,8 @@ import { ReservationDetailsProvider } from './components/Context/ReservationDeta
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
 import { SiteProvider } from './components/Context/SiteContext'
 
+// BIG TO DO: only do one fetch and nest data in the user so i dont need mutliple fetches 
+// BIG TO DO: think of an easier way to import all components from one place so its not a shit show here 
 
 function App() {
 

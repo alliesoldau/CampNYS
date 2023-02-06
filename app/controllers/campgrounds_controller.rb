@@ -7,6 +7,7 @@ class CampgroundsController < ApplicationController
     end
 
     def show
+        # debugger
         campgrounds = Campground.where(host_id: params[:id])
         render json: campgrounds, status: :ok, each_serializer: CampgroundsSerializer 
     end
