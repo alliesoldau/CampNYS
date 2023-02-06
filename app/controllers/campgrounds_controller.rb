@@ -20,8 +20,7 @@ class CampgroundsController < ApplicationController
     def update
         campground = Campground.find(params[:id])
         campground.update!(campground_params)
-        # serializer wont work here for some reason so i used an include 
-        render json: campground, status: :accepted, include: :reservations
+        render json: campground, status: :accepted, serializer: CampgroundsSerializer
     end
 
     private 

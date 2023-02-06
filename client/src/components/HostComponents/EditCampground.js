@@ -28,6 +28,7 @@ function EditCampground() {
     }
      
     function handleSubmit(e) {
+        console.log(campgroundDetails.sites)
         e.preventDefault();
         EditCampgroundInfo(formData).then(setCampgroundDetails)
         history.push(`/host/campground/${campgroundDetails.id}`)

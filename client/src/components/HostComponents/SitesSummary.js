@@ -22,6 +22,7 @@ function SitesSummary() {
                 <button>Back to Campground</button>
             </Link>
             <p>Sites Summary</p>
+            <p><b>MAKE IT SO YOU CAN ADD A SITE!</b></p>
             {sites}
         </>
     )

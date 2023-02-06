@@ -27,6 +27,7 @@ function HostCampgrounds() {
     return (
             <>
                 <p>Host Campgrounds</p>
+                <p><b>MAKE IT SO YOU CAN ADD A CAMPGROUND!</b></p>
                 { campgrounds }
             </>
     )
