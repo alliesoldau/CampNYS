@@ -4,6 +4,7 @@ import App from './App';
 import { BrowserRouter as Router } from "react-router-dom";
 import { UserProvider } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
+import { HostCampgroundsProvider } from './components/Context/HostCampgroundsContext'
 import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
 
 import './index.css';
@@ -15,7 +16,9 @@ ReactDOM.render(
         <UserProvider>
             <CampgroundProvider>
                 <CamperReservationsProvider>
-                    <App />
+                    <HostCampgroundsProvider>
+                        <App />
+                    </HostCampgroundsProvider>
                 </CamperReservationsProvider>
             </CampgroundProvider>
         </UserProvider>

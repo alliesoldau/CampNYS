@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { CampgroundContext } from '../Context/CampgroundContext'
 import { CamperReservationsContext } from '../Context/CamperReservationsContext'
-import { LoginUser, GrabAllCampgrounds, GrabCamperReservations } from '../Stores/Fetches'
+import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
+import { LoginUser, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from '../Stores/Fetches'
 import { useHistory } from 'react-router-dom'
 
 function Login() {
@@ -14,6 +15,8 @@ function Login() {
     const { user, setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
+    const { hostCampgrounds, setHostCampgrounds} = useContext(HostCampgroundsContext)
+
     const history = useHistory()
     const {email, password} = formData
 
@@ -36,6 +39,10 @@ function Login() {
         if (user.host===true) {
             // TO DO: move all host context initial setting up here 
             console.log('host')
+            GrabHostCampgrounds(user.id).then((d)=> {
+                console.log(d)
+                setHostCampgrounds(d)
+            })
         }
         else {
             console.log('camper')

@@ -18,7 +18,6 @@ import { UserContext } from './components/Context/UserContext'
 import { CampgroundContext } from './components/Context/CampgroundContext'
 import { CamperReservationsContext } from './components/Context/CamperReservationsContext'
 import { ReservationDetailsProvider } from './components/Context/ReservationDetailsContext'
-import { HostCampgroundsProvider } from './components/Context/HostCampgroundsContext'
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
 import { SiteProvider } from './components/Context/SiteContext'
 
@@ -53,10 +52,8 @@ function App() {
     }
 
   return (
-    // <CampgroundProvider >
       <div className="app-container">
         <NavBar />
-        {/* <CamperReservationsProvider> */}
           <div className="body-container">
             <Switch>
 
@@ -80,22 +77,18 @@ function App() {
                 <HomePage />
               </Route>
 
-              {/* <CamperReservationsProvider> */}
-                <ReservationDetailsProvider>
+              <ReservationDetailsProvider>
 
-                <Route path='/campers/:id/reservations'>
-                    <CamperReservations />
-                </Route>
+              <Route path='/campers/:id/reservations'>
+                  <CamperReservations />
+              </Route>
 
-                <Route path='/reservation/:id/edit'>
-                  <EditCamperRes />
-                </Route>
+              <Route path='/reservation/:id/edit'>
+                <EditCamperRes />
+              </Route>
 
-                </ReservationDetailsProvider>
-              {/* </CamperReservationsProvider> */}
-
-
-              <HostCampgroundsProvider>
+              </ReservationDetailsProvider>
+              
                 <CampgroundDetailsProvider>
                   <SiteProvider>
                     <Route path='/hosts/:id/campgrounds'>
@@ -120,13 +113,10 @@ function App() {
 
                   </SiteProvider>
                 </CampgroundDetailsProvider>
-              </HostCampgroundsProvider>
 
             </Switch>
           </div>
-          {/* </CamperReservationsProvider> */}
       </div>
-    // </CampgroundProvider>
   );
 }
 
