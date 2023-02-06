@@ -19,7 +19,7 @@ function CamperResDetails({ res }) {
     function handleDeleteReservation() {
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
         setCampRes(resSansDeleted)
-        // DeleteReservation(res.id)
+        DeleteReservation(res.id)
     }
     
     return (
