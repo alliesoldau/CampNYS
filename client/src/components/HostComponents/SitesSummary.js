@@ -7,15 +7,6 @@ function SitesSummary() {
     
     const { campgroundDetails } = useContext(CampgroundDetailsContext)
 
-    const sites = campgroundDetails.sites.map((site) => {
-        return(
-            <Sites 
-                key={site.id}
-                site={site}
-            />
-        )
-    })
-
     return (
         <>
             <Link to={`/host/campground/${campgroundDetails.id}`}>
@@ -23,7 +14,17 @@ function SitesSummary() {
             </Link>
             <p>Sites Summary</p>
             <p><b>MAKE IT SO YOU CAN ADD A SITE!</b></p>
-            {sites}
+            { campgroundDetails.sites && campgroundDetails.sites.length > 0 ? 
+                <>
+                {campgroundDetails.sites.map((site) => {
+                return(
+                    <Sites 
+                        key={site.id}
+                        site={site}
+                    />
+                    )
+                })}
+                </> : null }
         </>
     )
 }

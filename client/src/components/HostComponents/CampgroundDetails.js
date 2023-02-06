@@ -20,6 +20,8 @@ function CampgroundDetails() {
 
     return (
         <>
+        { campgroundDetails && campgroundDetails.reservations ? 
+        <>
             <Link to={`/hosts/${campgroundDetails.host_id}/campgrounds`}>
                 <button>Back to My Campgrounds</button>
             </Link>
@@ -38,7 +40,10 @@ function CampgroundDetails() {
                 <button>View All Sites</button>
             </Link>
             <button onClick={handleDelete}>Delete Campground</button>
+        </> 
+        : null }
         </>
+
     )
 }
 

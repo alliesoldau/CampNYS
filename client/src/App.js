@@ -13,12 +13,15 @@ import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
 import SitesSummary from './components/HostComponents/SitesSummary'
 import SiteDetails from './components/HostComponents/SiteDetails'
-import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations } from './components/Stores/Fetches'
+import EditSite from './components/HostComponents/EditSite'
+import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundContext } from './components/Context/CampgroundContext'
 import { CamperReservationsContext } from './components/Context/CamperReservationsContext'
 import { ReservationDetailsProvider } from './components/Context/ReservationDetailsContext'
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
+import { HostCampgroundsContext } from './components/Context/HostCampgroundsContext'
+
 import { SiteProvider } from './components/Context/SiteContext'
 
 // BIG TO DO: only do one fetch and nest data in the user so i dont need mutliple fetches 
@@ -29,6 +32,8 @@ function App() {
   const { user, setUser } = useContext(UserContext)
   const { setCampgrounds } = useContext(CampgroundContext)
   const { setCampRes } = useContext(CamperReservationsContext)
+  const { setHostCampgrounds} = useContext(HostCampgroundsContext)
+
 
   useEffect(() => {
     // auto-login 
@@ -45,6 +50,10 @@ function App() {
   function UserTypeDependentFxn(user) {
     if (user.host===true) {
         console.log('host')
+        GrabHostCampgrounds(user.id).then((d)=> {
+          console.log(d)
+          setHostCampgrounds(d)
+        })
     } else {
         console.log('camper')
         GrabCamperReservations(user.id).then((d) => {
@@ -112,6 +121,10 @@ function App() {
 
                     <Route path='/site/:id'>
                       <SiteDetails />
+                    </Route>
+
+                    <Route path='/site/:id/edit'>
+                      <EditSite />
                     </Route>
 
                   </SiteProvider>
