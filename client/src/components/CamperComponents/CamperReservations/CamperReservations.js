@@ -1,17 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import CamperResDetails from './CamperResDetails'
 import { UserContext } from '../../Context/UserContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
-import { GrabCamperReservations } from '../../Stores/Fetches'
 
 function CamperReservations() {
 
-    const { campRes, setCampRes } = useContext(CamperReservationsContext)
+    const { campRes } = useContext(CamperReservationsContext)
     const { user } = useContext(UserContext)
-
-    useEffect(() => {
-        GrabCamperReservations(user.id).then(setCampRes)
-    },[])
 
     const reservations = campRes.map((res) => {
         return(

@@ -43,6 +43,7 @@ function App() {
     <CampgroundProvider >
       <div className="app-container">
         <NavBar />
+        <CamperReservationsProvider>
           <div className="body-container">
             <Switch>
 
@@ -66,7 +67,7 @@ function App() {
                 <HomePage />
               </Route>
 
-              <CamperReservationsProvider>
+              {/* <CamperReservationsProvider> */}
                 <ReservationDetailsProvider>
 
                 <Route path='/campers/:id/reservations'>
@@ -78,7 +79,7 @@ function App() {
                 </Route>
 
                 </ReservationDetailsProvider>
-              </CamperReservationsProvider>
+              {/* </CamperReservationsProvider> */}
 
 
               <HostCampgroundsProvider>
@@ -110,6 +111,7 @@ function App() {
 
             </Switch>
           </div>
+          </CamperReservationsProvider>
       </div>
     </CampgroundProvider>
   );

@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { CampgroundContext } from '../Context/CampgroundContext'
-import { LoginUser, GrabAllCampgrounds } from '../Stores/Fetches'
+import { CamperReservationsContext } from '../Context/CamperReservationsContext'
+import { LoginUser, GrabAllCampgrounds, GrabCamperReservations } from '../Stores/Fetches'
 import { useHistory } from 'react-router-dom'
 
 function Login() {
@@ -10,8 +11,9 @@ function Login() {
         email:'',
         password:''
     })
-    const { setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
+    const { campRes, setCampRes } = useContext(CamperReservationsContext)
     const history = useHistory()
     const {email, password} = formData
 
@@ -24,9 +26,20 @@ function Login() {
         LoginUser(userData).then(user => {
             setUser(user)
             localStorage.userID=user.id
+            UserTypeDependentFxn(user)
             history.push(`/users/${user.id}`)
         })
         GrabAllCampgrounds().then(setCampgrounds)
+    }
+
+    function UserTypeDependentFxn(user) {
+        if (user.host===true) {
+            console.log('host')
+        }
+        else {
+            console.log('camper')
+            GrabCamperReservations(user.id).then(setCampRes)
+        }
     }
 
     const handleChange = (e) => {

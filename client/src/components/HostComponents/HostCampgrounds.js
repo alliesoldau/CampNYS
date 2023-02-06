@@ -9,8 +9,9 @@ function HostCampgrounds() {
     const { hostCampgrounds, setHostCampgrounds} = useContext(HostCampgroundsContext)
     const { user } = useContext(UserContext)
 
-
     useEffect(() => {
+        // my fetch is working but it wont render on the front end?? 
+        console.log('here')
         GrabHostCampgrounds(user.id).then((d)=> {
             setHostCampgrounds(d)
         })
