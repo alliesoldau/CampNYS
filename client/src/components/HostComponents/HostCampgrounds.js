@@ -9,6 +9,7 @@ function HostCampgrounds() {
     const { hostCampgrounds, setHostCampgrounds} = useContext(HostCampgroundsContext)
     const { user } = useContext(UserContext)
 
+
     useEffect(() => {
         GrabHostCampgrounds(user.id).then((d)=> {
             setHostCampgrounds(d)
