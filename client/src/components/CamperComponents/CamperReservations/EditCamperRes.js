@@ -10,16 +10,10 @@ function EditCamperRes() {
     const history = useHistory()
 
     const { campgrounds } = useContext(CampgroundContext)
-    const { reservation, setReservation } = useContext(ReservationDetailsContext)
+    const { reservation } = useContext(ReservationDetailsContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
 
-    // im having a conditional rendering problem bc when i update context for the front end 
-    // it confuses the page bc reservation.site doesn't exist so it doesnt update the front end
-
     const myCampground = (campgrounds.find((campground) => campground.id === reservation.site.campground_id))
-
-    // console.log(reservation)
-    // console.log(myCampground)
 
     const [formData, setFormData] = useState({
         id: reservation.id,

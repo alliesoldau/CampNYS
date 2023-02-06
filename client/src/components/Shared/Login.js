@@ -35,6 +35,7 @@ function Login() {
         GrabAllCampgrounds().then(setCampgrounds)
     }
 
+    // TO DO: pack all provider data related to the user in the user provider 
     function UserTypeDependentFxn(user) {
         if (user.host===true) {
             // TO DO: move all host context initial setting up here? unsure if i have to move the other providers here
@@ -43,8 +44,7 @@ function Login() {
                 console.log(d)
                 setHostCampgrounds(d)
             })
-        }
-        else {
+        } else {
             console.log('camper')
             GrabCamperReservations(user.id).then((d) => {
                 console.log(d)

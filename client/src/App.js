@@ -24,7 +24,7 @@ import { SiteProvider } from './components/Context/SiteContext'
 
 function App() {
 
-  const { setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const { setCampgrounds } = useContext(CampgroundContext)
   const { setCampRes } = useContext(CamperReservationsContext)
 
@@ -77,9 +77,10 @@ function App() {
                 <HomePage />
               </Route>
 
+              { user && !user.host ? 
               <ReservationDetailsProvider>
 
-                <Route path='/campers/:id/reservations'>
+                <Route exact path='/campers/:id/reservations'>
                   <CamperReservations />
                 </Route>
 
@@ -88,10 +89,10 @@ function App() {
                 </Route>
 
               </ReservationDetailsProvider>
-              
+              :  
                 <CampgroundDetailsProvider>
                   <SiteProvider>
-                    <Route path='/hosts/:id/campgrounds'>
+                    <Route exact path='/hosts/:id/campgrounds'>
                         <HostCampgrounds/>
                     </Route>
 
@@ -113,7 +114,7 @@ function App() {
 
                   </SiteProvider>
                 </CampgroundDetailsProvider>
-
+              }
             </Switch>
           </div>
       </div>

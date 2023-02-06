@@ -5,7 +5,8 @@ import Campgrounds from './Campgrounds'
 function HostCampgrounds() {
 
     const { hostCampgrounds } = useContext(HostCampgroundsContext)
-
+    console.log('in hostcampground')
+    console.log(hostCampgrounds)
     const campgrounds = hostCampgrounds.map((cg) => {
         return(
             <Campgrounds 

@@ -45,13 +45,13 @@ function NavBarDD() {
                     </Link>
                 </div>
                 { user.host ? ( 
-                        <div className="menu-item">
-                            <li className="nav-item">
+                        <li className="nav-link">
+                            <div className="menu-item">
                                 <NavLink to={`/hosts/${user.id}/campgrounds`}>
                                     My Campgrounds
                                 </NavLink>
-                            </li>
-                        </div>
+                            </div>
+                        </li>
                         ) : ( 
                         <li className="nav-link">
                             <div className="menu-item">
