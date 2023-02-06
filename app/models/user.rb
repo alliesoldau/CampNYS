@@ -22,6 +22,7 @@ class User < ApplicationRecord
                 region_id: campground.region_id,
                 host_id: campground.host_id,
                 image_url: campground.image_url,
+                res_count: campground.reservations.count,
                 sites: campground.sites.map do |site|
                     nested_site = {
                         id: site.id,

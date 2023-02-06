@@ -1,26 +1,28 @@
 import React, { useContext, useEffect } from 'react'
-import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
+// import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
+import { UserContext } from '../Context/UserContext'
 import Campgrounds from './Campgrounds'
 
 function HostCampgrounds() {
 
-    const { hostCampgrounds } = useContext(HostCampgroundsContext)
-    // console.log('in hostcampground')
-    // console.log(hostCampgrounds)
-    const campgrounds = hostCampgrounds.map((cg) => {
-        return(
-            <Campgrounds 
-                key={cg.id}
-                cg={cg}
-            />
-        )
-    })
+    const { user } = useContext(UserContext)
 
     return (
             <>
+            { user.campgrounds && user.campgrounds.length > 0 ? 
+            <>
                 <p>Host Campgrounds</p>
                 <p><b>MAKE IT SO YOU CAN ADD A CAMPGROUND!</b></p>
-                { campgrounds }
+                 {user.campgrounds.map((cg) => {
+                    return(
+                        <Campgrounds 
+                            key={cg.id}
+                            cg={cg}
+                        />
+                    )
+                })}
+            </>
+            : <p>You have no campgrounds</p> }
             </>
     )
 }

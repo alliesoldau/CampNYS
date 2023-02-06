@@ -7,6 +7,8 @@ function Campgrounds({ cg }) {
     const { setCampgroundDetails } = useContext(CampgroundDetailsContext)
     const history = useHistory()
 
+    console.log(cg)
+
     function handleClick() {
         setCampgroundDetails(cg)
         history.push(`/host/campground/${cg.id}`)
@@ -14,9 +16,13 @@ function Campgrounds({ cg }) {
 
     return (
         <>
-            <p>campground name: {cg.name} </p>
-            <p>reservations: {cg.reservations.length}</p>
-            <button onClick={handleClick}>See Campground Details</button>
+        { cg ? 
+            <>
+                <p>campground name: {cg.name} </p>
+                <p>reservations: {cg.res_count}</p>
+                <button onClick={handleClick}>See Campground Details</button>
+            </>
+        : null }
         </>
     )
 }
