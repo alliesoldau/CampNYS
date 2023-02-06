@@ -18,6 +18,8 @@ import { CampgroundProvider } from './components/Context/CampgroundContext'
 import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
 import { HostCampgroundsProvider } from './components/Context/HostCampgroundsContext'
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
+import { SiteProvider } from './components/Context/SiteContext'
+
 
 
 function App() {
@@ -70,6 +72,7 @@ function App() {
 
               <HostCampgroundsProvider>
                 <CampgroundDetailsProvider>
+                  <SiteProvider>
                     <Route path='/hosts/:id/campgrounds'>
                         <HostCampgrounds/>
                     </Route>
@@ -90,7 +93,8 @@ function App() {
                       <SiteDetails />
                     </Route>
 
-                  </CampgroundDetailsProvider>
+                  </SiteProvider>
+                </CampgroundDetailsProvider>
               </HostCampgroundsProvider>
 
             </Switch>

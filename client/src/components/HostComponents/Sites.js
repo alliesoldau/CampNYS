@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom'
+import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
+import { SiteContext } from '../Context/SiteContext'
 
 
 function Sites({ site }) {
 
+    const { campgroundDetails } = useContext(CampgroundDetailsContext)
+    const { siteDetails, setSiteDetails } = useContext(SiteContext)
+
     const history = useHistory()
 
-
     function handleClick() {
-        // TO DO: change this to site details
-        // setCampgroundDetails(cg)
+        setSiteDetails(site)
         history.push(`/site/${site.id}`)
     }
 
     return (
         <>
+            <p>campground: {campgroundDetails.name}</p>
             <p>site name: {site.name} </p>
-            <p>whatever else: fill out</p>
             <button onClick={handleClick}>See Site Details</button>
         </>
     )

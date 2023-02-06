@@ -12,4 +12,5 @@ Rails.application.routes.draw do
     delete '/logout', to: 'sessions#destroy'
     delete  '/camper/reservation/:id', to: 'reservations#destroy'
     delete '/campgrounds/:id', to: 'campgrounds#destroy'
+    delete '/sites/:id', to: 'sites#destroy'
 end

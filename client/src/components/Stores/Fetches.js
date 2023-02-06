@@ -79,6 +79,13 @@ export function DeleteCampground(id) {
         })
         .then(res => res.json())
     }
+
+export function DeleteSite(id) {
+    return fetch(baseURL+`/sites/${id}`,{ 
+        method: "DELETE" 
+    })
+    .then(res => res.json())
+    }
     
 
 
