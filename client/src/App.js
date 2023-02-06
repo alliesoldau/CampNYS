@@ -116,15 +116,15 @@ function App() {
                     </Route>
 
                     <Route path='/campground/:id/sites'>
-                      <SitesSummary />
+                        <SitesSummary />
                     </Route>
                     
                     <Route exact path='/site/:id/edit'>
-                      <EditSite />
+                        <EditSite />
                     </Route>
 
                     <Route exact path='/site/:id'>
-                      <SiteDetails />
+                        <SiteDetails />
                     </Route>
 
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { useHistory, Link } from 'react-router-dom'
-import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
+import { useHistory } from 'react-router-dom'
+// import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
 import { CampgroundContext } from '../Context/CampgroundContext'
 import { SiteContext } from '../Context/SiteContext'
 import { EditSiteInfo } from '../Stores/Fetches'
@@ -32,11 +32,12 @@ function EditSite() {
     function handleSubmit(e) {
         e.preventDefault();
         console.log(formData.id)
-        EditSiteInfo(formData).then(setSiteDetails)
-        //     const updateReservations = campRes.map((res)=> res.id === resData.id ? resData : res)
-        //     setCampRes(updateReservations)
-        //     history.push(`/campers/${resData.camper_id}/reservations`)
-        // })
+        EditSiteInfo(formData).then((siteData) => {
+            setSiteDetails(siteData)
+            history.push(`/site/${siteData.id}`)
+            // TO DO: make it persist on refresh
+            // make the data up the chain persist on refresh as well
+    })
     }
 
 
