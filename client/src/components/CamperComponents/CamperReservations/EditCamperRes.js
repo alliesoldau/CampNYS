@@ -11,7 +11,7 @@ function EditCamperRes() {
 
     const { campgrounds } = useContext(CampgroundContext)
     const { reservation, setReservation } = useContext(ReservationDetailsContext)
-    const { campRes } = useContext(CamperReservationsContext)
+    const { campRes, setCampRes } = useContext(CamperReservationsContext)
 
     // im having a conditional rendering problem bc when i update context for the front end 
     // it confuses the page bc reservation.site doesn't exist so it doesnt update the front end
@@ -39,10 +39,8 @@ function EditCamperRes() {
     function handleSubmit(e) {
         e.preventDefault();
         EditResInfo(formData).then((resData) => {
-            // TO DO: front end isnt updating in time
             const updateReservations = campRes.map((res)=> res.id === resData.id ? resData : res)
-            // console.log(resData)
-            setReservation(updateReservations)
+            setCampRes(updateReservations)
             history.push(`/campers/${resData.camper_id}/reservations`)
         })
     }
@@ -54,8 +52,6 @@ function EditCamperRes() {
     // people cant exceed capacity
     // cars cant exceed capacity
     return (
-        // <>
-        // { reservation ? 
         <>
             <p>Edit Camper Res</p>
             <p>campground name: {myCampground.name}</p>
@@ -81,8 +77,6 @@ function EditCamperRes() {
             </form>
             </>
         </>
-        // : null}
-        // </>
     )
 }
 
