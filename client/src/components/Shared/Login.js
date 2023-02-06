@@ -28,6 +28,7 @@ function Login() {
         }
         LoginUser(userData).then(user => {
             setUser(user)
+            console.log(user)
             localStorage.userID=user.id
             UserTypeDependentFxn(user)
             history.push(`/users/${user.id}`)

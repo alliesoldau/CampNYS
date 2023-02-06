@@ -8,7 +8,12 @@ class SessionsController < ApplicationController
         if user&.authenticate(params[:password])
             #Save user to session
             session[:user_id] = user.id
-            render json: user, status: :ok
+            if user.host
+                render json: user.host_nested_data, status: :ok
+            else
+                render json: user, status: :ok
+            end
+
         else 
             render json: {errors: "Invalid Email or Password"}, status: :unauthorized
         end 

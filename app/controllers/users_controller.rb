@@ -15,7 +15,11 @@ class UsersController < ApplicationController
     def update
         user = User.find(params[:id])
         user.update!(user_params)
-        render json: user, status: :accepted
+        if user.host 
+            render json: user.host_nested_data, status: :accepted
+        else
+            render json: user, status: :accepted
+        end
     end
 
     private

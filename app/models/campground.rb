@@ -12,5 +12,6 @@ class Campground < ApplicationRecord
     belongs_to :region
     has_many :sites
     has_many :reservations, through: :sites
+
     
 end
