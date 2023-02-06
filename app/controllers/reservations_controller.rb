@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    skip_before_action :authorized_user, only:[:show, :destroy]
+    skip_before_action :authorized_user, only:[:show, :destroy, :update]
 
     def show
         reservations = Reservation.where(camper_id: params[:id])
@@ -11,5 +11,17 @@ class ReservationsController < ApplicationController
         reservation.destroy
         head :no_content
     end
+
+    def update
+        reservation = Reservation.find(params[:id])
+        reservation.update!(reservation_params)
+        render json: reservation, status: :accepted, serializer: ReservationsSerializer
+    end
+
+    private 
+
+    def reservation_params
+        params.permit(:id, :number_of_people, :start_date, :end_date, :cars, :number_of_people, :site_id, :camper_id, :host_id)
+    end 
 
 end

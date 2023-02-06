@@ -79,13 +79,13 @@ function App() {
 
               <ReservationDetailsProvider>
 
-              <Route path='/campers/:id/reservations'>
+                <Route path='/campers/:id/reservations'>
                   <CamperReservations />
-              </Route>
+                </Route>
 
-              <Route path='/reservation/:id/edit'>
-                <EditCamperRes />
-              </Route>
+                <Route path='/reservation/:id/edit'>
+                  <EditCamperRes />
+                </Route>
 
               </ReservationDetailsProvider>
               

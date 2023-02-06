@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom"
-// import { UserContext } from '../Context/UserContext'
 import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
 import { EditCampgroundInfo } from '../Stores/Fetches'
 
 function EditCampground() {
 
-    // const { user, setUser } = useContext(UserContext);
     const { campgroundDetails, setCampgroundDetails } = useContext(CampgroundDetailsContext)
 
     const history = useHistory()

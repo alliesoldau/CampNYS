@@ -12,10 +12,10 @@ function Login() {
         email:'',
         password:''
     })
-    const { user, setUser } = useContext(UserContext)
+    const { setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
-    const { campRes, setCampRes } = useContext(CamperReservationsContext)
-    const { hostCampgrounds, setHostCampgrounds} = useContext(HostCampgroundsContext)
+    const { setCampRes } = useContext(CamperReservationsContext)
+    const { setHostCampgrounds} = useContext(HostCampgroundsContext)
 
     const history = useHistory()
     const {email, password} = formData
@@ -37,7 +37,7 @@ function Login() {
 
     function UserTypeDependentFxn(user) {
         if (user.host===true) {
-            // TO DO: move all host context initial setting up here 
+            // TO DO: move all host context initial setting up here? unsure if i have to move the other providers here
             console.log('host')
             GrabHostCampgrounds(user.id).then((d)=> {
                 console.log(d)

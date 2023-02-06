@@ -51,6 +51,16 @@ export function EditCampgroundInfo(campground) {
       .then(res => res.json())
 }
 
+export function EditResInfo(res) {
+    return fetch(baseURL+`/reservations/${res.id}/edit`,{
+        method:'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(res)
+      })
+      .then(res => res.json())
+}
+
+
 export function GrabAllCampgrounds() {
     return fetch(baseURL+'/all_campgrounds')
     .then(res => res.json())
