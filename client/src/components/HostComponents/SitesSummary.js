@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import Sites from './Sites'
 import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
 
@@ -17,6 +18,9 @@ function SitesSummary() {
 
     return (
         <>
+            <Link to={`/host/campground/${campgroundDetails.id}`}>
+                <button>Back to Campground</button>
+            </Link>
             <p>Sites Summary</p>
             {sites}
         </>
