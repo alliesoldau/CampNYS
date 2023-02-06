@@ -6,19 +6,20 @@ import { DeleteSite } from '../Stores/Fetches'
 
 function SiteDetails() {
 
-    const { campgroundDetails } = useContext(CampgroundDetailsContext)
-    const { siteDetails, setSiteDetails } = useContext(SiteContext)
-    
+    const { campgroundDetails, setCampgroundDetails } = useContext(CampgroundDetailsContext)
+    const { siteDetails } = useContext(SiteContext)
+
     const history = useHistory()
 
-    function handleDelete() {
-        console.log('handle this delete button')
+    function handleDelete(e) {
+        e.preventDefault();
         DeleteSite(siteDetails.id)
-        // TO DO: this patch works in the back end but now i need to persist it to the front end without reload 
-        // filter through all sites for the campground and take it out 
-        // i think i need to go through campgroundDetails.sites.filter ? 
+        // TO DO: the back and front end work independently but together they crash
+        const updateCGSites = campgroundDetails.sites.filter((site) => site.id !== siteDetails.id)
+        const updateCG = campgroundDetails
+        updateCG.sites = updateCGSites
+        setCampgroundDetails(updateCG)
         history.push(`/campground/${siteDetails.id}/sites`)
-
     }
 
     return (
