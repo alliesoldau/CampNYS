@@ -7,6 +7,7 @@ import UserProfile from './components/Shared/UserProfile'
 import EditProfile from './components/Shared/EditProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
+import EditCamperRes from './components/CamperComponents/CamperReservations/EditCamperRes'
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
@@ -16,6 +17,7 @@ import { AutoLogin } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundProvider } from './components/Context/CampgroundContext'
 import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
+import { ReservationDetailsProvider } from './components/Context/ReservationDetailsContext'
 import { HostCampgroundsProvider } from './components/Context/HostCampgroundsContext'
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
 import { SiteProvider } from './components/Context/SiteContext'
@@ -64,11 +66,20 @@ function App() {
                 <HomePage />
               </Route>
 
-              <Route path='/campers/:id/reservations'>
-                <CamperReservationsProvider>
-                  <CamperReservations />
-                </CamperReservationsProvider>
-              </Route>
+              <CamperReservationsProvider>
+                <ReservationDetailsProvider>
+
+                <Route path='/campers/:id/reservations'>
+                    <CamperReservations />
+                </Route>
+
+                <Route path='/reservation/:id/edit'>
+                  <EditCamperRes />
+                </Route>
+
+                </ReservationDetailsProvider>
+              </CamperReservationsProvider>
+
 
               <HostCampgroundsProvider>
                 <CampgroundDetailsProvider>

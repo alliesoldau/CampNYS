@@ -34,7 +34,7 @@ function SiteDetails() {
             <p>site car capactiy: {siteDetails.car_capacity}</p>
             {/* TO DO: hook up this link, its made up rn  */}
             {/* <Link to={`/site/${site.id}/edit`}> */}
-                <button onClick={console.log('edit button')}>Edit Site Details</button>
+                <button onClick={console.log('set up editting functionality')}>Edit Site Details</button>
             {/* </Link> */}
             <button onClick={handleDelete}>Delete Site</button>
         </>
