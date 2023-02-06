@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
 import { ReservationDetailsContext } from '../../Context/ReservationDetailsContext'
 import { DeleteReservation } from '../../Stores/Fetches'
 
 function CamperResDetails({ res }) {
+
+    const history = useHistory()
 
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
@@ -19,6 +21,7 @@ function CamperResDetails({ res }) {
     function handleDeleteReservation() {
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
         setCampRes(resSansDeleted)
+        history.push(`/campers/${res.camper_id}/reservations`)
         DeleteReservation(res.id)
     }
     

@@ -5,6 +5,8 @@ import { CamperReservationsContext } from '../../Context/CamperReservationsConte
 
 function CamperReservations() {
 
+    // TO DO: fix auto login issue to retain context thats lost on refresh 
+
     const { campRes } = useContext(CamperReservationsContext)
     const { user } = useContext(UserContext)
 

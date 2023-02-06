@@ -34,11 +34,15 @@ function Login() {
 
     function UserTypeDependentFxn(user) {
         if (user.host===true) {
+            // TO DO: move all host context initial setting up here 
             console.log('host')
         }
         else {
             console.log('camper')
-            GrabCamperReservations(user.id).then(setCampRes)
+            GrabCamperReservations(user.id).then((d) => {
+                console.log(d)
+                setCampRes(d)
+            })
         }
     }
 

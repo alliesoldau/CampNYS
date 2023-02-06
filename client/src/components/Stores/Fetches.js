@@ -65,7 +65,6 @@ export function DeleteReservation(id) {
     return fetch(baseURL+`/camper/reservation/${id}`,{ 
         method: "DELETE" 
     })
-    .then(res => res.json())
     }
 
 export function GrabHostCampgrounds(id) {
@@ -77,14 +76,12 @@ export function DeleteCampground(id) {
     return fetch(baseURL+`/campgrounds/${id}`,{ 
             method: "DELETE" 
         })
-        .then(res => res.json())
     }
 
 export function DeleteSite(id) {
     return fetch(baseURL+`/sites/${id}`,{ 
         method: "DELETE" 
     })
-    .then(res => res.json())
     }
     
 

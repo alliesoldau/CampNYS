@@ -13,37 +13,50 @@ import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
 import SitesSummary from './components/HostComponents/SitesSummary'
 import SiteDetails from './components/HostComponents/SiteDetails'
-import { AutoLogin } from './components/Stores/Fetches'
+import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
-import { CampgroundProvider } from './components/Context/CampgroundContext'
-import { CamperReservationsProvider } from './components/Context/CamperReservationsContext'
+import { CampgroundContext } from './components/Context/CampgroundContext'
+import { CamperReservationsContext } from './components/Context/CamperReservationsContext'
 import { ReservationDetailsProvider } from './components/Context/ReservationDetailsContext'
 import { HostCampgroundsProvider } from './components/Context/HostCampgroundsContext'
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
 import { SiteProvider } from './components/Context/SiteContext'
 
 
-
 function App() {
 
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useContext(UserContext)
+  const { setCampgrounds } = useContext(CampgroundContext)
+  const { setCampRes } = useContext(CamperReservationsContext)
 
   useEffect(() => {
-    // auto-login
+    // auto-login 
     if (localStorage.userID) {
-      AutoLogin().then(setUser)
-      // TO DO: figure out how to put the campground provider in index.js so that i can 
-      // setCampgrounds on autologin as well so that you can refresh and still have that data 
-      // GrabAllCampgrounds().then(setCampgrounds)
+      AutoLogin().then((user) => {
+        setUser(user)
+        UserTypeDependentFxn(user)
+      })
+      GrabAllCampgrounds().then(setCampgrounds)
     // TO DO: add a catch 
     }
   }, []);
 
+  function UserTypeDependentFxn(user) {
+    if (user.host===true) {
+        console.log('host')
+    } else {
+        console.log('camper')
+        GrabCamperReservations(user.id).then((d) => {
+            setCampRes(d)
+        })
+      } 
+    }
+
   return (
-    <CampgroundProvider >
+    // <CampgroundProvider >
       <div className="app-container">
         <NavBar />
-        <CamperReservationsProvider>
+        {/* <CamperReservationsProvider> */}
           <div className="body-container">
             <Switch>
 
@@ -111,9 +124,9 @@ function App() {
 
             </Switch>
           </div>
-          </CamperReservationsProvider>
+          {/* </CamperReservationsProvider> */}
       </div>
-    </CampgroundProvider>
+    // </CampgroundProvider>
   );
 }
 
