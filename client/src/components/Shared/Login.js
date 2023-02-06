@@ -41,13 +41,13 @@ function Login() {
             // TO DO: move all host context initial setting up here? unsure if i have to move the other providers here
             console.log('host')
             GrabHostCampgrounds(user.id).then((d)=> {
-                console.log(d)
+                // console.log(d)
                 setHostCampgrounds(d)
             })
         } else {
             console.log('camper')
             GrabCamperReservations(user.id).then((d) => {
-                console.log(d)
+                // console.log(d)
                 setCampRes(d)
             })
         }

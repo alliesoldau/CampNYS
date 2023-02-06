@@ -60,6 +60,15 @@ export function EditResInfo(res) {
       .then(res => res.json())
 }
 
+export function EditSiteInfo(site) {
+    return fetch(baseURL+`/sites/${site.id}/edit`,{
+        method:'PATCH',
+        headers: {'Content-Type': 'application/json'},
+        body:JSON.stringify(site)
+      })
+      .then(res => res.json())
+}
+
 export function GrabAllCampgrounds() {
     return fetch(baseURL+'/all_campgrounds')
     .then(res => res.json())

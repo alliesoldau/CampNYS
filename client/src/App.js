@@ -49,13 +49,13 @@ function App() {
 
   function UserTypeDependentFxn(user) {
     if (user.host===true) {
-        console.log('host')
+        // console.log('host')
         GrabHostCampgrounds(user.id).then((d)=> {
-          console.log(d)
+          // console.log(d)
           setHostCampgrounds(d)
         })
     } else {
-        console.log('camper')
+        // console.log('camper')
         GrabCamperReservations(user.id).then((d) => {
             setCampRes(d)
         })
@@ -118,14 +118,15 @@ function App() {
                     <Route path='/campground/:id/sites'>
                       <SitesSummary />
                     </Route>
+                    
+                    <Route exact path='/site/:id/edit'>
+                      <EditSite />
+                    </Route>
 
-                    <Route path='/site/:id'>
+                    <Route exact path='/site/:id'>
                       <SiteDetails />
                     </Route>
 
-                    <Route path='/site/:id/edit'>
-                      <EditSite />
-                    </Route>
 
                   </SiteProvider>
                 </CampgroundDetailsProvider>

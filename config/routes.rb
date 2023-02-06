@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     patch '/users/:id/profile/edit', to: 'users#update'
     patch '/campgrounds/:id/edit', to: 'campgrounds#update'
     patch '/reservations/:id/edit', to: 'reservations#update'
+    patch '/sites/:id/edit', to: 'sites#update'
     delete '/logout', to: 'sessions#destroy'
     delete  '/camper/reservation/:id', to: 'reservations#destroy'
     delete '/campgrounds/:id', to: 'campgrounds#destroy'
