@@ -27,6 +27,8 @@ function CamperResDetails({ res }) {
     
     return (
         <>
+        { myCampground ? 
+        <>
             <p>campground name: {myCampground.name}</p>
             <p>campground accessibility: {myCampground.accessibility}</p>
             <p>arrival date: {res.start_date}</p>
@@ -37,6 +39,7 @@ function CamperResDetails({ res }) {
                 <button onClick={handleClick}>Edit Reservation</button>
             </Link>
             <button onClick={handleDeleteReservation}>Delete Reservation</button>
+        </> : null }
         </>
     )
 }

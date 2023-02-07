@@ -6,10 +6,10 @@ import Campgrounds from './Campgrounds'
 function HostCampgrounds() {
 
     const { user } = useContext(UserContext)
-
+    console.log(user)
     return (
             <>
-            { user.campgrounds && user.campgrounds.length > 0 ? 
+            { user && user.campgrounds && user.campgrounds.length > 0 ? 
             <>
                 <p>Host Campgrounds</p>
                 <p><b>MAKE IT SO YOU CAN ADD A CAMPGROUND!</b></p>

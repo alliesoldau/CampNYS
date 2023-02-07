@@ -1,13 +1,12 @@
+import { setUseProxies } from 'immer';
 import React, { useContext, useEffect } from 'react';
 import { useHistory, Link, useParams } from 'react-router-dom'
-import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
 import { UserContext } from '../Context/UserContext'
 import { DeleteCampground } from '../Stores/Fetches'
 
 function CampgroundDetails() {
 
-    const { campgroundDetails } = useContext(CampgroundDetailsContext)
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
     console.log(user)
 
@@ -19,10 +18,12 @@ function CampgroundDetails() {
     const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
 
     function handleDelete() {
-        // const campgroundsSansDelete = hostCampgrounds.filter((cg) => cg.id !== campgroundDetails.id)
-        // setHostCampgrounds(campgroundsSansDelete)
-        // DeleteCampground(campgroundDetails.id)
-        history.push(`/hosts/${campgroundDetails.host_id}/campgrounds`)
+        const campgroundsSansDelete = user.campgrounds.filter((cg) => cg.id !== campground.id)
+        const updatedUser = {...user, campgrounds: campgroundsSansDelete}
+        setUser(updatedUser)
+        // TO DO: SET USER WITH UPDATED CAMPGROUND INFO 
+        DeleteCampground(campground.id)
+        history.push(`/hosts/${campground.host_id}/campgrounds`)
     }
 
     return (

@@ -38,7 +38,9 @@ function App() {
   useEffect(() => {
     // auto-login 
     if (localStorage.userID) {
+      console.log("in use effect")
       AutoLogin().then((user) => {
+        console.log("in autologin")
         setUser(user)
         UserTypeDependentFxn(user)
       })

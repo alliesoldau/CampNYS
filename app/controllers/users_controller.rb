@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
     def show 
         user = User.find(params[:id])
-        render json: user, status: :ok
+        if user.host === true
+            render json: user.host_nested_data, status: :ok
+        else 
+            render json: user, status: :ok
+        end
     end 
 
     def create
