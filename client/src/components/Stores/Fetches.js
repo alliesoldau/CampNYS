@@ -110,6 +110,15 @@ export function AddNewCampground(campground) {
         })
         .then(res => res.json())
     }
+
+    export function AddNewSite(site) {
+        return fetch(baseURL+`/add_site`,{
+                method:'POST',
+                headers: {'Content-Type': 'application/json'},
+                body:JSON.stringify(site)
+            })
+            .then(res => res.json())
+        }
     
 
 

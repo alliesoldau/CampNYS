@@ -9,7 +9,10 @@ function EditCampground() {
     const params = useParams()
     const history = useHistory()
 
-    const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
+    let campground
+    if (user) {
+        campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
+    }
 
     const [formData, setFormData] = useState({
         id: campground.id,
@@ -40,6 +43,7 @@ function EditCampground() {
 
     return (
         <>
+        { user ? <>
             <p>Edit Campground</p>
                 <form onSubmit={handleSubmit}>
                     <label>Name</label>
@@ -59,6 +63,7 @@ function EditCampground() {
 
                     <button type='submit'>Submit Edits</button>
             </form>
+            </> : null }
         </>
     )
 }

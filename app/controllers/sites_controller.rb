@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-    skip_before_action :authorized_user, only:[:destroy, :update]
+    skip_before_action :authorized_user, only:[:destroy, :update, :create]
 
     def destroy
         site = Site.find(params[:id])
@@ -12,6 +12,11 @@ class SitesController < ApplicationController
         site.update!(site_params)
         render json: site, status: :accepted
     end
+
+    def create
+        site = Site.create!(site_params)
+        render json: site, status: :ok
+    end 
 
     private
     

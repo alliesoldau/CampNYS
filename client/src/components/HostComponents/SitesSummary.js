@@ -18,11 +18,13 @@ function SitesSummary() {
     return (
         <>
         { user ? <>
+            <p>Sites Summary</p>
             <Link to={`/host/campground/${campground.id}`}>
                 <button>Back to Campground</button>
             </Link>
-            <p>Sites Summary</p>
-            <p><b>MAKE IT SO YOU CAN ADD A SITE!</b></p>
+            <Link to={`/campground/${campground.id}/add_sites`}>
+                <button>Add Sites</button>
+            </Link>
             { campground.sites && campground.sites.length > 0 ? 
                 <>
                 {campground.sites.map((site) => {

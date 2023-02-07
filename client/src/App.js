@@ -15,6 +15,7 @@ import AddCampground from './components/HostComponents/AddCampground'
 import SitesSummary from './components/HostComponents/SitesSummary'
 import SiteDetails from './components/HostComponents/SiteDetails'
 import EditSite from './components/HostComponents/EditSite'
+import AddSite from './components/HostComponents/AddSite'
 import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundContext } from './components/Context/CampgroundContext'
@@ -123,7 +124,9 @@ function App() {
                         <SiteDetails />
                     </Route>
 
-
+                    <Route exact path='/campground/:id/add_sites'>
+                        <AddSite />
+                    </Route>
                   </SiteProvider>
                 </CampgroundDetailsProvider>
               }

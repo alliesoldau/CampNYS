@@ -30,7 +30,6 @@ function SiteDetails() {
     }
 
     return (
-
         <>
         { campground && thisSite ? 
         <>
