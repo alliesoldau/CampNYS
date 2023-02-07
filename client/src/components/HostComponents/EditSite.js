@@ -1,25 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from 'react-router-dom'
-// import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
-import { CampgroundContext } from '../Context/CampgroundContext'
-import { SiteContext } from '../Context/SiteContext'
+import { useHistory, useParams } from 'react-router-dom'
+import { UserContext } from '../Context/UserContext'
 import { EditSiteInfo } from '../Stores/Fetches'
 
 function EditSite() {
 
     const history = useHistory()
 
-    const { siteDetails, setSiteDetails } = useContext(SiteContext)
+    const { user, setUser } = useContext(UserContext)
+    const params = useParams()
 
-    const { campgrounds } = useContext(CampgroundContext)
-
-    const myCampground = (campgrounds.find((campground) => campground.id === siteDetails.campground_id))
+    const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.CGID) ) })
+    const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === parseInt(params.siteID)) })
 
     const [formData, setFormData] = useState({
-        id: siteDetails.id,
-        car_capacity: siteDetails.car_capacity,
-        capacity: siteDetails.capacity,
-        category: siteDetails.category
+        id: thisSite.id,
+        car_capacity: thisSite.car_capacity,
+        capacity: thisSite.capacity,
+        category: thisSite.category
     })
 
     const { id, car_capacity, capacity, category } = formData
@@ -31,22 +29,21 @@ function EditSite() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData.id)
+        console.log(formData)
         EditSiteInfo(formData).then((siteData) => {
-            setSiteDetails(siteData)
-            history.push(`/site/${siteData.id}`)
-            // TO DO: make it persist on refresh
-            // make the data up the chain persist on refresh as well
-    })
+            console.log(siteData)
+            // setSiteDetails(siteData)
+            history.push(`/campgrounds/${campground.id}/site/${thisSite.id}`)
+        })
     }
 
 
     return (
         <>
-        { myCampground ? 
+        { campground ? 
         <>
             <p>Edit Site </p>
-            <p>campground name: {myCampground.name}</p>
+            <p>campground name: {campground.name}</p>
             <p>Edit Site</p>
                 <form onSubmit={handleSubmit}>
                     <label>Camper Capacity</label>

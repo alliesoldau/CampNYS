@@ -35,8 +35,9 @@ function SiteDetails() {
             <p>campground: {campground.name}</p>
             <p>site name: {thisSite.name} </p>
             <p>site category: {thisSite.category}</p>
+            <p>site capacity: {thisSite.capacity}</p>
             <p>site car capactiy: {thisSite.car_capacity}</p>
-            <Link to={`/campground/${campground.id}/sites`}>
+            <Link to={`/campgrounds/${campground.id}/site/${thisSite.id}/edit`}>
                 <button onClick={console.log('set up editting functionality')}>Edit Site Details</button>
             </Link>
             <button onClick={handleDelete}>Delete Site</button>
