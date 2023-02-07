@@ -16,7 +16,6 @@ import {
 function Map() {
 
     const { campgrounds } = useContext(CampgroundContext);
-    console.log(campgrounds)
 
     const apiKey = 'AIzaSyALnloTM5D_TfTDPGUd3DbvhyPEN_IsCbA'
     const {isLoaded } = useJsApiLoader({
@@ -27,6 +26,7 @@ function Map() {
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+    const [origin, setOrigin] = useState('')
 
     const [activeMarker, setActiveMarker] = useState(null);
 
@@ -49,14 +49,14 @@ function Map() {
     const center = {lat: 42.6343187299392, lng: -73.85424802328473}
 
     async function calculateRoute() {
-        if (originRef.current.value === '' || destiantionRef.current.value === '') {
+        if (origin === '' || destiantionRef.current.value === '') {
           return
         }
         const directionsService = new window.google.maps.DirectionsService()
         const results = await directionsService.route({
-          origin: originRef.current.value,
-          destination: destiantionRef.current.value,
-          travelMode: window.google.maps.TravelMode.DRIVING,
+            origin: `${origin.lat}, ${origin.lng}`,
+            destination: destiantionRef.current.value,
+            travelMode: window.google.maps.TravelMode.DRIVING,
         })
         setDirectionsResponse(results)
         // the [0] gives you the first route option available 
@@ -86,9 +86,7 @@ function Map() {
             <button onClick={clearRoute}>Clear Route</button>
             <p>Duration: {duration}</p>
             <p>Distance: {distance}</p>
-            <Autocomplete>
-              <input type='text' placeholder='Campgrounds' ref={originRef}/>
-            </Autocomplete>
+            <p>Origin: {origin.name}</p>
             <Autocomplete>
               <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
             </Autocomplete>
@@ -141,6 +139,10 @@ function Map() {
                                     <div>Accessible by {loc.accessibility}</div>
                                     <div>Seasonal Opening: {loc.openning_date}</div>
                                     <div>Seasonal Closing: {loc.closing_date}</div>
+                                    <button onClick={() => { 
+                                        setOrigin(loc)
+                                    }
+                                    }>Select</button>
                                   </>
                                 </InfoWindow>
                               ) : null}
