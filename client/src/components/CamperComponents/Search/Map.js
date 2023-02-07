@@ -146,8 +146,6 @@ function Map() {
                               ) : null}
                               </Marker>
                         )
-
-
                     })}
                     {directionsResponse && (
                         <DirectionsRenderer directions={directionsResponse} />

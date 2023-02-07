@@ -10,6 +10,9 @@ function CamperReservations() {
     const { campRes } = useContext(CamperReservationsContext)
     const { user } = useContext(UserContext)
 
+    // console.log(user)
+    // console.log(campRes)
+
     const reservations = campRes.map((res) => {
         return(
             <CamperResDetails 
