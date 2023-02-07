@@ -13,6 +13,7 @@ class Campground < ApplicationRecord
     has_many :sites
     has_many :reservations, through: :sites
 
+    # instance method 
     def get_site_and_calc_data
         campground_data = {
             id: self.id,
@@ -39,6 +40,37 @@ class Campground < ApplicationRecord
                     }
                 end
             }
+        end
+
+        # class method 
+        def self.get_nested_campground_data 
+            all.map do |campground|
+                nested_campground = {
+                    id: campground.id,
+                    name: campground.name,
+                    lat: campground.lat,
+                    lng: campground.lng,
+                    openning_date: campground.openning_date,
+                    closing_date: campground.closing_date,
+                    accessibility: campground.accessibility,
+                    region_id: campground.region_id,
+                    host_id: campground.host_id,
+                    image_url: campground.image_url,
+                    res_count: campground.reservations.count,
+                    site_count: campground.sites.count,
+                    sites: campground.sites.map do |site|
+                        nested_site = {
+                            id: site.id,
+                            name: site.name,
+                            capacity: site.capacity,
+                            category: site.category,
+                            car_capacity: site.car_capacity,
+                            campground_id: site.campground_id,
+                            reservations: site.reservations
+                        }
+                    end
+                }
+            end
         end
 
     

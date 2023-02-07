@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import MapStyles from '../../../styles/MapStyles'
 import {
@@ -16,6 +16,7 @@ import {
 function Map() {
 
     const { campgrounds } = useContext(CampgroundContext);
+    console.log(campgrounds)
 
     const apiKey = 'AIzaSyALnloTM5D_TfTDPGUd3DbvhyPEN_IsCbA'
     const {isLoaded } = useJsApiLoader({

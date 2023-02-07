@@ -8,7 +8,6 @@ function SearchPage() {
         <SearchPageStyles>
             <div className="header">
                 <p>Search Page</p>
-                {/* <button>Center Map</button> */}
             </div>
             <div className="map">
                 <Map />

@@ -2,12 +2,11 @@ class CampgroundsController < ApplicationController
     skip_before_action :authorized_user, only:[:index, :show, :destroy, :update, :create]
 
     def index
-        campgrounds = Campground.all
-        render json: campgrounds, status: :ok
+        # campgrounds = Campground.all
+        render json: Campground.get_nested_campground_data, status: :ok
     end
 
     def show
-        # debugger
         campgrounds = Campground.where(host_id: params[:id])
         render json: campgrounds, status: :ok, each_serializer: CampgroundsSerializer 
     end
