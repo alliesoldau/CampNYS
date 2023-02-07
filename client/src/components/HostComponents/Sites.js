@@ -1,25 +1,27 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom'
-import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
-import { SiteContext } from '../Context/SiteContext'
+import { UserContext } from '../Context/UserContext'
 
 
 function Sites({ site }) {
 
-    const { campgroundDetails } = useContext(CampgroundDetailsContext)
-    const { siteDetails, setSiteDetails } = useContext(SiteContext)
+    const { user } = useContext(UserContext)
 
     const history = useHistory()
 
+    const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
+    const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === site.id) })
+    console.log(site)
+
+
     function handleClick() {
-        setSiteDetails(site)
         history.push(`/site/${site.id}`)
     }
 
     return (
         <>
-            <p>campground: {campgroundDetails.name}</p>
-            <p>site name: {site.name} </p>
+            <p>campground: {campground.name}</p>
+            <p>site name: {thisSite.name} </p>
             <button onClick={handleClick}>See Site Details</button>
         </>
     )

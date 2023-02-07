@@ -30,10 +30,8 @@ function EditCampground() {
     function handleSubmit(e) {
         e.preventDefault();
         EditCampgroundInfo(formData).then((updatedCG) => {
-            console.log(updatedCG)
             const updatedCampgrounds = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
             const updatedUser = {...user, campgrounds: updatedCampgrounds}
-            console.log(updatedUser)
             setUser(updatedUser)
 
         })

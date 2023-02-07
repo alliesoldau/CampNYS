@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
-import { UserContext } from '../Context/UserContext'
+import React from 'react';
 import { useHistory } from 'react-router-dom'
 
 function Campgrounds({ cg }) {
 
-    const { user } = useContext(UserContext)
     const history = useHistory()
 
     function handleClick() {

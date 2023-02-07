@@ -1,22 +1,25 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Sites from './Sites'
-import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
+import { UserContext } from '../Context/UserContext'
 
 function SitesSummary() {
     
-    const { campgroundDetails } = useContext(CampgroundDetailsContext)
+    const { user } = useContext(UserContext)
+    const params = useParams()
+
+    const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
 
     return (
         <>
-            <Link to={`/host/campground/${campgroundDetails.id}`}>
+            <Link to={`/host/campground/${campground.id}`}>
                 <button>Back to Campground</button>
             </Link>
             <p>Sites Summary</p>
             <p><b>MAKE IT SO YOU CAN ADD A SITE!</b></p>
-            { campgroundDetails.sites && campgroundDetails.sites.length > 0 ? 
+            { campground.sites && campground.sites.length > 0 ? 
                 <>
-                {campgroundDetails.sites.map((site) => {
+                {campground.sites.map((site) => {
                 return(
                     <Sites 
                         key={site.id}

@@ -50,13 +50,7 @@ function App() {
   }, []);
 
   function UserTypeDependentFxn(user) {
-    if (user.host===true) {
-        // console.log('host')
-        GrabHostCampgrounds(user.id).then((d)=> {
-          // console.log(d)
-          setHostCampgrounds(d)
-        })
-    } else {
+    if (user.host===false) {
         // console.log('camper')
         GrabCamperReservations(user.id).then((d) => {
             setCampRes(d)
