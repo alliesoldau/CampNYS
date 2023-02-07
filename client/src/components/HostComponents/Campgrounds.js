@@ -7,8 +7,6 @@ function Campgrounds({ cg }) {
     const { setCampgroundDetails } = useContext(CampgroundDetailsContext)
     const history = useHistory()
 
-    console.log(cg)
-
     function handleClick() {
         setCampgroundDetails(cg)
         history.push(`/host/campground/${cg.id}`)
