@@ -1,4 +1,5 @@
 import React, { useState, useContext, useRef } from 'react';
+import { Link } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import MapStyles from '../../../styles/MapStyles'
 import {
@@ -46,6 +47,7 @@ function Map() {
         return <p>loading...</p> 
     }
     
+    // center is Pine Hallow Arb where Ben and I got engaged :)
     const center = {lat: 42.6343187299392, lng: -73.85424802328473}
 
     async function calculateRoute() {
@@ -71,7 +73,7 @@ function Map() {
         setDirectionsResponse(null)
         setDistance('')
         setDuration('')
-        originRef.current.value = ''
+        setOrigin('')
         destiantionRef.current.value = ''
     }
 
@@ -90,7 +92,7 @@ function Map() {
             <p>Origin: {origin.name}</p>
             <p>Attraction:
                 <Autocomplete>
-                    <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                    <input className="destination" type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
                 </Autocomplete>
             </p>
             
@@ -103,16 +105,7 @@ function Map() {
                     onLoad={map => setMap(map)}
                     onClick={() => setActiveMarker(null)}
                     >
-                    {/* comment this back in if you want a pin at the center location  */}
-                    {/* <Marker position={center} 
-                        icon={{ 
-                            url: 'http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png',
-                                // ylw blue red grn pink wht purple ltblu
-                            scaledSize: new window.google.maps.Size(37, 37),
-                            anchor: new window.google.maps.Point(14, 28), 
-                        }}
-                    /> */}
-                    {/* TO DO: add info windows and click events  */}
+            
                     {campgrounds.map(loc => {
                         let color = 'wht'
                         if (loc.region_id === 1) {
@@ -147,6 +140,9 @@ function Map() {
                                         setOrigin(loc)
                                     }
                                     }>Select</button>
+                                    <Link to={`/add_reservation/${loc.id}`}>
+                                        <button>Make a Reservation</button>
+                                    </Link>
                                   </>
                                 </InfoWindow>
                               ) : null}

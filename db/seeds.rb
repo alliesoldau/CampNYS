@@ -113,7 +113,42 @@ Campground.create(
     host_id: 2,
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
-
+Campground.create(
+    name: "Max V. Shaul State Park",
+    lat: 42.546693757871786,
+    lng: -74.40939625451111,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 4,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
+Campground.create(
+    name: "Lake George / Saratoga KOA Journey",
+    lat: 43.34226563801515,
+    lng: -73.83715456137222,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 2,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
+Campground.create(
+    name: "Lincoln Pond Campground",
+    lat: 44.1416224217299,
+    lng: -73.57977506137222,
+    openning_date: Faker::Date.between(from: '2023-05-15', to: '2023-07-01'),
+    closing_date: Faker::Date.between(from: '2023-08-15', to: '2023-10-31'),
+    accessibility: accessibility.sample,
+    region_id: 3,
+    # host_id: User.where(host: true).sample.id,
+    host_id: 2,
+    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+)
 puts "⛺ Seeding site data..."
 10.times do |count|
     Site.create(

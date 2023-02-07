@@ -8,6 +8,7 @@ import EditProfile from './components/Shared/EditProfile'
 import SearchPage from './components/CamperComponents/Search/SearchPage'
 import CamperReservations from './components/CamperComponents/CamperReservations/CamperReservations'
 import EditCamperRes from './components/CamperComponents/CamperReservations/EditCamperRes'
+import MakeRes from './components/CamperComponents/Search/MakeRes'
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
@@ -90,6 +91,10 @@ function App() {
 
                 <Route path='/reservation/:id/edit'>
                   <EditCamperRes />
+                </Route>
+
+                <Route path='/add_reservation/:id'>
+                  <MakeRes />
                 </Route>
 
               </ReservationDetailsProvider>

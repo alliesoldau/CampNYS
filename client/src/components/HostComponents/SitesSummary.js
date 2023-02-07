@@ -8,12 +8,10 @@ function SitesSummary() {
     const { user } = useContext(UserContext)
     const params = useParams()
 
-    // TO DO: on refresh it gets map about the user.campgrounds -> how can i make it wait until user is updated? 
     let campground
     if (user) {
         campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
     }
-    // const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
 
     return (
         <>
