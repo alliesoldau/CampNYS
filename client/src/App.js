@@ -38,9 +38,7 @@ function App() {
   useEffect(() => {
     // auto-login 
     if (localStorage.userID) {
-      console.log("in use effect")
       AutoLogin().then((user) => {
-        console.log("in autologin")
         setUser(user)
         UserTypeDependentFxn(user)
       })
@@ -119,7 +117,8 @@ function App() {
                         <EditSite />
                     </Route>
 
-                    <Route exact path='/site/:id'>
+                    {/* <Route exact path='/site/:id'> */}
+                    <Route exact path='/campgrounds/:CGID/site/:siteID'>
                         <SiteDetails />
                     </Route>
 

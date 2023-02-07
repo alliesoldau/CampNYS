@@ -11,11 +11,10 @@ function Sites({ site }) {
 
     const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
     const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === site.id) })
-    console.log(site)
 
 
     function handleClick() {
-        history.push(`/site/${site.id}`)
+        history.push(`/campgrounds/${campground.id}/site/${site.id}/`)
     }
 
     return (
