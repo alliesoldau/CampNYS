@@ -10,7 +10,10 @@ function CampgroundDetails() {
     const params = useParams()
 
     // why do i need to parseInt my params???
-    const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
+    let campground
+    if (user) {
+        campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
+    }
 
     function handleDelete() {
         const campgroundsSansDelete = user.campgrounds.filter((cg) => cg.id !== campground.id)
@@ -21,6 +24,8 @@ function CampgroundDetails() {
     }
 
     return (
+        <>
+        { campground ? 
         <>
             <Link to={`/hosts/${campground.host_id}/campgrounds`}>
                 <button>Back to My Campgrounds</button>
@@ -40,6 +45,8 @@ function CampgroundDetails() {
                 <button>View All Sites</button>
             </Link>
             <button onClick={handleDelete}>Delete Campground</button>
+            </>
+            : null}
         </>
     )
 }

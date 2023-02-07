@@ -9,8 +9,12 @@ function SiteDetails() {
     const { user, setUser } = useContext(UserContext)
     const params = useParams()
 
-    const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.CGID) ) })
-    const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === parseInt(params.siteID)) })
+    let campground
+    let thisSite
+    if (user) {
+        campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.CGID) ) })
+        thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === parseInt(params.siteID)) })
+    }
 
     const history = useHistory()
 
@@ -28,6 +32,8 @@ function SiteDetails() {
     return (
 
         <>
+        { campground && thisSite ? 
+        <>
             <Link to={`/campground/${campground.id}/sites`}>
                 <button>Back to All Sites</button>
             </Link>
@@ -41,7 +47,8 @@ function SiteDetails() {
                 <button>Edit Site Details</button>
             </Link>
             <button onClick={handleDelete}>Delete Site</button>
-            
+            </>
+            : null }
         </>
     )
 }
