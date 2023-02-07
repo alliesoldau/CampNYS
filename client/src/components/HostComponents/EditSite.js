@@ -29,7 +29,6 @@ function EditSite() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData)
         EditSiteInfo(formData).then((siteData) => {
             const updatedSites = campground.sites.map((site) => site.id === thisSite.id? siteData : site)
             const updatedCGSites = {...campground, sites: updatedSites}

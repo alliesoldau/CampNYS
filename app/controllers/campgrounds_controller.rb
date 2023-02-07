@@ -1,5 +1,5 @@
 class CampgroundsController < ApplicationController
-    skip_before_action :authorized_user, only:[:index, :show, :destroy, :update]
+    skip_before_action :authorized_user, only:[:index, :show, :destroy, :update, :create]
 
     def index
         campgrounds = Campground.all
@@ -11,6 +11,11 @@ class CampgroundsController < ApplicationController
         campgrounds = Campground.where(host_id: params[:id])
         render json: campgrounds, status: :ok, each_serializer: CampgroundsSerializer 
     end
+
+    def create
+        campground = Campground.create!(campground_params)
+        render json: campground.get_site_and_calc_data, status: :ok
+    end 
 
     def destroy
         campground = Campground.find(params[:id])
@@ -27,6 +32,6 @@ class CampgroundsController < ApplicationController
     private 
 
     def campground_params
-        params.permit(:id, :name, :lat, :long, :openning_date, :closing_date, :accessibility, :host_id, :region_id, :image_url)
+        params.permit(:id, :name, :lat, :lng, :openning_date, :closing_date, :accessibility, :host_id, :region_id, :image_url)
     end 
 end

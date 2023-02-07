@@ -30,7 +30,6 @@ function EditProfile() {
         e.preventDefault();
         EditProfileInfo(formData).then((data) => {
             setUser(data)
-            console.log(data)
         })
         history.push(`/users/${user.id}/profile`)
     }

@@ -101,6 +101,15 @@ export function DeleteSite(id) {
         method: "DELETE" 
     })
     }
+
+export function AddNewCampground(campground) {
+    return fetch(baseURL+`/add_campground`,{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify(campground)
+        })
+        .then(res => res.json())
+    }
     
 
 

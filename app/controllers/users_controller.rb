@@ -10,10 +10,15 @@ class UsersController < ApplicationController
         end
     end 
 
+
     def create
         user = User.create!(user_params)
         session[:user_id] = user.id
-        render json: user, status: :created
+        if user.host === true
+            render json: user.host_nested_data, status: :ok
+        else 
+            render json: user, status: :ok
+        end
     end 
 
     def update

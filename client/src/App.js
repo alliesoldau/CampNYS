@@ -11,6 +11,7 @@ import EditCamperRes from './components/CamperComponents/CamperReservations/Edit
 import HostCampgrounds from './components/HostComponents/HostCampgrounds'
 import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
+import AddCampground from './components/HostComponents/AddCampground'
 import SitesSummary from './components/HostComponents/SitesSummary'
 import SiteDetails from './components/HostComponents/SiteDetails'
 import EditSite from './components/HostComponents/EditSite'
@@ -20,7 +21,6 @@ import { CampgroundContext } from './components/Context/CampgroundContext'
 import { CamperReservationsContext } from './components/Context/CamperReservationsContext'
 import { ReservationDetailsProvider } from './components/Context/ReservationDetailsContext'
 import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
-import { HostCampgroundsContext } from './components/Context/HostCampgroundsContext'
 
 import { SiteProvider } from './components/Context/SiteContext'
 
@@ -32,8 +32,6 @@ function App() {
   const { user, setUser } = useContext(UserContext)
   const { setCampgrounds } = useContext(CampgroundContext)
   const { setCampRes } = useContext(CamperReservationsContext)
-  const { setHostCampgrounds} = useContext(HostCampgroundsContext)
-
 
   useEffect(() => {
     // auto-login 
@@ -107,6 +105,10 @@ function App() {
 
                     <Route path='/campground/:id/edit'>
                         <EditCampground />
+                    </Route>
+
+                    <Route path='/host/:id/add_campground'>
+                        <AddCampground />
                     </Route>
 
                     <Route path='/campground/:id/sites'>

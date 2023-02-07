@@ -1,17 +1,22 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import Campgrounds from './Campgrounds'
 
 function HostCampgrounds() {
-
     const { user } = useContext(UserContext)
-    console.log(user)
+    const history = useHistory()
+
+    function handleClick() {
+        history.push(`/host/${user.id}/add_campground`)
+    }
+
     return (
             <>
             { user && user.campgrounds && user.campgrounds.length > 0 ? 
             <>
                 <p>Host Campgrounds</p>
-                <p><b>MAKE IT SO YOU CAN ADD A CAMPGROUND!</b></p>
+                <button onClick={handleClick}>Add Campground</button>
                  {user.campgrounds.map((cg) => {
                     return(
                         <Campgrounds 
