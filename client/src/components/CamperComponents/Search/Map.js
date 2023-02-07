@@ -86,10 +86,14 @@ function Map() {
             <button onClick={clearRoute}>Clear Route</button>
             <p>Duration: {duration}</p>
             <p>Distance: {distance}</p>
+            <p>Select a pin from the map to check its distance to any attraction (eg: trailhead)</p>
             <p>Origin: {origin.name}</p>
-            <Autocomplete>
-              <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
-            </Autocomplete>
+            <p>Attraction:
+                <Autocomplete>
+                    <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                </Autocomplete>
+            </p>
+            
             { campgrounds.length > 0 ? 
                 <GoogleMap 
                     center={center} 
