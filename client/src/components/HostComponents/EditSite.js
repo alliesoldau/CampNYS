@@ -31,8 +31,11 @@ function EditSite() {
         e.preventDefault();
         console.log(formData)
         EditSiteInfo(formData).then((siteData) => {
-            console.log(siteData)
-            // setSiteDetails(siteData)
+            const updatedSites = campground.sites.map((site) => site.id === thisSite.id? siteData : site)
+            const updatedCGSites = {...campground, sites: updatedSites}
+            const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id? updatedCGSites : cg)
+            const updatedUser = {...user, campgrounds: updatedCG}
+            setUser(updatedUser)
             history.push(`/campgrounds/${campground.id}/site/${thisSite.id}`)
         })
     }
