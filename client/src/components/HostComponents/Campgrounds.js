@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
-import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
+import { UserContext } from '../Context/UserContext'
 import { useHistory } from 'react-router-dom'
 
 function Campgrounds({ cg }) {
 
-    const { setCampgroundDetails } = useContext(CampgroundDetailsContext)
+    const { user } = useContext(UserContext)
     const history = useHistory()
 
     function handleClick() {
-        setCampgroundDetails(cg)
         history.push(`/host/campground/${cg.id}`)
     }
 

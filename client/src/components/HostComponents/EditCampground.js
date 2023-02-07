@@ -1,21 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { useHistory } from "react-router-dom"
-import { CampgroundDetailsContext } from '../Context/CampgroundDetailsContext'
+import { useHistory, useParams } from "react-router-dom"
+import { UserContext } from '../Context/UserContext'
 import { EditCampgroundInfo } from '../Stores/Fetches'
 
 function EditCampground() {
 
-    const { campgroundDetails, setCampgroundDetails } = useContext(CampgroundDetailsContext)
-
+    const { user, setUser } = useContext(UserContext)
+    const params = useParams()
     const history = useHistory()
 
+    const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
+
     const [formData, setFormData] = useState({
-        id: campgroundDetails.id,
-        name: campgroundDetails.name,
-        openning_date: campgroundDetails.openning_date,
-        closing_date: campgroundDetails.closing_date,
-        accessibility: campgroundDetails.accessibility,
-        image_url: campgroundDetails.image_url
+        id: campground.id,
+        name: campground.name,
+        openning_date: campground.openning_date,
+        closing_date: campground.closing_date,
+        accessibility: campground.accessibility,
+        image_url: campground.image_url
     })
 
     const {id, name, openning_date, closing_date, accessibility, image_url} = formData
@@ -26,10 +28,16 @@ function EditCampground() {
     }
      
     function handleSubmit(e) {
-        // console.log(campgroundDetails.sites)
         e.preventDefault();
-        EditCampgroundInfo(formData).then(setCampgroundDetails)
-        history.push(`/host/campground/${campgroundDetails.id}`)
+        EditCampgroundInfo(formData).then((updatedCG) => {
+            console.log(updatedCG)
+            const updatedCampgrounds = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
+            const updatedUser = {...user, campgrounds: updatedCampgrounds}
+            console.log(updatedUser)
+            setUser(updatedUser)
+
+        })
+        history.push(`/host/campground/${campground.id}`)
     }
 
     return (

@@ -1,5 +1,4 @@
-import { setUseProxies } from 'immer';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useHistory, Link, useParams } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteCampground } from '../Stores/Fetches'
@@ -7,21 +6,16 @@ import { DeleteCampground } from '../Stores/Fetches'
 function CampgroundDetails() {
 
     const { user, setUser } = useContext(UserContext)
-
-    console.log(user)
-
     const history = useHistory()
     const params = useParams()
 
     // why do i need to parseInt my params???
-    
     const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
 
     function handleDelete() {
         const campgroundsSansDelete = user.campgrounds.filter((cg) => cg.id !== campground.id)
         const updatedUser = {...user, campgrounds: campgroundsSansDelete}
         setUser(updatedUser)
-        // TO DO: SET USER WITH UPDATED CAMPGROUND INFO 
         DeleteCampground(campground.id)
         history.push(`/hosts/${campground.host_id}/campgrounds`)
     }

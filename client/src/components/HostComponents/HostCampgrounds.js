@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-// import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
 import { UserContext } from '../Context/UserContext'
 import Campgrounds from './Campgrounds'
 
