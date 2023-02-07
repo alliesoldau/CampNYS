@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { CampgroundContext } from '../Context/CampgroundContext'
 import { CamperReservationsContext } from '../Context/CamperReservationsContext'
-import { HostCampgroundsContext } from '../Context/HostCampgroundsContext'
 import { LoginUser, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from '../Stores/Fetches'
 import { useHistory } from 'react-router-dom'
 
@@ -15,7 +14,6 @@ function Login() {
     const { setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
     const { setCampRes } = useContext(CamperReservationsContext)
-    const { setHostCampgrounds} = useContext(HostCampgroundsContext)
 
     const history = useHistory()
     const {email, password} = formData
@@ -37,14 +35,7 @@ function Login() {
 
     // TO DO: pack all provider data related to the user in the user provider 
     function UserTypeDependentFxn(user) {
-        if (user.host===true) {
-            // TO DO: move all host context initial setting up here? unsure if i have to move the other providers here
-            // console.log('host')
-            GrabHostCampgrounds(user.id).then((d)=> {
-                // console.log(d)
-                setHostCampgrounds(d)
-            })
-        } else {
+        if (user.host===false) {
             // console.log('camper')
             GrabCamperReservations(user.id).then((d) => {
                 // console.log(d)
