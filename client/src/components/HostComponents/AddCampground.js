@@ -34,10 +34,10 @@ function AddCampground() {
             // console.log(data)
             const hostsCampgrounds = user.campgrounds
             // TO DO: does this data look wrong?? is that why its not updating immediately?
-            const updateCGs = {...hostsCampgrounds, ... data }
-            // console.log(updateCGs)
+            const updateCGs = [...hostsCampgrounds, data]
+            console.log(updateCGs)
             const updatedUser = {...user, campgrounds: updateCGs}
-            // console.log(updatedUser)
+            console.log(updatedUser)
             setUser(updatedUser)
             // TO DO: why do i need to refresh to see the info?? 
             history.push(`/hosts/${updatedUser.id}/campgrounds`)
