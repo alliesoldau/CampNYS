@@ -23,6 +23,7 @@ position: relative;
     background-color: white;
     padding: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,.4);
+    border-radius: 2px;
 }
 .route-calcs-top {
     display: flex;
@@ -75,6 +76,11 @@ button.calc {
 }
 button.clear {
     background-color: ${GLOBAL.red}
+}
+button.info-button {
+    background-color: ${GLOBAL.lightgrey};
+    border-radius: 3px;
+    border: 1px solid;
 }
 img.info_image {
     height: 15px;

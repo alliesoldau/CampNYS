@@ -7,7 +7,8 @@ function SearchPage() {
 
     return (
         <SearchPageStyles>
-            <MapFilters />
+            {/* TO DO: add in map filters overtop of the map  */}
+            {/* <MapFilters /> */}
             <div className="map">
                 <Map />
             </div>

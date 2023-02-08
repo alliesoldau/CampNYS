@@ -156,12 +156,12 @@ function Map() {
                                     <div>Accessible by {loc.accessibility}</div>
                                     <div>Seasonal Opening: {loc.openning_date}</div>
                                     <div>Seasonal Closing: {loc.closing_date}</div>
-                                    <button onClick={() => { 
+                                    <button className="info-button" onClick={() => { 
                                         setOrigin(loc)
                                     }
                                     }>Select</button>
                                     <Link to={`/add_reservation/${loc.id}`}>
-                                        <button>Make a Reservation</button>
+                                        <button className="info-button">Make a Reservation</button>
                                     </Link>
                                   </>
                                 </InfoWindow>
