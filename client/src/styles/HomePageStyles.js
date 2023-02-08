@@ -21,9 +21,11 @@ const HomePageStyles = styled.div`
     .homepage-container {
         height: calc(100vh - ${GLOBAL.navsize});
         width: 100vw;
+        position: relative;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: space-between;
+        z-index: 1;
     }
     .right-container, .top-left, .bottom-left {
         background-color: rgba(255, 255, 255, .25);  

@@ -86,6 +86,7 @@ img.logo {
     border-radius: 5px;
     overflow: hidden;
     padding: 1rem;
+    z-index: 2;
 }
 .menu-item {
     height: 50px;
