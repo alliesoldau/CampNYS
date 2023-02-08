@@ -58,5 +58,6 @@ const LoginSignup = styled.div`
         margin: auto;
         margin-top: 10px;
     }
+
 `
 export default LoginSignup;

@@ -8,8 +8,6 @@ import NavBarDD from './NavBarDD'
 function NavBar({ setShowLogin, setShowSignUp}) {
 
     const { user } = useContext(UserContext);
-    // const [showLogin, setShowLogin] = useState(false)
-    // const [showSignUp, setShowSignUp] = useState(false)
 
     function handleRevealLogin() {
       setShowLogin(true)
@@ -29,6 +27,15 @@ function NavBar({ setShowLogin, setShowSignUp}) {
     return (
         <NavBarStyles>
             <div className="navbarLeft">
+                { user ? 
+                    <Link to={`/users/${user.id}`}>
+                        <div className="logo-full" onClick={handleHideForms}>
+                            <img className="logo" src={logo} 
+                            alt="CampNYS Logo of a tree and mountain that look like a tent"></img>
+                            <h1>CampNYS</h1>
+                        </div>
+                    </Link>
+                : 
                     <Link exact to="/">
                         <div className="logo-full" onClick={handleHideForms}>
                             <img className="logo" src={logo} 
@@ -36,6 +43,7 @@ function NavBar({ setShowLogin, setShowSignUp}) {
                             <h1>CampNYS</h1>
                         </div>
                     </Link>
+                    }
             </div>
             { user ? null :
             <ul className="navbarRight">

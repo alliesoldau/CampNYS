@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import Login from './Login'
 import SignUp from './SignUp'
 import Landing from '../../styles/Landing'

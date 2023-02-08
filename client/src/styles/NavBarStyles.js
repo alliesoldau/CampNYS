@@ -6,7 +6,7 @@ import { GLOBAL } from './GlobalVar';
 const NavBarStyles = styled.div`
     display: flex;
     background-color: white;
-    border-bottom: 1px solid ${GLOBAL.lightgrey};
+    border-bottom: 2px solid ${GLOBAL.lightgrey};
     justify-content: space-between;
     padding: 5px;
     width: 100%;
@@ -90,6 +90,7 @@ img.logo {
 .menu-item {
     height: 50px;
     display: flex;
+    width: 400px;
     align-items: center;
     transition: background 300ms;
     padding: 0.5rem;
@@ -104,6 +105,9 @@ a {
 }
 a:hover {
     color: ${GLOBAL.orange};
+}
+h1:hover {
+    color: ${GLOBAL.teal};
 }
 button#login {
     color: ${GLOBAL.teal};
