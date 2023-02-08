@@ -12,9 +12,6 @@ const HomePageStyles = styled.div`
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    p {
-        font-family: 'Josefin';
-    }
     .homepage-container {
         height: calc(100vh - ${GLOBAL.navsize});
         width: 100vw;
@@ -40,12 +37,13 @@ const HomePageStyles = styled.div`
         height: auto;
     }
     .top-left h4{
-        color: ${GLOBAL.purple};
+        color: ${GLOBAL.red};
         text-shadow: 1px 1px 3px ${GLOBAL.cream};
     }
     .top-left p {
         font-style: italic;
         color: ${GLOBAL.darkgrey};
+        font-family: 'Josefin';
     }
     .motto p{
         margin-bottom: 0px;
@@ -55,14 +53,23 @@ const HomePageStyles = styled.div`
     }
 
     .bottom-left h4{
-        color: ${GLOBAL.red};
+        color: ${GLOBAL.purple};
         text-shadow: 1px 1px 1px ${GLOBAL.cream};
     }
 
     .right-container h4{
         color: ${GLOBAL.teal};
         text-shadow: 1px 1px 3px ${GLOBAL.cream};
+    }
 
+    .logo-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .logo-container img {
+        width: 28%;
     }
 `
 

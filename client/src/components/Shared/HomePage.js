@@ -2,7 +2,9 @@ import React, { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import HomePageStyles from '../../styles/HomePageStyles.js'
 import { CamperReservationsContext } from '../Context/CamperReservationsContext'
-
+import adk_logo from '../../images/adk_logo.png'
+import cat_logo from '../../images/cat_logo.png'
+// import lg_logo from '../../images/lg_logo.png'
 
 function HomePage() {
 
@@ -29,7 +31,17 @@ function HomePage() {
             </div>
             <div className="right-container">
                 <h4>About CampNYS</h4>
-                <p>Information about the site and its purpose</p>
+                <p>CampNYS was built to serve folks visiting NYS campgrounds by offering an all-in-one portal
+                    to explore and reserve campsites.</p>
+                <p>Gone are the days of cross-referencing 17 websites, multiple phone calls, and snail mail reservations.
+                    With CampNYS you can spend less time online, and more time outside.
+                </p>
+                <p>The Beta version focuses on the Adirondack High Peaks Wilderness, Lake George, and the Catskills.</p>
+                <div className="logo-container">
+                    <img src={adk_logo}/>
+                    {/* <img src={lg_logo}/> */}
+                    <img src={cat_logo}/>
+                </div>
             </div>
         </div>
         : null }
