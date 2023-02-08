@@ -54,6 +54,9 @@ position: relative;
     display: flex;
     flex-direction: row;
 }
+.attraction p {
+    margin-right: 5px;
+}
 AutoComplete {
     width: 100%;
 }
