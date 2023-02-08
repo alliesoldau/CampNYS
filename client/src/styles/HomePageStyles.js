@@ -2,13 +2,7 @@ import styled from "styled-components";
 import { GLOBAL } from './GlobalVar';
 import cairn from '../images/cairn.jpeg'
 
-
 // CSS help from source: https://www.youtube.com/watch?v=IF6k0uZuypA&ab_channel=Fireship
-
-// .container {
-//     background-color: rgba(255, 255, 255, .15);  
-//     backdrop-filter: blur(5px);
-//    }
 
 const HomePageStyles = styled.div`
     height: calc(100vh - ${GLOBAL.navsize});
@@ -18,6 +12,9 @@ const HomePageStyles = styled.div`
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    p {
+        font-family: 'Josefin';
+    }
     .homepage-container {
         height: calc(100vh - ${GLOBAL.navsize});
         width: 100vw;
@@ -28,37 +25,45 @@ const HomePageStyles = styled.div`
         z-index: 1;
     }
     .right-container, .top-left, .bottom-left {
-        background-color: rgba(255, 255, 255, .25);  
+        background-color: rgba(255, 255, 255, .4);  
         backdrop-filter: blur(5px);       
         margin: 30px;
         width: 25vw;
-        border-radius: 10px;
+        border-radius: 4px;
         padding: 10px;
     }
-
     .left-container {
         display: flex;
         flex-direction: column;
     }
-
     .top-left {
         height: auto;
-        color: ${GLOBAL.red}
     }
-
+    .top-left h4{
+        color: ${GLOBAL.purple};
+        text-shadow: 1px 1px 3px ${GLOBAL.cream};
+    }
     .top-left p {
         font-style: italic;
-        color: ${GLOBAL.purple}
+        color: ${GLOBAL.darkgrey};
     }
-    
     .motto p{
         margin-bottom: 0px;
     }
-
     .bottom-left {
         height: 100%;
     }
 
+    .bottom-left h4{
+        color: ${GLOBAL.red};
+        text-shadow: 1px 1px 1px ${GLOBAL.cream};
+    }
+
+    .right-container h4{
+        color: ${GLOBAL.teal};
+        text-shadow: 1px 1px 3px ${GLOBAL.cream};
+
+    }
 `
 
 export default HomePageStyles;
