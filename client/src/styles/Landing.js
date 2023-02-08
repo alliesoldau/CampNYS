@@ -5,24 +5,32 @@ const Landing = styled.div`
     display: flex;
     flex-direction: column;
     margin: 20px;
-    
+    h2 {
+        color: ${GLOBAL.mediumgrey};
+    }
+    h3 {
+        color: ${GLOBAL.red};
+    }
     button {
-        background-color: ${GLOBAL.teal};
         height: 35px;
         width: 100px;
         border: none;
         border-radius: 20px;
-        color: ${GLOBAL.cream};
         text-decoration: none;
         font-weight: bold;
         margin: 10px;
+        background-color: white;
     }
-
+    button.login {
+        color: ${GLOBAL.orange}
+    }
     button.signup {
-        background-color: ${GLOBAL.purple};
+        color: ${GLOBAL.purple};
     }
     button.submit {
-        background-color: ${GLOBAL.orange};
+        color: ${GLOBAL.cream};
+        background-color: ${GLOBAL.teal};
+
     }
 
 

@@ -33,12 +33,11 @@ function LandingPage() {
       } else {
         return (
             <Landing>
-                <h1>Please Login or Sign Up</h1>
-                <div>
-                  <>
-                    <button className="login" onClick={handleRevealLogin}>Login</button>
-                    <button className="signup" onClick={handleRevealSignUp}>Signup</button>
-                  </>
+                <h2>Please 
+                  <button className="login" onClick={handleRevealLogin}>Login</button> 
+                  or 
+                  <button className="signup" onClick={handleRevealSignUp}>Signup</button>
+                </h2>
                   <LoginSignup>
                     <div className="form-container">
                       <div className="form">
@@ -51,7 +50,6 @@ function LandingPage() {
                       </div>
                     </div>
                   </LoginSignup>
-                </div>
             </Landing>
         )
       }

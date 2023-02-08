@@ -51,7 +51,7 @@ function Login() {
 
     return(
         <>
-            <h2>Login</h2>
+            <h3>Login</h3>
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
                 <input type='text' name='email' value={email} onChange={handleChange} />
