@@ -10,7 +10,7 @@ function CamperResDetails({ res }) {
 
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
-    
+
     let myCampground
     if (campgrounds) {
         myCampground = campgrounds.find((cg) => { return ( cg.id === res.site.campground_id ) })

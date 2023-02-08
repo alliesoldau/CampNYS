@@ -26,6 +26,8 @@ function ResForm({ selectedSite, campground }) {
         // TO DO: figure out how to do all of the date formatting on change so that  idont need to seperately format 
     }
 
+    console.log(campRes)
+    console.log(campgrounds)
     const [formData, setFormData] = useState({
         number_of_people: null,
         start_date: null,
@@ -53,6 +55,8 @@ function ResForm({ selectedSite, campground }) {
     function handleSubmit(e) {
         e.preventDefault()
         AddNewRes(formData).then((resData) => {
+            // const newRes = [...campRes, resData]
+            // console.log(newRes)
             setCampRes([...campRes, resData])
             const updatedRess = [...selectedSite.reservations, resData]
             // console.log('updatedRess')

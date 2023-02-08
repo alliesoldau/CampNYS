@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
 
     def create
         reservation = Reservation.create!(reservation_params)
-        render json: reservation, status: :ok
+        render json: reservation, status: :ok, serializer: ReservationsSerializer
     end 
 
     private 
