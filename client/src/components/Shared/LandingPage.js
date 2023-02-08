@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
-import Login from './Login';
-import SignUp from './SignUp';
-import Landing from '../../styles/Landing';
+import Login from './Login'
+import SignUp from './SignUp'
+import Landing from '../../styles/Landing'
+import LoginSignup from '../../styles/LoginSignup'
 import { UserContext } from '../Context/UserContext'
 
 function LandingPage() {
@@ -38,12 +39,18 @@ function LandingPage() {
                     <button className="login" onClick={handleRevealLogin}>Login</button>
                     <button className="signup" onClick={handleRevealSignUp}>Signup</button>
                   </>
-                  { showLogin===true ? 
-                  <Login />
-                  : null }
-                  { showSignUp===true ?
-                  <SignUp />
-                  : null}
+                  <LoginSignup>
+                    <div className="form-container">
+                      <div className="form">
+                        { showLogin===true ? 
+                          <Login />
+                        : null }
+                        { showSignUp===true ?
+                        <SignUp />
+                        : null}
+                      </div>
+                    </div>
+                  </LoginSignup>
                 </div>
             </Landing>
         )

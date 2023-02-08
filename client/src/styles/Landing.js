@@ -24,11 +24,7 @@ const Landing = styled.div`
     button.submit {
         background-color: ${GLOBAL.orange};
     }
-    h2 {
-        color: ${GLOBAL.red};
-        font-weight: bold;
-        border-bottom: 2px solid;
-    }
+
 
 `
 export default Landing;

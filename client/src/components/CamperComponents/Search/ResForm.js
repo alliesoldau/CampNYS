@@ -23,7 +23,6 @@ function ResForm({ selectedSite, campground }) {
         const [start, end] = dates
         setStartDate(start)
         setEndDate(end)
-        // TO DO: figure out how to do all of the date formatting on change so that  idont need to seperately format 
     }
 
     console.log(campRes)
