@@ -59,7 +59,7 @@ function ResForm({ selectedSite, campground }) {
                 <p>site name: {selectedSite.name} </p>
                 <p>site category: {selectedSite.category}</p>
                 <label>Number of People, max {selectedSite.capacity}</label>
-                    <input type='text' name='number_of_people' value={number_of_people} onChange={handleChange} />
+                    <input type='number' min={0} max={selectedSite.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
                     
                 <label>Date Range</label>
                 <DatePicker
@@ -74,9 +74,8 @@ function ResForm({ selectedSite, campground }) {
                 />
 
                 <label>Number of Cars, max {selectedSite.car_capacity}</label>
-                    <input type='text' name='cars' value={cars} onChange={handleChange} />
+                    <input type='number' min={0} max={selectedSite.car_capacity} name='cars' value={cars} onChange={handleChange} />
                 
-
             </form>
 
             <button onClick={handleClick}>Format Dates</button>
