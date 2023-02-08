@@ -43,12 +43,20 @@ const LoginSignup = styled.div`
         margin-left: 5px;
     }
     h3.login {
-        color: ${GLOBAL.purple};
+        color: ${GLOBAL.teal};
         font-weight: bold;
     }
     h3.signup {
         color: ${GLOBAL.red};
         font-weight: bold;
+    }
+    button.submit {
+        color: ${GLOBAL.cream};
+        background-color: ${GLOBAL.purple};
+        margin: 10px;
+        width: 100px;
+        margin: auto;
+        margin-top: 10px;
     }
 
 `

@@ -35,14 +35,6 @@ const Landing = styled.div`
         background-color: transparent;
     }
 
-    button.submit {
-        color: ${GLOBAL.cream};
-        background-color: ${GLOBAL.teal};
-        margin: 10px;
-        width: 100px;
-
-    }
-
 
 `
 export default Landing;

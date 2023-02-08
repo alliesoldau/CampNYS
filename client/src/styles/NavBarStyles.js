@@ -22,13 +22,16 @@ const NavBarStyles = styled.div`
 }
 h1 {
     margin: 0;
-    font-family: "Eczar";
+    font-family: "Nunito";
+    font-size: 2.2rem;
+    color: ${GLOBAL.purple};
 }
 h4 {
-    color: ${GLOBAL.darkgrey};
+    color: ${GLOBAL.mediumgrey};
     margin-left: 20px;
     margin-top: 20px;
     font-style: italic;
+    font-weight: bold;
     font-size: 1.2rem;
 }
 .logo-full {
@@ -103,7 +106,7 @@ a:hover {
     color: ${GLOBAL.orange};
 }
 button#login {
-    color: ${GLOBAL.purple};
+    color: ${GLOBAL.teal};
     background-color: transparent;
     border: none;
 }

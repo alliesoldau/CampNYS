@@ -21,11 +21,16 @@ function NavBar({ setShowLogin, setShowSignUp}) {
       setShowLogin(false)
     }
 
+    function handleHideForms() {
+        setShowLogin(false)
+        setShowSignUp(false)
+    }
+
     return (
         <NavBarStyles>
             <div className="navbarLeft">
                     <Link exact to="/">
-                        <div className="logo-full">
+                        <div className="logo-full" onClick={handleHideForms}>
                             <img className="logo" src={logo} 
                             alt="CampNYS Logo of a tree and mountain that look like a tent"></img>
                             <h1>CampNYS</h1>
