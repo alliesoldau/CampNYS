@@ -29,6 +29,7 @@ h4 {
     margin-left: 20px;
     margin-top: 20px;
     font-style: italic;
+    font-size: 1.2rem;
 }
 .logo-full {
     display: flex;
@@ -58,7 +59,7 @@ img.proPic {
     height: calc(${GLOBAL.navsize}*1);
 }
 img.logo {
-    height: calc(${GLOBAL.navsize}*1);
+    height: calc(${GLOBAL.navsize}*.9);
 }
 .logo-full {
     display: flex;
