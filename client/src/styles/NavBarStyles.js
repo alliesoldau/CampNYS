@@ -24,6 +24,12 @@ h1 {
     margin: 0;
     font-family: "Eczar";
 }
+h4 {
+    color: ${GLOBAL.darkgrey};
+    margin-left: 20px;
+    margin-top: 20px;
+    font-style: italic;
+}
 .logo-full {
     display: flex;
     flex-direction: row;
@@ -95,7 +101,20 @@ a {
 a:hover {
     color: ${GLOBAL.orange};
 }
-button {
+button#login {
+    color: ${GLOBAL.purple};
+    background-color: transparent;
+    border: none;
+}
+button#signup {
+    color: ${GLOBAL.red};
+    background-color: transparent;
+    border: none;
+}
+button.LP:hover {
+    text-decoration: underline;
+}
+button.logout {
     background-color: ${GLOBAL.teal};
     height: 35px;
     width: 100px;
@@ -108,6 +127,7 @@ button {
 button:hover {
     background-color: ${GLOBAL.orange};
 }
+
 `
 
 export default NavBarStyles;

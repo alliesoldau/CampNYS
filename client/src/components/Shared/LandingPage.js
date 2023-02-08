@@ -5,22 +5,9 @@ import Landing from '../../styles/Landing'
 import LoginSignup from '../../styles/LoginSignup'
 import { UserContext } from '../Context/UserContext'
 
-function LandingPage() {
+function LandingPage({ showLogin, showSignUp}) {
 
     const { user } = useContext(UserContext);
-    
-    const [showLogin, setShowLogin] = useState(false)
-    const [showSignUp, setShowSignUp] = useState(false)
-
-    function handleRevealLogin() {
-      setShowLogin(true)
-      setShowSignUp(false)
-    }
-
-    function handleRevealSignUp() {
-      setShowSignUp(true)
-      setShowLogin(false)
-    }
 
     if (user) {
         return (
@@ -33,25 +20,20 @@ function LandingPage() {
       } else {
         return (
             <Landing>
-                <h4>Please 
-                  <button className="login" onClick={handleRevealLogin}><i>Login</i></button> 
-                  or 
-                  <button className="signup" onClick={handleRevealSignUp}><i>Signup</i></button>
-                </h4>
-                  <LoginSignup>
-                    <div className="form-container">
-                        { showLogin===true ? 
-                          <div className="form">
-                            <Login />
-                          </div>
-                        : null }
-                        { showSignUp===true ?
-                          <div className="form">
-                            <SignUp />
-                          </div>
-                        : null}
-                    </div>
-                  </LoginSignup>
+                <LoginSignup>
+                  <div className="form-container">
+                      { showLogin===true ? 
+                        <div className="form">
+                          <Login />
+                        </div>
+                      : null }
+                      { showSignUp===true ?
+                        <div className="form">
+                          <SignUp />
+                        </div>
+                      : null}
+                  </div>
+                </LoginSignup>
             </Landing>
         )
       }

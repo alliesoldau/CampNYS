@@ -42,6 +42,14 @@ const LoginSignup = styled.div`
         margin: auto;
         margin-left: 5px;
     }
+    h3.login {
+        color: ${GLOBAL.purple};
+        font-weight: bold;
+    }
+    h3.signup {
+        color: ${GLOBAL.red};
+        font-weight: bold;
+    }
 
 `
 export default LoginSignup;

@@ -5,9 +5,21 @@ import NavBarStyles from '../styles/NavBarStyles'
 import logo from '../images/logo.png'
 import NavBarDD from './NavBarDD'
 
-function NavBar() {
+function NavBar({ setShowLogin, setShowSignUp}) {
 
     const { user } = useContext(UserContext);
+    // const [showLogin, setShowLogin] = useState(false)
+    // const [showSignUp, setShowSignUp] = useState(false)
+
+    function handleRevealLogin() {
+      setShowLogin(true)
+      setShowSignUp(false)
+    }
+
+    function handleRevealSignUp() {
+      setShowSignUp(true)
+      setShowLogin(false)
+    }
 
     return (
         <NavBarStyles>
@@ -20,6 +32,14 @@ function NavBar() {
                         </div>
                     </Link>
             </div>
+            { user ? null :
+            <ul className="navbarRight">
+                    <h4>Please 
+                        <button id="login" className="LP" onClick={handleRevealLogin}><i>Login</i></button> 
+                            or 
+                        <button id="signup" className="LP" onClick={handleRevealSignUp}><i>Signup</i></button>
+                    </h4>
+            </ul> }
                 {user ? (
                     <ul className="navbarRight">
                         { user.host ? ( 

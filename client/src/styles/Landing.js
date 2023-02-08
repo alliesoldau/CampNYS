@@ -7,20 +7,6 @@ const Landing = styled.div`
     background-image: linear-gradient(to right, ${GLOBAL.teal}, ${GLOBAL.orange});
     height: 100vh;
     with: 100vw;
-    h4 {
-        color: ${GLOBAL.mediumgrey};
-        margin-left: 20px;
-        margin-top: 20px;
-        font-style: italic;
-    }
-    h3.login {
-        color: ${GLOBAL.purple};
-        font-weight: bold;
-    }
-    h3.signup {
-        color: ${GLOBAL.red};
-        font-weight: bold;
-    }
     .form {
         display: flex;
         flex-direction: column;
@@ -36,7 +22,7 @@ const Landing = styled.div`
         flex-direction: column;
         margin: auto;
         height: 100%;
-        padding-top: 35px;
+        padding-top: 60px;
         justify-content: center;
     }
     button {
@@ -48,12 +34,7 @@ const Landing = styled.div`
         font-weight: bold;
         background-color: transparent;
     }
-    button.login {
-        color: ${GLOBAL.purple}
-    }
-    button.signup {
-        color: ${GLOBAL.red};
-    }
+
     button.submit {
         color: ${GLOBAL.cream};
         background-color: ${GLOBAL.teal};

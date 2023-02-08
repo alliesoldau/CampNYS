@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import LandingPage from './components/Shared/LandingPage'
@@ -35,6 +35,9 @@ function App() {
   const { setCampgrounds } = useContext(CampgroundContext)
   const { setCampRes } = useContext(CamperReservationsContext)
 
+  const [showLogin, setShowLogin] = useState(false)
+  const [showSignUp, setShowSignUp] = useState(false)
+
   useEffect(() => {
     // auto-login 
     if (localStorage.userID) {
@@ -58,12 +61,12 @@ function App() {
 
   return (
       <div className="app-container">
-        <NavBar />
+        <NavBar setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
           <div className="body-container">
             <Switch>
 
               <Route exact path='/'>
-                <LandingPage />
+                <LandingPage showLogin={showLogin} showSignUp={showSignUp}/>
               </Route>
 
               <Route path='/search_campgrounds'>
