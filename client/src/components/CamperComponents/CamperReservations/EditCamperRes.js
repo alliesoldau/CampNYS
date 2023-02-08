@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useHistory, useParams } from "react-router-dom"
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
@@ -6,14 +6,12 @@ import { EditResInfo } from '../../Stores/Fetches'
 
 function EditCamperRes() {
 
-    // TO DO: make it so you can refresh. its mad about the form data bc upon refresh formData doesnt setTimeout
-    // to be able to pull info from myRes in time or something 
-
     const history = useHistory()
     const params = useParams()
 
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
+    const [formData, setFormData] = useState({})
 
     const myRes = campRes.find((res) => { return ( res.id === parseInt(params.id))})
     let myCampground
@@ -21,13 +19,17 @@ function EditCamperRes() {
         myCampground = campgrounds.find((cg) => { return ( cg.id === myRes.site.campground_id ) })
     }
 
-    const [formData, setFormData] = useState({
-        id: params.id,
-        start_date: myRes.start_date,
-        end_date: myRes.end_date,
-        cars: myRes.cars,
-        number_of_people: myRes.number_of_people
-    })
+    useEffect(() => {
+        if (myRes) {
+            setFormData({
+                id: params.id,
+                start_date: myRes.start_date,
+                end_date: myRes.end_date,
+                cars: myRes.cars,
+                number_of_people: myRes.number_of_people
+            })
+        }
+    },[myRes])
 
     const { start_date, end_date, cars, number_of_people } = formData
 
