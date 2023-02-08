@@ -36,7 +36,7 @@ const LoginSignup = styled.div`
         flex-direction: row;
         justify-content: space-evenly;
     }
-    p.radio {
+    p.radio, select {
         color: ${GLOBAL.darkgrey};
         font-size: .9rem;
         margin: auto;
@@ -58,6 +58,5 @@ const LoginSignup = styled.div`
         margin: auto;
         margin-top: 10px;
     }
-
 `
 export default LoginSignup;
