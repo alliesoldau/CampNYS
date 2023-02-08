@@ -6,23 +6,20 @@ import { EditResInfo } from '../../Stores/Fetches'
 
 function EditCamperRes() {
 
+    // TO DO: make it so you can refresh. its mad about the form data bc upon refresh formData doesnt setTimeout
+    // to be able to pull info from myRes in time or something 
+
     const history = useHistory()
     const params = useParams()
 
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
 
-    console.log(campRes)
-    console.log(campgrounds)
-
     const myRes = campRes.find((res) => { return ( res.id === parseInt(params.id))})
     let myCampground
     if (myRes) {
         myCampground = campgrounds.find((cg) => { return ( cg.id === myRes.site.campground_id ) })
     }
-
-    console.log(myRes)
-    console.log(myCampground)
 
     const [formData, setFormData] = useState({
         id: params.id,
