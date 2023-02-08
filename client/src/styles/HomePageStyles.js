@@ -53,8 +53,8 @@ const HomePageStyles = styled.div`
     }
 
     .bottom-left h4{
-        color: ${GLOBAL.purple};
-        text-shadow: 1px 1px 1px ${GLOBAL.cream};
+        color: ${GLOBAL.cream};
+        text-shadow: 1px 1px 1px ${GLOBAL.purple};
     }
 
     .right-container h4{

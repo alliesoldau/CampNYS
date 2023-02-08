@@ -82,6 +82,29 @@ function Map() {
     return (
         <MapStyles>
             <div className="route_calcs">
+                <div className="route-calc-container">
+                <div className="route-calcs-top">
+                    <div className="entries">
+                        <div classname="info">
+                                <div id="DivForHoverItem">
+                                    <p>Origin:</p>
+                                    <img className="info_image"src={info}/>
+                                    <div id="HiddenText"><p>Select a pin from the map to set origin</p></div>
+                                    <p>{origin.name}</p>
+                                </div>
+                        </div>
+                        <div className="attraction">
+                            <p>Attraction:</p>
+                                <Autocomplete>
+                                    <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                                </Autocomplete>
+                        </div>
+                    </div>
+                    <div className="results">
+                        <p>Duration: {duration}</p>
+                        <p>Distance: {distance}</p>
+                    </div>
+                </div>
                 <div className="buttons">
                     <button className="center" onClick={() => {
                         map.panTo(center)
@@ -91,25 +114,6 @@ function Map() {
                     <button className="calc" onClick={calculateRoute}>Calculate Route</button>
                     <button className="clear" onClick={clearRoute}>Clear Route</button>
                 </div>
-                <div className="entries">
-                    <div classname="info">
-                            <div id="DivForHoverItem">
-                                <p>Origin:</p>
-                                <img className="info_image"src={info}/>
-                                <div id="HiddenText"><p>Select a pin from the map to set origin</p></div>
-                                <p>{origin.name}</p>
-                             </div>
-                    </div>
-                    <div className="attraction">
-                        <p>Attraction:</p>
-                            <Autocomplete>
-                                <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
-                            </Autocomplete>
-                    </div>
-                </div>
-                <div className="results">
-                    <p>Duration: {duration}</p>
-                    <p>Distance: {distance}</p>
                 </div>
             </div>
             { campgrounds.length > 0 ? 

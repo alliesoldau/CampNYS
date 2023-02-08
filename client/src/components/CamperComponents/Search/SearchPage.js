@@ -7,10 +7,7 @@ function SearchPage() {
 
     return (
         <SearchPageStyles>
-            <div className="header">
-                <p>Search Page</p>
-            </div>
-                <MapFilters />
+            <MapFilters />
             <div className="map">
                 <Map />
             </div>

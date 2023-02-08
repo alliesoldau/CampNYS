@@ -6,7 +6,6 @@ import { GLOBAL } from './GlobalVar';
 const Landing = styled.div`
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to right, ${GLOBAL.teal}, ${GLOBAL.orange});
     background-color: hsla(200,40%,30%,.4);
 	background-image:		
             url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
