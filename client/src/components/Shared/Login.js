@@ -51,7 +51,7 @@ function Login() {
 
     return(
         <>
-            <h3>Login</h3>
+            <h3 className="login">Login</h3>
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
                     <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'} />

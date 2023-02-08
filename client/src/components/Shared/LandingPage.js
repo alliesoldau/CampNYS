@@ -33,11 +33,11 @@ function LandingPage() {
       } else {
         return (
             <Landing>
-                <h2>Please 
+                <h4>Please 
                   <button className="login" onClick={handleRevealLogin}>Login</button> 
                   or 
                   <button className="signup" onClick={handleRevealSignUp}>Signup</button>
-                </h2>
+                </h4>
                   <LoginSignup>
                     <div className="form-container">
                       <div className="form">

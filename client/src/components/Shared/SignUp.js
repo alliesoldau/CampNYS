@@ -51,7 +51,7 @@ function SignUp() {
 
     return(
         <>
-            <h3>SignUp</h3>
+            <h3 className="signup">SignUp</h3>
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
                 <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'}/>
@@ -60,9 +60,13 @@ function SignUp() {
                 <label>Last Name</label>
                 <input type='text' name='last_name' value={last_name} onChange={handleChange} placeholder={'Frog'}/>
                 <label>Are you a host or a camper?</label>
-                <div onChange={handleChange}>
-                    <input type='radio' name='host' value={false} />Camper
-                    <input type='radio' name='host' value={true} />Host
+                <div className="radio-container" onChange={handleChange}>
+                    <div className="radio-container">
+                        <input type='radio' name='host' value={false} /><p className="radio">Camper</p>
+                    </div>
+                    <div className="radio-container">
+                        <input type='radio' name='host' value={true} /><p className="radio" >Host</p>
+                    </div>
                 </div>
                 { formData.host===true ? 
                     <div>

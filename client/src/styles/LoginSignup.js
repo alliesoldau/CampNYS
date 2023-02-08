@@ -19,6 +19,29 @@ const LoginSignup = styled.div`
         font-style: italic;
         font-size: .8rem;
     }
+    input {
+        border-top-style: hidden;
+        border-right-style: hidden;
+        border-left-style: hidden;
+        border-bottom-style: groove;
+    }
+    input:focus {
+        outline: none;
+    }
+    label{      
+        margin-top: 10px;
+    }
+    .radio-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    p.radio {
+        color: ${GLOBAL.darkgrey};
+        font-size: .9rem;
+        margin: auto;
+        margin-left: 5px;
+    }
 
 `
 export default LoginSignup;
