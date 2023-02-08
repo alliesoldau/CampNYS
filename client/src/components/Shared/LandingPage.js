@@ -34,20 +34,22 @@ function LandingPage() {
         return (
             <Landing>
                 <h4>Please 
-                  <button className="login" onClick={handleRevealLogin}>Login</button> 
+                  <button className="login" onClick={handleRevealLogin}><i>Login</i></button> 
                   or 
-                  <button className="signup" onClick={handleRevealSignUp}>Signup</button>
+                  <button className="signup" onClick={handleRevealSignUp}><i>Signup</i></button>
                 </h4>
                   <LoginSignup>
                     <div className="form-container">
-                      <div className="form">
                         { showLogin===true ? 
-                          <Login />
+                          <div className="form">
+                            <Login />
+                          </div>
                         : null }
                         { showSignUp===true ?
-                        <SignUp />
+                          <div className="form">
+                            <SignUp />
+                          </div>
                         : null}
-                      </div>
                     </div>
                   </LoginSignup>
             </Landing>

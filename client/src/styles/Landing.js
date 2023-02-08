@@ -4,21 +4,32 @@ import { GLOBAL } from './GlobalVar';
 const Landing = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 20px;
+    background-image: linear-gradient(to right, ${GLOBAL.teal}, ${GLOBAL.orange});
+    height: 100vh;
+    with: 100vw;
     h4 {
         color: ${GLOBAL.mediumgrey};
+        margin-left: 20px;
+        margin-top: 20px;
+        font-style: italic;
     }
     h3.login {
         color: ${GLOBAL.purple};
+        font-weight: bold;
     }
     h3.signup {
         color: ${GLOBAL.red};
+        font-weight: bold;
     }
     .form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         width: 300px;
+        padding: 20px;
+        border: 2px solid ${GLOBAL.darkgrey};
+        border-radius: 10px;
+        background-color: white;
     }
     .form-container {
         display: flex;
@@ -35,7 +46,7 @@ const Landing = styled.div`
         border-radius: 20px;
         text-decoration: none;
         font-weight: bold;
-        background-color: white;
+        background-color: transparent;
     }
     button.login {
         color: ${GLOBAL.purple}
