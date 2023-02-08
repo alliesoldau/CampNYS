@@ -1,11 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams, useHistory } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import ResSites from './ResSites'
+import ResForm from './ResForm'
 
 function MakeRes() {
-
+    
+    const history = useHistory()
     const params = useParams()
     const { user } = useContext(UserContext)
     const { campgrounds } = useContext(CampgroundContext)
@@ -18,13 +20,13 @@ function MakeRes() {
 
     return (
         <>
-        { user && campground.sites ? 
+        { user && campground ? 
         <>
             <p>Make Res</p>
             <p>Campground: {campground.name}</p>
             { selectedSite ? <>
-                <p>selected site name: {selectedSite.name}</p>
-                <p>put reservation form here</p>
+                <p>RESFORM</p>
+                <ResForm selectedSite={selectedSite} campground={campground}/>
             </> : null }
             { campground.sites && campground.sites.length > 0 ? 
                 <>

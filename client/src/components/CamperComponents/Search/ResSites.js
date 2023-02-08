@@ -5,7 +5,6 @@ function ResSites({ resSite, setSelectedSite }) {
 
     const { user } = useContext(UserContext)
 
-
     function handleClick() {
         setSelectedSite(resSite)
         console.log(resSite)
