@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { useHistory, Link, useParams } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteCampground } from '../Stores/Fetches'
+import arrow from '../../images/back_arrow.png'
+
 
 function CampgroundDetails() {
 
@@ -28,7 +30,7 @@ function CampgroundDetails() {
         { campground ? 
         <>
             <Link to={`/hosts/${campground.host_id}/campgrounds`}>
-                <button>Back to My Campgrounds</button>
+                <img className="arrow" src={arrow}></img>
             </Link>
             <p>campground details</p>
             <p>name: {campground.name}</p>

@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Eczar&display=swap');
 
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 .app-container {
   height: 100vh;
 }
@@ -22,4 +25,8 @@ code {
   --cream: #ffffc7;
   --teal: #548687;
   --purple: #473335;
+}
+
+img.arrow {
+  height: 50px;
 }

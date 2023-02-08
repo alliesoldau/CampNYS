@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { useHistory, Link, useParams } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
-import { CampgroundContext } from '../Context/CampgroundContext'
 import { DeleteSite } from '../Stores/Fetches'
+import arrow from '../../images/back_arrow.png'
+
 
 function SiteDetails() {
 
@@ -34,7 +35,9 @@ function SiteDetails() {
         { campground && thisSite ? 
         <>
             <Link to={`/campground/${campground.id}/sites`}>
-                <button>Back to All Sites</button>
+                {/* <button>Back to All Sites</button> */}
+                <img className="arrow" src={arrow}></img>
+
             </Link>
             <p>Site Details</p>
             <p>campground: {campground.name}</p>

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import Sites from './Sites'
 import { UserContext } from '../Context/UserContext'
+import arrow from '../../images/back_arrow.png'
 
 function SitesSummary() {
     
@@ -18,7 +19,7 @@ function SitesSummary() {
         { user ? <>
             <p>Sites Summary</p>
             <Link to={`/host/campground/${campground.id}`}>
-                <button>Back to Campground</button>
+                <img className="arrow" src={arrow}></img>
             </Link>
             <Link to={`/campground/${campground.id}/add_sites`}>
                 <button>Add Sites</button>

@@ -2,6 +2,8 @@ import React, { useState, useContext, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import MapStyles from '../../../styles/MapStyles'
+import info from '../../../images/info.png'
+
 import {
     useJsApiLoader,
     GoogleMap,
@@ -76,26 +78,40 @@ function Map() {
         setOrigin('')
         destiantionRef.current.value = ''
     }
-
+    
     return (
         <MapStyles>
-            <button onClick={() => {
-                map.panTo(center)
-                map.setZoom(6.5)}}>
-                    Center Map
-            </button>
-            <button onClick={calculateRoute}>Calculate Route</button>
-            <button onClick={clearRoute}>Clear Route</button>
-            <p>Duration: {duration}</p>
-            <p>Distance: {distance}</p>
-            <p>Select a pin from the map to check its distance to any attraction (eg: trailhead)</p>
-            <p>Origin: {origin.name}</p>
-            <p>Attraction:
-                <Autocomplete>
-                    <input className="destination" type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
-                </Autocomplete>
-            </p>
-            
+            <div className="route_calcs">
+                <div className="buttons">
+                    <button className="center" onClick={() => {
+                        map.panTo(center)
+                        map.setZoom(6.5)}}>
+                            Center Map
+                    </button>
+                    <button className="calc" onClick={calculateRoute}>Calculate Route</button>
+                    <button className="clear" onClick={clearRoute}>Clear Route</button>
+                </div>
+                <div className="entries">
+                    <p>Select a pin from the map to check its distance to any attraction (eg: trailhead)</p>
+                    <div classname="info">
+                            <div id="DivForHoverItem">
+                                <p>Origin:</p>
+                                <img className="info_image"src={info}/>
+                                <div id="HiddenText"><p>Select a pin from the map to set origin</p></div>
+                                <p>{origin.name}</p>
+                             </div>
+                    </div>
+                    <p>Attraction:
+                        <Autocomplete>
+                            <input className="destination" type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                        </Autocomplete>
+                    </p>
+                </div>
+                <div className="results">
+                    <p>Duration: {duration}</p>
+                    <p>Distance: {distance}</p>
+                </div>
+            </div>
             { campgrounds.length > 0 ? 
                 <GoogleMap 
                     center={center} 
