@@ -10,7 +10,11 @@ function CamperResDetails({ res }) {
 
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
-    const myCampground = campgrounds.find((campground) => campground.id === res.site.campground_id)
+    
+    let myCampground
+    if (campgrounds) {
+        myCampground = campgrounds.find((cg) => { return ( cg.id === res.site.campground_id ) })
+    }
 
     function handleDeleteReservation() {
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
