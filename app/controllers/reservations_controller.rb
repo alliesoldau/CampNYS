@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-    skip_before_action :authorized_user, only:[:show, :destroy, :update]
+    skip_before_action :authorized_user, only:[:show, :destroy, :update, :create]
 
     def show
         reservations = Reservation.where(camper_id: params[:id])
@@ -17,6 +17,11 @@ class ReservationsController < ApplicationController
         reservation.update!(reservation_params)
         render json: reservation, status: :accepted, serializer: ReservationsSerializer
     end
+
+    def create
+        reservation = Reservation.create!(reservation_params)
+        render json: reservation, status: :ok, serializer: ReservationsSerializer
+    end 
 
     private 
 

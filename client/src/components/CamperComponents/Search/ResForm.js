@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext'
+import { AddNewRes } from '../../Stores/Fetches'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -10,18 +11,13 @@ function ResForm({ selectedSite, campground }) {
 
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(null)
-    // const [startDateFormatted, setStartDateFormatted] = useState(null)
-    // const [endDateFormatted, setEndDateFormatted] = useState(null)
     const { user } = useContext(UserContext)
 
     const onChange = (dates) => {
         const [start, end] = dates
         setStartDate(start)
         setEndDate(end)
-        // const sDate = `${start.getFullYear()}-${start.getMonth()}-${start.getDate()}`
-        // const eDate = `${end.getFullYear()}-${end.getMonth()}-${end.getDate()}`
-        // setFormData({ ...formData, start_date: sDate})
-        // setFormData({ ...formData, end_date: eDate})
+        // TO DO: figure out how to do all of the date formatting on change so that  idont need to seperately format 
     }
 
     function logFormData() {
@@ -35,12 +31,13 @@ function ResForm({ selectedSite, campground }) {
         cars: null,
         site_id: selectedSite.id,
         camper_id: user.id,
-        host_id: campground.id
+        host_id: campground.host_id
     })
 
-    const { number_of_people, start_date, end_date, cars, site_id, camper_id, host_id } = formData
+    const { number_of_people, cars } = formData
 
-    function handleClick() {
+    function handleClick(e) {
+        e.preventDefault()
         const sDate = `${startDate.getFullYear()}-${startDate.getMonth()}-${startDate.getDate()}`
         const eDate = `${endDate.getFullYear()}-${endDate.getMonth()}-${endDate.getDate()}`
         setFormData({ ...formData, start_date: sDate, end_date: eDate })
@@ -51,11 +48,17 @@ function ResForm({ selectedSite, campground }) {
         setFormData({ ...formData, [name]: value })
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        AddNewRes(formData).then((data) => {
+            console.log(data)
+        })
+    }
     return (
         <>
         { selectedSite && campground ? 
             <> 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <p>site name: {selectedSite.name} </p>
                 <p>site category: {selectedSite.category}</p>
                 <label>Number of People, max {selectedSite.capacity}</label>
@@ -75,13 +78,13 @@ function ResForm({ selectedSite, campground }) {
 
                 <label>Number of Cars, max {selectedSite.car_capacity}</label>
                     <input type='number' min={0} max={selectedSite.car_capacity} name='cars' value={cars} onChange={handleChange} />
-                
-            </form>
+                   
+                <button onClick={handleClick}>Format Dates</button>
+                <button type='submit'>Submit Edits</button>
 
-            <button onClick={handleClick}>Format Dates</button>
-            <button onClick={logFormData}>Log Form Data</button>
-            <button type='submit'>Submit Edits</button>
+            </form>
     
+                {/* TO DO: filter out days that already have a reservation  */}
                 {/* filter daays --> use this to block out days that there is no availabililty? 
                 () => {
                     const [startDate, setStartDate] = useState(null);

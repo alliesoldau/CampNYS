@@ -33,6 +33,16 @@ export function AutoLogin() {
     .then(res => res.json())
     }
 
+export function GrabAllCampgrounds() {
+    return fetch(baseURL+'/all_campgrounds')
+    .then(res => res.json())
+    }
+
+export function GrabCamperReservations(id) {
+    return fetch(baseURL+`/camper/${id}/reservations`)
+    .then(res => res.json())
+    }
+
 export function EditProfileInfo(user) {
     return fetch(baseURL+`/users/${user.id}/profile/edit`,{
             method:'PATCH',
@@ -69,16 +79,6 @@ export function EditSiteInfo(site) {
       .then(res => res.json())
 }
 
-export function GrabAllCampgrounds() {
-    return fetch(baseURL+'/all_campgrounds')
-    .then(res => res.json())
-    }
-
-export function GrabCamperReservations(id) {
-    return fetch(baseURL+`/camper/${id}/reservations`)
-    .then(res => res.json())
-    }
-
 export function DeleteReservation(id) {
     return fetch(baseURL+`/camper/reservation/${id}`,{ 
         method: "DELETE" 
@@ -111,14 +111,23 @@ export function AddNewCampground(campground) {
         .then(res => res.json())
     }
 
-    export function AddNewSite(site) {
-        return fetch(baseURL+`/add_site`,{
-                method:'POST',
-                headers: {'Content-Type': 'application/json'},
-                body:JSON.stringify(site)
-            })
-            .then(res => res.json())
-        }
+export function AddNewSite(site) {
+    return fetch(baseURL+`/add_site`,{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify(site)
+        })
+        .then(res => res.json())
+    }
+
+export function AddNewRes(res) {
+    return fetch(baseURL+`/add_res`,{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify(res)
+        })
+        .then(res => res.json())
+    }
     
 
 

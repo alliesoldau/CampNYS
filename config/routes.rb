@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post '/login', to: 'sessions#create'
     post '/add_campground', to: 'campgrounds#create'
     post '/add_site', to: 'sites#create'
+    post '/add_res', to: 'reservations#create'
     patch '/users/:id/profile/edit', to: 'users#update'
     patch '/campgrounds/:id/edit', to: 'campgrounds#update'
     patch '/reservations/:id/edit', to: 'reservations#update'
