@@ -54,11 +54,11 @@ function SignUp() {
             <h3>SignUp</h3>
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
-                <input type='text' name='email' value={email} onChange={handleChange} />
+                <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'}/>
                 <label>First Name</label>
-                <input type='text' name='first_name' value={first_name} onChange={handleChange} />
+                <input type='text' name='first_name' value={first_name} onChange={handleChange} placeholder={'Freddie'}/>
                 <label>Last Name</label>
-                <input type='text' name='last_name' value={last_name} onChange={handleChange} />
+                <input type='text' name='last_name' value={last_name} onChange={handleChange} placeholder={'Frog'}/>
                 <label>Are you a host or a camper?</label>
                 <div onChange={handleChange}>
                     <input type='radio' name='host' value={false} />Camper
@@ -78,7 +78,7 @@ function SignUp() {
                     </div> 
                 : null }
                 <label>Password</label>
-                <input type='password' name='password' value={password} onChange={handleChange} />
+                <input type='password' name='password' value={password} onChange={handleChange} placeholder={'********'}/>
                 <button className="submit" type='submit'>SignUp</button>
             </form>
         </>

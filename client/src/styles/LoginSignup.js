@@ -4,26 +4,20 @@ import { GLOBAL } from './GlobalVar';
 const LoginSignup = styled.div`
     display: flex;
     flex-direction: column;
-    .form-container {
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-    }
-    .form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 33vw;
-    }
     form {
         display: flex;
         flex-direction: column;
+        color: ${GLOBAL.darkgrey}
     }
     h2 {
         color: ${GLOBAL.red};
         font-weight: bold;
         border-bottom: 2px solid;
-
+    }
+    input::placeholder {
+        color: ${GLOBAL.mediumgrey};
+        font-style: italic;
+        font-size: .8rem;
     }
 
 `

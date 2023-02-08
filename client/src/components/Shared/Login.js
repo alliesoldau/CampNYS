@@ -54,9 +54,9 @@ function Login() {
             <h3>Login</h3>
             <form onSubmit={handleSubmit}>
                 <label>Email</label>
-                <input type='text' name='email' value={email} onChange={handleChange} />
+                    <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'} />
                 <label>Password</label>
-                <input type='password' name='password' value={password} onChange={handleChange} />
+                    <input type='password' name='password' value={password} onChange={handleChange} placeholder={'********'}/>
                 <button className="submit" type='submit'>Login</button>
             </form>
         </>

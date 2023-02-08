@@ -11,6 +11,19 @@ const Landing = styled.div`
     h3 {
         color: ${GLOBAL.red};
     }
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 33vw;
+    }
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        height: 50vh;
+        justify-content: center;
+    }
     button {
         height: 35px;
         width: 100px;
