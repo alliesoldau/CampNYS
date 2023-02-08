@@ -40,13 +40,6 @@ function ResForm({ selectedSite, campground }) {
 
     const { number_of_people, cars } = formData
 
-    function handleClick(e) {
-        e.preventDefault()
-        const sDate = `${startDate.getFullYear()}-${startDate.getMonth()}-${startDate.getDate()}`
-        const eDate = `${endDate.getFullYear()}-${endDate.getMonth()}-${endDate.getDate()}`
-        setFormData({ ...formData, start_date: sDate, end_date: eDate })
-    }
-
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
@@ -54,25 +47,16 @@ function ResForm({ selectedSite, campground }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        AddNewRes(formData).then((resData) => {
-            // const newRes = [...campRes, resData]
-            // console.log(newRes)
+        const sDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}`
+        const eDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}`
+        const formDataWithDate = {...formData, start_date: sDate, end_date: eDate}
+        AddNewRes(formDataWithDate).then((resData) => {
             setCampRes([...campRes, resData])
             const updatedRess = [...selectedSite.reservations, resData]
-            // console.log('updatedRess')
-            // console.log(updatedRess)
             const updatedSite = {...selectedSite, reservations: updatedRess}
-            // console.log('updatedSite')
-            // console.log(updatedSite)
             const updatedSites = campground.sites.map((site) => site.id === selectedSite.id ? updatedSite : site)
-            // console.log('updatedSites')
-            // console.log(updatedSites)
             const updatedCG = {...campground, sites: updatedSites }
-            // console.log('updatedCG')
-            // console.log(updatedCG)
             const updatedCGs = campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
-            // console.log('updatedCGs')
-            // console.log(updatedCGs)
             setCampgrounds(updatedCGs)
             history.push(`/campers/${user.id}/reservations`)
         })
@@ -103,7 +87,6 @@ function ResForm({ selectedSite, campground }) {
                 <label>Number of Cars, max {selectedSite.car_capacity}</label>
                     <input type='number' min={0} max={selectedSite.car_capacity} name='cars' value={cars} onChange={handleChange} />
                    
-                <button onClick={handleClick}>Format Dates</button>
                 <button type='submit'>Submit Edits</button>
 
             </form>
