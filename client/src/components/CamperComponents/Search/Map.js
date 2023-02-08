@@ -92,7 +92,6 @@ function Map() {
                     <button className="clear" onClick={clearRoute}>Clear Route</button>
                 </div>
                 <div className="entries">
-                    <p>Select a pin from the map to check its distance to any attraction (eg: trailhead)</p>
                     <div classname="info">
                             <div id="DivForHoverItem">
                                 <p>Origin:</p>
@@ -101,11 +100,12 @@ function Map() {
                                 <p>{origin.name}</p>
                              </div>
                     </div>
-                    <p>Attraction:
-                        <Autocomplete>
-                            <input className="destination" type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
-                        </Autocomplete>
-                    </p>
+                    <div className="attraction">
+                        <p>Attraction:</p>
+                            <Autocomplete>
+                                <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                            </Autocomplete>
+                    </div>
                 </div>
                 <div className="results">
                     <p>Duration: {duration}</p>

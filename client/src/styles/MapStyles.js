@@ -15,6 +15,17 @@ wdith: 100vw;
     width: 33vw;
     margin: auto;
 }
+.entries {
+    display: flex;
+    flex-direction: column;
+}
+.attraction {
+    display: flex;
+    flex-direction: row;
+}
+AutoComplete {
+    width: 100%;
+}
 button.center, button.calc, button.clear {
     margin: 5px;
     color: white;
