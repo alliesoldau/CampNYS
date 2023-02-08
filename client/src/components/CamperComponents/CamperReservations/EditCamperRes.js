@@ -1,29 +1,38 @@
 import React, { useContext, useState } from 'react'
-import { useHistory } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import { CampgroundContext } from '../../Context/CampgroundContext'
-import { ReservationDetailsContext } from '../../Context/ReservationDetailsContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
 import { EditResInfo } from '../../Stores/Fetches'
 
 function EditCamperRes() {
 
     const history = useHistory()
+    const params = useParams()
 
     const { campgrounds } = useContext(CampgroundContext)
-    const { reservation } = useContext(ReservationDetailsContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
 
-    const myCampground = (campgrounds.find((campground) => campground.id === reservation.site.campground_id))
+    console.log(campRes)
+    console.log(campgrounds)
+
+    const myRes = campRes.find((res) => { return ( res.id === parseInt(params.id))})
+    let myCampground
+    if (myRes) {
+        myCampground = campgrounds.find((cg) => { return ( cg.id === myRes.site.campground_id ) })
+    }
+
+    console.log(myRes)
+    console.log(myCampground)
 
     const [formData, setFormData] = useState({
-        id: reservation.id,
-        start_date: reservation.start_date,
-        end_date: reservation.end_date,
-        cars: reservation.cars,
-        number_of_people: reservation.number_of_people
+        id: params.id,
+        start_date: myRes.start_date,
+        end_date: myRes.end_date,
+        cars: myRes.cars,
+        number_of_people: myRes.number_of_people
     })
 
-    const { id, start_date, end_date, cars, number_of_people } = formData
+    const { start_date, end_date, cars, number_of_people } = formData
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -43,33 +52,32 @@ function EditCamperRes() {
     // dates have to be when there is availability
     // end date must be after start date
     // dates cant be out of season
-    // people cant exceed capacity
-    // cars cant exceed capacity
+
     return (
         <>
+        { myRes && myCampground ? <> 
             <p>Edit Camper Res</p>
             <p>campground name: {myCampground.name}</p>
             <p>campground accessibility: {myCampground.accessibility}</p>
-            <p>people capacity: {reservation.site.capacity}</p>
-            <p>car capacity: {reservation.site.car_capacity}</p>
             <>
-            <p>Edit Reservation</p>
-                <form onSubmit={handleSubmit}>
-                    <label>Arrival Date</label>
-                        <input type='date' name='start_date' value={start_date} onChange={handleChange} />
+                <p>Edit Reservation</p>
+                    <form onSubmit={handleSubmit}>
+                        <label>Arrival Date</label>
+                            <input type='date' name='start_date' value={start_date} onChange={handleChange} />
 
-                    <label>Check Out Date</label>
-                        <input type='date' name='end_date' value={end_date} onChange={handleChange} />
+                        <label>Check Out Date</label>
+                            <input type='date' name='end_date' value={end_date} onChange={handleChange} />
 
-                    <label>Cars</label>
-                        <input type='text' name='cars' value={cars} onChange={handleChange} />
-                        
-                    <label>Number of People</label>
-                        <input type='text' name='number_of_people' value={number_of_people} onChange={handleChange} />
+                        <label>Cars</label>
+                            <input type='number' min={0} max={myRes.site.car_capacity} name='cars' value={cars} onChange={handleChange} />
+                            
+                        <label>Number of People</label>
+                            <input type='number' min={0} max={myRes.site.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
 
-                    <button type='submit'>Submit Edits</button>
-            </form>
-            </>
+                        <button type='submit'>Submit Edits</button>
+                    </form>
+                </>
+            </> : null }
         </>
     )
 }

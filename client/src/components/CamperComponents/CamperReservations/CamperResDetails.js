@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
-import { ReservationDetailsContext } from '../../Context/ReservationDetailsContext'
 import { DeleteReservation } from '../../Stores/Fetches'
 
 function CamperResDetails({ res }) {
@@ -11,12 +10,7 @@ function CamperResDetails({ res }) {
 
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
-    const { setReservation } = useContext(ReservationDetailsContext)
     const myCampground = campgrounds.find((campground) => campground.id === res.site.campground_id)
-
-    function handleClick() {
-        setReservation(res)
-    }
 
     function handleDeleteReservation() {
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
@@ -36,7 +30,7 @@ function CamperResDetails({ res }) {
             <p>registered cars: {res.cars}</p>
             <p>registered campers: {res.number_of_people}</p>
             <Link to={`/reservation/${res.id}/edit`}>
-                <button onClick={handleClick}>Edit Reservation</button>
+                <button>Edit Reservation</button>
             </Link>
             <button onClick={handleDeleteReservation}>Delete Reservation</button>
         </> : null }
