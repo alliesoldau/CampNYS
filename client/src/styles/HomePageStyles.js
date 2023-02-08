@@ -10,22 +10,53 @@ import cairn from '../images/cairn.jpeg'
 //     backdrop-filter: blur(5px);
 //    }
 
-
-// img.bog {
-//     width: 100vw;
-//     height: calc(100vh - ${GLOBAL.navsize}) 
-//     object-fit: cover;
-//     overflow: hidden;
-// }
-// color: blue;
 const HomePageStyles = styled.div`
-    height: 100vh;
+    height: calc(100vh - ${GLOBAL.navsize});
     width: 100vw;
     background: url(${cairn}) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    .homepage-container {
+        height: calc(100vh - ${GLOBAL.navsize});
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .right-container, .top-left, .bottom-left {
+        background-color: rgba(255, 255, 255, .25);  
+        backdrop-filter: blur(5px);       
+        margin: 30px;
+        width: 25vw;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .left-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .top-left {
+        height: auto;
+        color: ${GLOBAL.red}
+    }
+
+    .top-left p {
+        font-style: italic;
+        color: ${GLOBAL.purple}
+    }
+    
+    .motto p{
+        margin-bottom: 0px;
+    }
+
+    .bottom-left {
+        height: 100%;
+    }
+
 `
 
 export default HomePageStyles;

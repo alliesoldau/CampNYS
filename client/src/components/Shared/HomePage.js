@@ -2,8 +2,6 @@ import React, { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import HomePageStyles from '../../styles/HomePageStyles.js'
 
-// import bog from '../../images/bog.jpeg'
-
 function HomePage() {
 
     const { user } = useContext(UserContext);
@@ -11,11 +9,25 @@ function HomePage() {
     return (
         <HomePageStyles>
         { user ?
-        <div>
-            {/* <p>Welcome {user.first_name} {user.last_name}</p> */}
-            {/* <img className="bog" src={bog}></img> */}
+        <div className="homepage-container">
+            <div className="left-container">
+                <div className="top-left">
+                    <div className="greeting">
+                        <h4>Welcome {user.first_name} {user.last_name}</h4>
+                    </div>
+                    <div className="motto">
+                        <p>Let the adventures begin..!</p>
+                    </div>
+                </div>
+                <div className="bottom-left">
+                    <p>Bottom Left</p>
+                </div>
+            </div>
+            <div className="right-container">
+                <p>right container</p>
+            </div>
         </div>
-            : null }
+        : null }
 
         </HomePageStyles>
     )
