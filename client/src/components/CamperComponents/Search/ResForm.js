@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
+import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
+import { CampgroundContext } from '../../Context/CampgroundContext'
 import { AddNewRes } from '../../Stores/Fetches'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,16 +15,15 @@ function ResForm({ selectedSite, campground }) {
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(null)
     const { user } = useContext(UserContext)
+    const { campRes, setCampRes } = useContext(CamperReservationsContext)
+    const { campgrounds, setCampgrounds } = useContext(CampgroundContext)
+    const history = useHistory()
 
     const onChange = (dates) => {
         const [start, end] = dates
         setStartDate(start)
         setEndDate(end)
         // TO DO: figure out how to do all of the date formatting on change so that  idont need to seperately format 
-    }
-
-    function logFormData() {
-        console.log(formData)
     }
 
     const [formData, setFormData] = useState({
@@ -50,10 +52,28 @@ function ResForm({ selectedSite, campground }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        AddNewRes(formData).then((data) => {
-            console.log(data)
+        AddNewRes(formData).then((resData) => {
+            setCampRes([...campRes, resData])
+            const updatedRess = [...selectedSite.reservations, resData]
+            // console.log('updatedRess')
+            // console.log(updatedRess)
+            const updatedSite = {...selectedSite, reservations: updatedRess}
+            // console.log('updatedSite')
+            // console.log(updatedSite)
+            const updatedSites = campground.sites.map((site) => site.id === selectedSite.id ? updatedSite : site)
+            // console.log('updatedSites')
+            // console.log(updatedSites)
+            const updatedCG = {...campground, sites: updatedSites }
+            // console.log('updatedCG')
+            // console.log(updatedCG)
+            const updatedCGs = campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
+            // console.log('updatedCGs')
+            // console.log(updatedCGs)
+            setCampgrounds(updatedCGs)
+            history.push(`/campers/${user.id}/reservations`)
         })
     }
+
     return (
         <>
         { selectedSite && campground ? 

@@ -29,7 +29,6 @@ function AddCampground() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        // the post works but now i need to persist it to the front end and update the user
         AddNewCampground(formData).then((data) => {
             const hostsCampgrounds = user.campgrounds
             const updateCGs = [...hostsCampgrounds, data]

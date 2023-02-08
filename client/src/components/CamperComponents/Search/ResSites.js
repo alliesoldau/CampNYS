@@ -1,13 +1,9 @@
-import React, { useContext } from 'react'
-import { UserContext } from '../../Context/UserContext'
+import React from 'react'
 
 function ResSites({ resSite, setSelectedSite }) {
 
-    const { user } = useContext(UserContext)
-
     function handleClick() {
         setSelectedSite(resSite)
-        console.log(resSite)
     }
 
     return (

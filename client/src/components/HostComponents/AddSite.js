@@ -16,7 +16,6 @@ function AddSite() {
         campground_id: params.id
     })
 
-    console.log(user.campgrounds)
     const { name, capacity, category, car_capacity, campground_id } = formData
 
     let campground
