@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import HomePageStyles from '../../styles/HomePageStyles.js'
 
-import bog from '../../images/bog.jpeg'
+// import bog from '../../images/bog.jpeg'
 
 function HomePage() {
 
@@ -13,9 +13,10 @@ function HomePage() {
         { user ?
         <div>
             {/* <p>Welcome {user.first_name} {user.last_name}</p> */}
-            <img className="bog" src={bog}></img>
+            {/* <img className="bog" src={bog}></img> */}
         </div>
             : null }
+
         </HomePageStyles>
     )
 }
