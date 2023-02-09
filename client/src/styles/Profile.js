@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { GLOBAL } from './GlobalVar';
 
 const Profile = styled.div`
+.profile {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,9 +11,9 @@ const Profile = styled.div`
     align-items: center;
     margin: auto;
     margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-.profile-container {
-    border-radius: 5px;
 }
 .header {
     display: flex;
@@ -36,7 +37,6 @@ const Profile = styled.div`
 .user-info-container {
     display: flex;
     justify-content: center;
-    background-color: white;
     width: 100%;
 }
 .user-info {
@@ -48,9 +48,26 @@ const Profile = styled.div`
 .line-item {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
 }
-
+.line-item h4{
+    margin-right: 20px;
+    width: 100px;
+}
+img {
+    width: 200px;
+    height: 200px;
+}
+.pro-pic {
+    background-color: #fff;
+    border-radius: 100px;
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    position: relative;
+    margin: auto;
+    top: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
 `
 
 export default Profile;

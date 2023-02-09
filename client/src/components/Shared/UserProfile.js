@@ -11,10 +11,13 @@ function UserProfile() {
         <>
         { user ? 
             <Profile>
-                <div className="profile-container">
+                <div className="profile">
                     <div className="header">
                         <h1>{user.first_name} {user.last_name}</h1>
                         <p>{user.email}</p>
+                    </div>
+                    <div className="pro-pic">
+                        <img src={user.image_url}/>
                     </div>
                     <div className="user-info-container">
                         <div className="user-info">
@@ -29,10 +32,6 @@ function UserProfile() {
                             <div className="line-item">
                                 <h4>Email</h4>
                                 <p>{user.email}</p>
-                            </div>
-                            <div className="line-item">
-                                <h4>Pro Pic URL</h4>
-                                <p>{user.image_url}</p>
                             </div>
                             <div className="line-item">
                             { user.host===true ?
