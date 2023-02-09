@@ -3,6 +3,9 @@ import { useHistory, useParams } from "react-router-dom"
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
 import { EditResInfo } from '../../Stores/Fetches'
+import ResCard from '../../../styles/ResCard'
+import Form from '../../../styles/Form'
+
 
 function EditCamperRes() {
 
@@ -53,31 +56,45 @@ function EditCamperRes() {
     // dates cant be out of season
 
     return (
-        <>
-        { myRes && myCampground ? <> 
-            <p>Edit Camper Res</p>
-            <p>campground name: {myCampground.name}</p>
-            <p>campground accessibility: {myCampground.accessibility}</p>
+        <ResCard>
+        { myRes && myCampground ? 
+        <div className="edit-card"> 
+            <div className="left-container">
+                <div className="text">
+            <h4>{myCampground.name}</h4>
+            <p><i>Accessibile By: {myCampground.accessibility}</i></p>
             <>
-                <p>Edit Reservation</p>
-                    <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
+                    <Form>
+                    <div className="line-item">
                         <label>Arrival Date</label>
-                            <input type='date' name='start_date' value={start_date} onChange={handleChange} />
-
+                        <input type='date' name='start_date' value={start_date} onChange={handleChange} />
+                    </div>
+                    <div className="line-item">
                         <label>Check Out Date</label>
-                            <input type='date' name='end_date' value={end_date} onChange={handleChange} />
-
+                        <input type='date' name='end_date' value={end_date} onChange={handleChange} />
+                    </div>
+                    <div className="line-item">
                         <label>Cars</label>
-                            <input type='number' min={0} max={myRes.site.car_capacity} name='cars' value={cars} onChange={handleChange} />
-                            
+                        <input type='number' min={0} max={myRes.site.car_capacity} name='cars' value={cars} onChange={handleChange} />
+                    </div>
+                    <div className="line-item">
                         <label>Number of People</label>
-                            <input type='number' min={0} max={myRes.site.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
-
-                        <button type='submit'>Submit Edits</button>
-                    </form>
-                </>
-            </> : null }
-        </>
+                        <input type='number' min={0} max={myRes.site.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
+                    </div>
+                    <div className="buttons">
+                        <button className="submit" type='submit'>Submit Edits</button>
+                    </div>
+                    </Form>
+                </form>
+            </>
+            </div>
+        </div>
+        <div className="right-container">
+            <img src={myCampground.image_url}/>
+        </div>
+        </div> : null }
+    </ResCard>
     )
 }
 

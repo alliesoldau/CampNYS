@@ -13,6 +13,19 @@ const ResCard = styled.div`
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
         border-radius: 7px;
     }
+    .edit-card {
+        background-color: white;
+        color: ${GLOBAL.darkgrey};
+        margin: auto;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        width: 600px;
+        height: 350px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+        border-radius: 7px;
+        justify-content: space-between;
+    }
     .left-container {
         margin: 10px;
         width: 300px;
@@ -22,6 +35,11 @@ const ResCard = styled.div`
     }
     img {
         height: 100%;
+        border-radius: 0 5px 5px 0;
+        border-left: 2px solid ${GLOBAL.mediumgrey};
+    }
+    .edit-card img {
+        height: 350px;
         border-radius: 0 5px 5px 0;
         border-left: 2px solid ${GLOBAL.mediumgrey};
     }
@@ -80,6 +98,9 @@ const ResCard = styled.div`
     }
     button.delete {
         background-color: ${GLOBAL.darkgrey};
+    }
+    button.submit {
+        background-color: ${GLOBAL.teal};
     }
 
 
