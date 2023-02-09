@@ -28,8 +28,54 @@ const LoginSignup = styled.div`
     input:focus {
         outline: none;
     }
-    label{      
+    label {      
         margin-top: 10px;
+    }
+    .label {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+    i.gg-mail {
+        overflow: hidden;
+        transform: scale(var(--ggs,1.1));
+        position: relative;
+        width: 18px;
+        top: 5px;
+        border-radius: 2px;
+        margin-right: 10px;
+    }
+    i.gg-lock {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            transform: scale(var(--ggs,1));
+            width: 12px;
+            height: 11px;
+            border: 2px solid;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            border-bottom: transparent;
+            top: 11px;
+            margin-right: 10px;
+        }
+    i.gg-pen {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        transform: rotate(-45deg) scale(var(--ggs,1));
+        width: 14px;
+        height: 4px;
+        border-right: 2px solid transparent;
+        box-shadow:
+            0 0 0 2px,
+            inset -2px 0 0;
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+        top: 8px;
+        left: 3px;
+        margin-right: 10px;
     }
     .radio-container {
         display: flex;

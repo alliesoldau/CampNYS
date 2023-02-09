@@ -60,7 +60,12 @@ function Login() {
                         </div>
                     </label>
                     <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'} />
-                <label>Password</label>
+                    <label>
+                        <div className="label">
+                            <i class="gg-lock"></i>
+                            Password
+                        </div>
+                    </label>
                     <input type='password' name='password' value={password} onChange={handleChange} placeholder={'********'}/>
                 <button className="submit" type='submit'>Login</button>
             </form>

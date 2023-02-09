@@ -150,6 +150,12 @@ button.logout {
 button:hover {
     background-color: ${GLOBAL.orange};
 }
+i.gg-profile {
+    margin-right: 10px;
+}
+i.gg-calendar-today {
+    margin-right: 12px;
+}
 
 `
 

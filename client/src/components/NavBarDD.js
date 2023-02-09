@@ -39,11 +39,13 @@ function NavBarDD() {
         </img>
         { open ? (
             <div className="dropdown">
-                <div className="menu-item">
-                    <Link to={`/users/${user.id}/profile`} onClick={()=>setOpen(!open)}>
+                <Link to={`/users/${user.id}/profile`} onClick={()=>setOpen(!open)}>
+                    <div className="menu-item">
+                        <i class="gg-profile"></i>
                         Profile
-                    </Link>
-                </div>
+                    </div>
+                </Link>
+             
                 { user.host ? ( 
                         <li className="nav-link">
                             <div className="menu-item">
@@ -54,11 +56,12 @@ function NavBarDD() {
                         </li>
                         ) : ( 
                         <li className="nav-link">
-                            <div className="menu-item">
-                                <NavLink to={`/campers/${user.id}/reservations`}>
+                            <NavLink to={`/campers/${user.id}/reservations`}>
+                                <div className="menu-item">
+                                    <i class="gg-calendar-today"></i>
                                     My Reservations
-                                </NavLink>
-                            </div>
+                                </div>
+                            </NavLink>
                         </li>
                          )
                         }

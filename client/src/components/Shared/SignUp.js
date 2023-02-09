@@ -53,11 +53,26 @@ function SignUp() {
         <>
             <h3 className="signup">SignUp</h3>
             <form onSubmit={handleSubmit}>
-                <label>Email</label>
+                <label>
+                    <div className="label">
+                        <i class="gg-mail"></i>
+                        Email
+                    </div>
+                </label>
                 <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'}/>
-                <label>First Name</label>
+                <label>
+                    <div className="label">
+                            <i class="gg-pen"></i>
+                            First Name
+                    </div>
+                </label>
                 <input type='text' name='first_name' value={first_name} onChange={handleChange} placeholder={'Freddie'}/>
-                <label>Last Name</label>
+                <label>
+                    <div className="label">
+                        <i class="gg-pen"></i>
+                        Last Name
+                    </div>
+                </label>
                 <input type='text' name='last_name' value={last_name} onChange={handleChange} placeholder={'Frog'}/>
                 <label>Are you a host or a camper?</label>
                 <div className="radio-container" onChange={handleChange}>
@@ -81,7 +96,12 @@ function SignUp() {
                         </select>
                     </div> 
                 : null }
-                <label>Password</label>
+                <label>
+                    <div className="label">
+                        <i class="gg-lock"></i>
+                        Password
+                    </div>
+                </label>
                 <input type='password' name='password' value={password} onChange={handleChange} placeholder={'********'}/>
                 <button className="submit" type='submit'>SignUp</button>
             </form>
