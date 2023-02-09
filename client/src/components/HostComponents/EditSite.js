@@ -20,7 +20,7 @@ function EditSite() {
         category: thisSite.category
     })
 
-    const { id, car_capacity, capacity, category } = formData
+    const { car_capacity, capacity, category } = formData
 
     const handleChange = (e) => {
         const { name, value } = e.target

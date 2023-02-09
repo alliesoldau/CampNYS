@@ -41,9 +41,11 @@ function UserProfile() {
                                 </>
                                 : null }
                             </div>
-                            <Link to={`/users/${user.id}/profile/edit`}>
-                                <button>Edit Profile</button>
-                            </Link>
+                            <div className="buttons">
+                                <Link to={`/users/${user.id}/profile/edit`}>
+                                    <button>Edit Profile</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

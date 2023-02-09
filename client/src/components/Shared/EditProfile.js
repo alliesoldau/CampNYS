@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from "react-router-dom"
 import { UserContext } from '../Context/UserContext'
 import { EditProfileInfo } from '../Stores/Fetches'
+import Profile from '../../styles/Profile'
 
 function EditProfile() {
 
@@ -35,29 +36,43 @@ function EditProfile() {
     }
 
     return (
-        <>
-            <p>Edit Profile</p>
-            <p>{user.last_name}</p>
-                <h2>Edit Profile</h2>
-                <form onSubmit={handleSubmit}>
-                    <label>First Name</label>
-                        <input type='text' name='first_name' value={first_name} onChange={handleChange} />
-
-                    <label>Last Name</label>
-                        <input type='text' name='last_name' value={last_name} onChange={handleChange} />
-
-                    <label>Image URL</label>
-                        <input type='text' name='image_url' value={image_url} onChange={handleChange} />
-
-                    { user.host === true ? 
-                    <>
-                        <label>Affiliation</label>
-                            <input type='text' name='affiliation' value={affiliation} onChange={handleChange} />
-                    </> : null }
-
-                    <button type='submit'>Submit Edits</button>
-            </form>
-        </>
+        <Profile>
+        { user ? 
+        <div className="edit-profile">
+            <div className="edit-header">
+                <h1>Edit Profile</h1>
+            </div>
+                <div className="edit-pro-pic">
+                    <img src={user.image_url}/>
+                </div>
+                <div className="user-info-container">
+                    <form onSubmit={handleSubmit}>
+                        <div className="user-info">
+                            <div className="line-item">
+                                <label>First Name</label>
+                                <input type='text' name='first_name' value={first_name} onChange={handleChange} />
+                            </div>
+                            <div className="line-item">
+                                <label>Last Name</label>
+                                <input type='text' name='last_name' value={last_name} onChange={handleChange} />
+                            </div>
+                            <div className="line-item">
+                                <label>Image URL</label>
+                                <input type='text' name='image_url' value={image_url} onChange={handleChange} />
+                            </div>
+                            { user.host === true ? 
+                            <div className="line-item">
+                                <label>Affiliation</label>
+                                <input type='text' name='affiliation' value={affiliation} onChange={handleChange} />
+                            </div> : null }
+                            <div className="buttons">
+                                <button type='submit'>Submit Edits</button>
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div> : null }
+        </Profile>
     )
 }
 
