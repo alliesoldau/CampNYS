@@ -5,7 +5,7 @@ import { CamperReservationsContext } from '../../Context/CamperReservationsConte
 import { DeleteReservation } from '../../Stores/Fetches'
 import ResCard from '../../../styles/ResCard'
 
-function CamperResDetails({ res }) {
+function CamperResDetails({ res, color }) {
 
     const history = useHistory()
 
@@ -25,17 +25,17 @@ function CamperResDetails({ res }) {
     }
     
     return (
-        <ResCard>
+        <ResCard color={color}>
         { myCampground ? 
             <div className="card">
                 <div className="left-container">
                     <div className="text">
-                        <p>campground name: {myCampground.name}</p>
-                        <p>campground accessibility: {myCampground.accessibility}</p>
-                        <p>arrival date: {res.start_date}</p>
-                        <p>checkout date: {res.end_date}</p>
-                        <p>registered cars: {res.cars}</p>
-                        <p>registered campers: {res.number_of_people}</p>
+                        <h4>{myCampground.name}</h4>
+                        <p>Accessibile by: {myCampground.accessibility}</p>
+                        <p>Arrival: {res.start_date}</p>
+                        <p>Checkout: {res.end_date}</p>
+                        <p>Registered cars: {res.cars}</p>
+                        <p>Registered campers: {res.number_of_people}</p>
                     </div>
                     <div className="buttons">
                         <Link to={`/reservation/${res.id}/edit`}>
