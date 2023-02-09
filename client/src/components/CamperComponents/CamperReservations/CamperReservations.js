@@ -1,17 +1,11 @@
 import React, { useContext } from 'react'
 import CamperResDetails from './CamperResDetails'
-import { UserContext } from '../../Context/UserContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
+import Reservations from '../../../styles/Reservations'
 
 function CamperReservations() {
 
-    // TO DO: fix auto login issue to retain context thats lost on refresh 
-
     const { campRes } = useContext(CamperReservationsContext)
-    const { user } = useContext(UserContext)
-
-    // console.log(user)
-    // console.log(campRes)
 
     const reservations = campRes.map((res) => {
         return(
@@ -32,10 +26,14 @@ function CamperReservations() {
     }
 
     return (
-        <>
-            { reservationMessage }
-            { reservations }
-        </>
+        <Reservations>
+            <div className="header">
+                { reservationMessage }
+            </div>
+            <div className="reservation-card-container">
+                { reservations }
+            </div>
+        </Reservations>
     )
 }
 

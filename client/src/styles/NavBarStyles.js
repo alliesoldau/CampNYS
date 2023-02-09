@@ -58,7 +58,7 @@ img.proPic {
     border: 3px solid ${GLOBAL.teal};
     border-radius: 50%;
     overflow: hidden;
-    box-shadow: 0 0 2px 2px ${GLOBAL.cream};
+    box-shadow: 0 0 2px 2px ${GLOBAL.lightgrey};
     height: calc(${GLOBAL.navsize}*1);
 }
 img.logo {
