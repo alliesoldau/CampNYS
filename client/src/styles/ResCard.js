@@ -15,6 +15,9 @@ const ResCard = styled.div`
     .left-container {
         margin: 10px;
         width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
     img {
         height: 350px;
@@ -30,7 +33,7 @@ const ResCard = styled.div`
             : props.color === "purple" ? `${GLOBAL.purple}` 
             : "black"
             };
-        font-weight: bold;
+        font-weight: bolder;
         border-bottom: 2px groove ${props => 
             props.color === "teal" ? `${GLOBAL.teal}` 
             : props.color === "orange" ? `${GLOBAL.orange}` 
@@ -43,7 +46,38 @@ const ResCard = styled.div`
     }
     p {
         margin: 5px;
+        color: black;
+        font-size: 16px;
+        margin-bottom: 10px;
     }
+    span {
+        color: ${GLOBAL.darkgrey};
+    }
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    button {
+        color: white;
+        width: 120px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+    }
+    button.edit {
+        background-color: ${props => 
+            props.color === "teal" ? `${GLOBAL.teal}` 
+            : props.color === "orange" ? `${GLOBAL.orange}` 
+            : props.color === "red" ? `${GLOBAL.red}` 
+            : props.color === "purple" ? `${GLOBAL.purple}` 
+            : `${GLOBAL.lightgrey}`
+            };
+    }
+    button.delete {
+        background-color: ${GLOBAL.darkgrey};
+    }
+
 
 `
 

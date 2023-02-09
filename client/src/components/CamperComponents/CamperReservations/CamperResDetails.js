@@ -31,17 +31,17 @@ function CamperResDetails({ res, color }) {
                 <div className="left-container">
                     <div className="text">
                         <h4>{myCampground.name}</h4>
-                        <p>Accessible by: {myCampground.accessibility}</p>
-                        <p>Arrival: {res.start_date}</p>
-                        <p>Checkout: {res.end_date}</p>
-                        <p>Registered cars: {res.cars}</p>
-                        <p>Registered campers: {res.number_of_people}</p>
+                        <p>Accessible by: <span>{myCampground.accessibility}</span></p>
+                        <p>Arrival: <span>{res.start_date}</span></p>
+                        <p>Checkout: <span>{res.end_date}</span></p>
+                        <p>Registered cars: <span>{res.cars}</span></p>
+                        <p>Registered campers: <span>{res.number_of_people}</span></p>
                     </div>
                     <div className="buttons">
                         <Link to={`/reservation/${res.id}/edit`}>
-                            <button>Edit Reservation</button>
+                            <button className="edit">Edit</button>
                         </Link>
-                        <button onClick={handleDeleteReservation}>Delete Reservation</button>
+                        <button className="delete" onClick={handleDeleteReservation}>Delete</button>
                     </div>
                 </div>
                 <div className="right-container">

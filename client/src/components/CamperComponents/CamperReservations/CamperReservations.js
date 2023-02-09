@@ -27,11 +27,11 @@ function CamperReservations() {
 
     let reservationMessage = ''
     if (!campRes || campRes.length === 0){
-        reservationMessage = "You don't have any reservations"
+        reservationMessage = "You don't have any reservations..."
     } else if (campRes.length == 1) {
-        reservationMessage = "You have 1 reservation"
+        reservationMessage = "You have 1 reservation..."
     } else {
-        reservationMessage = `You have ${campRes.length} reservations`
+        reservationMessage = `You have ${campRes.length} reservations...`
     }
 
     return (
