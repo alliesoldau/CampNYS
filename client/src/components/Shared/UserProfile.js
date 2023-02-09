@@ -16,9 +16,11 @@ function UserProfile() {
                         <h1>{user.first_name} {user.last_name}</h1>
                         <p>{user.email}</p>
                     </div>
-                    <div className="pro-pic">
-                        <img src={user.image_url}/>
-                    </div>
+                    { user.host ? null : 
+                        <div className="pro-pic">
+                            <img src={user.image_url}/>
+                        </div>
+                    }
                     <div className="user-info-container">
                         <div className="user-info">
                             <div className="line-item">

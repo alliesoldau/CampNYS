@@ -6,7 +6,7 @@ const Profile = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 80vh;
+    height: auto;
     width: 40vw;
     align-items: center;
     margin: auto;
@@ -18,7 +18,7 @@ const Profile = styled.div`
 .edit-profile {
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    height: auto;
     width: 40vw;
     align-items: center;
     margin: auto;
@@ -119,6 +119,9 @@ button {
 }
 button:hover {
     font-weight: bold;
+}
+button.submit {
+    margin-top: 15px;
 }
 label, input {
     margin-top: 10px;

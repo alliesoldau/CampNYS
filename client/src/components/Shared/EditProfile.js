@@ -42,9 +42,11 @@ function EditProfile() {
             <div className="edit-header">
                 <h1>Edit Profile</h1>
             </div>
+                { user.host ? null : 
                 <div className="edit-pro-pic">
                     <img src={user.image_url}/>
                 </div>
+                }
                 <div className="user-info-container">
                     <form onSubmit={handleSubmit}>
                         <div className="user-info">
@@ -66,7 +68,7 @@ function EditProfile() {
                                 <input type='text' name='affiliation' value={affiliation} onChange={handleChange} />
                             </div> : null }
                             <div className="buttons">
-                                <button type='submit'>Submit Edits</button>
+                                <button className="submit" type='submit'>Submit Edits</button>
                             </div>
                         </div> 
                     </form>
