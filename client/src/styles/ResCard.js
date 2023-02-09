@@ -6,11 +6,12 @@ const ResCard = styled.div`
         background-color: white;
         color: ${GLOBAL.darkgrey};
         margin: 20px;
-        border: 2px solid ${GLOBAL.mediumgrey};
         display: flex;
         flex-direction: row;
         width: auto;
+        height: 350px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+        border-radius: 7px;
     }
     .left-container {
         margin: 10px;
@@ -20,7 +21,7 @@ const ResCard = styled.div`
         justify-content: space-between;
     }
     img {
-        height: 350px;
+        height: 100%;
         border-radius: 0 5px 5px 0;
         border-left: 2px solid ${GLOBAL.mediumgrey};
     }
@@ -41,7 +42,7 @@ const ResCard = styled.div`
             : props.color === "purple" ? `${GLOBAL.purple}` 
             : `${GLOBAL.lightgrey}`
             };
-        text-align: center;
+        text-align: flex-start;
         padding-bottom: 5px;
     }
     p {
@@ -64,6 +65,9 @@ const ResCard = styled.div`
         height: 40px;
         border-radius: 20px;
         border: none;
+    }
+    button:hover {
+        font-weight: bold;
     }
     button.edit {
         background-color: ${props => 
