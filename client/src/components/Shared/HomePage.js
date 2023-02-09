@@ -45,7 +45,6 @@ function HomePage() {
             </div>
         </div>
         : null }
-
         </HomePageStyles>
     )
 }
