@@ -156,6 +156,9 @@ i.gg-profile {
 i.gg-calendar-today {
     margin-right: 12px;
 }
+i.gg-database {
+    margin-right: 12px;
+}
 
 `
 

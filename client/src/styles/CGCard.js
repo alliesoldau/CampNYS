@@ -47,7 +47,7 @@ h3 {
     height: 100%;
 }
 button {
-    background-color: ${GLOBAL.darkgrey};
+    background-color: ${GLOBAL.mediumgrey};
     color: white;
     width: 200px;
     height: 40px;

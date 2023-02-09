@@ -17,7 +17,7 @@ function Campgrounds({ cg }) {
                 { cg ? 
                     <>
                     <div className="header">
-                        <h2>Campground Name: {cg.name} </h2>
+                        <h2>{cg.name} </h2>
                         <div className="buttons">
                             <button onClick={handleClick}>See Campground Details</button>
                         </div>

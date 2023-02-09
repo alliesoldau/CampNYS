@@ -48,11 +48,12 @@ function NavBarDD() {
              
                 { user.host ? ( 
                         <li className="nav-link">
-                            <div className="menu-item">
-                                <NavLink to={`/hosts/${user.id}/campgrounds`}>
+                            <NavLink to={`/hosts/${user.id}/campgrounds`}>
+                                <div className="menu-item">
+                                    <i class="gg-database"></i>
                                     My Campgrounds
-                                </NavLink>
-                            </div>
+                                </div>
+                            </NavLink>
                         </li>
                         ) : ( 
                         <li className="nav-link">

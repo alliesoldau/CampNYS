@@ -14,11 +14,11 @@ function HostCampgrounds() {
 
     return (
         <HostCampgroundStyles>
-            <div className="campground-conatiner">
+            <div className="campground-container">
             { user && user.campgrounds && user.campgrounds.length > 0 ? 
                 <>
-                    <p>Host Campgrounds</p>
-                    <button onClick={handleClick}>Add Campground</button>
+                    <h1>All Campgrounds</h1>
+                    <button className="add-campground" onClick={handleClick}>Add Campground</button>
                         {user.campgrounds.map((cg) => {
                         return(
                             <Campgrounds 
