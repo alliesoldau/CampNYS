@@ -52,6 +52,12 @@ h4 {
     margin: auto;
     margin-right: 30px;
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+}
+i.gg-search {
+    margin: auto;
+    margin-right: 10px;
 }
 img.proPic {
     background-color: white;
@@ -112,11 +118,19 @@ h1:hover {
 }
 button#login {
     color: ${GLOBAL.teal};
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.2rem;
     background-color: transparent;
     border: none;
 }
 button#signup {
     color: ${GLOBAL.red};
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: none;
     background-color: transparent;
     border: none;
 }
@@ -129,7 +143,7 @@ button.logout {
     width: 100px;
     border: none;
     border-radius: 20px;
-    color: ${GLOBAL.cream};
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }

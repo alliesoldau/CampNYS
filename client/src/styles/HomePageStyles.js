@@ -22,12 +22,16 @@ const HomePageStyles = styled.div`
         z-index: 1;
     }
     .right-container, .top-left, .bottom-left {
-        background-color: rgba(255, 255, 255, .4);  
-        backdrop-filter: blur(5px);       
+        background-color: white;     
         margin: 30px;
         width: 25vw;
         border-radius: 4px;
         padding: 10px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    p {
+        font-size: 16px;
+        margin: 15px;
     }
     .left-container {
         display: flex;
@@ -38,7 +42,7 @@ const HomePageStyles = styled.div`
     }
     .top-left h4{
         color: ${GLOBAL.red};
-        text-shadow: 1px 1px 3px ${GLOBAL.cream};
+        text-shadow: 1px 1px 3px ${GLOBAL.lightgrey};
     }
     .top-left p {
         font-style: italic;
@@ -53,13 +57,13 @@ const HomePageStyles = styled.div`
     }
 
     .bottom-left h4{
-        color: ${GLOBAL.cream};
-        text-shadow: 1px 1px 1px ${GLOBAL.purple};
+        color: ${GLOBAL.purple};
+        text-shadow: 1px 1px 1px ${GLOBAL.lightgrey};
     }
 
     .right-container h4{
         color: ${GLOBAL.teal};
-        text-shadow: 1px 1px 3px ${GLOBAL.cream};
+        text-shadow: 1px 1px 3px ${GLOBAL.lightgrey};
     }
 
     .logo-container {
@@ -69,7 +73,7 @@ const HomePageStyles = styled.div`
     }
 
     .logo-container img {
-        width: 28%;
+        width: 33%;
     }
 `
 

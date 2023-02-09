@@ -48,9 +48,9 @@ function NavBar({ setShowLogin, setShowSignUp}) {
             { user ? null :
             <ul className="navbarRight">
                     <h4>Please 
-                        <button id="login" className="LP" onClick={handleRevealLogin}><i>Login</i></button> 
+                        <button id="login" className="LP" onClick={handleRevealLogin}>Login</button> 
                             or 
-                        <button id="signup" className="LP" onClick={handleRevealSignUp}><i>Signup</i></button>
+                        <button id="signup" className="LP" onClick={handleRevealSignUp}>Signup</button>
                     </h4>
             </ul> }
                 {user ? (
@@ -58,11 +58,12 @@ function NavBar({ setShowLogin, setShowSignUp}) {
                         { user.host ? ( 
                             null
                         ) : ( 
+                        <NavLink to={`/search_campgrounds`}>
                             <div className="links">
-                                <NavLink to={`/search_campgrounds`}>
-                                    Search Campgrounds
-                                </NavLink>
+                                <i class="gg-search"/>
+                                Search Campgrounds
                             </div>
+                        </NavLink>
                          )
                         }
                         <li>

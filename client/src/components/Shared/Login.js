@@ -53,7 +53,12 @@ function Login() {
         <>
             <h3 className="login">Login</h3>
             <form onSubmit={handleSubmit}>
-                <label>Email</label>
+                    <label>
+                        <div className="label">
+                            <i class="gg-mail"></i>
+                            Email
+                        </div>
+                    </label>
                     <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'} />
                 <label>Password</label>
                     <input type='password' name='password' value={password} onChange={handleChange} placeholder={'********'}/>
