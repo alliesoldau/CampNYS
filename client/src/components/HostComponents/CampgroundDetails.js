@@ -3,6 +3,7 @@ import { useHistory, Link, useParams } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteCampground } from '../Stores/Fetches'
 import arrow from '../../images/back_arrow.png'
+import CGDetailsCard from '../../styles/CGDetailsCard'
 
 
 function CampgroundDetails() {
@@ -26,30 +27,42 @@ function CampgroundDetails() {
     }
 
     return (
-        <>
+        <CGDetailsCard>
         { campground ? 
         <>
-            <Link to={`/hosts/${campground.host_id}/campgrounds`}>
-                <img className="arrow" src={arrow}></img>
-            </Link>
-            <p>campground details</p>
-            <p>name: {campground.name}</p>
-            <p>openning date: {campground.openning_date}</p>
-            <p>closing date: {campground.closing_date}</p>
-            <p>accessibility: {campground.accessibility}</p>
-            <p>reservations: {campground.res_count}</p>
-            <p>sites: {campground.site_count}</p>
-            <img src={campground.image_url} style={{height: "100px"}}></img>
-            <Link to={`/campground/${campground.id}/edit`}>
-                <button>Edit Campground Details</button>
-            </Link>
-            <Link to={`/campground/${campground.id}/sites`}>
-                <button>View All Sites</button>
-            </Link>
-            <button onClick={handleDelete}>Delete Campground</button>
+            <div className="header">
+                <Link to={`/hosts/${campground.host_id}/campgrounds`}>
+                    <img className="arrow" src={arrow}></img>
+                </Link>
+                <h1>Campground Details</h1>
+            </div>
+            <div className="card">
+                <div className="left-container">
+                    <div className="text">
+                        <h4>{campground.name}</h4>
+                        <p>Openning Date: <span>{campground.openning_date}</span></p>
+                        <p>Closing Date: <span>{campground.closing_date}</span></p>
+                        <p>Accessible By: <span>{campground.accessibility}</span></p>
+                        <p>Reservations: <span>{campground.res_count}</span></p>
+                        <p>Sites: <span>{campground.site_count}</span></p>
+                    </div>
+                    <div classNam="buttons">
+                        <Link to={`/campground/${campground.id}/edit`}>
+                            <button className="edit">Edit Details</button>
+                        </Link>
+                        <Link to={`/campground/${campground.id}/sites`}>
+                            <button className="sites">View Sites</button>
+                        </Link>
+                        <button className="delete" onClick={handleDelete}>Delete</button>
+                    </div>
+                </div>
+                <div className="right-container">
+                    <img src={campground.image_url}></img>
+                </div>
+            </div>
             </>
             : null}
-        </>
+        </CGDetailsCard>
     )
 }
 
