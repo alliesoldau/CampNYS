@@ -54,6 +54,12 @@ position: relative;
     display: flex;
     flex-direction: row;
 }
+.autocomplete {
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .attraction p {
     margin-right: 5px;
 }
@@ -87,6 +93,10 @@ button.info-button {
 }
 img.info_image {
     height: 15px;
+    margin-top: 10px;
+}
+.image-container {
+    padding: auto;
 }
 #DivForHoverItem {
     height: 30px;

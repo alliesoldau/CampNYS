@@ -88,7 +88,9 @@ function Map() {
                         <div classname="info">
                                 <div id="DivForHoverItem">
                                     <p>Origin:</p>
-                                    <img className="info_image"src={info}/>
+                                    <div className="image-container">
+                                        <img className="info_image"src={info}/>
+                                    </div>
                                     <div id="HiddenText"><p>Select a pin from the map to set origin</p></div>
                                     <p>{origin.name}</p>
                                 </div>
@@ -96,7 +98,9 @@ function Map() {
                         <div className="attraction">
                             <p>Attraction:</p>
                                 <Autocomplete>
-                                    <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                                    <div className="autocomplete">
+                                        <input type='text' placeholder='Attractions eg: trailhead' ref={destiantionRef}/>
+                                    </div>
                                 </Autocomplete>
                         </div>
                     </div>
