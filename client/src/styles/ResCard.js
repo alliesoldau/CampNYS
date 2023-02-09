@@ -13,8 +13,7 @@ const ResCard = styled.div`
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     }
     .left-container {
-        margin: auto;
-        margin-left: 10px;
+        margin: 10px;
         width: 300px;
     }
     img {
@@ -32,6 +31,15 @@ const ResCard = styled.div`
             : "black"
             };
         font-weight: bold;
+        border-bottom: 2px groove ${props => 
+            props.color === "teal" ? `${GLOBAL.teal}` 
+            : props.color === "orange" ? `${GLOBAL.orange}` 
+            : props.color === "red" ? `${GLOBAL.red}` 
+            : props.color === "purple" ? `${GLOBAL.purple}` 
+            : `${GLOBAL.lightgrey}`
+            };
+        text-align: center;
+        padding-bottom: 5px;
     }
     p {
         margin: 5px;

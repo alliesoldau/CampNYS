@@ -31,7 +31,7 @@ function CamperResDetails({ res, color }) {
                 <div className="left-container">
                     <div className="text">
                         <h4>{myCampground.name}</h4>
-                        <p>Accessibile by: {myCampground.accessibility}</p>
+                        <p>Accessible by: {myCampground.accessibility}</p>
                         <p>Arrival: {res.start_date}</p>
                         <p>Checkout: {res.end_date}</p>
                         <p>Registered cars: {res.cars}</p>
