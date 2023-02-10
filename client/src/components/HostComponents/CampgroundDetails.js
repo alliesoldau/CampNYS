@@ -33,7 +33,7 @@ function CampgroundDetails() {
                 <Link to={`/hosts/${campground.host_id}/campgrounds`}>
                     <img className="arrow" src={arrow}></img>
                 </Link>
-                <h1>Campground Details</h1>
+                <h1>Back to All Campgrounds</h1>
             </div>
             <div className="card">
                 <div className="left-container">

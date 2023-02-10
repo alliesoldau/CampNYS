@@ -8,7 +8,7 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 400px;
     margin: auto;
-    height: 200px;
+    height: auto;
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -17,7 +17,6 @@ const SiteCard = styled.div`
     display: flex;
     flex-direction: column;
     text-shadow: 0px 0px 2px black;
-
 }
 h2 {
     color: white;
@@ -31,16 +30,21 @@ h3 {
 .buttons {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     height: 100%;
 }
 button {
-    background-color: ${GLOBAL.orange};
     color: white;
-    width: 200px;
+    width: 150px;
     height: 40px;
     border-radius: 20px;
     border: none;
+}
+button.edit {
+    background-color: ${GLOBAL.orange};
+}
+button.delete {
+    background-color: ${GLOBAL.red};
 }
 button:hover {
     font-weight: bold;

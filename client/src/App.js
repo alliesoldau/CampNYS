@@ -14,7 +14,6 @@ import CampgroundDetails from './components/HostComponents/CampgroundDetails'
 import EditCampground from './components/HostComponents/EditCampground'
 import AddCampground from './components/HostComponents/AddCampground'
 import SitesSummary from './components/HostComponents/SitesSummary'
-import SiteDetails from './components/HostComponents/SiteDetails'
 import EditSite from './components/HostComponents/EditSite'
 import AddSite from './components/HostComponents/AddSite'
 import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from './components/Stores/Fetches'
@@ -126,10 +125,6 @@ function App() {
                     
                     <Route exact path='/campgrounds/:CGID/site/:siteID/edit'>
                         <EditSite />
-                    </Route>
-
-                    <Route exact path='/campgrounds/:CGID/site/:siteID'>
-                        <SiteDetails />
                     </Route>
 
                     <Route exact path='/campground/:id/add_sites'>
