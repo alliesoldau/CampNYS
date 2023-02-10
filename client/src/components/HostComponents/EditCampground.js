@@ -1,7 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { useHistory, useParams } from "react-router-dom"
+import { useHistory, useParams, Link } from "react-router-dom"
 import { UserContext } from '../Context/UserContext'
 import { EditCampgroundInfo } from '../Stores/Fetches'
+import CGDetailsCard from '../../styles/CGDetailsCard'
+import arrow from '../../images/back_arrow.png'
+import Form from '../../styles/Form'
 
 function EditCampground() {
 
@@ -23,7 +26,7 @@ function EditCampground() {
         image_url: campground.image_url
     })
 
-    const {id, name, openning_date, closing_date, accessibility, image_url} = formData
+    const {name, openning_date, closing_date, accessibility, image_url} = formData
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -36,35 +39,58 @@ function EditCampground() {
             const updatedCampgrounds = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
             const updatedUser = {...user, campgrounds: updatedCampgrounds}
             setUser(updatedUser)
-
         })
         history.push(`/host/campground/${campground.id}`)
     }
 
     return (
-        <>
+        <CGDetailsCard>
         { user ? <>
-            <p>Edit Campground</p>
-                <form onSubmit={handleSubmit}>
-                    <label>Name</label>
-                        <input type='text' name='name' value={name} onChange={handleChange} />
-
-                    <label>Opening Date</label>
-                        <input type='text' name='openning_date' value={openning_date} onChange={handleChange} />
-
-                    <label>Closing Date</label>
-                        <input type='text' name='closing_date' value={closing_date} onChange={handleChange} />
-
-                    <label>Accessibility</label>
-                        <input type='text' name='accessibility' value={accessibility} onChange={handleChange} />
-                        
-                    <label>Image URL</label>
-                        <input type='text' name='image_url' value={image_url} onChange={handleChange} />
-
-                    <button type='submit'>Submit Edits</button>
-            </form>
+            <div className="header">
+                <Link to={`/hosts/${campground.host_id}/campgrounds`}>
+                    <img className="arrow" src={arrow}></img>
+                </Link>
+                <h1>Edit Campground</h1>
+            </div>
+            <div className="card">
+                <div className="left-container">
+                    <div className="text">
+                        <h4>{campground.name}</h4>
+                        <form onSubmit={handleSubmit}>
+                            <Form>
+                                <div className="line-item">
+                                        <label>Name</label>
+                                        <input type='text' name='name' value={name} onChange={handleChange} />
+                                </div>
+                                <div className="line-item">
+                                        <label>Opening Date</label>
+                                        <input type='text' name='openning_date' value={openning_date} onChange={handleChange} />
+                                </div>
+                                <div className="line-item">
+                                    <label>Closing Date</label>
+                                    <input type='text' name='closing_date' value={closing_date} onChange={handleChange} />
+                                </div>
+                                <div className="line-item">
+                                    <label>Accessibility</label>
+                                    <input type='text' name='accessibility' value={accessibility} onChange={handleChange} />
+                                </div>
+                                <div className="line-item">
+                                    <label>Image URL</label>
+                                    <input type='text' name='image_url' value={image_url} onChange={handleChange} />
+                                </div>
+                            <div className="buttons">
+                                <button className="submit" type='submit'>Submit Edits</button>
+                            </div>
+                            </Form>
+                        </form>
+                    </div>
+                </div>
+                <div className="right-container">
+                        <img src={campground.image_url}></img>
+                    </div>
+            </div>
             </> : null }
-        </>
+        </CGDetailsCard>
     )
 }
 

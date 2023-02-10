@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
+import SiteCard from '../../styles/SiteCard'
 
 function Sites({ site }) {
 
@@ -17,11 +18,17 @@ function Sites({ site }) {
     }
 
     return (
-        <>
-            <p>campground: {campground.name}</p>
-            <p>site name: {thisSite.name} </p>
-            <button onClick={handleClick}>See Site Details</button>
-        </>
+        <SiteCard>
+            <div className="card">
+                <div className="text">
+                    <h2>Campground: {campground.name}</h2>
+                    <h3>Site name: {thisSite.name} </h3>
+                </div>
+                <div className="buttons">
+                    <button onClick={handleClick}>See Site Details</button>
+                </div>
+            </div>
+        </SiteCard>
     )
 }
 

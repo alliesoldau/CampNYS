@@ -5,7 +5,6 @@ import { DeleteCampground } from '../Stores/Fetches'
 import arrow from '../../images/back_arrow.png'
 import CGDetailsCard from '../../styles/CGDetailsCard'
 
-
 function CampgroundDetails() {
 
     const { user, setUser } = useContext(UserContext)
@@ -46,7 +45,7 @@ function CampgroundDetails() {
                         <p>Reservations: <span>{campground.res_count}</span></p>
                         <p>Sites: <span>{campground.site_count}</span></p>
                     </div>
-                    <div classNam="buttons">
+                    <div className="buttons">
                         <Link to={`/campground/${campground.id}/edit`}>
                             <button className="edit">Edit Details</button>
                         </Link>

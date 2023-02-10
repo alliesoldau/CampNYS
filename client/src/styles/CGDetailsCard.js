@@ -17,10 +17,11 @@ const CGDetailsCard = styled.div`
     .card {
         background-color: white;
         color: ${GLOBAL.darkgrey};
-        margin: 20px;
+        margin: auto;
+        margin-top: 20px;
         display: flex;
         flex-direction: row;
-        width: 700px;
+        width: 600px;
         height: 350px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
         border-radius: 7px;
@@ -37,7 +38,7 @@ const CGDetailsCard = styled.div`
         heiht: 100%;
     }
     .card img {
-        width: 350px;
+        width: auto;
         height: 100%;
         border-radius: 0 5px 5px 0;
         border-left: 2px solid ${GLOBAL.mediumgrey};
@@ -67,7 +68,7 @@ const CGDetailsCard = styled.div`
     button {
         color: white;
         width: 100px;
-        height: 40px;
+        height: 30px;
         border-radius: 20px;
         border: none;
         margin: 2px;
@@ -83,6 +84,11 @@ const CGDetailsCard = styled.div`
     }
     button.sites {
         background-color: ${GLOBAL.teal};
+    }
+    button.submit {
+        background-color: ${GLOBAL.purple};
+        margin-top: 15px;
+        width: 125px;
     }
 
 

@@ -38,7 +38,7 @@ p {
     text-align: center;
 }
 h3 {
-    color: ${GLOBAL.purple};
+    color: ${GLOBAL.darkgrey};
 }
 .buttons {
     display: flex;

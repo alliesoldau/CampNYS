@@ -36,7 +36,7 @@ function Campgrounds({ cg }) {
                                 label={(data) => data.dataEntry.title}
                                 labelPosition={65}
                                 labelStyle={{
-                                    fontSize: ".5em",
+                                    fontSize: ".35em",
                                     fill: "white"
                                 }}
                                 animationEasing="ease-out"  
@@ -55,7 +55,7 @@ function Campgrounds({ cg }) {
                                 label={(data) => data.dataEntry.title}
                                 labelPosition={65}
                                 labelStyle={{
-                                    fontSize: ".5em",
+                                    fontSize: ".35em",
                                     fill: "white"
                                 }}
                                 animationEasing="ease-out"  

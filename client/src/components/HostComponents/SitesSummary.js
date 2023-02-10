@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import Sites from './Sites'
 import { UserContext } from '../Context/UserContext'
 import arrow from '../../images/back_arrow.png'
+import ArrowHeader from '../../styles/ArrowHeader'
+import Grid from '../../styles/Grid'
 
 function SitesSummary() {
     
@@ -17,15 +19,23 @@ function SitesSummary() {
     return (
         <>
         { user ? <>
-            <p>Sites Summary</p>
-            <Link to={`/host/campground/${campground.id}`}>
-                <img className="arrow" src={arrow}></img>
-            </Link>
-            <Link to={`/campground/${campground.id}/add_sites`}>
-                <button>Add Sites</button>
-            </Link>
+        <ArrowHeader>
+            <div className="header">
+                <div className="top">
+                    <Link to={`/host/campground/${campground.id}`}>
+                        <img className="arrow" src={arrow}></img>
+                    </Link>
+                    <h1>Back to Campground Details</h1>
+                </div>
+                <div className="bottom">
+                <Link to={`/campground/${campground.id}/add_sites`}>
+                    <button>Add Sites</button>
+                </Link>
+                </div>
+            </div>
+            </ArrowHeader>
             { campground.sites && campground.sites.length > 0 ? 
-                <>
+                <Grid>
                 {campground.sites.map((site) => {
                 return(
                     <Sites 
@@ -34,7 +44,7 @@ function SitesSummary() {
                     />
                     )
                 })}
-                </> : null }
+                </Grid> : null }
             </> : null }
         </>
     )
