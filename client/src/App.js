@@ -16,16 +16,11 @@ import AddCampground from './components/HostComponents/AddCampground'
 import SitesSummary from './components/HostComponents/SitesSummary'
 import EditSite from './components/HostComponents/EditSite'
 import AddSite from './components/HostComponents/AddSite'
-import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from './components/Stores/Fetches'
+import { AutoLogin, GrabAllCampgrounds, GrabCamperReservations} from './components/Stores/Fetches'
 import { UserContext } from './components/Context/UserContext'
 import { CampgroundContext } from './components/Context/CampgroundContext'
 import { CamperReservationsContext } from './components/Context/CamperReservationsContext'
-import { ReservationDetailsProvider } from './components/Context/ReservationDetailsContext'
-import { CampgroundDetailsProvider } from './components/Context/CampgroundDetailsContext'
 
-import { SiteProvider } from './components/Context/SiteContext'
-
-// BIG TO DO: only do one fetch and nest data in the user so i dont need mutliple fetches 
 // BIG TO DO: think of an easier way to import all components from one place so its not a shit show here 
 
 function App() {
@@ -51,7 +46,6 @@ function App() {
 
   function UserTypeDependentFxn(user) {
     if (user.host===false) {
-        // console.log('camper')
         GrabCamperReservations(user.id).then((d) => {
             setCampRes(d)
         })
@@ -85,7 +79,7 @@ function App() {
               </Route>
 
               { user && !user.host ? 
-              <ReservationDetailsProvider>
+              <>
 
                 <Route exact path='/campers/:id/reservations'>
                   <CamperReservations />
@@ -98,11 +92,9 @@ function App() {
                 <Route path='/add_reservation/:id'>
                   <MakeRes />
                 </Route>
-
-              </ReservationDetailsProvider>
+                </>
               :  
-                <CampgroundDetailsProvider>
-                  <SiteProvider>
+                  <>
                     <Route exact path='/hosts/:id/campgrounds'>
                         <HostCampgrounds/>
                     </Route>
@@ -130,8 +122,7 @@ function App() {
                     <Route exact path='/campground/:id/add_sites'>
                         <AddSite />
                     </Route>
-                  </SiteProvider>
-                </CampgroundDetailsProvider>
+                  </>
               }
             </Switch>
           </div>

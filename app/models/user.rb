@@ -53,9 +53,4 @@ class User < ApplicationRecord
         }
 
     end
-
-
-    # TO DO: do later if need be 
-    # def get_reservation_data
-    # end
 end
