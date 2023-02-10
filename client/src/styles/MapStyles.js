@@ -88,8 +88,12 @@ button.clear {
 }
 button.info-button {
     background-color: ${GLOBAL.lightgrey};
-    border-radius: 3px;
-    border: 1px solid;
+    color: ${GLOBAL.blackgrey};
+    border-radius: 10px;
+    border: none;
+    margin-right: 2px;
+    margin-left: 2px;
+    margin-top: 5px;
 }
 img.info_image {
     height: 15px;

@@ -2,13 +2,6 @@ import styled from "styled-components";
 import { GLOBAL } from './GlobalVar';
 
 const CGDetailsCard = styled.div`
-    .header {
-        display: flex;
-        flex-direction: row;
-    }
-    .arrow {
-        margin: 12px;
-    }
     h1 {
         color: ${GLOBAL.darkgrey};
         font-size: 1.5rem;

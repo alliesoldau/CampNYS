@@ -35,7 +35,7 @@ function EditSite() {
             const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id? updatedCGSites : cg)
             const updatedUser = {...user, campgrounds: updatedCG}
             setUser(updatedUser)
-            history.push(`/campgrounds/${campground.id}/site/${thisSite.id}`)
+            history.push(`/campground/${campground.id}/sites`)
         })
     }
 

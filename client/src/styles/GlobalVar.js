@@ -8,6 +8,7 @@ export const GLOBAL = {
     'lightgrey': '#E6EEF7',
     'mediumgrey': '#ABB0B8',
     'darkgrey': '#6F7378',
+    'blackgrey': '#5A5A5A',
     'navsize': '70px'
 }
 

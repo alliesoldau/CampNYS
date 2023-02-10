@@ -33,7 +33,7 @@ function SitesSummary() {
                 </Link>
                 </div>
             </div>
-            </ArrowHeader>
+        </ArrowHeader>
             { campground.sites && campground.sites.length > 0 ? 
                 <Grid>
                 {campground.sites.map((site) => {

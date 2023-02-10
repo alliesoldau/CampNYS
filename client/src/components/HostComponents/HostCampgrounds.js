@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import Campgrounds from './Campgrounds'
-import HostCampgroundStyles from '../../styles/HostCampgroundStyles'
+import ArrowHeader from '../../styles/ArrowHeader'
+import Grid from '../../styles/Grid'
 
 function HostCampgrounds() {
     const { user } = useContext(UserContext)
@@ -13,12 +14,14 @@ function HostCampgrounds() {
     }
 
     return (
-        <HostCampgroundStyles>
-            <div className="campground-container">
+            <>
             { user && user.campgrounds && user.campgrounds.length > 0 ? 
                 <>
+                <ArrowHeader>
                     <h1>All Campgrounds</h1>
                     <button className="add-campground" onClick={handleClick}>Add Campground</button>
+                </ArrowHeader>
+                <Grid>
                         {user.campgrounds.map((cg) => {
                         return(
                             <Campgrounds 
@@ -27,10 +30,10 @@ function HostCampgrounds() {
                             />
                         )
                     })}
+                </Grid>
                 </>
             : <p>You have no campgrounds</p> }
-        </div>
-    </HostCampgroundStyles>
+        </>
     )
 }
 

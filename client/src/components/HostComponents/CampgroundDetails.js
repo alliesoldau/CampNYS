@@ -3,6 +3,7 @@ import { useHistory, Link, useParams } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteCampground } from '../Stores/Fetches'
 import arrow from '../../images/back_arrow.png'
+import ArrowHeader from '../../styles/ArrowHeader'
 import CGDetailsCard from '../../styles/CGDetailsCard'
 
 function CampgroundDetails() {
@@ -29,12 +30,14 @@ function CampgroundDetails() {
         <CGDetailsCard>
         { campground ? 
         <>
-            <div className="header">
-                <Link to={`/hosts/${campground.host_id}/campgrounds`}>
-                    <img className="arrow" src={arrow}></img>
-                </Link>
-                <h1>Back to All Campgrounds</h1>
-            </div>
+            <ArrowHeader>
+                <div className="top">
+                    <Link to={`/hosts/${campground.host_id}/campgrounds`}>
+                        <img className="arrow" src={arrow}></img>
+                    </Link>
+                    <h1>Back to All Campgrounds</h1>
+                </div>
+            </ArrowHeader>
             <div className="card">
                 <div className="left-container">
                     <div className="text">

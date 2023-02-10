@@ -5,6 +5,7 @@ import { EditCampgroundInfo } from '../Stores/Fetches'
 import CGDetailsCard from '../../styles/CGDetailsCard'
 import arrow from '../../images/back_arrow.png'
 import Form from '../../styles/Form'
+import ArrowHeader from '../../styles/ArrowHeader'
 
 function EditCampground() {
 
@@ -46,12 +47,14 @@ function EditCampground() {
     return (
         <CGDetailsCard>
         { user ? <>
-            <div className="header">
-                <Link to={`/hosts/${campground.host_id}/campgrounds`}>
-                    <img className="arrow" src={arrow}></img>
-                </Link>
-                <h1>Edit Campground</h1>
-            </div>
+            <ArrowHeader>
+                <div className="top">
+                    <Link to={`/hosts/${campground.host_id}/campgrounds`}>
+                        <img className="arrow" src={arrow}></img>
+                    </Link>
+                    <h1>Edit Campground</h1>
+                </div>
+            </ArrowHeader>
             <div className="card">
                 <div className="left-container">
                     <div className="text">
