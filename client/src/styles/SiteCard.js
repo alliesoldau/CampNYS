@@ -13,8 +13,11 @@ const SiteCard = styled.div`
     margin-bottom: 15px;
     margin-top: 15px;
     background: url(${site}) no-repeat center;
+    background-size: cover;
     display: flex;
     flex-direction: column;
+    text-shadow: 0px 0px 2px black;
+
 }
 h2 {
     color: white;
