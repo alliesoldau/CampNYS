@@ -2,47 +2,69 @@ import React from 'react'
 import BarChart from 'react-easy-bar-chart';
 
 
-function CGBarChart({ flattenedResArray }) {
+function CGBarChart({ flattenedAllResDates }) {
+
+  let sun = 0
+  let mon = 0
+  let tues = 0
+  let wed = 0
+  let thurs = 0
+  let fri = 0
+  let sat = 0
+  
+  flattenedAllResDates.forEach((date) => {
+    if (new Date(date).getDay() === 0) {
+      sun = sun + 1
+    } else if (new Date(date).getDay() === 1) {
+      mon = mon + 1
+    } else if (new Date(date).getDay() === 2) {
+      tues = tues + 1
+    } else if (new Date(date).getDay() === 3) {
+      wed = wed + 1
+    } else if (new Date(date).getDay() === 4) {
+      thurs = thurs + 1
+    } else if (new Date(date).getDay() === 5) {
+      fri = fri + 1
+    } else if (new Date(date).getDay() === 6) {
+      sat = sat + 1
+    }
+  })  
+
     const data = [
         {
-          title:  "Maths",
-          value: 10,
+          title:  "Sunday",
+          value: sun,
           color: "#196f3d",
         },
         {
-          title:  "English",
-          value: 14,
+          title:  "Monday",
+          value: mon,
           color: "#a93226",
         },
         {
-          title:  "Physics",
-          value: 2,
+          title:  "Tuesday",
+          value: tues,
           color: " #1f618d",
         },
         {
-          title:  "Chemistry",
-          value: 20,
+          title:  "Wednesday",
+          value: wed,
           color: "#839192",
         },
         {
-          title:  "Psychology",
-          value: 15,
+          title:  "Thursday",
+          value: thurs,
           color: "#d35400",
         },
         {
-          title:  "Biology",
-          value: 12,
+          title:  "Friday",
+          value: fri,
           color: " #a9cce3",
         },
         {
-          title:  "Economics",
-          value: 5,
+          title:  "Saturday",
+          value: sat,
           color: "#2e4053",
-        },
-        {
-          title:  "Social Science",
-          value: 6,
-          color: "#186a3b",
         },
         ];
 

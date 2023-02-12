@@ -182,7 +182,7 @@ function Campgrounds({ cg }) {
                                 animationEasing="ease-out"  
                             /> 
                         </div>
-                        <CGBarChart flattenedResArray={flattenedResArray}/>
+                        <CGBarChart flattenedAllResDates={flattenedAllResDates}/>
                     </div> : <h3>This campground doesn't have any campsites yet.</h3>}
                     </>
                 : null }
