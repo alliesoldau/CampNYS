@@ -4,10 +4,19 @@ affiliation = ['NYS Parks & Rec', 'ADK Mountain Club', 'Independent']
 region = ['High Peaks Region', 'Lake George', 'North Daks', 'Catskills']
 accessibility = ['Hike in', 'Road', 'Boat']
 category = ['Tent', 'Lean-to', 'Cabin', 'Elevated surface']
+campground_image_urls = ['https://images.unsplash.com/photo-1624923686627-514dd5e57bae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
+'https://images.unsplash.com/photo-1537905569824-f89f14cceb68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2802&q=80',
+'https://images.unsplash.com/photo-1571687949921-1306bfb24b72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+'https://images.unsplash.com/photo-1599753642061-84495820669f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+'https://images.unsplash.com/photo-1571983890292-5d10b2f19d86?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
+'https://images.unsplash.com/photo-1626077414855-6dfb9286c109?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
+'https://images.unsplash.com/photo-1628087236671-6730a5b9d79a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
+'https://images.unsplash.com/photo-1613487700156-bbde37f69132?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=716&q=80'
+]
 
 puts "😁 Seeding user data..."
-User.create(email: "user", host: false, password: "1234", first_name: "User", last_name: "Soldau", image_url: Faker::Avatar.image)
-User.create(email: "host", host: true, password: "1234", first_name: "Host", last_name: "Soldau", affiliation: affiliation.sample, image_url: Faker::Avatar.image)
+User.create(email: "user", host: false, password: "1234", first_name: "User", last_name: "Soldau", image_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80')
+User.create(email: "host", host: true, password: "1234", first_name: "Host", last_name: "Soldau", affiliation: affiliation.sample, image_url: 'https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80')
 
 # 8.times do
 #     User.create(
@@ -63,7 +72,7 @@ Campground.create(
     region_id: 4,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[0]
 )
 Campground.create(
     name: "Fish Creek",
@@ -75,7 +84,7 @@ Campground.create(
     region_id: 3,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[1]
 )
 Campground.create(
     name: "Lake George Schroon Valley",
@@ -87,7 +96,7 @@ Campground.create(
     region_id: 2,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[2]
 )
 Campground.create(
     name: "Meadowbrook",
@@ -99,7 +108,7 @@ Campground.create(
     region_id: 1,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[3]
 )
 Campground.create(
     name: "ADK Loj",
@@ -111,7 +120,7 @@ Campground.create(
     region_id: 1,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[4]
 )
 Campground.create(
     name: "Max V. Shaul State Park",
@@ -123,7 +132,7 @@ Campground.create(
     region_id: 4,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[5]
 )
 Campground.create(
     name: "Lake George / Saratoga KOA Journey",
@@ -135,7 +144,7 @@ Campground.create(
     region_id: 2,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[6]
 )
 Campground.create(
     name: "Lincoln Pond Campground",
@@ -147,7 +156,7 @@ Campground.create(
     region_id: 3,
     # host_id: User.where(host: true).sample.id,
     host_id: 2,
-    image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
+    image_url: campground_image_urls[7]
 )
 
 puts "⛺ Seeding site data..."
@@ -259,7 +268,7 @@ end
 
 40.times do |count|
     site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 8, to: Date.today + 11)
+    startDate = Faker::Date.between(from: Date.today + 7, to: Date.today + 9)
     Reservation.create(
         number_of_people: rand(1..10),
         start_date: startDate,
@@ -276,24 +285,7 @@ end
 
 40.times do |count|
     site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 16, to: Date.today + 18)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 5),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
-
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 26, to: Date.today + 29)
+    startDate = Faker::Date.between(from: Date.today + 14, to: Date.today + 15)
     Reservation.create(
         number_of_people: rand(1..10),
         start_date: startDate,
@@ -310,11 +302,11 @@ end
 
 40.times do |count|
     site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 35, to: Date.today + 38)
+    startDate = Faker::Date.between(from: Date.today + 20, to: Date.today + 22)
     Reservation.create(
         number_of_people: rand(1..10),
         start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 5),
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
         site_id: site.id,
         cars: rand(0..site.car_capacity),
@@ -327,11 +319,62 @@ end
 
 40.times do |count|
     site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 45, to: Date.today + 48)
+    startDate = Faker::Date.between(from: Date.today + 27, to: Date.today + 30)
     Reservation.create(
         number_of_people: rand(1..10),
         start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 5),
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
+        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+        site_id: site.id,
+        cars: rand(0..site.car_capacity),
+        camper_id: 1,
+        # camper_id: User.where(host: false).sample.id,
+        # host_id: User.where(host: true).sample.id,
+        host_id: 2
+    )
+end
+
+40.times do |count|
+    site = Site.all.sample
+    startDate = Faker::Date.between(from: Date.today + 34, to: Date.today + 35)
+    Reservation.create(
+        number_of_people: rand(1..10),
+        start_date: startDate,
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
+        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+        site_id: site.id,
+        cars: rand(0..site.car_capacity),
+        camper_id: 1,
+        # camper_id: User.where(host: false).sample.id,
+        # host_id: User.where(host: true).sample.id,
+        host_id: 2
+    )
+end
+
+40.times do |count|
+    site = Site.all.sample
+    startDate = Faker::Date.between(from: Date.today + 39, to: Date.today + 42)
+    Reservation.create(
+        number_of_people: rand(1..10),
+        start_date: startDate,
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
+        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+        site_id: site.id,
+        cars: rand(0..site.car_capacity),
+        camper_id: 1,
+        # camper_id: User.where(host: false).sample.id,
+        # host_id: User.where(host: true).sample.id,
+        host_id: 2
+    )
+end
+
+40.times do |count|
+    site = Site.all.sample
+    startDate = Faker::Date.between(from: Date.today + 47, to: Date.today + 50)
+    Reservation.create(
+        number_of_people: rand(1..10),
+        start_date: startDate,
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
         site_id: site.id,
         cars: rand(0..site.car_capacity),
