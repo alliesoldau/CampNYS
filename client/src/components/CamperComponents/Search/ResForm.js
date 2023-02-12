@@ -59,56 +59,60 @@ function ResForm({ selectedSite, campground }) {
         })
     }
 
-    console.log(selectedSite.reservations)
+    // console.log(selectedSite.reservations)
 
-    // filter out days that are already booked 
-    const sDates = selectedSite.reservations.map((site => site.start_date))
-    
-    const [excludeDates, setExcludeDates] = useState([])
-
-    // function getDates(startDate, stopDate) {
-    //     let dateArray = [];
-    //     let currentDate = startDate;
-    //     while (currentDate <= stopDate) {
-    //         dateArray.push(new Date(currentDate));
-    //         const dateNow = new Date(currentDate)
-    //         const dateThen = new Date(new Date().setDate(dateNow.getDate() + 1))
-    //         console.log(dateNow)
-    //         console.log(dateThen)
-    //         currentDate = dateThen;
-    //     }
-    //     return dateArray;
-    // }
-
-    // useEffect(() => {
-    // const holdDates = selectedSite.reservations.map((site) => {
-    //     const betweenDates = getDates(site.start_date, site.end_date)
-    //     console.log(betweenDates)
-    //     return betweenDates
-    //     })
-    // const flattenDates = holdDates.flat()
-    // setExcludeDates(flattenDates)
-    // },[])
-
-    // console.log(excludeDates)
-
-    const exclude = sDates.map((date) => {
+    // filter out days that are already booked     
+    const exclude = selectedSite.reservations.map((site) => {
+        // start date 
         let month
-        const day = (new Date(date).getDate()) + 1
-        const tempMonth = (new Date(date).getMonth()) + 1
+        const day = (new Date(site.start_date).getDate()) + 1
+        const tempMonth = (new Date(site.start_date).getMonth()) + 1
         if (tempMonth === 12) {
             month = 1
         } else {
             month = tempMonth
         }
-        const year = (new Date(date).getFullYear())
+        const year = (new Date(site.start_date).getFullYear())
         const dateFormatted = `${year}-${month}-${day}`
-        // how to get a date a certain amount of days in the future 
-        // const test = new Date(dateFormatted)
-        // const testAdd = new Date(new Date().setDate(test.getDate() + 30))
-        // console.log(testAdd)
-        return (new Date(dateFormatted))
+
+        // end month 
+        let monthEnd
+        const dayEnd = (new Date(site.end_date).getDate()) + 1
+        const tempMonthEnd = (new Date(site.end_date).getMonth()) + 1
+        if (tempMonthEnd === 12) {
+            monthEnd = 1
+        } else {
+            monthEnd = tempMonthEnd
+        }
+        const yearEnd = (new Date(site.end_date).getFullYear())
+        const dateFormattedEnd = `${yearEnd}-${monthEnd}-${dayEnd}`
+        const datesBetween = getDatesBetween(dateFormatted, dateFormattedEnd)
+
+        function getDatesBetween (start, end) {
+            const dates = [];
+            // Strip hours minutes seconds etc.
+            let currentDate = new Date(start)
+            let endDate = new Date(end)
+
+            // console.log(currentDate)
+            // console.log(endDate)
+        
+            while (currentDate <= endDate) {
+                dates.push(currentDate);
+        
+                currentDate = new Date(
+                    currentDate.getFullYear(),
+                    currentDate.getMonth(),
+                    currentDate.getDate() + 1, // Will increase month if over range
+                );
+            }
+            return dates
+        }
+        return datesBetween       
     })
+
+    console.log(exclude)
+    console.log(exclude.flat())
 
     return (
         <>
@@ -126,7 +130,7 @@ function ResForm({ selectedSite, campground }) {
                     onChange={onChange}
                     startDate={startDate}
                     endDate={endDate}
-                    excludeDates={exclude}
+                    excludeDates={exclude.flat()}
                     minDate={new Date()}
                     selectsRange
                     selectsDisabledDaysInRange
