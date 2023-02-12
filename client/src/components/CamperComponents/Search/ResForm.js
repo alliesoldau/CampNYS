@@ -41,15 +41,7 @@ function ResForm({ selectedSite, campground }) {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
     }
-
-    // this filters out weekends, now to try it with start dates 
-    const isAvailable = (date) => {
-        // const sDates = selectedSite.reservations.map((site => site.start_date))
-        const day = new Date(date).getDay();
-        return day !== 0 && day !== 6;
-    }
-
-
+    
     function handleSubmit(e) {
         e.preventDefault()
         const sDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}`
@@ -67,6 +59,31 @@ function ResForm({ selectedSite, campground }) {
         })
     }
 
+    console.log(selectedSite.reservations)
+
+    const sDates = selectedSite.reservations.map((site => site.start_date))
+    const allowedDates = [new Date('2023-02-16'), new Date('2023-02-21')];
+
+    const exclude = sDates.map((date) => {
+        let month
+        const day = (new Date(date).getDate()) + 1
+        const tempMonth = (new Date(date).getMonth()) + 1
+        if (tempMonth === 12) {
+            month = 1
+        } else {
+            month = tempMonth
+        }
+        const year = (new Date(date).getFullYear())
+        const dateFormatted = `${year}-${month}-${day}`
+        return (new Date(dateFormatted))
+    })
+
+    // // this filters out weekends, now to try it with start dates 
+    // const isAvailable = (date) => {
+    //     const day = new Date(date).getDay();
+    //     return day !== 0 && day !== 6;
+    // }
+
     return (
         <>
         { selectedSite && campground ? 
@@ -83,7 +100,7 @@ function ResForm({ selectedSite, campground }) {
                     onChange={onChange}
                     startDate={startDate}
                     endDate={endDate}
-                    filterDate={isAvailable}
+                    excludeDates={exclude}
                     minDate={new Date()}
                     selectsRange
                     selectsDisabledDaysInRange
@@ -95,26 +112,7 @@ function ResForm({ selectedSite, campground }) {
                    
                 <button type='submit'>Submit Edits</button>
 
-            </form>
-    
-                {/* TO DO: filter out days that already have a reservation  */}
-                {/* filter days --> use this to block out days that there is no availabililty? 
-                () => {
-                    const [startDate, setStartDate] = useState(null);
-                    const isWeekday = (date) => {
-                      const day = getDay(date);
-                      return day !== 0 && day !== 6;
-                    };
-                    return (
-                      <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        filterDate={isWeekday}
-                        placeholderText="Select a weekday"
-                      />
-                    );
-                  };
-             */}
+            </form>                
             </> : null }
       </>
     )
