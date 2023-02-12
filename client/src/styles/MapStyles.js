@@ -14,7 +14,8 @@ position: relative;
     position: absolute;
     z-index: 2;
     bottom: 5vh;
-    width: 100%;
+    width: auto;
+    margin-left: 375px;
     align-items: center;
     font-family: Arial, sans-serif;
 }
