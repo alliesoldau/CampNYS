@@ -61,9 +61,10 @@ function ResForm({ selectedSite, campground }) {
 
     console.log(selectedSite.reservations)
 
+    // filter out days that are already booked 
     const sDates = selectedSite.reservations.map((site => site.start_date))
-    const allowedDates = [new Date('2023-02-16'), new Date('2023-02-21')];
-
+    const eDates = selectedSite.reservations.map((site => site.end_date))
+    
     const exclude = sDates.map((date) => {
         let month
         const day = (new Date(date).getDate()) + 1
@@ -77,12 +78,6 @@ function ResForm({ selectedSite, campground }) {
         const dateFormatted = `${year}-${month}-${day}`
         return (new Date(dateFormatted))
     })
-
-    // // this filters out weekends, now to try it with start dates 
-    // const isAvailable = (date) => {
-    //     const day = new Date(date).getDay();
-    //     return day !== 0 && day !== 6;
-    // }
 
     return (
         <>

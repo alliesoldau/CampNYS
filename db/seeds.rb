@@ -150,24 +150,25 @@ Campground.create(
     image_url: 'https://photos.smugmug.com/photos/i-6tdg72J/0/X2/i-6tdg72J-X2.jpg'
 )
 puts "⛺ Seeding site data..."
-10.times do |count|
+14.times do |count|
     Site.create(
-        name: count,
+        name: Faker::Creature::Animal.name,
         capacity: rand(1..6),
         category: category.sample,
         car_capacity: rand(0..3),
-        campground_id: Campground.all.sample.id,
+        campground_id: count > 7 ? count - 7 : count
+        # campground_id: Campground.all.sample.id,
     )
 end
 
 puts "📌 Seeding reservation data..."
-10.times do
+50.times do
     site = Site.all.sample.id
-    startDate = Faker::Date.between(from: '2023-05-15', to: '2023-10-30')
+    startDate = Faker::Date.between(from: '2023-02-12', to: '2023-02-28')
     Reservation.create(
         number_of_people: rand(1..10),
         start_date: startDate,
-        end_date: Faker::Date.between(from: startDate, to: '2023-10-31'),
+        end_date: Faker::Date.between(from: startDate, to: '2023-03-31'),
         site_id: site,
         cars: rand(0..Site.find(site).car_capacity),
         camper_id: 1,
