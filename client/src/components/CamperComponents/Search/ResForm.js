@@ -59,8 +59,6 @@ function ResForm({ selectedSite, campground }) {
         })
     }
 
-    console.log(selectedSite.reservations)
-
     // filter out days that are already booked   
     // i have to format the start and end date because react date picker handles dates differently
     // then i seeded them into the data  
