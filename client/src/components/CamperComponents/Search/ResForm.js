@@ -59,9 +59,11 @@ function ResForm({ selectedSite, campground }) {
         })
     }
 
-    // console.log(selectedSite.reservations)
+    console.log(selectedSite.reservations)
 
-    // filter out days that are already booked     
+    // filter out days that are already booked   
+    // i have to format the start and end date because react date picker handles dates differently
+    // then i seeded them into the data  
     const exclude = selectedSite.reservations.map((site) => {
         // start date 
         let month
@@ -86,20 +88,16 @@ function ResForm({ selectedSite, campground }) {
         }
         const yearEnd = (new Date(site.end_date).getFullYear())
         const dateFormattedEnd = `${yearEnd}-${monthEnd}-${dayEnd}`
+
+        // get all the dates in the range
         const datesBetween = getDatesBetween(dateFormatted, dateFormattedEnd)
 
         function getDatesBetween (start, end) {
             const dates = [];
-            // Strip hours minutes seconds etc.
             let currentDate = new Date(start)
             let endDate = new Date(end)
-
-            // console.log(currentDate)
-            // console.log(endDate)
-        
             while (currentDate <= endDate) {
                 dates.push(currentDate);
-        
                 currentDate = new Date(
                     currentDate.getFullYear(),
                     currentDate.getMonth(),
@@ -110,9 +108,6 @@ function ResForm({ selectedSite, campground }) {
         }
         return datesBetween       
     })
-
-    console.log(exclude)
-    console.log(exclude.flat())
 
     return (
         <>
