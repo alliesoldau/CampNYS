@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { GLOBAL } from './GlobalVar';
 import site from '../images/site.jpeg'
 
+// background: url(${site}) no-repeat center;
+// background-size: cover;
+
 const SiteCard = styled.div`
 .card {
     border-radius: 10px;
@@ -12,8 +15,7 @@ const SiteCard = styled.div`
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
-    background: url(${site}) no-repeat center;
-    background-size: cover;
+    background-color: ${GLOBAL.purple};
     display: flex;
     flex-direction: column;
     text-shadow: 0px 0px 2px black;
@@ -42,6 +44,7 @@ button {
 }
 button.edit {
     background-color: ${GLOBAL.orange};
+    color: ${GLOBAL.blackgrey};
 }
 button.delete {
     background-color: ${GLOBAL.red};
