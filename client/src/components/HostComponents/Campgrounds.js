@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom'
 import CGCard from '../../styles/CGCard'
 import { PieChart } from 'react-minimal-pie-chart';
+import { CampgroundContext } from '../Context/CampgroundContext'
 
 function Campgrounds({ cg }) {
 
@@ -10,6 +11,14 @@ function Campgrounds({ cg }) {
     function handleClick() {
         history.push(`/host/campground/${cg.id}`)
     }
+
+    const { campgrounds } = useContext(CampgroundContext)
+
+    let myCampground
+    if (campgrounds) {
+        myCampground = campgrounds.find((cground) => { return ( cground.id === cg.id ) })
+    }
+    console.log(myCampground)
 
     return (
         <CGCard>
