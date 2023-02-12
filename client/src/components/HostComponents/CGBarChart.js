@@ -1,8 +1,18 @@
 import React from 'react'
 import BarChart from 'react-easy-bar-chart';
-
+import {
+  Chart,
+  BarSeries,
+  Title,
+  ArgumentAxis,
+  ValueAxis,
+} from '@devexpress/dx-react-chart-material-ui';
+import '@devexpress/dx-react-chart-bootstrap4/dist/dx-react-chart-bootstrap4.css';
+import { Animation } from '@devexpress/dx-react-chart';
 
 function CGBarChart({ flattenedAllResDates }) {
+
+  // react bar chart source: https://experience-experiments.github.io/react-easy-chart/bar-chart/index.html 
 
   let sun = 0
   let mon = 0
@@ -28,56 +38,35 @@ function CGBarChart({ flattenedAllResDates }) {
     } else if (new Date(date).getDay() === 6) {
       sat = sat + 1
     }
-  })  
+  })
 
     const data = [
-        {
-          title:  "Sunday",
-          value: sun,
-          color: "#196f3d",
-        },
-        {
-          title:  "Monday",
-          value: mon,
-          color: "#a93226",
-        },
-        {
-          title:  "Tuesday",
-          value: tues,
-          color: " #1f618d",
-        },
-        {
-          title:  "Wednesday",
-          value: wed,
-          color: "#839192",
-        },
-        {
-          title:  "Thursday",
-          value: thurs,
-          color: "#d35400",
-        },
-        {
-          title:  "Friday",
-          value: fri,
-          color: " #a9cce3",
-        },
-        {
-          title:  "Saturday",
-          value: sat,
-          color: "#2e4053",
-        },
-        ];
+      { day: 'sun', popularity: sun },
+      { day: 'mon', popularity: mon },
+      { day: 'tues', popularity: tues },
+      { day: 'wed', popularity: wed },
+      { day: 'thurs', popularity: thurs },
+      { day: 'fri', popularity: fri },
+      { day: 'sat', popularity: sat },
+    ];
+
+
 
     return (
         <>
-        <p>Bar Chart</p>
-        <BarChart 
-          xAxis='React Bar Chart'
-          yAxis="Values"
-          height={400}
-          width={800}
+        <Chart
           data={data}
-        />
+        >
+          <ArgumentAxis />
+          <ValueAxis max={7} />
+
+          <BarSeries
+            valueField="popularity"
+            argumentField="day"
+          />
+          <Title text="Reservation Popularity by Day" />
+          <Animation />
+        </Chart>
         </>
     )
 }
