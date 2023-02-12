@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom'
 import CGCard from '../../styles/CGCard'
 import { PieChart } from 'react-minimal-pie-chart';
 import { CampgroundContext } from '../Context/CampgroundContext'
+import CGBarChart from './CGBarChart'
 
 function Campgrounds({ cg }) {
 
@@ -181,6 +182,7 @@ function Campgrounds({ cg }) {
                                 animationEasing="ease-out"  
                             /> 
                         </div>
+                        <CGBarChart flattenedResArray={flattenedResArray}/>
                     </div> : <h3>This campground doesn't have any campsites yet.</h3>}
                     </>
                 : null }
