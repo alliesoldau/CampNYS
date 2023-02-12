@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
@@ -63,8 +63,19 @@ function ResForm({ selectedSite, campground }) {
 
     // filter out days that are already booked 
     const sDates = selectedSite.reservations.map((site => site.start_date))
-    const eDates = selectedSite.reservations.map((site => site.end_date))
     
+    const [excludeDates, setExcludeDates] = useState([])
+
+    useEffect(() => {
+    const holdDates = selectedSite.reservations.map((site) => {
+        return [site.start_date, site.end_date]
+        })
+    const flattenDates = holdDates.flat()
+    setExcludeDates(flattenDates)
+    },[])
+
+    console.log(excludeDates)
+
     const exclude = sDates.map((date) => {
         let month
         const day = (new Date(date).getDate()) + 1
@@ -76,6 +87,10 @@ function ResForm({ selectedSite, campground }) {
         }
         const year = (new Date(date).getFullYear())
         const dateFormatted = `${year}-${month}-${day}`
+        // how to get a date a certain amount of days in the future 
+        // const test = new Date(dateFormatted)
+        // const testAdd = new Date(new Date().setDate(test.getDate() + 30))
+        // console.log(testAdd)
         return (new Date(dateFormatted))
     })
 
