@@ -30,25 +30,16 @@ function Campgrounds({ cg }) {
     // console.log(flattenedResArray)
 
 
-    // this gets you the first day of the week
-    let monthStart
+    // this gets you the first and last days of the week
     const today = new Date()
-    // console.log(today.getDay())
     const dayAdjust = (new Date(today).getDay())
     const dayStart = (new Date(today).getDate()) - dayAdjust
-    // console.log(tempDay, dayAdjust)
-    const tempMonth = (new Date(today).getMonth()) + 1
-    if (tempMonth === 12) {
-        monthStart = 1
-    } else {
-        monthStart = tempMonth
-    }
+    const monthStart = (new Date(today).getMonth()) + 1
     const yearStart = (new Date(today).getFullYear())
-    // console.log(yearStart, monthStart)
     const weekStart = `${yearStart}-${monthStart}-${dayStart}`
-    // console.log(weekStart)
-    const weekEnd = `${yearStart}-${monthStart}-${dayStart + 6}`
-    // console.log(weekEnd)
+    const weekEnd = new Date(weekStart)
+    weekEnd.setDate(weekEnd.getDate() + 6)
+    // console.log(weekStart, weekEnd)
 
     // get all the dates in this week's range
     const datesBetween = getDatesBetween(weekStart, weekEnd)
@@ -68,7 +59,7 @@ function Campgrounds({ cg }) {
         return dates
     }
         
-    console.log(datesBetween)
+    // console.log(datesBetween)
 
     return (
         <CGCard>

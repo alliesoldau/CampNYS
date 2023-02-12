@@ -59,31 +59,19 @@ function ResForm({ selectedSite, campground }) {
         })
     }
 
-    // filter out days that are already booked   
+    // filter out days that are already booked  
     // i have to format the start and end date because react date picker handles dates differently
     // then i seeded them into the data  
     const exclude = selectedSite.reservations.map((site) => {
         // start date 
-        let month
         const day = (new Date(site.start_date).getDate()) + 1
-        const tempMonth = (new Date(site.start_date).getMonth()) + 1
-        if (tempMonth === 12) {
-            month = 1
-        } else {
-            month = tempMonth
-        }
+        const month = (new Date(site.start_date).getMonth()) + 1
         const year = (new Date(site.start_date).getFullYear())
         const dateFormatted = `${year}-${month}-${day}`
 
-        // end month 
-        let monthEnd
+        // end date 
         const dayEnd = (new Date(site.end_date).getDate()) + 1
-        const tempMonthEnd = (new Date(site.end_date).getMonth()) + 1
-        if (tempMonthEnd === 12) {
-            monthEnd = 1
-        } else {
-            monthEnd = tempMonthEnd
-        }
+        const monthEnd = (new Date(site.end_date).getMonth()) + 1
         const yearEnd = (new Date(site.end_date).getFullYear())
         const dateFormattedEnd = `${yearEnd}-${monthEnd}-${dayEnd}`
 
