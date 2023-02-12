@@ -9,6 +9,8 @@ function HostCampgrounds() {
     const { user } = useContext(UserContext)
     const history = useHistory()
 
+    console.log(user)
+
     function handleClick() {
         history.push(`/host/${user.id}/add_campground`)
     }

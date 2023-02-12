@@ -27,8 +27,6 @@ function Campgrounds({ cg }) {
         }
     }
     const flattenedResArray = resArray.flat()
-    // console.log(flattenedResArray)
-    // now i need to get all of the dates in the reservation range 
 
     const allResDates = flattenedResArray.map((ressy) => {
         // start date 
@@ -74,7 +72,6 @@ function Campgrounds({ cg }) {
     const weekStart = `${yearStart}-${monthStart}-${dayStart}`
     const weekEnd = new Date(weekStart)
     weekEnd.setDate(weekEnd.getDate() + 6)
-    // console.log(weekStart, weekEnd)
 
     // get all the dates in this week's range
     const datesBetween = getDatesBetween(weekStart, weekEnd)
@@ -83,7 +80,6 @@ function Campgrounds({ cg }) {
         const dates = [];
         let currentDate = new Date(start)
         let endDate = new Date(end)
-        console.log(currentDate, endDate)
         while (currentDate <= endDate) {
             dates.push(currentDate);
             currentDate = new Date(
@@ -113,11 +109,8 @@ function Campgrounds({ cg }) {
     const monthEnd = today.getMonth() + 1
     const yearEnd = today.getFullYear()
     const monthEndDateFormatted = `${yearEnd}-${monthEnd}-${dayEnd}`
-    
-    // console.log(monthStartDateFormatted, monthEndDateFormatted)
 
     const monthDatesBetween = getDatesBetween(monthStartDateFormatted, monthEndDateFormatted)
-    // console.log(monthDatesBetween)
 
     let weekTotal = 0
     flattenedAllResDates.forEach((resDate) => {
@@ -137,12 +130,10 @@ function Campgrounds({ cg }) {
         })
     })
 
-    console.log(monthTotal)
-
     return (
         <CGCard>
             <div className="card">
-                { cg && flattenedResArray.length > 0 ? 
+                { cg ? 
                     <>
                     <div className="header">
                         <h2>{cg.name} </h2>
@@ -150,6 +141,7 @@ function Campgrounds({ cg }) {
                             <button onClick={handleClick}>See Campground Details</button>
                         </div>
                     </div>
+                    { flattenedResArray.length > 0 ? 
                     <div className="charts">
                         <div className="chart-with-label">
                             <h3>Bookings for the Week</h3>
@@ -189,7 +181,7 @@ function Campgrounds({ cg }) {
                                 animationEasing="ease-out"  
                             /> 
                         </div>
-                    </div>
+                    </div> : <h3>This campground doesn't have any campsites yet.</h3>}
                     </>
                 : null }
             </div>
