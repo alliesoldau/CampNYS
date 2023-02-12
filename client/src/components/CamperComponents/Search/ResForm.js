@@ -66,15 +66,31 @@ function ResForm({ selectedSite, campground }) {
     
     const [excludeDates, setExcludeDates] = useState([])
 
-    useEffect(() => {
-    const holdDates = selectedSite.reservations.map((site) => {
-        return [site.start_date, site.end_date]
-        })
-    const flattenDates = holdDates.flat()
-    setExcludeDates(flattenDates)
-    },[])
+    // function getDates(startDate, stopDate) {
+    //     let dateArray = [];
+    //     let currentDate = startDate;
+    //     while (currentDate <= stopDate) {
+    //         dateArray.push(new Date(currentDate));
+    //         const dateNow = new Date(currentDate)
+    //         const dateThen = new Date(new Date().setDate(dateNow.getDate() + 1))
+    //         console.log(dateNow)
+    //         console.log(dateThen)
+    //         currentDate = dateThen;
+    //     }
+    //     return dateArray;
+    // }
 
-    console.log(excludeDates)
+    // useEffect(() => {
+    // const holdDates = selectedSite.reservations.map((site) => {
+    //     const betweenDates = getDates(site.start_date, site.end_date)
+    //     console.log(betweenDates)
+    //     return betweenDates
+    //     })
+    // const flattenDates = holdDates.flat()
+    // setExcludeDates(flattenDates)
+    // },[])
+
+    // console.log(excludeDates)
 
     const exclude = sDates.map((date) => {
         let month
