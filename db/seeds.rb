@@ -162,14 +162,28 @@ puts "⛺ Seeding site data..."
     )
 end
 
-
 puts "📌 Seeding reservation data..."
-28.times do |count|
-    startDate = Faker::Date.between(from: '2023-02-12', to: '2023-02-28')
+14.times do |count|
+    startDate = Faker::Date.between(from: Date.today, to: '2023-02-28')
     Reservation.create(
         number_of_people: rand(1..10),
         start_date: startDate,
-        end_date: Faker::Date.between(from: startDate, to: '2023-03-31'),
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 7),
+        site_id: count + 1 > 14 ? count + 1 - 14 : count + 1,
+        cars: rand(0..Site.find(count + 1 > 14 ? count + 1 - 14 : count + 1).car_capacity),
+        camper_id: 1,
+        # camper_id: User.where(host: false).sample.id,
+        # host_id: User.where(host: true).sample.id,
+        host_id: 2
+    )
+end
+
+14.times do |count|
+    startDate = Faker::Date.between(from: '2023-03-06', to: '2023-03-18')
+    Reservation.create(
+        number_of_people: rand(1..10),
+        start_date: startDate,
+        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 7),
         site_id: count + 1 > 14 ? count + 1 - 14 : count + 1,
         cars: rand(0..Site.find(count + 1 > 14 ? count + 1 - 14 : count + 1).car_capacity),
         camper_id: 1,
