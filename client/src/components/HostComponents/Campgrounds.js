@@ -12,6 +12,7 @@ function Campgrounds({ cg }) {
         history.push(`/host/campground/${cg.id}`)
     }
 
+    console.log(cg.sites.length)
     const { campgrounds } = useContext(CampgroundContext)
 
     let myCampground
@@ -28,7 +29,44 @@ function Campgrounds({ cg }) {
     }
     const flattenedResArray = resArray.flat()
     // console.log(flattenedResArray)
+    // now i need to get all of the dates in the reservation range 
 
+    const allResDates = flattenedResArray.map((ressy) => {
+        // start date 
+        const day = (new Date(ressy.start_date).getDate()) + 1
+        const month = (new Date(ressy.start_date).getMonth()) + 1
+        const year = (new Date(ressy.start_date).getFullYear())
+        const dateFormatted = `${year}-${month}-${day}`
+
+        // end date 
+        const dayEnd = (new Date(ressy.end_date).getDate()) + 1
+        const monthEnd = (new Date(ressy.end_date).getMonth()) + 1
+        const yearEnd = (new Date(ressy.end_date).getFullYear())
+        const dateFormattedEnd = `${yearEnd}-${monthEnd}-${dayEnd}`
+
+        // get all the dates in the range
+        const datesBetweenRes = getDatesBetweenRes(dateFormatted, dateFormattedEnd)
+
+        function getDatesBetweenRes (start, end) {
+            const dates = [];
+            let currentDate = new Date(start)
+            let endDate = new Date(end)
+            while (currentDate <= endDate) {
+                dates.push(currentDate);
+                currentDate = new Date(
+                    currentDate.getFullYear(),
+                    currentDate.getMonth(),
+                    currentDate.getDate() + 1, // Will increase month if over range
+                );
+            }
+            return dates
+        }
+        return datesBetweenRes       
+    })
+
+    const flattenedAllResDates = allResDates.flat()
+
+    // console.log(flattenedAllResDates)
 
     // this gets you the first and last days of the week
     const today = new Date()
@@ -58,8 +96,21 @@ function Campgrounds({ cg }) {
         }
         return dates
     }
-        
-    // console.log(datesBetween)
+
+    let weekTotal = 0
+    flattenedAllResDates.forEach((resDate) => {
+        datesBetween.forEach((date) => {
+            // console.log(resDate)
+            // console.log(date)
+            if (resDate.getTime() == date.getTime()) {
+                weekTotal = weekTotal + 1
+            }
+        })
+    })
+
+    console.log(weekTotal)
+
+
 
     return (
         <CGCard>
@@ -77,8 +128,8 @@ function Campgrounds({ cg }) {
                             <h3>Booking for the Week</h3>
                             <PieChart className="pieChart"
                                 data={[
-                                    { title: "Available", value: cg.res_count, color: '#fcaa67'},
-                                    { title: "Booked", value: 7, color: '#548687' },
+                                    { title: "Available", value: cg.sites.length, color: '#fcaa67'},
+                                    { title: "Booked", value: weekTotal, color: '#548687' },
                                 ]}
                                 animate
                                 radius={50}
