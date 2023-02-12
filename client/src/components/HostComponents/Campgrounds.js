@@ -12,7 +12,6 @@ function Campgrounds({ cg }) {
         history.push(`/host/campground/${cg.id}`)
     }
 
-    console.log(cg.sites.length)
     const { campgrounds } = useContext(CampgroundContext)
 
     let myCampground
@@ -66,8 +65,6 @@ function Campgrounds({ cg }) {
 
     const flattenedAllResDates = allResDates.flat()
 
-    // console.log(flattenedAllResDates)
-
     // this gets you the first and last days of the week
     const today = new Date()
     const dayAdjust = (new Date(today).getDay())
@@ -86,6 +83,7 @@ function Campgrounds({ cg }) {
         const dates = [];
         let currentDate = new Date(start)
         let endDate = new Date(end)
+        console.log(currentDate, endDate)
         while (currentDate <= endDate) {
             dates.push(currentDate);
             currentDate = new Date(
@@ -97,20 +95,49 @@ function Campgrounds({ cg }) {
         return dates
     }
 
+    // get the total number of days in the month you're in
+    // this even works for leap years :D
+    const monthDays = daysInMonth(today.getMonth() + 1, today.getFullYear())
+    function daysInMonth (month, year) {
+        return new Date(year, month, 0).getDate();
+    }
+
+    // start date
+    const day = 1
+    const month = (today).getMonth() + 1
+    const year = today.getFullYear()
+    const monthStartDateFormatted = `${year}-${month}-${day}`
+
+    // end date 
+    const dayEnd = monthDays
+    const monthEnd = today.getMonth() + 1
+    const yearEnd = today.getFullYear()
+    const monthEndDateFormatted = `${yearEnd}-${monthEnd}-${dayEnd}`
+    
+    // console.log(monthStartDateFormatted, monthEndDateFormatted)
+
+    const monthDatesBetween = getDatesBetween(monthStartDateFormatted, monthEndDateFormatted)
+    // console.log(monthDatesBetween)
+
     let weekTotal = 0
     flattenedAllResDates.forEach((resDate) => {
         datesBetween.forEach((date) => {
-            // console.log(resDate)
-            // console.log(date)
             if (resDate.getTime() == date.getTime()) {
                 weekTotal = weekTotal + 1
             }
         })
     })
 
-    console.log(weekTotal)
+    let monthTotal = 0
+    flattenedAllResDates.forEach((resDate) => {
+        monthDatesBetween.forEach((date) => {
+            if (resDate.getTime() == date.getTime()) {
+                monthTotal = monthTotal + 1
+            }
+        })
+    })
 
-
+    console.log(monthTotal)
 
     return (
         <CGCard>
@@ -125,10 +152,10 @@ function Campgrounds({ cg }) {
                     </div>
                     <div className="charts">
                         <div className="chart-with-label">
-                            <h3>Booking for the Week</h3>
+                            <h3>Bookings for the Week</h3>
                             <PieChart className="pieChart"
                                 data={[
-                                    { title: "Available", value: cg.sites.length, color: '#fcaa67'},
+                                    { title: "Available", value: cg.site_count*7, color: '#fcaa67'},
                                     { title: "Booked", value: weekTotal, color: '#548687' },
                                 ]}
                                 animate
@@ -144,11 +171,11 @@ function Campgrounds({ cg }) {
                             /> 
                         </div>
                         <div className="chart-with-label">
-                            <h3>Booking for the Month</h3>
+                            <h3>Bookings for the Month</h3>
                             <PieChart className="pieChart"
                                 data={[
-                                    { title: "Available", value: cg.site_count, color: '#b0413e'},
-                                    { title: "Booked", value: 9, color: '#473335' },
+                                    { title: "Available", value: cg.site_count*monthDays, color: '#b0413e'},
+                                    { title: "Booked", value: monthTotal, color: '#473335' },
                                 ]}
                                 animate
                                 radius={50}
