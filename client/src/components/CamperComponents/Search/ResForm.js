@@ -4,6 +4,7 @@ import { UserContext } from '../../Context/UserContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import { AddNewRes } from '../../Stores/Fetches'
+import Form from '../../../styles/Form'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -55,7 +56,7 @@ function ResForm({ selectedSite, campground }) {
             const updatedCG = {...campground, sites: updatedSites }
             const updatedCGs = campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
             setCampgrounds(updatedCGs)
-            history.push(`/campers/${user.id}/reservations`)
+        history.push(`/campers/${user.id}/reservations`)
         })
     }
 
@@ -98,33 +99,42 @@ function ResForm({ selectedSite, campground }) {
     return (
         <>
         { selectedSite && campground ? 
-            <> 
+            <Form> 
             <form onSubmit={handleSubmit}>
-                <p>site name: {selectedSite.name} </p>
-                <p>site category: {selectedSite.category}</p>
-                <label>Number of People, max {selectedSite.capacity}</label>
-                    <input type='number' min={0} max={selectedSite.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
+                <div className="res-form">
+                    <div className="left-container">
+
+                    <DatePicker
+                        selected={startDate}
+                        onChange={onChange}
+                        startDate={startDate}
+                        endDate={endDate}
+                        excludeDates={exclude.flat()}
+                        minDate={new Date()}
+                        selectsRange
+                        selectsDisabledDaysInRange
+                        inline
+                    />
+                    </div>
+                    <div className="right-container">
+                    <div className="line-item">
+                        <label>Number of People, max {selectedSite.capacity}</label>
+                        <input type='number' min={0} max={selectedSite.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
+                    </div>
+
+                    <div className="line-item">
+                        <label>Number of Cars, max {selectedSite.car_capacity}</label>
+                        <input type='number' min={0} max={selectedSite.car_capacity} name='cars' value={cars} onChange={handleChange} />    
+                    </div>
+
+                    <div className="buttons-res-form">
+                        <button className="res-form-submit" type='submit'>Submit Edits</button>
+                    </div>
                     
-                <label>Date Range</label>
-                <DatePicker
-                    selected={startDate}
-                    onChange={onChange}
-                    startDate={startDate}
-                    endDate={endDate}
-                    excludeDates={exclude.flat()}
-                    minDate={new Date()}
-                    selectsRange
-                    selectsDisabledDaysInRange
-                    inline
-                />
-
-                <label>Number of Cars, max {selectedSite.car_capacity}</label>
-                    <input type='number' min={0} max={selectedSite.car_capacity} name='cars' value={cars} onChange={handleChange} />
-                   
-                <button type='submit'>Submit Edits</button>
-
+                    </div>
+                </div>
             </form>                
-            </> : null }
+            </Form> : null }
       </>
     )
 }

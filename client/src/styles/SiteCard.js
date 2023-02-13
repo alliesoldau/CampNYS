@@ -35,14 +35,21 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 400px;
     margin: auto;
-    height: 300px;
+    height: ${props => 
+        props.res === true ? "225px"
+        : "300px"
+        }; 
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
-    background-color: white;
+    background-color: ${props => 
+        props.res === true ? `${GLOBAL.purple}` 
+        : "white"
+        }; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
 .top {
     display: flex;
     flex-direction: row;
@@ -60,21 +67,26 @@ const SiteCard = styled.div`
 }
 h2 {
     margin: auto;
+    color: ${props => 
+        props.res === true ? `${GLOBAL.orange}`
+        : `${GLOBAL.teal}`
+        }; 
 }
 p {
     font-size: 1rem;
 }
 h3 {
-    color: ${GLOBAL.darkgrey};
+    color: ${props => 
+        props.res === true ? `${GLOBAL.lightgrey}`
+        : `${GLOBAL.darkgrey}`
+        }; 
     margin-top: 0;
-
 }
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     height: auto;
-    
 }
 button {
     color: white;

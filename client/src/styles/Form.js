@@ -26,6 +26,36 @@ const Form = styled.div`
     button {
         margin-top: 10px;
     }
+    .res-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        margin-left: 20px;
+    }
+    .right-container {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-left: 20px;
+    }
+    .res-form-submit {
+
+    }
+    .buttons-res-form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        height: auto;
+    }
+    button.res-form-submit {
+        color: white;
+        background-color: ${GLOBAL.orange};
+        width: 150px;
+        height: 40px;
+        border-radius: 20px;
+        border: none;
+    }
+
 `
 
 export default Form;

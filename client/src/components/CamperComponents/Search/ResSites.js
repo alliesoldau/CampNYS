@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import SiteCard from '../../../styles/SiteCard'
 import { GiCampingTent } from 'react-icons/gi'
 import { MdHouseSiding } from 'react-icons/md'
