@@ -17,6 +17,8 @@ function CamperResDetails({ res, color }) {
         myCampground = campgrounds.find((cg) => { return ( cg.id === res.site.campground_id ) })
     }
 
+    console.log(res)
+
     function handleDeleteReservation() {
         const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
         setCampRes(resSansDeleted)
@@ -32,6 +34,7 @@ function CamperResDetails({ res, color }) {
                     <div className="text">
                         <h4>{myCampground.name}</h4>
                         <p>Accessible by: <span>{myCampground.accessibility}</span></p>
+                        <p>Site category: <span>{res.site.category}</span></p>
                         <p>Arrival: <span>{res.start_date}</span></p>
                         <p>Checkout: <span>{res.end_date}</span></p>
                         <p>Registered cars: <span>{res.cars}</span></p>
