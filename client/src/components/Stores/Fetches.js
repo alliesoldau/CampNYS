@@ -8,9 +8,9 @@ export function LoginUser(user) {
             body:JSON.stringify(user)
         })
         .then(res => res.json())
-        .catch((error) => {
-            console.log(error)
-          })
+        // .catch((error) => {
+        //     console.log(error)
+        //   })
         // TO DO: look into .catch for fetches for error handling 
 } 
 
@@ -105,9 +105,8 @@ export function AddNewCampground(campground) {
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(campground)
-        })
-        .then(res => res.json())
-    }
+        })        
+}
 
 export function AddNewSite(site) {
     return fetch(baseURL+`/add_site`,{

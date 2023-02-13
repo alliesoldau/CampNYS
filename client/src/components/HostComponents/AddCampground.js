@@ -9,11 +9,14 @@ import arrow from '../../images/back_arrow.png'
 import { MdDirectionsWalk } from 'react-icons/md'
 import { IoMdBoat } from 'react-icons/io'
 import { AiFillCar } from 'react-icons/ai'
+import Alert from '@mui/material/Alert';
+import { ErrorsContext } from '../Context/ErrorsContext'
 
 function AddCampground() {
 
     const history = useHistory()
     const { user, setUser } = useContext(UserContext)
+    const { errors, setErrors } = useContext(ErrorsContext)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -36,18 +39,30 @@ function AddCampground() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        AddNewCampground(formData).then((data) => {
-            const hostsCampgrounds = user.campgrounds
-            const updateCGs = [...hostsCampgrounds, data]
-            const updatedUser = {...user, campgrounds: updateCGs}
-            setUser(updatedUser)
-            history.push(`/hosts/${updatedUser.id}/campgrounds`)
+        AddNewCampground(formData).then(res => {
+            if(res.ok){
+                res.json()
+                .then((data) => {
+                    const hostsCampgrounds = user.campgrounds
+                    const updateCGs = [...hostsCampgrounds, data]
+                    const updatedUser = {...user, campgrounds: updateCGs}
+                    setUser(updatedUser)
+                    history.push(`/hosts/${updatedUser.id}/campgrounds`)
+                })
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
         })
+        
     }
 
     return (
         <>
         { user ? 
+        <> 
+        <div className="errors">
+            { errors ? errors.map(e => <Alert severity="error">{`${e.toUpperCase()}`}</Alert>):null} 
+        </div>
         <CGDetailsCard>
             <ArrowHeader>
                 <div className="top">
@@ -58,6 +73,7 @@ function AddCampground() {
                 </div>
                 <h3>Add a Campground</h3>
             </ArrowHeader>
+            
             <div className="card">
                 <div className="left-container">
                     <div className="text">
@@ -145,7 +161,9 @@ function AddCampground() {
             : null }
         </div>
         </div>
-        </CGDetailsCard> : null }
+        </CGDetailsCard> 
+        </>
+        : null }
         </>
     )
 }
