@@ -37,8 +37,7 @@ function AddSite() {
         setFormData({ ...formData, [name]: value })
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
+    function handleSubmit() {
         console.log(formData)
         AddNewSite(formData).then((siteData) => {
             const CGSites = campground.sites
@@ -125,7 +124,7 @@ function AddSite() {
                 </div>
 
                 <div className="buttons">
-                    <button className="submit" type='submit' onSubmit={handleSubmit}>Submit Edits</button>
+                    <button className="submit" type='submit' onClick={handleSubmit}>Add Site</button>
                 </div>
 
             </div>
