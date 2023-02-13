@@ -12,6 +12,8 @@ function Login() {
         email:'',
         password:''
     })
+    const [ errors, setErrors ] = useState([])
+
     const { setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
     const { setCampRes } = useContext(CamperReservationsContext)
@@ -25,11 +27,20 @@ function Login() {
             email,
             password
         }
-        LoginUser(userData).then(user => {
-            setUser(user)
-            localStorage.userID=user.id
-            UserTypeDependentFxn(user)
-            history.push(`/users/${user.id}`)
+        LoginUser(userData).then(res => {
+            if(res.ok) {
+                res.json()
+                .then(user => {
+                    setUser(user)
+                    localStorage.userID=user.id
+                    UserTypeDependentFxn(user)
+                    history.push(`/users/${user.id}`)
+                    setErrors([])
+                 })
+            } else {
+                // res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+                res.json().then(data => setErrors(data.errors))
+            }
         })
         GrabAllCampgrounds().then(setCampgrounds)
     }
@@ -49,6 +60,11 @@ function Login() {
 
     return(
         <>
+            <div className="errors">
+                { errors.length > 0 ?
+                    <Alert severity="error">{errors}</Alert>
+                : null } 
+            </div>
             <h3 className="login">Login</h3>
             <form onSubmit={handleSubmit}>
                     <label>
