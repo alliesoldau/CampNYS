@@ -41,13 +41,13 @@ function CGBarChart({ flattenedAllResDates }) {
   })
 
     const data = [
-      { day: 'sun', popularity: sun },
-      { day: 'mon', popularity: mon },
-      { day: 'tues', popularity: tues },
-      { day: 'wed', popularity: wed },
-      { day: 'thurs', popularity: thurs },
-      { day: 'fri', popularity: fri },
-      { day: 'sat', popularity: sat },
+      { day: 'SUN', popularity: sun },
+      { day: 'MON', popularity: mon },
+      { day: 'TUES', popularity: tues },
+      { day: 'WED', popularity: wed },
+      { day: 'THURS', popularity: thurs },
+      { day: 'FRI', popularity: fri },
+      { day: 'SAT', popularity: sat },
     ];
 
 
@@ -56,6 +56,7 @@ function CGBarChart({ flattenedAllResDates }) {
         <>
         <Chart
           data={data}
+          height="250"
         >
           <ArgumentAxis />
           <ValueAxis max={7} />
@@ -64,7 +65,6 @@ function CGBarChart({ flattenedAllResDates }) {
             valueField="popularity"
             argumentField="day"
           />
-          <Title text="Reservation Popularity by Day" />
           <Animation />
         </Chart>
         </>
