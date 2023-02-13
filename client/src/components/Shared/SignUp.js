@@ -2,17 +2,20 @@ import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { SignUpUser } from '../Stores/Fetches'
+import Alert from '@mui/material/Alert';
 
 function SignUp() {
 
     const [formData, setFormData] = useState({
-        email:'',
-        password:'',
-        first_name:'',
-        last_name:'',
-        affiliation:'',
-        host:false
+        email: '',
+        password: '',
+        first_name: '',
+        last_name: '',
+        affiliation: '',
+        host: false
     })
+    const [ errors, setErrors ] = useState([])
+
     const { setUser } = useContext(UserContext);
 
     const history = useHistory()
@@ -29,10 +32,17 @@ function SignUp() {
             host,
             password
         }
-        SignUpUser(userData).then(user => {
-            setUser(user)
-            localStorage.userID=user.id
-            history.push(`/users/${user.id}`)
+        SignUpUser(userData).then(res => {
+            if(res.ok) {
+                res.json()
+                .then(user => {
+                    setUser(user)
+                    localStorage.userID=user.id
+                    history.push(`/users/${user.id}`)
+                })
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
         })
     }
 
@@ -51,6 +61,9 @@ function SignUp() {
 
     return(
         <>
+            <div className="errors">
+                { errors ? errors.map(e => <Alert severity="error">{`${e.toUpperCase()}`}</Alert>) : null } 
+            </div>
             <h3 className="signup">SignUp</h3>
             <form onSubmit={handleSubmit}>
                 <label>
