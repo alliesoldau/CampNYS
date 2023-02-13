@@ -17,6 +17,12 @@ const Form = styled.div`
         margin-top: 10px;
         margin-bottom: 10px;
     }
+    input.shrink {
+        width: 20%;
+    }
+    input.shrink-some {
+        width: 50%;
+    }
     button {
         margin-top: 10px;
     }

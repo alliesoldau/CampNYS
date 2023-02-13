@@ -7,20 +7,46 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 400px;
     margin: auto;
-    height: auto;
+    height: 300px;
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
     background-color: white;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
-h2 {
+.add-card {
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    width: 500px;
+    margin: auto;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.top {
+    display: flex;
+    flex-direction: row;
+}
+.left-container, .right-container {
+    width: 50%;
+}
+.right-container {
+    font-size: 80px;
     color: ${GLOBAL.teal};
     text-align: center;
-    font-size: 4rem;
-    margin-bottom: 0px;
-    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h2 {
+    margin: auto;
 }
 p {
     font-size: 1rem;
@@ -34,7 +60,8 @@ h3 {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 100%;
+    height: auto;
+    
 }
 button {
     color: white;
@@ -48,6 +75,9 @@ button.edit {
 }
 button.delete {
     background-color: ${GLOBAL.red};
+}
+button.submit {
+    background-color: ${GLOBAL.purple};
 }
 button:hover {
     font-weight: bold;
