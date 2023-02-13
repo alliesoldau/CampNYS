@@ -69,7 +69,6 @@ export function EditResInfo(res) {
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(res)
       })
-      .then(res => res.json())
 }
 
 export function EditSiteInfo(site) {

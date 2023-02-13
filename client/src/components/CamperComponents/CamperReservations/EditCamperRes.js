@@ -5,7 +5,7 @@ import { CamperReservationsContext } from '../../Context/CamperReservationsConte
 import { EditResInfo } from '../../Stores/Fetches'
 import ResCard from '../../../styles/ResCard'
 import Form from '../../../styles/Form'
-
+import Alert from '@mui/material/Alert';
 
 function EditCamperRes() {
 
@@ -15,6 +15,7 @@ function EditCamperRes() {
     const { campgrounds } = useContext(CampgroundContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
     const [formData, setFormData] = useState({})
+    const [ errors, setErrors ] = useState([])
 
     const myRes = campRes.find((res) => { return ( res.id === parseInt(params.id))})
     let myCampground
@@ -43,15 +44,26 @@ function EditCamperRes() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        EditResInfo(formData).then((resData) => {
-            const updateReservations = campRes.map((res)=> res.id === resData.id ? resData : res)
-            setCampRes(updateReservations)
-            history.push(`/campers/${resData.camper_id}/reservations`)
+        EditResInfo(formData).then(res => {
+            if(res.ok) {
+                res.json()
+                .then((resData) => {
+                    const updateReservations = campRes.map((res)=> res.id === resData.id ? resData : res)
+                    setCampRes(updateReservations)
+                    history.push(`/campers/${resData.camper_id}/reservations`)
+                    setErrors([])
+                })
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            } 
         })
     }
 
     return (
         <ResCard>
+        <div className="errors">
+            { errors ? errors.map(e => <Alert severity="error">{`${e.toUpperCase()}`}</Alert>) : null } 
+        </div>
         { myRes && myCampground ? 
         <div className="edit-card"> 
             <div className="left-container">
