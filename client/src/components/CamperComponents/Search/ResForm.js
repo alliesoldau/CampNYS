@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
@@ -8,7 +8,7 @@ import Form from '../../../styles/Form'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function ResForm({ selectedSite, campground }) {
+function ResForm({ selectedSite, campground, setErrors }) {
 
     // date picker source: https://www.npmjs.com/package/react-datepicker 
     // https://reactdatepicker.com/
@@ -45,18 +45,31 @@ function ResForm({ selectedSite, campground }) {
     
     function handleSubmit(e) {
         e.preventDefault()
-        const sDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}`
-        const eDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}`
-        const formDataWithDate = {...formData, start_date: sDate, end_date: eDate}
-        AddNewRes(formDataWithDate).then((resData) => {
-            setCampRes([...campRes, resData])
-            const updatedRess = [...selectedSite.reservations, resData]
-            const updatedSite = {...selectedSite, reservations: updatedRess}
-            const updatedSites = campground.sites.map((site) => site.id === selectedSite.id ? updatedSite : site)
-            const updatedCG = {...campground, sites: updatedSites }
-            const updatedCGs = campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
-            setCampgrounds(updatedCGs)
-        history.push(`/campers/${user.id}/reservations`)
+        let sDate
+        let eDate 
+        let formDataWithDate 
+        if (startDate && endDate) {
+            sDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}`
+            eDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}`
+            formDataWithDate = {...formData, start_date: sDate, end_date: eDate}
+        }
+        AddNewRes(formDataWithDate).then(res => {
+            if(res.ok) {
+                res.json()
+                .then((resData) => {
+                    setCampRes([...campRes, resData])
+                    const updatedRess = [...selectedSite.reservations, resData]
+                    const updatedSite = {...selectedSite, reservations: updatedRess}
+                    const updatedSites = campground.sites.map((site) => site.id === selectedSite.id ? updatedSite : site)
+                    const updatedCG = {...campground, sites: updatedSites }
+                    const updatedCGs = campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
+                    setCampgrounds(updatedCGs)
+                    setErrors([])
+                    history.push(`/campers/${user.id}/reservations`)
+                })
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))   
+            }   
         })
     }
 

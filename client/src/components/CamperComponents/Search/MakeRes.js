@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import ResSites from './ResSites'
@@ -14,15 +14,16 @@ import { MdHouseSiding } from 'react-icons/md'
 import { GiTable } from 'react-icons/gi'
 import { GiWoodCabin } from 'react-icons/gi'
 import { GiMushroomHouse } from 'react-icons/gi'
+import Alert from '@mui/material/Alert';
 
 
 function MakeRes() {
     
-    const history = useHistory()
     const params = useParams()
     const { user } = useContext(UserContext)
     const { campgrounds } = useContext(CampgroundContext)
-    const [selectedSite, setSelectedSite] = useState(null)
+    const [ selectedSite, setSelectedSite ] = useState(null)
+    const [ errors, setErrors ] = useState([])
 
     let campground
     if (user && campgrounds) {
@@ -31,6 +32,9 @@ function MakeRes() {
 
     return (
         <>
+        <div className="errors">
+            { errors ? errors.map(e => <Alert severity="error">{`${e.toUpperCase()}`}</Alert>):null} 
+        </div>
         { user && campground ? 
         <>
             <ArrowHeader>
@@ -74,7 +78,7 @@ function MakeRes() {
                     </div>
                 </div>
                 </SiteCard>
-                <ResForm selectedSite={selectedSite} campground={campground}/>
+                <ResForm selectedSite={selectedSite} campground={campground} setErrors={setErrors}/>
                 </div>
             </ResFormStyles>
             </> : null }
