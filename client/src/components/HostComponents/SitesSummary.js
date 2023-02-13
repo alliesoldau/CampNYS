@@ -32,6 +32,7 @@ function SitesSummary() {
                     <button>Add Sites</button>
                 </Link>
                 </div>
+                <h3>{campground.name} Sites Summary</h3>
             </div>
         </ArrowHeader>
             { campground.sites && campground.sites.length > 0 ? 

@@ -57,6 +57,7 @@ function CGBarChart({ flattenedAllResDates }) {
         <Chart
           data={data}
           height="250"
+          width="350"
         >
           <ArgumentAxis />
           <ValueAxis max={7} />
@@ -64,6 +65,7 @@ function CGBarChart({ flattenedAllResDates }) {
           <BarSeries
             valueField="popularity"
             argumentField="day"
+            color="#6F7378"
           />
           <Animation />
         </Chart>

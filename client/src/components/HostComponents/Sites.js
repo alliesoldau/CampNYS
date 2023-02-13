@@ -3,6 +3,11 @@ import { useHistory, Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteSite } from '../Stores/Fetches'
 import SiteCard from '../../styles/SiteCard'
+import { GiCampingTent } from 'react-icons/gi'
+import { MdHouseSiding } from 'react-icons/md'
+import { GiTable } from 'react-icons/gi'
+import { GiWoodCabin } from 'react-icons/gi'
+import { GiMushroomHouse } from 'react-icons/gi'
 
 function Sites({ site }) {
 
@@ -24,11 +29,28 @@ function Sites({ site }) {
         DeleteSite(thisSite.id)
     }
 
+    console.log(thisSite.category)
+
     return (
         <SiteCard>
             <div className="card">
                 <div className="text">
-                    <h2>Campground: {campground.name}</h2>
+                    {/* <h2>Campground: {campground.name}</h2> */}
+                    { thisSite.category === 'Tent' ? 
+                        <h2><GiCampingTent /></h2>
+                        : null }
+                    { thisSite.category === 'Lean-to' ?
+                        <h2><MdHouseSiding /></h2> 
+                        : null }
+                    { thisSite.category === 'Elevated surface' ? 
+                        <h2><GiTable /></h2>
+                        : null }
+                    { thisSite.category === 'Cabin' ?
+                        <h2><GiWoodCabin /></h2>
+                        : null }
+                    { thisSite.category === 'Mushroom shelter' ?
+                        <h2><GiMushroomHouse /></h2>
+                        : null }
                     <h3>Site name: {thisSite.name} </h3>
                     <h3>Site category: {thisSite.category}</h3>
                     <h3>Site capacity: {thisSite.capacity}</h3>

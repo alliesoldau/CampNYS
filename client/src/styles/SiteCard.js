@@ -15,19 +15,24 @@ const SiteCard = styled.div`
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
-    background-color: ${GLOBAL.purple};
+    background-color: white;
     display: flex;
     flex-direction: column;
-    text-shadow: 0px 0px 2px black;
 }
 h2 {
-    color: white;
+    color: ${GLOBAL.teal};
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
 }
 p {
     font-size: 1rem;
 }
 h3 {
-    color: ${GLOBAL.lightgrey};
+    color: ${GLOBAL.darkgrey};
+    margin-top: 0;
+
 }
 .buttons {
     display: flex;
@@ -43,8 +48,7 @@ button {
     border: none;
 }
 button.edit {
-    background-color: ${GLOBAL.orange};
-    color: ${GLOBAL.blackgrey};
+    background-color: ${GLOBAL.purple};
 }
 button.delete {
     background-color: ${GLOBAL.red};

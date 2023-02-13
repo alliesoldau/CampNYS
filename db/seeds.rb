@@ -3,7 +3,7 @@ require 'faker'
 affiliation = ['NYS Parks & Rec', 'ADK Mountain Club', 'Independent']
 region = ['High Peaks Region', 'Lake George', 'North Daks', 'Catskills']
 accessibility = ['Hike in', 'Road', 'Boat']
-category = ['Tent', 'Lean-to', 'Cabin', 'Elevated surface']
+category = ['Tent', 'Lean-to', 'Cabin', 'Elevated surface', 'Mushroom shelter']
 campground_image_urls = ['https://images.unsplash.com/photo-1624923686627-514dd5e57bae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80',
 'https://images.unsplash.com/photo-1537905569824-f89f14cceb68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2802&q=80',
 'https://images.unsplash.com/photo-1571687949921-1306bfb24b72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',

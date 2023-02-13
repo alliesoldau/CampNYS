@@ -58,8 +58,16 @@ function AddSite() {
                         <input type='text' name='car_capacity' value={car_capacity} onChange={handleChange} />
                     
                     <label>Category</label>
-                    {/* TO DO: make it a drop down  */}
-                        <input type='text' name='category' value={category} onChange={handleChange} />
+                        <select
+                            onChange={handleChange}
+                            name='category' 
+                            value={category} >
+                                <option>Tent</option>
+                                <option>Cabin</option>
+                                <option>Lean-to</option>
+                                <option>Elevated surface</option>
+                                <option>Mushroom shelter</option>
+                        </select>
 
                     <button type='submit'>Submit Edits</button>
             </form>
