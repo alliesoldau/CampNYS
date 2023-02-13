@@ -61,7 +61,6 @@ export function EditCampgroundInfo(campground) {
         headers: {'Content-Type': 'application/json'},
         body:JSON.stringify(campground)
       })
-      .then(res => res.json())
 }
 
 export function EditResInfo(res) {

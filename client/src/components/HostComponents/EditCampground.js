@@ -6,10 +6,13 @@ import CGDetailsCard from '../../styles/CGDetailsCard'
 import arrow from '../../images/back_arrow.png'
 import Form from '../../styles/Form'
 import ArrowHeader from '../../styles/ArrowHeader'
+import Alert from '@mui/material/Alert';
+// import { ErrorsContext } from '../Context/ErrorsContext'
 
 function EditCampground() {
 
     const { user, setUser } = useContext(UserContext)
+    const [ errors, setErrors ] = useState([])
     const params = useParams()
     const history = useHistory()
 
@@ -36,16 +39,26 @@ function EditCampground() {
      
     function handleSubmit(e) {
         e.preventDefault();
-        EditCampgroundInfo(formData).then((updatedCG) => {
-            const updatedCampgrounds = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
-            const updatedUser = {...user, campgrounds: updatedCampgrounds}
-            setUser(updatedUser)
+        EditCampgroundInfo(formData).then(res => {
+            if(res.ok){
+                res.json().then((updatedCG) => {
+                const updatedCampgrounds = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
+                const updatedUser = {...user, campgrounds: updatedCampgrounds}
+                setUser(updatedUser)
+                setErrors([])
+                history.push(`/host/campground/${campground.id}`)
+                })
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
         })
-        history.push(`/host/campground/${campground.id}`)
     }
 
     return (
         <CGDetailsCard>
+        <div className="errors">
+            { errors ? errors.map(e => <Alert severity="error">{`${e.toUpperCase()}`}</Alert>) : null} 
+        </div>
         { user ? <>
             <ArrowHeader>
                 <div className="top">

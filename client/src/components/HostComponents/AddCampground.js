@@ -10,13 +10,13 @@ import { MdDirectionsWalk } from 'react-icons/md'
 import { IoMdBoat } from 'react-icons/io'
 import { AiFillCar } from 'react-icons/ai'
 import Alert from '@mui/material/Alert';
-import { ErrorsContext } from '../Context/ErrorsContext'
+// import { ErrorsContext } from '../Context/ErrorsContext'
 
 function AddCampground() {
 
     const history = useHistory()
     const { user, setUser } = useContext(UserContext)
-    const { errors, setErrors } = useContext(ErrorsContext)
+    const [ errors, setErrors ] = useState([])
 
     const [formData, setFormData] = useState({
         name: '',
@@ -47,6 +47,7 @@ function AddCampground() {
                     const updateCGs = [...hostsCampgrounds, data]
                     const updatedUser = {...user, campgrounds: updateCGs}
                     setUser(updatedUser)
+                    setErrors([])
                     history.push(`/hosts/${updatedUser.id}/campgrounds`)
                 })
             } else {
