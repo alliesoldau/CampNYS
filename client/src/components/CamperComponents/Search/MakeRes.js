@@ -4,6 +4,8 @@ import { UserContext } from '../../Context/UserContext'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import ResSites from './ResSites'
 import ResForm from './ResForm'
+import Grid from '../../../styles/Grid'
+
 
 function MakeRes() {
     
@@ -28,6 +30,7 @@ function MakeRes() {
                 <p>RESFORM</p>
                 <ResForm selectedSite={selectedSite} campground={campground}/>
             </> : null }
+            <Grid>
             { campground.sites && campground.sites.length > 0 ? 
                 <>
                 {campground.sites.map((resSite) => {
@@ -40,6 +43,7 @@ function MakeRes() {
                     )
                 })}
                 </> : null }
+                </Grid>
         </> 
         : null }
         </>

@@ -90,7 +90,16 @@ function AddCampground() {
 
                     <div className="line-item">
                     <label>Accessibility</label>
-                        
+                        <select
+                            onChange={handleChange}
+                            name='accessibility' 
+                            defaultValue='Select'
+                            >
+                                <option value='Select' disabled>Select</option>
+                                <option value='Hike-in' name='accessibility'>Hike-in</option>
+                                <option value='Road' name='accessibility'>Road</option>
+                                <option value='Boat' name='accessibility'>Boat</option>
+                        </select>
                     </div>
 
                     <div className="line-item">

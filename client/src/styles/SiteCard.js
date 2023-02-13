@@ -30,6 +30,23 @@ const SiteCard = styled.div`
     flex-direction: column;
     justify-content: space-between;
 }
+.site-card {
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    width: 400px;
+    margin: auto;
+    height: 300px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: ${props => 
+        props.selected === true ? `${GLOBAL.purple}` 
+        : 'white'
+        };
 .top {
     display: flex;
     flex-direction: row;
@@ -52,7 +69,10 @@ p {
     font-size: 1rem;
 }
 h3 {
-    color: ${GLOBAL.darkgrey};
+    color: ${props => 
+        props.selected === true ? 'white' 
+        : `${GLOBAL.darkgrey}`
+        };
     margin-top: 0;
 
 }
@@ -78,6 +98,16 @@ button.delete {
 }
 button.submit {
     background-color: ${GLOBAL.purple};
+}
+button.select {
+    background-color: ${props => 
+        props.selected === true ? 'white' 
+        : `${GLOBAL.purple}`
+        };
+    color: ${props => 
+        props.selected === true ? `${GLOBAL.purple}` 
+        : 'white'
+        };
 }
 button:hover {
     font-weight: bold;
