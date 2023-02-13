@@ -11,12 +11,14 @@ import { MdHouseSiding } from 'react-icons/md'
 import { GiTable } from 'react-icons/gi'
 import { GiWoodCabin } from 'react-icons/gi'
 import { GiMushroomHouse } from 'react-icons/gi'
+import Alert from '@mui/material/Alert';
 
 function EditSite() {
 
     const history = useHistory()
 
     const { user, setUser } = useContext(UserContext)
+    const [ errors, setErrors ] = useState([])
     const params = useParams()
 
     const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.CGID) ) })
@@ -38,19 +40,30 @@ function EditSite() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        EditSiteInfo(formData).then((siteData) => {
-            const updatedSites = campground.sites.map((site) => site.id === thisSite.id? siteData : site)
-            const updatedCGSites = {...campground, sites: updatedSites}
-            const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id? updatedCGSites : cg)
-            const updatedUser = {...user, campgrounds: updatedCG}
-            setUser(updatedUser)
-            history.push(`/campground/${campground.id}/sites`)
+        EditSiteInfo(formData).then(res => {
+            if(res.ok) {
+                res.json()
+                .then((siteData) => {
+                    const updatedSites = campground.sites.map((site) => site.id === thisSite.id? siteData : site)
+                    const updatedCGSites = {...campground, sites: updatedSites}
+                    const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id? updatedCGSites : cg)
+                    const updatedUser = {...user, campgrounds: updatedCG}
+                    setUser(updatedUser)
+                    setErrors([])
+                    history.push(`/campground/${campground.id}/sites`)
+                })
+            } else {
+                res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+            }
         })
     }
 
 
     return (
         <>
+        <div className="errors">
+            { errors ? errors.map(e => <Alert severity="error">{`${e.toUpperCase()}`}</Alert>):null} 
+        </div>
         { campground ? 
         <>
             <ArrowHeader>

@@ -11,7 +11,7 @@ import { MdHouseSiding } from 'react-icons/md'
 import { GiTable } from 'react-icons/gi'
 import { GiWoodCabin } from 'react-icons/gi'
 import { GiMushroomHouse } from 'react-icons/gi'
-import Alert from '@mui/material/Alert';
+import Alert from '@mui/material/Alert'
 
 function AddSite() {
     const history = useHistory()
