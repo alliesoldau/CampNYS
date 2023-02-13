@@ -10,16 +10,12 @@ function ResSites({ resSite, setSelectedSite }) {
 
     function handleClick() {
         setSelectedSite(resSite)
-        setSelected(true)
     }
-
-    const [selected, setSelected] = useState(false)
-    console.log(selected)
 
     return (
         <>
         { resSite ? 
-            <SiteCard selected={selected}> 
+            <SiteCard> 
                 <div className="site-card">
                     <div className="top">
                         <div className="left-container">

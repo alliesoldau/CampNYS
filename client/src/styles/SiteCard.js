@@ -43,10 +43,6 @@ const SiteCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: ${props => 
-        props.selected === true ? `${GLOBAL.purple}` 
-        : 'white'
-        };
 .top {
     display: flex;
     flex-direction: row;
@@ -69,10 +65,7 @@ p {
     font-size: 1rem;
 }
 h3 {
-    color: ${props => 
-        props.selected === true ? 'white' 
-        : `${GLOBAL.darkgrey}`
-        };
+    color: ${GLOBAL.darkgrey};
     margin-top: 0;
 
 }
@@ -100,14 +93,7 @@ button.submit {
     background-color: ${GLOBAL.purple};
 }
 button.select {
-    background-color: ${props => 
-        props.selected === true ? 'white' 
-        : `${GLOBAL.purple}`
-        };
-    color: ${props => 
-        props.selected === true ? `${GLOBAL.purple}` 
-        : 'white'
-        };
+    background-color: ${GLOBAL.purple};
 }
 button:hover {
     font-weight: bold;

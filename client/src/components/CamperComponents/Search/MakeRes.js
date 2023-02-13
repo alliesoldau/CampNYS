@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, Link } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import ResSites from './ResSites'
 import ResForm from './ResForm'
 import Grid from '../../../styles/Grid'
+import ArrowHeader from '../../../styles/ArrowHeader'
+import arrow from '../../../images/back_arrow.png'
 
 
 function MakeRes() {
@@ -24,10 +26,16 @@ function MakeRes() {
         <>
         { user && campground ? 
         <>
-            <p>Make Res</p>
-            <p>Campground: {campground.name}</p>
+            <ArrowHeader>
+                <div className="top">
+                    <Link to={`/search_campgrounds`}>
+                        <img className="arrow" src={arrow}></img>
+                    </Link>
+                    <h1>Back to Campgrounds Map</h1>
+                </div>
+                <h3>{campground.name}'s Sites</h3>
+            </ArrowHeader>
             { selectedSite ? <>
-                <p>RESFORM</p>
                 <ResForm selectedSite={selectedSite} campground={campground}/>
             </> : null }
             <Grid>
