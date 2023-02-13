@@ -128,9 +128,9 @@ function ResForm({ selectedSite, campground }) {
                     </div>
 
                     <div className="buttons-res-form">
-                        <button className="res-form-submit" type='submit'>Submit Edits</button>
+                        <button className="res-form-submit" type='submit'>Make Reservation</button>
                     </div>
-                    
+
                     </div>
                 </div>
             </form>                

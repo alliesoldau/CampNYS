@@ -2,7 +2,9 @@ import React, { useState, useContext } from 'react'
 import { UserContext } from '../Context/UserContext'
 import { CampgroundContext } from '../Context/CampgroundContext'
 import { CamperReservationsContext } from '../Context/CamperReservationsContext'
-import { LoginUser, GrabAllCampgrounds, GrabCamperReservations, GrabHostCampgrounds } from '../Stores/Fetches'
+import Alert from '@mui/material/Alert';
+import { ErrorsContext } from '../Context/ErrorsContext'
+import { LoginUser, GrabAllCampgrounds, GrabCamperReservations } from '../Stores/Fetches'
 import { useHistory } from 'react-router-dom'
 
 function Login() {
@@ -14,6 +16,7 @@ function Login() {
     const { setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
     const { setCampRes } = useContext(CamperReservationsContext)
+    const { errors } = useContext(ErrorsContext)
 
     const history = useHistory()
     const {email, password} = formData
@@ -33,12 +36,9 @@ function Login() {
         GrabAllCampgrounds().then(setCampgrounds)
     }
 
-    // TO DO: pack all provider data related to the user in the user provider 
     function UserTypeDependentFxn(user) {
         if (user.host===false) {
-            // console.log('camper')
             GrabCamperReservations(user.id).then((d) => {
-                // console.log(d)
                 setCampRes(d)
             })
         }
@@ -51,6 +51,10 @@ function Login() {
 
     return(
         <>
+            <div className="errors">
+            { errors ? errors.map((e) => 
+                  <Alert severity="error" >{e}</Alert>) : null}
+            </div>
             <h3 className="login">Login</h3>
             <form onSubmit={handleSubmit}>
                     <label>

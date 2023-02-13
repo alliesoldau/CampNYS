@@ -8,6 +8,9 @@ export function LoginUser(user) {
             body:JSON.stringify(user)
         })
         .then(res => res.json())
+        .catch((error) => {
+            console.log(error)
+          })
         // TO DO: look into .catch for fetches for error handling 
 } 
 
