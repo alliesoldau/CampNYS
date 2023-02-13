@@ -75,7 +75,15 @@ function EditCampground() {
                                 </div>
                                 <div className="line-item">
                                     <label>Accessibility</label>
-                                    <input type='text' name='accessibility' value={accessibility} onChange={handleChange} />
+                                    <select
+                                        onChange={handleChange}
+                                        name='accessibility' 
+                                        defaultValue={accessibility}
+                                        >
+                                        <option value='Hike-in' name='accessibility'>Hike-in</option>
+                                        <option value='Road' name='accessibility'>Road</option>
+                                        <option value='Boat' name='accessibility'>Boat</option>
+                                    </select>
                                 </div>
                                 <div className="line-item">
                                     <label>Image URL</label>
@@ -90,7 +98,7 @@ function EditCampground() {
                 </div>
                 <div className="right-container">
                         <img src={campground.image_url}></img>
-                    </div>
+                </div>
             </div>
             </> : null }
         </CGDetailsCard>

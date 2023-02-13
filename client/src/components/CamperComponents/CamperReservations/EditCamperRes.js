@@ -50,11 +50,6 @@ function EditCamperRes() {
         })
     }
 
-    // TO DO: limit what people can put in
-    // dates have to be when there is availability
-    // end date must be after start date
-    // dates cant be out of season
-
     return (
         <ResCard>
         { myRes && myCampground ? 

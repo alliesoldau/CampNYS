@@ -1,9 +1,5 @@
 import styled from "styled-components";
 import { GLOBAL } from './GlobalVar';
-import site from '../images/site.jpeg'
-
-// background: url(${site}) no-repeat center;
-// background-size: cover;
 
 const SiteCard = styled.div`
 .card {

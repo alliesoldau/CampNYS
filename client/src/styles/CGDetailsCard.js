@@ -28,7 +28,14 @@ const CGDetailsCard = styled.div`
         justify-content: space-between;
     }
     .right-container {
-        heiht: 100%;
+        height: 100%;
+    }
+    .icon {
+        height: 100%;
+        width: 100%;
+        font-size: 250px;
+        margin: auto;
+        color: ${GLOBAL.teal};
     }
     .card img {
         width: auto;

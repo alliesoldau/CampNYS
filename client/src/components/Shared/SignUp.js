@@ -89,10 +89,12 @@ function SignUp() {
                         <select
                             onChange={handleChange}
                             name='affiliation' 
-                            value={affiliation} >
-                                <option>NYS Parks & Rec</option>
-                                <option>ADK Mountain Club</option>
-                                <option>Independent</option>
+                            defaultValue='Select'
+                            >
+                            <option value='Select' disabled>Select</option>
+                            <option value='NYS Parks & Rec' name='affiliation'>NYS Parks & Rec</option>
+                            <option value='ADK Mountain Club' name='affiliation'>ADK Mountain Club</option>
+                            <option value='Independent' name='affiliation'>Independent</option>
                         </select>
                     </div> 
                 : null }
