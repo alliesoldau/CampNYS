@@ -113,7 +113,6 @@ export function AddNewSite(site) {
             headers: {'Content-Type': 'application/json'},
             body:JSON.stringify(site)
         })
-        .then(res => res.json())
     }
 
 export function AddNewRes(res) {

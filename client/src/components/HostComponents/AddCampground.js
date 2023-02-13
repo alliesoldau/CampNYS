@@ -10,7 +10,6 @@ import { MdDirectionsWalk } from 'react-icons/md'
 import { IoMdBoat } from 'react-icons/io'
 import { AiFillCar } from 'react-icons/ai'
 import Alert from '@mui/material/Alert';
-// import { ErrorsContext } from '../Context/ErrorsContext'
 
 function AddCampground() {
 

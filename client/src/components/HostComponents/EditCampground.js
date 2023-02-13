@@ -7,7 +7,6 @@ import arrow from '../../images/back_arrow.png'
 import Form from '../../styles/Form'
 import ArrowHeader from '../../styles/ArrowHeader'
 import Alert from '@mui/material/Alert';
-// import { ErrorsContext } from '../Context/ErrorsContext'
 
 function EditCampground() {
 

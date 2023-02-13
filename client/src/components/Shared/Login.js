@@ -3,7 +3,6 @@ import { UserContext } from '../Context/UserContext'
 import { CampgroundContext } from '../Context/CampgroundContext'
 import { CamperReservationsContext } from '../Context/CamperReservationsContext'
 import Alert from '@mui/material/Alert';
-import { ErrorsContext } from '../Context/ErrorsContext'
 import { LoginUser, GrabAllCampgrounds, GrabCamperReservations } from '../Stores/Fetches'
 import { useHistory } from 'react-router-dom'
 
@@ -16,7 +15,6 @@ function Login() {
     const { setUser } = useContext(UserContext)
     const { setCampgrounds } = useContext(CampgroundContext)
     const { setCampRes } = useContext(CamperReservationsContext)
-    const { errors } = useContext(ErrorsContext)
 
     const history = useHistory()
     const {email, password} = formData
@@ -51,10 +49,6 @@ function Login() {
 
     return(
         <>
-            <div className="errors">
-            { errors ? errors.map((e) => 
-                  <Alert severity="error" >{e}</Alert>) : null}
-            </div>
             <h3 className="login">Login</h3>
             <form onSubmit={handleSubmit}>
                     <label>
