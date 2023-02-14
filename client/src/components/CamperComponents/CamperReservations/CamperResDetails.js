@@ -1,28 +1,16 @@
 import React, { useContext } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
-import { CamperReservationsContext } from '../../Context/CamperReservationsContext'
-// import { DeleteReservation } from '../../Stores/Fetches'
 import ResCard from '../../../styles/ResCard'
 
 function CamperResDetails({ res, color, handleShow }) {
 
-    // const history = useHistory()
-
     const { campgrounds } = useContext(CampgroundContext)
-    // const { campRes, setCampRes } = useContext(CamperReservationsContext)
 
     let myCampground
     if (campgrounds) {
         myCampground = campgrounds.find((cg) => { return ( cg.id === res.site.campground_id ) })
     }
-
-    // function handleDeleteReservation() {
-    //     const resSansDeleted = campRes.filter(reservation => res.id !== reservation.id)
-    //     setCampRes(resSansDeleted)
-    //     history.push(`/campers/${res.camper_id}/reservations`)
-    //     DeleteReservation(res.id)
-    // }
 
     function handleSelect() {
         handleShow(res)
@@ -46,7 +34,6 @@ function CamperResDetails({ res, color, handleShow }) {
                         <Link to={`/reservation/${res.id}/edit`}>
                             <button className="edit">Edit</button>
                         </Link>
-                        {/* <button className="delete" onClick={handleDeleteReservation}>Delete</button> */}
                         <button className="delete" onClick={handleSelect}>Delete</button>
                     </div>
                 </div>

@@ -1,14 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory, Link, useParams } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteCampground } from '../Stores/Fetches'
 import arrow from '../../images/back_arrow.png'
 import ArrowHeader from '../../styles/ArrowHeader'
 import CGDetailsCard from '../../styles/CGDetailsCard'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function CampgroundDetails() {
 
     const { user, setUser } = useContext(UserContext)
+    const [show, setShow] = useState(false)
+    const [deleteMe, setDeleteMe] = useState(null)
     const history = useHistory()
     const params = useParams()
 
@@ -19,6 +23,20 @@ function CampgroundDetails() {
     }
 
     function handleDelete() {
+        setShow(false)
+        handleCGDelete(deleteMe)
+    }
+
+    function handleClose() {
+        setShow(false)
+    }
+
+    function handleShow(res) {
+        setShow(true)
+        setDeleteMe(res)
+    }
+
+    function handleCGDelete() {
         const campgroundsSansDelete = user.campgrounds.filter((cg) => cg.id !== campground.id)
         const updatedUser = {...user, campgrounds: campgroundsSansDelete}
         setUser(updatedUser)
@@ -27,6 +45,21 @@ function CampgroundDetails() {
     }
 
     return (
+        <>
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Delete Confirmation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Are you sure you want to delete this?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="danger" onClick={handleDelete}>
+                        Confirm
+                    </Button>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Cancel
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         <CGDetailsCard>
         { campground ? 
         <>
@@ -55,7 +88,7 @@ function CampgroundDetails() {
                         <Link to={`/campground/${campground.id}/sites`}>
                             <button className="sites">View Sites</button>
                         </Link>
-                        <button className="delete" onClick={handleDelete}>Delete</button>
+                        <button className="delete" onClick={handleShow}>Delete</button>
                     </div>
                 </div>
                 <div className="right-container">
@@ -65,6 +98,7 @@ function CampgroundDetails() {
             </>
             : null}
         </CGDetailsCard>
+        </>
     )
 }
 
