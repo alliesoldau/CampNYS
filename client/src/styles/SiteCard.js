@@ -7,7 +7,7 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 400px;
     margin: auto;
-    height: 300px;
+    min-height: 300px;
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -21,7 +21,7 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 500px;
     margin: auto;
-    height: 200px;
+    min-height: 200px;
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -35,7 +35,7 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 400px;
     margin: auto;
-    height: ${props => 
+    min-height: ${props => 
         props.res === true ? "225px"
         : "300px"
         }; 
@@ -71,6 +71,9 @@ h2 {
         props.res === true ? `${GLOBAL.orange}`
         : `${GLOBAL.teal}`
         }; 
+        display: block;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 p {
     font-size: 1rem;
@@ -80,7 +83,13 @@ h3 {
         props.res === true ? `${GLOBAL.lightgrey}`
         : `${GLOBAL.darkgrey}`
         }; 
-    margin-top: 0;
+        display: block;
+        font-size: 1.17em;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: normal;
 }
 .buttons {
     display: flex;

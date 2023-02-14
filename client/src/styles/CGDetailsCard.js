@@ -54,7 +54,7 @@ const CGDetailsCard = styled.div`
     p {
         margin: 5px;
         color: black;
-        font-size: 16px;
+        font-size: 18px;
         margin-bottom: 10px;
     }
     span {
@@ -72,6 +72,7 @@ const CGDetailsCard = styled.div`
         border-radius: 20px;
         border: none;
         margin: 2px;
+        font-size: 16px;
     }
     button:hover {
         font-weight: bold;

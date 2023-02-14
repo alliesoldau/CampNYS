@@ -16,7 +16,7 @@ const ArrowHeader = styled.div`
     h1 {
         color: ${GLOBAL.darkgrey};
         font-size: 1.5rem;
-        margin-left: 20px;
+        margin: 20px;
     }
     button {
         width: 150px;

@@ -39,6 +39,11 @@ p {
 }
 h3 {
     color: ${GLOBAL.darkgrey};
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    font-weight: normal;
 }
 .buttons {
     display: flex;
@@ -53,6 +58,7 @@ button {
     height: 40px;
     border-radius: 20px;
     border: none;
+    font-size: 16px;
 }
 button:hover {
     font-weight: bold;
