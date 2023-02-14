@@ -101,9 +101,9 @@ function EditCampground() {
                                     <label>Image URL</label>
                                     <input type='text' name='image_url' value={image_url} onChange={handleChange} />
                                 </div>
-                            <div className="buttons">
-                                <button className="submit" type='submit'>Submit Edits</button>
-                            </div>
+                                <div className="buttons">
+                                    <button className="submit" type='submit'>Submit Edits</button>
+                                </div>
                             </Form>
                         </form>
                     </div>

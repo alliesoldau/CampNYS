@@ -88,7 +88,7 @@ const CGDetailsCard = styled.div`
     }
     button.submit {
         background-color: ${GLOBAL.purple};
-        margin-top: 15px;
+        margin-top: 40px;
         width: 125px;
     }
 

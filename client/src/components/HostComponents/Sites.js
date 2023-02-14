@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
 import { DeleteSite } from '../Stores/Fetches'
@@ -8,17 +8,21 @@ import { MdHouseSiding } from 'react-icons/md'
 import { GiTable } from 'react-icons/gi'
 import { GiWoodCabin } from 'react-icons/gi'
 import { GiMushroomHouse } from 'react-icons/gi'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function Sites({ site }) {
 
     const { user, setUser } = useContext(UserContext)
+    const [show, setShow] = useState(false)
+    const [deleteMe, setDeleteMe] = useState(null)
 
     const history = useHistory()
 
     const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
     const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === site.id) })
 
-    function handleDelete(e) {
+    function handleSiteDelete(e) {
         e.preventDefault();
         const sitesSansDelete = campground.sites.filter((site) => site.id !== thisSite.id)
         const updatedSites = {...campground, sites: sitesSansDelete}
@@ -29,9 +33,35 @@ function Sites({ site }) {
         DeleteSite(thisSite.id)
     }
 
-    console.log(thisSite.category)
+    function handleDelete() {
+        setShow(false)
+        handleSiteDelete(deleteMe)
+    }
+
+    function handleClose() {
+        setShow(false)
+    }
+
+    function handleShow(res) {
+        setShow(true)
+        setDeleteMe(res)
+    }
 
     return (
+        <><Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+        <Modal.Header closeButton>
+            <Modal.Title>Delete Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this?</Modal.Body>
+        <Modal.Footer>
+            <Button variant="danger" onClick={handleDelete}>
+                Confirm
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+                Cancel
+            </Button>
+        </Modal.Footer>
+    </Modal>
         <SiteCard>
             <div className="card">
                 <div className="top">
@@ -63,10 +93,11 @@ function Sites({ site }) {
                     <Link to={`/campgrounds/${campground.id}/site/${thisSite.id}/edit`}>
                         <button className="edit">Edit Site Details</button>
                     </Link>
-                        <button className="delete" onClick={handleDelete}>Delete Site</button>
+                        <button className="delete" onClick={handleShow}>Delete Site</button>
                 </div>
             </div>
         </SiteCard>
+        </>
     )
 }
 
