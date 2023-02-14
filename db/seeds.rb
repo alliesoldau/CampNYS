@@ -249,126 +249,126 @@ end
 end
 
 puts "📌 Seeding reservation data..."
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today, to: Date.today + 1)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today, to: Date.today + 1)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 4, to: Date.today + 5)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today + 4, to: Date.today + 5)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 9, to: Date.today + 12)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today + 9, to: Date.today + 12)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 15, to: Date.today + 17)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today + 15, to: Date.today + 17)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 20, to: Date.today + 21)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today + 20, to: Date.today + 21)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 3),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 24, to: Date.today + 27)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today + 24, to: Date.today + 27)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
-    site = Site.all.sample
-    startDate = Faker::Date.between(from: Date.today + 31, to: Date.today + 32)
-    Reservation.create(
-        number_of_people: rand(1..10),
-        start_date: startDate,
-        end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
-        # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
-        site_id: site.id,
-        cars: rand(0..site.car_capacity),
-        camper_id: 1,
-        # camper_id: User.where(host: false).sample.id,
-        # host_id: User.where(host: true).sample.id,
-        host_id: 2
-    )
-end
+# 40.times do |count|
+#     site = Site.all.sample
+#     startDate = Faker::Date.between(from: Date.today + 31, to: Date.today + 32)
+#     Reservation.create(
+#         number_of_people: rand(1..10),
+#         start_date: startDate,
+#         end_date: Faker::Date.between(from: startDate + 1, to: startDate + 4),
+#         # site_id: count + 1 > 16 ? count + 1 - 16 : count + 1,
+#         site_id: site.id,
+#         cars: rand(0..site.car_capacity),
+#         camper_id: 1,
+#         # camper_id: User.where(host: false).sample.id,
+#         # host_id: User.where(host: true).sample.id,
+#         host_id: 2
+#     )
+# end
 
-40.times do |count|
+6.times do |count|
     site = Site.all.sample
     startDate = Faker::Date.between(from: Date.today + 36, to: Date.today + 38)
     Reservation.create(
