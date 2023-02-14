@@ -11,6 +11,11 @@ const NavBarStyles = styled.div`
     padding: 5px;
     width: 100%;
 }
+p {
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0px;
+}
 .navbarLeft {
     height: ${GLOBAL.navsize};
     display: flex;
@@ -85,7 +90,7 @@ img.logo {
 .dropdown {
     position: absolute;
     top: 68px;
-    width: 200px;
+    width: 250px;
     transform: translateX(-70%);
     background-color: white;
     border: 2px solid ${GLOBAL.teal};

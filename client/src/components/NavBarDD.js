@@ -44,7 +44,7 @@ function NavBarDD({ open, setOpen }) {
                 <Link to={`/users/${user.id}/profile`} onClick={()=>setOpen(!open)}>
                     <div className="menu-item">
                         <i class="gg-profile"></i>
-                        Profile
+                        <p>Profile</p>
                     </div>
                 </Link>
              
@@ -53,7 +53,7 @@ function NavBarDD({ open, setOpen }) {
                             <NavLink to={`/hosts/${user.id}/campgrounds`}>
                                 <div className="menu-item">
                                     <i class="gg-database"></i>
-                                    My Campgrounds
+                                    <p>My Campgrounds</p>
                                 </div>
                             </NavLink>
                         </li>
@@ -62,7 +62,7 @@ function NavBarDD({ open, setOpen }) {
                             <NavLink to={`/campers/${user.id}/reservations`}>
                                 <div className="menu-item">
                                     <i class="gg-calendar-today"></i>
-                                    My Reservations
+                                    <p>My Reservations</p>
                                 </div>
                             </NavLink>
                         </li>
