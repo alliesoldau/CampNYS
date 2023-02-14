@@ -32,7 +32,6 @@ position: relative;
     justify-content: flex-start;
     border-radius: 1px;
 }
-
 .buttons, .entries, .results {
     background-color: none;
     font-size: 14px;
@@ -119,6 +118,21 @@ img.info_image {
     border-radius: 3px;
     font-style: italic;
 }
+.filters {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    z-index: 2;
+    width: auto;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,.4);
+    border-radius: 2px;
+    font-size: 14px;
+}
+
 `
 
 export default MapStyles;

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { CampgroundContext } from '../../Context/CampgroundContext'
 import MapStyles from '../../../styles/MapStyles'
 import info from '../../../images/info.png'
+import MapFilters from './MapFilters'
 
 import {
     useJsApiLoader,
@@ -30,6 +31,15 @@ function Map() {
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
     const [origin, setOrigin] = useState('')
+
+    const [boat, setBoat] = useState(true)
+    const [hikein, setHikein] = useState(true)
+    const [road, setRoad] = useState(true)
+    const [HP, setHP] = useState(true)
+    const [ND, setND] = useState(true)
+    const [LG, setLG] = useState(true)
+    const [cat, setCat] = useState(true)
+
 
     const [activeMarker, setActiveMarker] = useState(null);
 
@@ -81,6 +91,11 @@ function Map() {
     
     return (
         <MapStyles>
+            <div className="filters">
+                <MapFilters setBoat={setBoat} boat={boat} setHikein={setHikein} hikein={hikein} setRoad={setRoad} road={road}
+                            setHP={setHP} HP={HP} setLG={setLG} LG={LG} setND={setND} ND={ND} setCat={setCat} cat={cat}
+                />
+            </div>
             <div className="route_calcs">
                 <div className="route-calc-container">
                 <div className="route-calcs-top">
@@ -142,7 +157,22 @@ function Map() {
                         } else if (loc.region_id === 4) {
                             color='ltblu'
                         }
-                    
+                        if (loc.accessibility === 'Boat' && boat === false) {
+                            hideshow = false
+                        } else if (loc.accessibility === 'Hike-in' && hikein === false) {
+                            hideshow = false
+                        } else if (loc.accessibility === 'Road' && road === false) {
+                            hideshow = false
+                        }
+                        if (loc.region_id === 1 && HP === false) {
+                            hideshow = false
+                        } else if (loc.region_id === 2 && LG === false) {
+                            hideshow = false
+                        } else if (loc.region_id === 3 && ND === false) {
+                            hideshow = false
+                        } else if (loc.region_id === 4 && cat === false) {
+                            hideshow=false
+                        }
                         return (
                             <Marker 
                                 position={{ lat: loc.lat, lng: loc.lng }}
