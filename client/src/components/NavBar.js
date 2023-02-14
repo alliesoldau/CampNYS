@@ -5,7 +5,7 @@ import NavBarStyles from '../styles/NavBarStyles'
 import logo from '../images/logo.png'
 import NavBarDD from './NavBarDD'
 
-function NavBar({ setShowLogin, setShowSignUp}) {
+function NavBar({ setShowLogin, setShowSignUp, open, setOpen}) {
 
     const { user } = useContext(UserContext);
 
@@ -67,7 +67,7 @@ function NavBar({ setShowLogin, setShowSignUp}) {
                          )
                         }
                         <li>
-                            <NavBarDD />
+                            <NavBarDD open={open} setOpen={setOpen}/>
                         </li>
                     </ul>
                 ) : ( null

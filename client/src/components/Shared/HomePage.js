@@ -4,7 +4,6 @@ import HomePageStyles from '../../styles/HomePageStyles.js'
 import { CamperReservationsContext } from '../Context/CamperReservationsContext'
 import adk_logo from '../../images/adk_logo.png'
 import cat_logo from '../../images/cat_logo.png'
-// import lg_logo from '../../images/lg_logo.png'
 
 function HomePage() {
 
@@ -24,10 +23,10 @@ function HomePage() {
                         <p>Let the adventures begin!</p>
                     </div>
                 </div>
-                <div className="bottom-left">
+                {/* <div className="bottom-left">
                     <h4>User Summary</h4>
                     <p>Reservations-to-date: {campRes.length}</p>
-                </div>
+                </div> */}
             </div>
             <div className="right-container">
                 <h4>About CampNYS</h4>
@@ -39,7 +38,6 @@ function HomePage() {
                 <p>The Beta version focuses on the Adirondack High Peaks Wilderness, Lake George, and the Catskills.</p>
                 <div className="logo-container">
                     <img src={adk_logo}/>
-                    {/* <img src={lg_logo}/> */}
                     <img src={cat_logo}/>
                 </div>
             </div>

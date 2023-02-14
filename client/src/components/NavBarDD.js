@@ -5,10 +5,7 @@ import { LogoutUser } from './Stores/Fetches'
 import propic from '../images/propic.jpg'
 import { useHistory } from 'react-router-dom'
 
-// TO DO: set global state for closing the drop down so itll close when you click buttons after leaving it open
-
-function NavBarDD() {
-    const [open, setOpen] = useState(false)
+function NavBarDD({ open, setOpen }) {
     const [imageURL, setImageURL] = useState('')
     const { user, setUser } = useContext(UserContext);
     const history = useHistory()
@@ -30,12 +27,17 @@ function NavBarDD() {
         }
     },[])
 
+    function handleToggle(e) {
+        setOpen(!open)
+        e.stopPropagation()
+    }
+
     return (
     <>
         <img className="proPic" 
             src={imageURL} 
             alt="Profile of the user" 
-            onClick={()=>setOpen(!open)}>
+            onClick={handleToggle}>
         </img>
         { open ? (
             <div className="dropdown">

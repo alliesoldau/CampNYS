@@ -32,6 +32,8 @@ function App() {
 
   const [showLogin, setShowLogin] = useState(false)
   const [showSignUp, setShowSignUp] = useState(false)
+  // this open and closes the drop down menu in the navbar
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     // auto-login 
@@ -53,9 +55,14 @@ function App() {
       } 
     }
 
+    function handleCloseDropDown() {
+      console.log('click')
+      setOpen(false)
+    }
+
   return (
-      <div className="app-container">
-        <NavBar setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
+      <div className="app-container" onClick={handleCloseDropDown}>
+        <NavBar setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} open={open} setOpen={setOpen}/>
           <div className="body-container">
             <Switch>
 
