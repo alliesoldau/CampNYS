@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom"
 import { UserContext } from '../Context/UserContext'
 import { EditProfileInfo } from '../Stores/Fetches'
 import Profile from '../../styles/Profile'
+import Form from '../../styles/Form'
 
 function EditProfile() {
 
@@ -50,6 +51,7 @@ function EditProfile() {
                 <div className="user-info-container">
                     <form onSubmit={handleSubmit}>
                         <div className="user-info">
+                        <Form>
                             <div className="line-item">
                                 <label>First Name</label>
                                 <input type='text' name='first_name' value={first_name} onChange={handleChange} />
@@ -70,6 +72,7 @@ function EditProfile() {
                             <div className="buttons">
                                 <button className="submit" type='submit'>Submit Edits</button>
                             </div>
+                            </Form>
                         </div> 
                     </form>
                 </div>

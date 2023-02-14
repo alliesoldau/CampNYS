@@ -42,6 +42,7 @@ const Profile = styled.div`
     background-color: ${GLOBAL.red};
     color: white;
     text-align: center;
+    padding-top: 10px;
     width: 100%;
 }
 .header h1 {
@@ -53,7 +54,6 @@ const Profile = styled.div`
 .header p {
     font-size: 1rem;
     color: ${GLOBAL.lightgrey};
-    margin-top: 5px;
 }
 .user-info-container {
     display: flex;
@@ -71,11 +71,12 @@ const Profile = styled.div`
     flex-direction: row;
 }
 .line-item h4 {
+    margin-bottom: 0px;
     margin-right: 20px;
-    width: 100px;
+    width: 150px;
+    font-size: 20px;
 }
 .line-item p {
-    padding-top: 5px;
     color: ${GLOBAL.darkgrey};
 }
 img {
@@ -128,6 +129,7 @@ label, input {
     margin-bottom: 10px;
     margin-right: 10px;
 }
+
 `
 
 export default Profile;
