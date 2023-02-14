@@ -132,6 +132,7 @@ function Map() {
             
                     {campgrounds.map(loc => {
                         let color = 'wht'
+                        let hideshow = true
                         if (loc.region_id === 1) {
                             color = 'ylw'
                         } else if (loc.region_id === 2) {
@@ -141,6 +142,7 @@ function Map() {
                         } else if (loc.region_id === 4) {
                             color='ltblu'
                         }
+                    
                         return (
                             <Marker 
                                 position={{ lat: loc.lat, lng: loc.lng }}
@@ -152,6 +154,7 @@ function Map() {
                                 }}
                                 onClick={() => handleActiveMarker(loc.id)}
                                 key={loc}
+                                visible={hideshow}
                             >
                             {activeMarker === loc.id ? (
                                 <InfoWindow onCloseClick={() => setActiveMarker(null)}>
