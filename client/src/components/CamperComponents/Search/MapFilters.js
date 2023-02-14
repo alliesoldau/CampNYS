@@ -32,36 +32,36 @@ function MapFilters({ setBoat, boat, setHikein, hikein, setRoad, road, setHP, HP
 
     return (
         <>
-            <h3 className="filters">Campground Filters</h3>
-            <label>Accesibility</label>
-            <div className="checks">
-                <div className="line">
-                    <input type="checkbox" value="Boat" defaultChecked onClick={handleBoatClick}/>Boat
+            <h2 className="cgfilters">Campground Filters</h2>
+            <div className="all-checks">
+                <div className="checks-left">
+                    <label>Accessibility</label>
+                    <div className="line">
+                        <input type="checkbox" value="Boat" defaultChecked onClick={handleBoatClick}/>Boat
+                    </div>
+                    <div className="line">
+                        <input type="checkbox" value="Hike-in" defaultChecked onClick={handleHikeinClick}/>Hike-in
+                    </div>
+                    <div className="line">
+                        <input type="checkbox" value="Road" defaultChecked onClick={handleRoadClick}/>Road
+                    </div>
                 </div>
-                <div className="line">
-                    <input type="checkbox" value="Hike-in" defaultChecked onClick={handleHikeinClick}/>Hike-in
-                </div>
-                <div className="line">
-                    <input type="checkbox" value="Road" defaultChecked onClick={handleRoadClick}/>Road
+                <div className="checks-right">
+                    <label>Region</label>
+                    <div className="line">
+                        <input type="checkbox" defaultChecked onClick={handleHPClick}/>High Peaks
+                    </div>
+                    <div className="line">
+                        <input type="checkbox" defaultChecked onClick={handleNDClick}/>North Daks
+                    </div>
+                    <div className="line">
+                        <input type="checkbox" defaultChecked onClick={handleLGClick}/>Lake George
+                    </div>
+                    <div className="line">
+                        <input type="checkbox" defaultChecked onClick={handleCatClick}/>Catskills
+                    </div>
                 </div>
             </div>
-            <label>Region</label>
-            <div className="checks">
-                <div className="line">
-                    <input type="checkbox" defaultChecked onClick={handleHPClick}/>High Peaks
-                </div>
-                <div className="line">
-                    <input type="checkbox" defaultChecked onClick={handleNDClick}/>North Daks
-                </div>
-                <div className="line">
-                    <input type="checkbox" defaultChecked onClick={handleLGClick}/>Lake George
-                </div>
-                <div className="line">
-                    <input type="checkbox" defaultChecked onClick={handleCatClick}/>Catskills
-                </div>
-            </div>
-
-
         </>
     )
 }

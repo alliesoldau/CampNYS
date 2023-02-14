@@ -123,7 +123,7 @@ img.info_image {
     flex-direction: column;
     position: absolute;
     bottom: 5vh;
-    left: 5vw;
+    left: 1vw;
     z-index: 2;
     width: auto;
     background-color: white;
@@ -132,7 +132,20 @@ img.info_image {
     border-radius: 2px;
     font-size: 14px;
 }
-
+.all-checks {
+    display: flex;
+    flex-direction: row;
+    color: ${GLOBAL.blackgrey};
+}
+.checks-left, .checks-right {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+h2.cgfilters {
+    font-size: 16px;
+    margin: 0;
+}
 `
 
 export default MapStyles;
