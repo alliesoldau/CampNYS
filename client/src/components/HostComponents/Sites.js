@@ -15,11 +15,14 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Sites({ site }) {
 
-    console.log(site)
-
     const { user, setUser } = useContext(UserContext)
     const [show, setShow] = useState(false)
     const [deleteMe, setDeleteMe] = useState(null)
+    const [date, setDate] = useState(null)
+
+    const onChange = (date) => {
+        setDate(date)
+    }
 
     const history = useHistory()
 
@@ -87,6 +90,36 @@ function Sites({ site }) {
         return datesBetween       
     })
 
+    if (date) {
+        const ressies = site.reservations
+        ressies.forEach((res) => {
+            const startD = res.start_date
+            const endD = res.end_date
+            const inBetweenDates = getDatesBetweenRes(startD, endD)
+            function getDatesBetweenRes (start, end) {
+                const dates = [];
+                let currentDate = new Date(start)
+                let endDate = new Date(end)
+                while (currentDate <= endDate) {
+                    dates.push(currentDate);
+                    currentDate = new Date(
+                        currentDate.getFullYear(),
+                        currentDate.getMonth(),
+                        currentDate.getDate() + 1, // Will increase month if over range
+                    );
+                }
+                return dates
+            }
+            inBetweenDates.forEach((resDate) => {
+                if (date.getTime() == resDate.getTime()) {
+                    console.log(res)
+                }
+            })
+        })
+        
+    }
+
+
     return (
         <><Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
@@ -106,7 +139,7 @@ function Sites({ site }) {
             <div className="card">
                 <div className="top">
                     <div className="left-container">
-                        <div className="line-items"><h3>Site name:</h3><p className="accent">{thisSite.name}</p></div>
+                        <div className="line-items"><h3>Site name:</h3><p>{thisSite.name}</p></div>
                         <div className="line-items"><h3>Site category:</h3><p>{thisSite.category}</p></div>
                         <div className="line-items"><h3>Site capacity:</h3><p>{thisSite.capacity}</p></div>
                         <div className="line-items"><h3>Site car capactiy:</h3><p>{thisSite.car_capacity}</p></div>
@@ -130,8 +163,8 @@ function Sites({ site }) {
                         <DatePicker
                             includeDates={include.flat()}
                             minDate={new Date()}
-                            selectsRange
                             inline
+                            onChange={onChange}
                         />
                     </div>
                 </div>

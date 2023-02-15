@@ -54,7 +54,6 @@ function App() {
     }
 
     function handleCloseDropDown() {
-      console.log('click')
       setOpen(false)
     }
 
