@@ -125,7 +125,6 @@ function ResForm({ selectedSite, campground, setErrors }) {
                         excludeDates={exclude.flat()}
                         minDate={new Date()}
                         selectsRange
-                        selectsDisabledDaysInRange
                         inline
                     />
                     </div>

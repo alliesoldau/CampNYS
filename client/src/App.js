@@ -22,7 +22,6 @@ import { CampgroundContext } from './components/Context/CampgroundContext'
 import { CamperReservationsContext } from './components/Context/CamperReservationsContext'
 
 // where to source icons from: https://react-icons.github.io/react-icons/ 
-// BIG TO DO: think of an easier way to import all components from one place so its not a shit show here 
 
 function App() {
 
@@ -43,7 +42,6 @@ function App() {
         UserTypeDependentFxn(user)
       })
       GrabAllCampgrounds().then(setCampgrounds)
-    // TO DO: add a catch 
     }
   }, []);
 

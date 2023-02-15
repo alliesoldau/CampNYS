@@ -5,7 +5,7 @@ const SiteCard = styled.div`
 .card {
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
-    width: 400px;
+    width: 550px;
     margin: auto;
     min-height: 300px;
     padding: 10px;
@@ -14,7 +14,18 @@ const SiteCard = styled.div`
     background-color: white;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+}
+.top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+}
+h2.big {
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
 .add-card {
     border-radius: 10px;
@@ -65,6 +76,12 @@ const SiteCard = styled.div`
     flex-direction: column;
     justify-content: center;
 }
+.calendar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-auto;
+}
 h2 {
     margin: auto;
     color: ${props => 
@@ -76,20 +93,20 @@ h2 {
     font-weight: bold;
 }
 p {
-    font-size: 1rem;
+    color: ${GLOBAL.darkgrey};
+    margin-bottom: 2px;
 }
 h3 {
     color: ${props => 
-        props.res === true ? `${GLOBAL.lightgrey}`
-        : `${GLOBAL.darkgrey}`
+        props.res === true ? `${GLOBAL.mediumgrey}`
+        : `${GLOBAL.teal}`
         }; 
         display: block;
-        font-size: 1.17em;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        font-weight: normal;
+        font-size: 1em;
+        font-weight: bold;
+        margin-right: 10px;
+        margin-bottom: 0px;
+        margin-top: 2px;
 }
 .buttons {
     display: flex;
@@ -119,6 +136,41 @@ button.select {
 button:hover {
     font-weight: bold;
 }
+.line-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.react-datepicker {
+    font-size: .75em;
+  }
+  .react-datepicker__header {
+    padding-top: 0.6em;
+  }
+  .react-datepicker__month {
+    margin: 0.2em .75em;
+  }
+  .react-datepicker__day-name, .react-datepicker__day {
+    width: 1.9em;
+    line-height: 1.9em;
+    margin: 0.166em;
+  }
+  .react-datepicker__current-month {
+    font-size: 1em;
+  }
+  .react-datepicker__navigation {
+    top: 1em;
+    line-height: 1.7em;
+    border: 0.45em solid transparent;
+  }
+  .react-datepicker__navigation--previous {
+    left: 1em;
+  }
+  .react-datepicker__navigation--next {
+    right: 1em;
+  }
 `
 
 export default SiteCard;
