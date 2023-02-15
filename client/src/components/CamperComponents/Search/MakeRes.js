@@ -50,13 +50,13 @@ function MakeRes() {
             <ResFormStyles >
                 <div className="container">
                 <SiteCard res={true}> 
-                <div className="site-card">
+                <div className="res-site-card">
                     <div className="top">
                         <div className="left-container">
-                            <h3>Site Name: {selectedSite.name} </h3>
-                            <h3>Category: {selectedSite.category}</h3>
-                            <h3>Capacity: {selectedSite.capacity}</h3>
-                            <h3>Car Capactiy: {selectedSite.car_capacity}</h3>
+                            <div className="line-items"><h3 className="sel">Site Name:</h3><p className="sel">{selectedSite.name}</p></div>
+                            <div className="line-items"><h3 className="sel">Category:</h3><p className="sel">{selectedSite.category}</p></div>
+                            <div className="line-items"><h3 className="sel">Capacity:</h3><p className="sel">{selectedSite.capacity}</p></div>
+                            <div className="line-items"><h3 className="sel">Car Capactiy:</h3><p className="sel">{selectedSite.car_capacity}</p></div>
                         </div>
                         <div className="right-container">
                             { selectedSite.category === 'Tent' ? 

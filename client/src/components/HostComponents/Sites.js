@@ -54,7 +54,7 @@ function Sites({ site }) {
     // filter out days that are already booked  
     // i have to format the start and end date because react date picker handles dates differently
     // then i seeded them into the data  
-    const exclude = site.reservations.map((ressy) => {
+    const include = site.reservations.map((ressy) => {
         // start date 
         const day = (new Date(ressy.start_date).getDate()) + 1
         const month = (new Date(ressy.start_date).getMonth()) + 1
@@ -128,7 +128,7 @@ function Sites({ site }) {
                     </div>
                     <div className="calendar-container">
                         <DatePicker
-                            excludeDates={exclude.flat()}
+                            includeDates={include.flat()}
                             minDate={new Date()}
                             selectsRange
                             inline

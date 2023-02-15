@@ -116,7 +116,6 @@ function ResForm({ selectedSite, campground, setErrors }) {
             <form onSubmit={handleSubmit}>
                 <div className="res-form">
                     <div className="left-container">
-
                     <DatePicker
                         selected={startDate}
                         onChange={onChange}

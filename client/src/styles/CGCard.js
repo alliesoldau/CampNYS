@@ -7,7 +7,7 @@ const CGCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 80vw;
     margin: auto;
-    height: 60vh;
+    height: 65vh;
     padding: 10px;
     display: flex;
     flex-direction: column;

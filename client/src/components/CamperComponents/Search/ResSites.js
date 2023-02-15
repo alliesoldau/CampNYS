@@ -16,13 +16,13 @@ function ResSites({ resSite, setSelectedSite }) {
         <>
         { resSite ? 
             <SiteCard> 
-                <div className="site-card">
+                <div className="res-site-card">
                     <div className="top">
                         <div className="left-container">
-                            <h3>Site Name: {resSite.name} </h3>
-                            <h3>Category: {resSite.category}</h3>
-                            <h3>Capacity: {resSite.capacity}</h3>
-                            <h3>Car Capactiy: {resSite.car_capacity}</h3>
+                            <div className='line-items'><h3>Site Name:</h3><p>{resSite.name}</p></div>
+                            <div className='line-items'><h3>Category:</h3><p>{resSite.category}</p></div>
+                            <div className='line-items'><h3>Capacity:</h3><p>{resSite.capacity}</p></div>
+                            <div className='line-items'><h3>Car Capactiy:</h3><p>{resSite.car_capacity}</p></div>
                         </div>
                         <div className="right-container">
                             { resSite.category === 'Tent' ? 

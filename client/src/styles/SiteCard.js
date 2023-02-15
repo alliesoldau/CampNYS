@@ -7,7 +7,7 @@ const SiteCard = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 550px;
     margin: auto;
-    min-height: 300px;
+    min-height: 375px;
     padding: 10px;
     margin-bottom: 15px;
     margin-top: 15px;
@@ -31,6 +31,7 @@ h2.big {
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
     width: 500px;
+    height: 200px;
     margin: auto;
     min-height: 200px;
     padding: 10px;
@@ -61,12 +62,41 @@ h2.big {
     flex-direction: column;
     justify-content: space-between;
 }
+.res-site-card {
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.3);
+    width: 400px;
+    margin: auto;
+    min-height: 225px;
+    padding: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    background-color: ${props => 
+        props.res === true ? `${GLOBAL.purple}` 
+        : "white"
+        }; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.res-site-card h2 {
+    font-size: 5rem;
+}
+h3.sel {
+    color: ${GLOBAL.lightorange};
+}
+p.sel {
+    color: white;
+}
 .top {
     display: flex;
     flex-direction: row;
 }
-.left-container, .right-container {
-    width: 50%;
+.left-container {
+    width: 60%;
+}
+.right-container {
+    width: 40%;
 }
 .right-container {
     font-size: 80px;
@@ -80,7 +110,8 @@ h2.big {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-auto;
+    margin: auto;
+    margin-top: 0;
 }
 h2 {
     margin: auto;

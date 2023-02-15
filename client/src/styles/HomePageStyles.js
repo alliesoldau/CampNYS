@@ -77,7 +77,7 @@ const HomePageStyles = styled.div`
     }
 
     .logo-container img {
-        width: 33%;
+        width: 25%;
     }
 `
 
