@@ -23,15 +23,8 @@ function Sites({ site, campground }) {
     const [res, setRes] = useState(null)
     const [camper, setCamper] = useState(null)
     const [deleteMe, setDeleteMe] = useState(null)
-    // const [toSend, setToSend] = useState({
-    //     from_name: '',
-    //     to_name: '',
-    //     message: '',
-    //     reply_to: '',
-    //   });
     const history = useHistory()
 
-    // const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
     const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === site.id) })
 
     function handleSiteDelete(e) {
@@ -62,7 +55,7 @@ function Sites({ site, campground }) {
 
     // modal control for the res
     function handleDeleteRes() {
-        DeleteReservation(res.id)
+        // DeleteReservation(res.id)
         setShowRes(false)
         const updatedRes = site.reservations.filter((ressy) => ressy.id !== res.id)
         const updatedSite = {...site, reservations: updatedRes}
@@ -75,15 +68,8 @@ function Sites({ site, campground }) {
             to_name: `${camper.first_name} ${camper.last_name}`,
             message: 'res cancelled',
             reply_to: 'alliesoldau@gmail.com',
+            user_email: 'alliebenwedding2024@gmail.com'
         })
-        // setToSend({
-        //     ...toSend,
-        //     from_name: 'CampNYS',
-        //     to_name: `${camper.first_name} ${camper.last_name}`,
-        //     message: 'res cancelled',
-        //     reply_to: 'alliesoldau@gmail.com',
-        // })
-        // console.log(sendMe)
         triggerSend(sendMe)
     }
 
@@ -153,22 +139,12 @@ function Sites({ site, campground }) {
                     GrabCamper(res.camper_id).then((setCamper))
                     setRes(res)
                     setShowRes(true)
-                    // if (camper) {
-                    //     setToSend({
-                    //         ...toSend,
-                    //         from_name: 'CampNYS',
-                    //         to_name: `${camper.first_name} ${camper.last_name}`,
-                    //         message: 'res cancelled',
-                    //         reply_to: 'alliesoldau@gmail.com',
-                    //     })
-                    // }
                 }
             })
         })
     }
 
     function triggerSend(toSend) {
-        // if (toSend) {
         console.log(toSend)
         send(
             'service_nz0rb1z',
