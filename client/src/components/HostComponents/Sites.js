@@ -62,7 +62,6 @@ function Sites({ site, campground }) {
         const updatedCGs = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
         const updatedUser = {...user, campgrounds: updatedCGs}
         setUser(updatedUser)
-
     }
 
     function handleCloseRes() {
@@ -122,7 +121,7 @@ function Sites({ site, campground }) {
                         currentDate.getFullYear(),
                         currentDate.getMonth(),
                         currentDate.getDate() + 1, // Will increase month if over range
-                    );
+                    ) 
                 }
                 return dates
             }
@@ -130,14 +129,10 @@ function Sites({ site, campground }) {
                 if (date.getTime() == resDate.getTime()) { 
                     setRes(res)
                     setShowRes(true)
-                    // TO DO: CAUSE A POP UP WINDOW OR SOMETHING WITH THE RES InfoBox
-                    // AND ALLOW THE HOST TO CANCEL THE RESRVATION FROM THEIR SIDE
                 }
             })
         })
     }
-
-
 
     return (
         <>

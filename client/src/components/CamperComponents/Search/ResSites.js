@@ -10,6 +10,7 @@ function ResSites({ resSite, setSelectedSite }) {
 
     function handleClick() {
         setSelectedSite(resSite)
+        window.scrollTo(0, 0)
     }
 
     return (
