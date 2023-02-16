@@ -30,6 +30,9 @@ const ArrowHeader = styled.div`
     button:hover {
         font-weight: bold;
     }
+    h3 {
+        margin-left: 10px;
+    }
     `
 
 export default ArrowHeader;

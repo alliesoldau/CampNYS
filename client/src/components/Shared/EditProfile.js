@@ -67,7 +67,16 @@ function EditProfile() {
                             { user.host === true ? 
                             <div className="line-item">
                                 <label>Affiliation</label>
-                                <input type='text' name='affiliation' value={affiliation} onChange={handleChange} />
+                                <select
+                                    onChange={handleChange}
+                                    name='affiliation' 
+                                    defaultValue='Select'
+                                    >
+                                    <option value='Select' disabled>Select</option>
+                                    <option value='NYS Parks & Rec' name='affiliation'>NYS Parks & Rec</option>
+                                    <option value='ADK Mountain Club' name='affiliation'>ADK Mountain Club</option>
+                                    <option value='Independent' name='affiliation'>Independent</option>
+                                </select>
                             </div> : null }
                             <div className="buttons">
                                 <button className="submit" type='submit'>Submit Edits</button>

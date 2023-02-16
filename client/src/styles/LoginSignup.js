@@ -104,6 +104,9 @@ const LoginSignup = styled.div`
         margin: auto;
         margin-top: 10px;
     }
+    span {
+        color: darkred;
+    }
 
 `
 export default LoginSignup;

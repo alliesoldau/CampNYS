@@ -87,8 +87,8 @@ button.clear {
     background-color: ${GLOBAL.red}
 }
 button.info-button {
-    background-color: ${GLOBAL.lightgrey};
-    color: ${GLOBAL.blackgrey};
+    background-color: ${GLOBAL.purple};
+    color: white;
     border-radius: 10px;
     border: none;
     margin-right: 2px;
@@ -97,7 +97,6 @@ button.info-button {
 }
 img.info_image {
     height: 15px;
-    margin-top: 10px;
 }
 .image-container {
     padding: auto;

@@ -69,7 +69,7 @@ function SignUp() {
                 <label>
                     <div className="label">
                         <i class="gg-mail"></i>
-                        Email
+                        Email<span>*</span>
                     </div>
                 </label>
                 <input type='text' name='email' value={email} onChange={handleChange} placeholder={'example@email.com'}/>
@@ -114,7 +114,7 @@ function SignUp() {
                 <label>
                     <div className="label">
                         <i class="gg-lock"></i>
-                        Password
+                        Password<span>*</span>
                     </div>
                 </label>
                 <input type='password' name='password' value={password} onChange={handleChange} placeholder={'********'}/>

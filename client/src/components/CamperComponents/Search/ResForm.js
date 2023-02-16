@@ -177,7 +177,7 @@ function ResForm({ selectedSite, campground, setErrors }) {
                     <div className="right-container">
                     <div className="line-item">
                         <label>Number of People, max {selectedSite.capacity}</label>
-                        <input type='number' min={0} max={selectedSite.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
+                        <input type='number' min={1} max={selectedSite.capacity} name='number_of_people' value={number_of_people} onChange={handleChange} />
                     </div>
 
                     <div className="line-item">
