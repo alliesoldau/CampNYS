@@ -10,12 +10,12 @@ class SitesController < ApplicationController
     def update
         site = Site.find(params[:id])
         site.update!(site_params)
-        render json: site, include: :reservations , status: :accepted
+        render json: site, include: :reservations, status: :accepted
     end
 
     def create
         site = Site.create!(site_params)
-        render json: site, status: :ok
+        render json: site, include: :reservations, status: :ok
     end 
 
     private

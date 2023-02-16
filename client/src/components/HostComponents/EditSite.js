@@ -13,9 +13,6 @@ import { GiWoodCabin } from 'react-icons/gi'
 import { GiMushroomHouse } from 'react-icons/gi'
 import Alert from '@mui/material/Alert';
 
-// TO DO: make it so editing and adding sites doesnt crash it. mapping issue 
-// TO DO: make sure sign up works and has error handling 
-
 function EditSite() {
 
     const history = useHistory()
@@ -25,7 +22,6 @@ function EditSite() {
     const params = useParams()
 
     const campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.CGID) ) })
-    console.log('campground', campground)
     const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === parseInt(params.siteID)) })
 
     const [formData, setFormData] = useState({
@@ -49,11 +45,9 @@ function EditSite() {
                 res.json()
                 .then((siteData) => {
                     const updatedSites = campground.sites.map((site) => site.id === thisSite.id ? siteData : site)
-                    console.log('updated sites', updatedSites)
                     const updatedCGSites = {...campground, sites: updatedSites}
                     const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id? updatedCGSites : cg)
                     const updatedUser = {...user, campgrounds: updatedCG}
-                    // console.log(updatedUser)
                     setUser(updatedUser)
                     setErrors([])
                     history.push(`/campground/${campground.id}/sites`)

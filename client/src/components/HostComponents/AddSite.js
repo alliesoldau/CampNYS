@@ -40,7 +40,6 @@ function AddSite() {
     }
 
     function handleSubmit() {
-        console.log(formData)
         AddNewSite(formData).then(res => {
             if(res.ok) {
                 res.json()

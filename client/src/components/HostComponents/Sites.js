@@ -125,7 +125,6 @@ function Sites({ site, campground }) {
     })
 }
 
-// console.log('site', thisSite.name, 'include', include)
     // trigger a modal for the reservation when you click a date on the calendar
     const onChange = (date) => {
         const ressies = site.reservations
