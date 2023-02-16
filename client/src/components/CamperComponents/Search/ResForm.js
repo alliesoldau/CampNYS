@@ -8,6 +8,8 @@ import Form from '../../../styles/Form'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { send } from 'emailjs-com';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 function ResForm({ selectedSite, campground, setErrors }) {
 
@@ -16,6 +18,7 @@ function ResForm({ selectedSite, campground, setErrors }) {
 
     const [startDate, setStartDate] = useState(new Date())
     const [endDate, setEndDate] = useState(null)
+    const [show, setShow] = useState(false)
     const { user } = useContext(UserContext)
     const { campRes, setCampRes } = useContext(CamperReservationsContext)
     const { campgrounds, setCampgrounds } = useContext(CampgroundContext)
@@ -67,7 +70,6 @@ function ResForm({ selectedSite, campground, setErrors }) {
                     const updatedCGs = campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
                     setCampgrounds(updatedCGs)
                     setErrors([])
-                    history.push(`/campers/${user.id}/reservations`)
                 })
             } else {
                 res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))   
@@ -79,6 +81,7 @@ function ResForm({ selectedSite, campground, setErrors }) {
             reply_to: 'alliesoldau@gmail.com',
             user_email: `${user.email}`
         })
+        handleShow(true)
         triggerSend(sendMe)
     }
 
@@ -133,8 +136,28 @@ function ResForm({ selectedSite, campground, setErrors }) {
             });
         }
 
+    function handleClose() {
+        setShow(false)
+        history.push(`/campers/${user.id}/reservations`)
+    }
+
+    function handleShow() {
+        setShow(true)
+    }
+
     return (
         <>
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+            <Modal.Header closeButton>
+                <Modal.Title>Reservation Confirmed</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Please check your email for reservation confirmation.</Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary" onClick={handleClose}>
+                    OK
+                </Button>
+            </Modal.Footer>
+        </Modal>
         { selectedSite && campground ? 
             <Form> 
             <form onSubmit={handleSubmit}>
