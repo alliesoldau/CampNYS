@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { GLOBAL } from './GlobalVar';
 
 const Reservations = styled.div`
 

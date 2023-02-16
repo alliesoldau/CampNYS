@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useParams } from 'react-router-dom'
 import Sites from './Sites'
 import { UserContext } from '../Context/UserContext'
@@ -11,6 +11,7 @@ function SitesSummary() {
     const { user } = useContext(UserContext)
     const params = useParams()
 
+
     let campground
     if (user) {
         campground = user.campgrounds.find((cg) => { return ( cg.id === parseInt(params.id) ) })
@@ -18,7 +19,7 @@ function SitesSummary() {
 
     return (
         <>
-        { user ? <>
+        { user && campground ? <>
         <ArrowHeader>
             <div className="header">
                 <div className="top">
@@ -42,6 +43,7 @@ function SitesSummary() {
                     <Sites 
                         key={site.id}
                         site={site}
+                        campground={campground}
                     />
                     )
                 })}

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
-import { DeleteSite } from '../Stores/Fetches'
+import { DeleteSite, DeleteReservation } from '../Stores/Fetches'
 import SiteCard from '../../styles/SiteCard'
 import { GiCampingTent } from 'react-icons/gi'
 import { MdHouseSiding } from 'react-icons/md'
@@ -13,33 +13,30 @@ import Modal from 'react-bootstrap/Modal';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-function Sites({ site }) {
+function Sites({ site, campground }) {
 
     const { user, setUser } = useContext(UserContext)
     const [show, setShow] = useState(false)
+    const [showRes, setShowRes] = useState(false)
+    const [res, setRes] = useState(null)
     const [deleteMe, setDeleteMe] = useState(null)
-    const [date, setDate] = useState(null)
-
-    const onChange = (date) => {
-        setDate(date)
-    }
-
     const history = useHistory()
 
-    const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
+    // const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
     const thisSite = campground.sites.find((cgSite) => { return ( cgSite.id === site.id) })
 
     function handleSiteDelete(e) {
         e.preventDefault();
         const sitesSansDelete = campground.sites.filter((site) => site.id !== thisSite.id)
         const updatedSites = {...campground, sites: sitesSansDelete}
-        const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id? updatedSites : cg)
+        const updatedCG = user.campgrounds.map((cg) => cg.id === campground.id ? updatedSites : cg)
         const updatedUser = {...user, campgrounds: updatedCG}
         setUser(updatedUser)
         history.push(`/campground/${campground.id}/sites`)
         DeleteSite(thisSite.id)
     }
 
+    // modal control for the site
     function handleDelete() {
         setShow(false)
         handleSiteDelete(deleteMe)
@@ -52,6 +49,24 @@ function Sites({ site }) {
     function handleShow(res) {
         setShow(true)
         setDeleteMe(res)
+    }
+
+    // modal control for the res
+    function handleDeleteRes() {
+        DeleteReservation(res.id)
+        setShowRes(false)
+        const updatedRes = site.reservations.filter((ressy) => ressy.id !== res.id)
+        const updatedSite = {...site, reservations: updatedRes}
+        const updatedSites = campground.sites.map((resSite) => resSite.id === site.id ? updatedSite : resSite)
+        const updatedCG = {...campground, sites: updatedSites}
+        const updatedCGs = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
+        const updatedUser = {...user, campgrounds: updatedCGs}
+        setUser(updatedUser)
+
+    }
+
+    function handleCloseRes() {
+        setShowRes(false)
     }
 
     // filter out days that are already booked  
@@ -90,7 +105,8 @@ function Sites({ site }) {
         return datesBetween       
     })
 
-    if (date) {
+    // trigger a modal for the reservation when you click a date on the calendar
+    const onChange = (date) => {
         const ressies = site.reservations
         ressies.forEach((res) => {
             const startD = res.start_date
@@ -111,30 +127,57 @@ function Sites({ site }) {
                 return dates
             }
             inBetweenDates.forEach((resDate) => {
-                if (date.getTime() == resDate.getTime()) {
-                    console.log(res)
+                if (date.getTime() == resDate.getTime()) { 
+                    setRes(res)
+                    setShowRes(true)
+                    // TO DO: CAUSE A POP UP WINDOW OR SOMETHING WITH THE RES InfoBox
+                    // AND ALLOW THE HOST TO CANCEL THE RESRVATION FROM THEIR SIDE
                 }
             })
         })
-        
     }
 
 
+
     return (
-        <><Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
-            <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this?</Modal.Body>
-        <Modal.Footer>
-            <Button variant="danger" onClick={handleDelete}>
-                Confirm
-            </Button>
-            <Button variant="secondary" onClick={handleClose}>
-                Cancel
-            </Button>
-        </Modal.Footer>
-    </Modal>
+        <>
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+            <Modal.Header closeButton>
+                <Modal.Title>Delete Confirmation</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>Are you sure you want to delete this?</Modal.Body>
+            <Modal.Footer>
+                <Button variant="danger" onClick={handleDelete}>
+                    Confirm
+                </Button>
+                <Button variant="secondary" onClick={handleClose}>
+                    Cancel
+                </Button>
+            </Modal.Footer>
+        </Modal>
+
+        { res ? 
+        <Modal show={showRes} onHide={handleCloseRes} backdrop="static" keyboard={false}>
+            <Modal.Header closeButton>
+                <Modal.Title>Reservation Details</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>Start Date: {res.start_date}</p>
+                <p>End Date: {res.end_date}</p>
+                <p>Campers: {res.number_of_people}</p>
+                <p>Cars: {res.cars}</p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="danger" onClick={handleDeleteRes}>
+                    Delete Reservation
+                </Button>
+                <Button variant="secondary" onClick={handleCloseRes}>
+                    Back to All Sites
+                </Button>
+            </Modal.Footer>
+        </Modal>
+        : null }
+
         <SiteCard>
             <div className="card">
                 <div className="top">
