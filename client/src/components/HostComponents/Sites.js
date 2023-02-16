@@ -12,6 +12,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { send } from 'emailjs-com';
+
 
 function Sites({ site, campground }) {
 
@@ -21,6 +23,12 @@ function Sites({ site, campground }) {
     const [res, setRes] = useState(null)
     const [camper, setCamper] = useState(null)
     const [deleteMe, setDeleteMe] = useState(null)
+    // const [toSend, setToSend] = useState({
+    //     from_name: '',
+    //     to_name: '',
+    //     message: '',
+    //     reply_to: '',
+    //   });
     const history = useHistory()
 
     // const campground = user.campgrounds.find((cg) => { return ( cg.id === site.campground_id ) })
@@ -63,6 +71,20 @@ function Sites({ site, campground }) {
         const updatedCGs = user.campgrounds.map((cg) => cg.id === campground.id ? updatedCG : cg)
         const updatedUser = {...user, campgrounds: updatedCGs}
         setUser(updatedUser)
+        const sendMe = ({from_name: 'CampNYS',
+            to_name: `${camper.first_name} ${camper.last_name}`,
+            message: 'res cancelled',
+            reply_to: 'alliesoldau@gmail.com',
+        })
+        // setToSend({
+        //     ...toSend,
+        //     from_name: 'CampNYS',
+        //     to_name: `${camper.first_name} ${camper.last_name}`,
+        //     message: 'res cancelled',
+        //     reply_to: 'alliesoldau@gmail.com',
+        // })
+        // console.log(sendMe)
+        triggerSend(sendMe)
     }
 
     function handleCloseRes() {
@@ -131,10 +153,37 @@ function Sites({ site, campground }) {
                     GrabCamper(res.camper_id).then((setCamper))
                     setRes(res)
                     setShowRes(true)
+                    // if (camper) {
+                    //     setToSend({
+                    //         ...toSend,
+                    //         from_name: 'CampNYS',
+                    //         to_name: `${camper.first_name} ${camper.last_name}`,
+                    //         message: 'res cancelled',
+                    //         reply_to: 'alliesoldau@gmail.com',
+                    //     })
+                    // }
                 }
             })
         })
     }
+
+    function triggerSend(toSend) {
+        // if (toSend) {
+        console.log(toSend)
+        send(
+            'service_nz0rb1z',
+            'template_utozo4o',
+            toSend,
+            'dBC0CgsBZ0nSOUSWr'
+          )
+            .then((response) => {
+              console.log('SUCCESS!', response.status, response.text);
+            })
+            .catch((err) => {
+              console.log('FAILED...', err);
+            });
+        }
+    // }
 
     return (
         <>
