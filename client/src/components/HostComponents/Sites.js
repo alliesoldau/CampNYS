@@ -19,6 +19,7 @@ function Sites({ site, campground }) {
     const { user, setUser } = useContext(UserContext)
     const [show, setShow] = useState(false)
     const [showRes, setShowRes] = useState(false)
+    const [showConfirm, setShowConfirm] = useState(false)
     const [res, setRes] = useState(null)
     const [camper, setCamper] = useState(null)
     const [deleteMe, setDeleteMe] = useState(null)
@@ -70,6 +71,15 @@ function Sites({ site, campground }) {
             user_email: `${camper.email}`
         })
         triggerSend(sendMe)
+        handleShowConfirm()
+    }
+
+    function handleCloseConfirm() {
+        setShowConfirm(false)
+    }
+
+    function handleShowConfirm() {
+        setShowConfirm(true)
     }
 
     function handleCloseRes() {
@@ -198,6 +208,18 @@ function Sites({ site, campground }) {
             </Modal.Footer>
         </Modal>
         : null }
+
+        <Modal show={showConfirm} onHide={handleCloseConfirm} backdrop="static" keyboard={false}>
+            <Modal.Header closeButton>
+                <Modal.Title>Reservation Deleted</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>The campers have been notified by email</Modal.Body>
+            <Modal.Footer>
+                <Button variant="primary" onClick={handleCloseConfirm}>
+                    Continue
+                </Button>
+            </Modal.Footer>
+        </Modal>
 
         <SiteCard>
             <div className="card">
