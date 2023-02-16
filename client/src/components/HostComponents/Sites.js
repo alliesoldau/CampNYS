@@ -14,7 +14,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { send } from 'emailjs-com';
 
-
 function Sites({ site, campground }) {
 
     const { user, setUser } = useContext(UserContext)
@@ -55,7 +54,7 @@ function Sites({ site, campground }) {
 
     // modal control for the res
     function handleDeleteRes() {
-        // DeleteReservation(res.id)
+        DeleteReservation(res.id)
         setShowRes(false)
         const updatedRes = site.reservations.filter((ressy) => ressy.id !== res.id)
         const updatedSite = {...site, reservations: updatedRes}
@@ -66,9 +65,9 @@ function Sites({ site, campground }) {
         setUser(updatedUser)
         const sendMe = ({from_name: 'CampNYS',
             to_name: `${camper.first_name} ${camper.last_name}`,
-            message: 'res cancelled',
+            message: `Your reservation at ${campground.name} for site ${thisSite.name} starting on ${res.start_date} and ending on ${res.end_date} has been cancelled by the host.`,
             reply_to: 'alliesoldau@gmail.com',
-            user_email: 'alliebenwedding2024@gmail.com'
+            user_email: `${camper.email}`
         })
         triggerSend(sendMe)
     }
@@ -145,7 +144,6 @@ function Sites({ site, campground }) {
     }
 
     function triggerSend(toSend) {
-        console.log(toSend)
         send(
             'service_nz0rb1z',
             'template_utozo4o',
@@ -159,7 +157,6 @@ function Sites({ site, campground }) {
               console.log('FAILED...', err);
             });
         }
-    // }
 
     return (
         <>

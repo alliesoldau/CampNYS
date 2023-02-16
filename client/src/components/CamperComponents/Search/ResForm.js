@@ -7,6 +7,7 @@ import { AddNewRes } from '../../Stores/Fetches'
 import Form from '../../../styles/Form'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { send } from 'emailjs-com';
 
 function ResForm({ selectedSite, campground, setErrors }) {
 
@@ -43,11 +44,12 @@ function ResForm({ selectedSite, campground, setErrors }) {
         setFormData({ ...formData, [name]: value })
     }
     
+    let formDataWithDate 
+
     function handleSubmit(e) {
         e.preventDefault()
         let sDate
         let eDate 
-        let formDataWithDate 
         if (startDate && endDate) {
             sDate = `${startDate.getFullYear()}-${startDate.getMonth() + 1}-${startDate.getDate()}`
             eDate = `${endDate.getFullYear()}-${endDate.getMonth() + 1}-${endDate.getDate()}`
@@ -71,6 +73,13 @@ function ResForm({ selectedSite, campground, setErrors }) {
                 res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))   
             }   
         })
+        const sendMe = ({from_name: 'CampNYS',
+            to_name: `${user.first_name} ${user.last_name}`,
+            message: `Your reservation at ${campground.name} for site ${selectedSite.name} starting on ${formDataWithDate.start_date} and ending on ${formDataWithDate.end_date} has been confirmed for ${formData.number_of_people} campers and ${formData.cars} cars.`,
+            reply_to: 'alliesoldau@gmail.com',
+            user_email: `${user.email}`
+        })
+        triggerSend(sendMe)
     }
 
     // filter out days that are already booked  
@@ -108,6 +117,21 @@ function ResForm({ selectedSite, campground, setErrors }) {
         }
         return datesBetween       
     })
+
+    function triggerSend(toSend) {
+        send(
+            'service_nz0rb1z',
+            'template_v74160p',
+            toSend,
+            'dBC0CgsBZ0nSOUSWr'
+          )
+            .then((response) => {
+              console.log('SUCCESS!', response.status, response.text);
+            })
+            .catch((err) => {
+              console.log('FAILED...', err);
+            });
+        }
 
     return (
         <>

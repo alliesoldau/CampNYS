@@ -15,7 +15,7 @@ campground_image_urls = ['https://images.unsplash.com/photo-1624923686627-514dd5
 ]
 
 puts "😁 Seeding user data..."
-User.create(email: "user", host: false, password: "1234", first_name: "User", last_name: "Soldau", image_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80')
+User.create(email: "alliesoldau@gmail.com", host: false, password: "1234", first_name: "User", last_name: "Soldau", image_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80')
 User.create(email: "host", host: true, password: "1234", first_name: "Host", last_name: "Soldau", affiliation: affiliation.sample, image_url: 'https://images.unsplash.com/photo-1597223557154-721c1cecc4b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80')
 
 # 8.times do
