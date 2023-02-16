@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 # Custom auth Routes
     get '/authorized/:id', to: 'users#show'
+    get '/campers/:id', to: 'users#grab_camper'
     get '/all_campgrounds', to: 'campgrounds#index'
     get '/camper/:id/reservations', to: 'reservations#show'
     get '/host/:id/campgrounds', to: 'campgrounds#show'

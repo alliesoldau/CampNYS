@@ -9,6 +9,11 @@ export function LoginUser(user) {
         })
 } 
 
+export function GrabCamper(id) {
+    return fetch(baseURL+`/campers/${id}`)
+    .then(res => res.json())
+    }
+
 export function SignUpUser(user) {
     return fetch(baseURL+"/signup",{
             method:'POST',

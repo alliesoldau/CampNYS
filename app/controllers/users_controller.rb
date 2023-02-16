@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized_user, only:[:create, :show, :update]
+    skip_before_action :authorized_user, only:[:create, :show, :update, :grab_camper]
 
     def show 
         user = User.find(params[:id])
@@ -8,6 +8,11 @@ class UsersController < ApplicationController
         else 
             render json: user, status: :ok
         end
+    end 
+
+    def grab_camper 
+        user = User.find(params[:id])
+        render json: user, status: :ok
     end 
 
 

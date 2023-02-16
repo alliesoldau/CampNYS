@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { UserContext } from '../Context/UserContext'
-import { DeleteSite, DeleteReservation } from '../Stores/Fetches'
+import { DeleteSite, DeleteReservation, GrabCamper } from '../Stores/Fetches'
 import SiteCard from '../../styles/SiteCard'
 import { GiCampingTent } from 'react-icons/gi'
 import { MdHouseSiding } from 'react-icons/md'
@@ -19,6 +19,7 @@ function Sites({ site, campground }) {
     const [show, setShow] = useState(false)
     const [showRes, setShowRes] = useState(false)
     const [res, setRes] = useState(null)
+    const [camper, setCamper] = useState(null)
     const [deleteMe, setDeleteMe] = useState(null)
     const history = useHistory()
 
@@ -127,6 +128,7 @@ function Sites({ site, campground }) {
             }
             inBetweenDates.forEach((resDate) => {
                 if (date.getTime() == resDate.getTime()) { 
+                    GrabCamper(res.camper_id).then((setCamper))
                     setRes(res)
                     setShowRes(true)
                 }
@@ -151,7 +153,7 @@ function Sites({ site, campground }) {
             </Modal.Footer>
         </Modal>
 
-        { res ? 
+        { res && camper ? 
         <Modal show={showRes} onHide={handleCloseRes} backdrop="static" keyboard={false}>
             <Modal.Header closeButton>
                 <Modal.Title>Reservation Details</Modal.Title>
@@ -161,6 +163,8 @@ function Sites({ site, campground }) {
                 <p>End Date: {res.end_date}</p>
                 <p>Campers: {res.number_of_people}</p>
                 <p>Cars: {res.cars}</p>
+                <p>Camper Name: {camper.first_name} {camper.last_name}</p>
+                <p>Camper Email: {camper.email}</p>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="danger" onClick={handleDeleteRes}>
