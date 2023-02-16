@@ -112,16 +112,16 @@ function Sites({ site, campground }) {
             const endD = res.end_date
             const inBetweenDates = getDatesBetweenRes(startD, endD)
             function getDatesBetweenRes (start, end) {
-                const dates = [];
+                const dates = []
                 let currentDate = new Date(start)
                 let endDate = new Date(end)
                 while (currentDate <= endDate) {
-                    dates.push(currentDate);
+                    dates.push(currentDate)
                     currentDate = new Date(
                         currentDate.getFullYear(),
                         currentDate.getMonth(),
                         currentDate.getDate() + 1, // Will increase month if over range
-                    ) 
+                    )
                 }
                 return dates
             }
