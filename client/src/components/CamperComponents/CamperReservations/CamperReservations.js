@@ -64,7 +64,8 @@ function CamperReservations() {
     }
 
     return (
-        <>
+        <> { reservationMessage ? 
+            <>
             <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Delete Confirmation</Modal.Title>
@@ -88,6 +89,8 @@ function CamperReservations() {
                     { reservations }
                 </div>
             </Reservations>
+            </>
+            : null}
         </>
     )
 }

@@ -89,7 +89,9 @@ function Sites({ site, campground }) {
     // filter out days that are already booked  
     // i have to format the start and end date because react date picker handles dates differently
     // then i seeded them into the data  
-    const include = site.reservations.map((ressy) => {
+    let include = null
+    if ( user && site.reservations ) {
+        include = site.reservations.map((ressy) => {
         // start date 
         const day = (new Date(ressy.start_date).getDate()) + 1
         const month = (new Date(ressy.start_date).getMonth()) + 1
@@ -119,9 +121,11 @@ function Sites({ site, campground }) {
             }
             return dates
         }
-        return datesBetween       
+        return datesBetween    
     })
+}
 
+// console.log('site', thisSite.name, 'include', include)
     // trigger a modal for the reservation when you click a date on the calendar
     const onChange = (date) => {
         const ressies = site.reservations
@@ -222,6 +226,7 @@ function Sites({ site, campground }) {
         </Modal>
 
         <SiteCard>
+            { include !== null ? 
             <div className="card">
                 <div className="top">
                     <div className="left-container">
@@ -261,6 +266,7 @@ function Sites({ site, campground }) {
                         <button className="delete" onClick={handleShow}>Delete Site</button>
                 </div>
             </div>
+            : null}
         </SiteCard>
         </>
     )
