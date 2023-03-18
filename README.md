@@ -1,17 +1,17 @@
 # README
 
-# 🏕️ CampNYS 🏕️
+# 🏕️ CampNYS
 
-## 💻 Technologies and Skills Used 💻
+## 💻 Technologies and Skills Used
 React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS
 
 <i>useContext, useEffect, ActiveRecord, async functions, date/time-zone manipulation, pie-charts, bar-charts, and styled components</i>
 
-## 📝 Project Summary 📝
+## 📝 Project Summary
 CampNYS offers campers in upstate New York a better experience when finding campgrounds and managing their reservations. 
 Currently there is no centralized list of all campgrounds in NYS and perspective campers must scour multiple sites, phone lines, brochures, and maps to try and find a campground that will work for their needs. This website aims to make the process easier for both camper and campground host.
 
-## User story:
+## 🧑 User story:
 * A user can **log in** as either a host or a camper
 * A user can edit their profile information
 * HOST
