@@ -4,15 +4,18 @@
 [Demo](https://youtu.be/Crt8a-tmCgw)
 
 ## 💻 Technologies and Skills Used
-React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS
+React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS, CSS
 
-<i>useContext, useEffect, ActiveRecord, async functions, date/time-zone manipulation, pie-charts, bar-charts, and styled components</i>
+<i>useContext, useEffect, ActiveRecord, serializers, custom methods, async functions, date/time-zone manipulation, pie-charts, bar-charts, and styled components</i>
 
 ## 📝 Project Summary
 CampNYS offers campers in upstate New York a better experience when finding campgrounds and managing their reservations. 
 Currently there is no centralized list of all campgrounds in NYS and perspective campers must scour multiple sites, phone lines, brochures, and maps to try and find a campground that will work for their needs. This website aims to make the process easier for both camper and campground host.
 
 ## 🧑 User story:
+* A user can create a profile
+  * Profiles must go through **validation** and **authorization** before the user can log in
+  * If an error occurs, the user will be **notified of the error**
 * A user can **log in** as either a host or a camper
 * A user can edit their profile information
 * HOST
