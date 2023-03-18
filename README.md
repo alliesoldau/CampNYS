@@ -3,8 +3,8 @@
 # 🏕️ CampNYS 🏕️
 
 
-### **Utilized React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS**
-### Expanded knowledge on useContext, useEffect, ActiveRecord, async functions, date/time-zone manipulation, and styled components
+## Utilized React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS
+## Expanded knowledge on useContext, useEffect, ActiveRecord, async functions, date/time-zone manipulation, and styled components
 
 CampNYS offers campers in upstate New York a better experience when finding campgrounds and managing their reservations. 
 
