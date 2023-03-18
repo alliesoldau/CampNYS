@@ -3,7 +3,7 @@
 # 🏕️ CampNYS 🏕️
 
 
-## **Utilized React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS** 
+### **Utilized React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS** 
 ### CampNYS offers campers in upstate New York a better experience when finding campgrounds and managing their reservations. 
 
 Currently there is no centralized list of all campgrounds in NYS and perspective campers must scour multiple sites, phone lines, brochures, and maps to try and find a campground that will work for their needs. This website aims to make the process easier for both camper and campground host.
