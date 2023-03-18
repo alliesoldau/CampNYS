@@ -15,7 +15,7 @@ Currently there is no centralized list of all campgrounds in NYS and perspective
 * HOST
   * A host can create campgrounds
   * A host can create sites within their campgrounds
-  * A host can view **analytics** on their campgrounds to show how booked they are for the week and month, and to see which the popularity of bookings per day of the week
+  * A host can view **analytics** for the weekly and monthly bookings of each campground, and to see which the popularity of bookings per day of the week
   * A host can view individual reservations by interacting with a **calendar**, and can cancel reservations as needed. Cancelling a reservation will **send an email** to the camper to let them know of the change.
 * CAMPER
   * A camper can use a **GoogleMap** to filter campground by accessibillity and region
