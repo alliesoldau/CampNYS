@@ -17,6 +17,7 @@ Currently there is no centralized list of all campgrounds in NYS and perspective
   * Profiles must go through **validation** and **authorization** before the user can log in
   * If an error occurs, the user will be **notified of the error**
 * A user can **log in** as either a host or a camper
+  * Once logged in the site uses **cookies** to keep the user logged in until they log out 
 * A user can edit their profile information
 * HOST
   * A host can create campgrounds
