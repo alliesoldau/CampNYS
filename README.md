@@ -4,6 +4,7 @@
 
 ## 💻 Technologies and Skills Used 💻
 React, Ruby on Rails, PostgresQL, GoogleMaps API, React Date Picker, and EmailJS
+
 <i>useContext, useEffect, ActiveRecord, async functions, date/time-zone manipulation, pie-charts, bar-charts, and styled components</i>
 
 ## 📝 Project Summary 📝
